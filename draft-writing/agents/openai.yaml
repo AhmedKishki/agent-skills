@@ -1,0 +1,19 @@
+interface:
+  display_name: draft writing
+  short_description: Collaboratively assemble a user-controlled, source-grounded article
+    through a lean five-stage workflow. Use for thesis-led drafting or a requested
+    Markdown source export or consolidated current-project user export. The user controls
+    synthesis and article decisions, source fidelity preserves meaning without defaulting
+    to quotation, and every canonical content passage retains Human/Mixed/AI provenance.
+    Supports letter-coded source maps with theory/metatheory roles, argument-led work,
+    global/local arcs, a keyword/theme index over excerpts, previous-major migration,
+    and requested hand-offs.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
