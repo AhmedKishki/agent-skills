@@ -10,15 +10,16 @@
 | Theme/keyword retrieval | Index |
 | Section/paragraph structure, source contributions, placement, repetition | Article arc |
 | Exact non-final article wording selected as raw material | Predraft |
+| Whole-predraft findings, approved global drafting treatments, diagnostic exceptions | Predraft report |
 | Current article and authorship metrics | Draft |
 | Current draft's changes | Changelog |
 | Complete resume working set and resume/migration state | Activity tracker |
 | Requested handoff package of the complete tracked working set | Full export |
 | Requested verbatim combination of complete source maps and index | Combined sources |
 
-Questions stay in chat; the activity tracker records only the current self-contained resume question or decision, never Q&A history. Store each substantive item once and reference it elsewhere; only predraft, exact draft assembly, combined sources, and the full-export archive deliberately copy canonical material. Every field must add information not already supplied by its filename, header, reference, or inherited provenance. Omit repeated context, labels, explanations, empty sections, unchanged status, and superseded reasoning.
+Questions stay in chat; the activity tracker records only the current self-contained resume question or decision, never Q&A history. Store each substantive item once and reference it elsewhere. Predraft deliberately copies selected raw wording; the draft deliberately combines approved raw material; combined sources and full export copy their defined inputs. The predraft report references affected passages and stores only current findings, approved global treatments, and approved exceptions—not duplicated passages or discussion. Every field must add information not already supplied by its filename, header, reference, or inherited provenance. Omit repeated context, labels, explanations, empty sections, unchanged status, and superseded reasoning.
 
-Create only the outputs above, durable sources, and necessary conversions. Never create Q&A, brief, evidence-map, provenance, source-addition, thesis-impact, fidelity-status, migration, or general-note files. Retire a legacy workflow file only after [migration](migration-to-v6.md) validates every governing item elsewhere.
+Create only the outputs above, durable sources, and necessary conversions. Never create Q&A, brief, evidence-map, provenance, source-addition, thesis-impact, fidelity-status, migration, or general-note files. Retire a legacy workflow file only after [migration](migration-to-v7.md) validates every governing item elsewhere.
 
 Each replacement is the lean current state, not history. After an authorised replacement validates, omit its disclosed withdrawn wording, rationale, alternatives, and former status. Retain only current useful information and its minimum traceable basis.
 
@@ -41,9 +42,9 @@ Once the disclosed successor and dependents validate, remove the authorised obso
 
 ## Change authority
 
-A change is substantive when it alters meaning, thesis/vision, metatheory, source role, arc structure/boundary, passage wording/use, authorship basis, or a dependent's validity. Before it follow [collaborative questions](collaborative-questions.md) and leave canonical content unchanged until the post-alert answer authorises that exact change. Report the resulting direction and reopened work in chat only.
+A change is substantive when it alters meaning, thesis/vision, metatheory, source role, arc structure/boundary/emphasis, passage wording/use, an approved predraft-report treatment/exception, authorship basis, or a dependent's validity. Before it follow [collaborative questions](collaborative-questions.md) and leave canonical content unchanged until the post-alert answer authorises that exact change. Once the complete predraft is approved, even a normally automatic cleanup identified by its report requires explicit approval. Report the resulting direction and reopened work in chat only.
 
-**Faithful routing** is unchanged Human wording placed in its already-established thesis, user-synthesis, source-map, or arc function without changing meaning, role, or use. It excludes new functions, thesis/vision revision, predraft selection, and draft placement. **Authorised cleanup** removes only an exact span or file named in the user's direct removal request or an approved removal-impact notice, plus lossless lineage cleanup under the exception above. Human-preserving operations, faithful routing, and authorised cleanup are non-substantive; cleanup still cannot exceed the disclosed scope.
+**Faithful routing** is unchanged Human wording placed in its already-established thesis, user-synthesis, source-map, or arc function without changing meaning, role, or use. It excludes new functions, thesis/vision revision, predraft selection, predraft-report treatment/exception approval, and draft use. **Authorised cleanup** removes only an exact span or file named in the user's direct removal request or an approved removal-impact notice, plus lossless lineage cleanup under the exception above. Human-preserving operations, faithful routing, and authorised cleanup are non-substantive; cleanup still cannot exceed the disclosed scope.
 
 Work is unaffected only if its thesis basis, meaning, Article/Framework role, boundary, placement/use, provenance, and metatheory fit all remain unchanged. Otherwise omit it from use until decided or revalidated.
 
@@ -64,6 +65,7 @@ After the required notice and authority, delete an invalidated dependent as soon
 | Source map | {project}-source-map-{code}-{author-short-title} |
 | Arc | {project}-article-arc |
 | Predraft | {project}-predraft |
+| Predraft report | {project}-predraft-report |
 | Draft | {project}-draft-vN |
 | Changelog | {project}-draft-vN-changelog |
 | Activity tracker | {project}-activity-tracker |
@@ -83,6 +85,6 @@ Every canonical workflow file states **Collaboration: Ask when uncertain; never 
 
 Omit optional absent fields. Ordinary files carry no predecessor history; unresolved migration relationships stay in the tracker. **Process prose** covers administrative scaffolding only; apply [provenance](authorship-and-provenance.md) to substantive content. The tracker replaces **Depends on** with resume fields.
 
-**Working** means unresolved work remains. **Awaiting approval** means the complete current file and one named decision are before the user. **Approved** means the user explicitly approved that complete file for its stage. **Complete** means the user declared the final draft and workflow complete. Status never selects predraft or draft use.
+**Working** means unresolved work remains. **Awaiting approval** means the complete current file and one named decision are before the user. **Approved** means the user explicitly approved that complete file for its named use and exact dependency set. **Complete** means the user declared the final draft and workflow complete. Status never selects predraft, report-treatment, or draft use.
 
 Create a conversion only when access or provenance requires it; record its source and retire it through authorised cleanup when unused.

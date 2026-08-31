@@ -4,7 +4,7 @@ White box synthesis assembles an unselected chat candidate from existing Human w
 
 Black-box synthesis is any result with an unmapped span, unsupported relation, hidden transformation, or fluent passage shown without its span map. It is prohibited.
 
-Use this method for a requested suggestion, synthesis, or content question before draft assembly. Never run it during assembly. If assembly exposes missing wording, return to the affected arc or predraft work before attempting synthesis.
+Use this method for a requested suggestion, synthesis, content question, or predraft-report wording fix before global draft production. Never run it while producing the draft. If draft production exposes missing wording, reopen the report and affected arc or predraft work before attempting synthesis.
 
 ## Inputs and target
 
@@ -90,6 +90,6 @@ Selection creates a separate **Predraft raw material** copy; it never relabels t
 
     **Provenance:** Mixed · Human wording: 100% · Method: white box synthesis · Basis: final record's Input keys · Use: Predraft raw material
 
-Do not copy the raw-input display, chat stamp, purpose summary, or intermediate construction. Draft placement separately names one arc row; a process proposal separately names one field. User synthesis retains its actual Human/AI spans.
+Do not copy the raw-input display, chat stamp, purpose summary, or intermediate construction. The arc separately names the raw-material function and the predraft report separately names its finding or treatment; a process proposal separately names one field. User synthesis retains its actual Human/AI spans.
 
 Never return a fluent result without its span map or a gap alert.

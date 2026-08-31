@@ -11,7 +11,7 @@
       "name": "draft-writing",
       "displayName": "Draft Writing",
       "source": "./draft-writing",
-      "description": "Collaboratively build a user-controlled, source-grounded article with independent source maps, white box synthesis, and tracker-based handoffs.",
+      "description": "Collaboratively build a user-controlled, source-grounded article through local predrafting, whole-predraft diagnosis, and report-gated global refinement.",
       "tags": [
         "writing",
         "research",

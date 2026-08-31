@@ -1,6 +1,6 @@
 # Requested full export
 
-Create `{project}-full-export-YYYY-MM-DD-HHMMSS.zip` only when the user explicitly requests a **full export** or a handoff package. Never infer the request from a pause, stage completion, migration, or conversation change.
+Create `{project}-full-export-YYYY-MM-DD-HHMMSS.zip` only when the user explicitly requests a **full export** or a handoff package. Never infer the request from a pause, approval milestone, migration, or conversation change.
 
 The ZIP is the sole handoff output. It is a byte-preserving transport package, not a canonical file, drafting input, approval, history, or tracker row. Create no separate hand-off document, manifest, summary, or transformed copy.
 

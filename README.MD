@@ -6,7 +6,7 @@ A collection of source-controlled skills for Codex and Claude. Each top-level di
 
 | Skill | Purpose |
 |---|---|
-| [`draft-writing`](draft-writing/) | Collaboratively assemble a user-controlled, source-grounded article with white box synthesis, tracker-based handoff ZIPs, and verbatim combined-source output. |
+| [`draft-writing`](draft-writing/) | Collaboratively assemble a user-controlled, source-grounded article through local predrafting, whole-predraft diagnosis, and report-gated global refinement. |
 
 ## Install
 
@@ -91,7 +91,7 @@ Inspect a checkout without duplicating its version in tracked files:
 git describe --tags --match 'draft-writing-v*' --always --dirty
 ```
 
-Workflow-schema labels such as `v5 → v6` and `v6.0–v6.1` inside migration instructions describe persisted project-file compatibility; they are not package release versions.
+Workflow-schema labels such as `v6 → v7` inside migration instructions describe persisted project-file compatibility; they are not package release versions.
 
 ## Publishing future updates
 
