@@ -1,52 +1,71 @@
 ---
 name: draft-writing
-description: "Collaboratively build a user-controlled, source-grounded article through local predrafting and report-gated global refinement. Use for thesis-led drafting, a requested full-export handoff ZIP, or a requested combination of complete source maps and index. Enforces source fidelity, Human/Mixed/AI provenance, white box synthesis, independent theory/metatheory source maps, automatic indexing, and previous-schema migration."
+description: "Support user-controlled, source-grounded article development from a required thesis-and-vision through independent source mapping, arc design, local predrafting, whole-predraft review, and global drafting. Use when the user wants to develop or resume such an article, audit its fidelity, combine its source maps, or export its tracked project files."
 ---
 
-# Collaborative thesis-led drafting
+# User-directed thesis-to-draft collaboration
 
-## Core contract
+## Partnership and authority
 
-The user is author and final authority. Ask whenever content, wording, relations, or judgement are missing. Only the user revises thesis/metatheory, selects exact predraft wording, approves the complete raw-material set and arc, approves every predraft-report fix/treatment/exception, approves a draft, or declares completion.
+Act as a silent collaborator. The user retains all process and substantive authority, including wording, removals, approvals, and completion; a function call delegates execution only.
 
-Source fidelity preserves meaning; quotation is not required. Apply excerpt, Article/Framework role, optional metatheory, provenance, synthesis, use, change, and cleanup rules only through their linked owner modules. Framework-only material never supplies article wording or synthesis input.
+Speak only to execute the called function, answer a question, request required authority, or disclose a material gap, fidelity risk, invalid dependency, or proposed removal. Keep other mechanics unobtrusive, but never hide required records, provenance displays, alerts, or removal-impact notices. When a decision is needed, give exactly one suggestion under [collaborative questions](references/collaborative-questions.md).
 
-Map each source independently and refresh the [index](references/index.md) whenever an active excerpt changes. Before global draft production—including predraft-report Q&A—attempt [white box synthesis](references/white-box-synthesis.md) for every substantive wording suggestion. If its Human inputs contain a gap, expose the gap and stop before any resolution attempt; only a later [collaborative-questions](references/collaborative-questions.md) turn may offer a labelled post-rescan AI gap suggestion. Never invent or synthesise while producing the draft; black-box synthesis is prohibited.
+**Thesis-and-vision is the required entry point.** Approve it before research, development, or writing. A resumed project may use its valid active thesis. Before revising it, disclose affected work.
 
-Each output has one function and only current useful state. Save only net-new governing information. Before an addition or change removes, supersedes, invalidates, deduplicates, or retires anything, follow the [novelty and removal-impact rules](references/file-output-standard.md): tell the user exactly what would be lost and obtain any required authority before changing files. After an authorised change, remove only the disclosed obsolete state, retain unaffected work, and reopen each invalidated owner and dependent. Never strengthen the thesis. No humaniser follows.
+## Canonical workflow
 
-## Module loading
+Use this path for the normal case:
 
-Read each required module in full before acting:
+**thesis-and-vision → map-source → article-arc → predraft → review-predraft → draft-article**
 
-- [Authorship and wording provenance](references/authorship-and-provenance.md) before project work.
-- [Shared output-file standard](references/file-output-standard.md) before changing files.
-- [Activity tracker](references/activity-tracker.md) before resuming, reconciling, approving, or delivering.
-- [Keyword and theme index](references/index.md) before indexing or searching excerpts.
-- [Previous-schema project migration](references/migration-to-v7.md) for schema-v6 work, schema/current-use mismatches, established legacy namespaces, or legacy synthesis records.
-- [Requested full export](references/full-export.md) only when the user explicitly requests a **full export** or handoff package; ZIP only.
-- [Requested combined sources](references/combine-sources.md) only when the user explicitly requests **combine sources**; Markdown only.
-- [Collaborative questions, answer routing, and user synthesis](references/collaborative-questions.md) before asking, classifying an answer, or recording content-producing user answers.
-- [Predraft](references/predraft.md) before discussing, selecting, or using article wording.
-- [Predraft report](references/predraft-report.md) after the complete predraft and arc are approved, and whenever global drafting exposes a problem.
-- [White box synthesis](references/white-box-synthesis.md) before synthesis.
+Treat this as the default dependency path, not permission to advance. Run a function only when the user calls it or delegates a multi-function process and its listed inputs are valid; return control at its requested result, decision, or approval gate.
 
-Read the specification for the current work:
+The user may call, repeat, pause, or revisit any eligible function. When a change invalidates work, disclose the affected functions and wait for the user to call one.
 
-| Work or output | Specification |
-|---|---|
-| Thesis and vision | [Thesis and vision](references/thesis-and-vision.md) |
-| Independent source material | [Source review](references/source-review.md) and [per-source maps](references/source-maps.md) (including operative metatheory) |
-| Global structure and local predrafting targets | [Article arc](references/article-arc.md) |
-| Local selected raw material | [Predraft](references/predraft.md) |
-| Whole-predraft diagnosis and collaborative fixes | [Predraft report](references/predraft-report.md) |
-| Global article formation and revisions | [Drafting and changelog](references/drafting.md) |
-| Final fidelity | [Fidelity audit](references/fidelity-audit.md) |
+## Functions the user can call
 
-## Workflow
+The names are labels, not required command syntax. Read the called specification and only its applicable dependencies. If an input is missing or inconsistent, name it and stop. A selected specification may use **resolve-question** or **white-box-synthesis** within its scope. Save only the called function's owned files plus automatic tracker/index updates; changing another owner requires authority naming that function and exact change.
 
-Use dependency and approval gates, not numbered stages. Establish thesis/vision and independent source maps; develop the arc and predraft iteratively one local argument at a time; obtain explicit approval of the complete arc and raw-material set; generate and resolve the global predraft report; then form the article globally, audit it, and obtain the user's completion declaration. A changed dependency invalidates only affected work and its dependents. Do not substitute source summaries, mechanical unchanged assembly, or generative drafting. Create only linked files and follow immediate save/tracker rules.
+### Canonical functions
 
-A handoff request means **full export**; create no separate hand-off document. The former **export** and **export user** functions are retired. Do not interpret either retired name as a legacy alias: if the intended current function is unclear, ask whether the user wants **full export** or **combine sources**.
+| Function | Action | Requires | Read |
+|---|---|---|---|
+| **thesis-and-vision** | Establish or revise the thesis, main questions, vision, and optional metatheory. | New project, or an explicit revision call. | [Thesis and vision](references/thesis-and-vision.md) |
+| **map-source** | Review and map one source independently. | Approved thesis and the named source. | [Source review](references/source-review.md), [source maps](references/source-maps.md), and [index](references/index.md) |
+| **article-arc** | Define or revise the article's global sequence and each local section's role, boundary, handoff, emphasis, and sole home. | Approved thesis; active maps for any named source contribution. | [Article arc](references/article-arc.md) |
+| **predraft** | Develop and select local raw material. | Approved thesis, a defined local target, a current relevant-source rescan, and current index. | [Predraft](references/predraft.md) |
+| **review-predraft** | Diagnose the whole predraft and resolve findings collaboratively. | Mutually consistent approved complete arc and predraft, resolved source roles, and current index. | [Predraft report](references/predraft-report.md) |
+| **draft-article** | Form or revise the article globally. | Approved thesis, arc, complete predraft, and ready approved report; resolved source roles and current index. | [Drafting and changelog](references/drafting.md) |
 
-<!-- Workflow-schema rule for future maintainers: at schema v8 replace the v6→v7 migration with v7→v8 migration and update its links, metadata, and tracker clauses. Always retain exactly the immediately preceding schema migration path; never remove migration support entirely. -->
+### Supporting and delivery functions
+
+| Function | Action | Requires | Read |
+|---|---|---|---|
+| **add-user-material** | Record exact user wording or ideas; record any thesis conflict as unresolved. | Approved thesis and the material's intended article use. | [Collaborative questions and user synthesis](references/collaborative-questions.md) |
+| **audit-draft** | Test fidelity and report unresolved decisions without patching prose. | Complete current draft and its exact approved dependencies. | [Fidelity audit](references/fidelity-audit.md) |
+| **combine-sources** | Copy all active complete source maps and the current index into one Markdown file. | Current tracker, active maps, and current index. | [Combined sources](references/combine-sources.md) |
+| **full-export** | ZIP the current tracker and every file it tracks. | Valid self-contained tracker. | [Full export](references/full-export.md) |
+| **resolve-question** | Resolve one decision and route the authorised answer once. | One identified question and its relevant function context. | [Collaborative questions](references/collaborative-questions.md) |
+| **resume-or-migrate** | Validate tracked state and reconcile an applicable previous schema. | Existing tracker or project files. | [Activity tracker](references/activity-tracker.md) and [schema migration](references/migration-to-v7.md) |
+| **search-index** | Inspect the theme/keyword lookup and verify candidates in their source maps. | Current index and active source maps. | [Index](references/index.md) |
+| **white-box-synthesis** | Produce a traceable candidate solely from eligible Human inputs; expose any gap and stop. | Established target and eligible exact Human inputs; not during draft production. | [White box synthesis](references/white-box-synthesis.md) |
+
+## Automatic safeguards
+
+Run these only inside the called function:
+
+- Apply [authorship and provenance](references/authorship-and-provenance.md) whenever substantive wording is proposed, changed, selected, or used.
+- Apply the [shared output-file standard](references/file-output-standard.md) to every file change.
+- Read and update the [activity tracker](references/activity-tracker.md) when resuming, saving, reconciling, approving, or delivering. It records current state; it never authorises the next function.
+- Refresh the [index](references/index.md) immediately whenever an active source-map excerpt changes.
+
+## Shared guarantees
+
+Preserve source meaning; quotation is optional. Keep Article and Framework roles separate: Framework-only material cannot supply article wording or synthesis input.
+
+Map each source independently. For every substantive wording suggestion before global drafting, including report Q&A, use [white-box synthesis](references/white-box-synthesis.md). If its Human inputs contain a gap, expose it and stop; only a later [resolve-question](references/collaborative-questions.md) turn, after rescan, may offer a labelled AI gap suggestion. During drafting, do not synthesise new wording. Black-box synthesis is prohibited.
+
+Each project file has one purpose and retains only current useful state. Before a change removes, supersedes, invalidates, deduplicates, or retires anything, identify exactly what would be lost and obtain approval. Then remove only the disclosed obsolete state and mark only affected dependents invalid. Never strengthen the approved thesis or run a post-draft rewriting or “humanising” pass.
+
+A handoff request calls **full-export**; create no separate handoff file. The retired names **export** and **export user** are not aliases; clarify whether the user wants **full-export** or **combine-sources**.

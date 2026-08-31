@@ -11,7 +11,7 @@ Each passage has independent roles:
 - **Article:** Theory | Other article support | None | Unresolved
 - **Framework:** Metatheory | None | Unresolved
 
-Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. Role fields—not suffixes—authorise use. Revalidate dependents after role changes and reopen thesis-and-vision if framework commitments may change.
+Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. Role fields—not suffixes—authorise use. After a role change, mark affected dependents invalid; if framework commitments may change, name **thesis-and-vision** and return control.
 
 Apply only the operative metatheory recorded in thesis-and-vision. Framework material silently tests fit; it never supplies article evidence, citations, contributions, vocabulary, wording, relations, or synthesis inputs. MT-qualified wording needs separate Article role, predraft selection, arc disposition, and global draft use.
 

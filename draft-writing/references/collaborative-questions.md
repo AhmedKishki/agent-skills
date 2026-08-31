@@ -13,9 +13,9 @@ For a substantive change, also show the current point, proposed net-new change, 
 
 Build the suggestion in this order, including for a predraft-report finding:
 
-1. Before global draft production, attempt eligible Human wording and relations with [white box synthesis](white-box-synthesis.md). If draft production exposed the gap, first reopen the predraft report and affected arc or predraft owner.
+1. Before global draft production, attempt eligible Human wording and relations with [white box synthesis](white-box-synthesis.md). If draft production exposed the gap, mark the report and affected owner invalid, name the required functions, and return control.
 2. If the attempt exposes a gap, issue its gap alert, keep the point unresolved, and stop that turn. The sole suggestion is to leave it unresolved pending a rescan or the user's wording: **Process suggestion: AI · Human wording: 0% · not article wording · Basis: reported synthesis gap**.
-3. In a later turn, rescan relevant originals and record sources, locators, and coverage; return to Step 1 if new Human material closes the gap.
+3. In a later turn, the user may call **map-source** to rescan relevant originals and record sources, locators, and coverage. After it returns, wait for the user to call **white-box-synthesis** or re-call the originating function.
 4. If that coverage contains no support, alert the user that the gap remains. Only then offer one linear **AI gap suggestion** for the readable paragraph location, role, boundary, starting point, and intended conclusion; name partial/inaccessible sources. Show **Origin: AI gap suggestion, not source-supported synthesis · Human wording: P% · Sources checked: full names and coverage · Human words retained: exact phrase → full source name or user wording | none**. Keep framework/use details internal and the gap unresolved until the user responds.
 5. If the rescan or coverage record is missing, suggest leaving the point unresolved and give an empty frame labelled **Process suggestion: AI · Human wording: 0% · not article wording · Basis: missing rescan or coverage**.
 

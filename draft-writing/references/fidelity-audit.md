@@ -20,6 +20,6 @@ Verify:
 - inherited/local provenance, Human percentages, methods, bases, separate uses, and draft totals cover every reader-facing word; and
 - every semantic omission and physical file retirement stayed within a removal impact shown to and authorised by the user.
 
-User selection never cures a fidelity failure. Route a wording/raw-material failure to predraft, a structure/emphasis/repetition-home failure to the arc, and a global transformation or exception to the predraft report. Resolve it collaboratively, obtain every required approval, regenerate the complete report, then regenerate the draft and metrics. Never correct substantive draft prose in place.
+User selection never cures a fidelity failure. Identify whether a wording/raw-material failure requires **predraft**, a structure/emphasis/repetition-home failure requires **article-arc**, or a global transformation/exception requires **review-predraft**. State every invalidated dependency and return control; run no repair function unless the user calls it. The repaired inputs must regain their approvals before **review-predraft** and then **draft-article** become available again. Never correct substantive draft prose in place.
 
 Show only unresolved decisions, create no audit file, and retain only work passing the [unaffected-work test](file-output-standard.md). Finish only when the audit is clear and the user declares the draft complete.

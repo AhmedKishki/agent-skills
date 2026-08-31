@@ -4,7 +4,7 @@ White box synthesis assembles an unselected chat candidate from existing Human w
 
 Black-box synthesis is any result with an unmapped span, unsupported relation, hidden transformation, or fluent passage shown without its span map. It is prohibited.
 
-Use this method for a requested suggestion, synthesis, content question, or predraft-report wording fix before global draft production. Never run it while producing the draft. If draft production exposes missing wording, reopen the report and affected arc or predraft work before attempting synthesis.
+Use this method for a requested suggestion, synthesis, content question, or predraft-report wording fix before global draft production. Never run it while producing the draft. If draft production exposes missing wording, mark the report and affected owner invalid, name the required functions, and return control before attempting synthesis.
 
 ## Inputs and target
 
@@ -52,7 +52,7 @@ Show:
 - **Coverage:** sources and locators already checked, including partial or inaccessible limits; and
 - **State:** **Synthesis stopped—no bridge supplied.**
 
-Keep the point unresolved for that turn. Add no connector, infer no relation, and show no completed candidate. A later turn may rescan or obtain new Human wording under [collaborative questions](collaborative-questions.md), then restart from the original Human bases. A post-rescan AI gap suggestion is a separate unsupported proposal, never completion of the stopped synthesis.
+Keep the point unresolved for that turn. Add no connector, infer no relation, and show no completed candidate. In a later turn the user may call **map-source** for a rescan or supply new Human wording under [collaborative questions](collaborative-questions.md). Then wait for the user to call **white-box-synthesis** or re-call the originating function; any new attempt restarts from the original Human bases. A post-rescan AI gap suggestion is a separate unsupported proposal, never completion of the stopped synthesis.
 
 ## Visible record
 

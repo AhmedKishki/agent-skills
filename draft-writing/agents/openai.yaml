@@ -1,19 +1,12 @@
 interface:
-  display_name: draft writing
-  short_description: Collaboratively assemble a user-controlled, source-grounded article
-    through local predrafting and report-gated global refinement. Use for thesis-led drafting,
-    a requested full-export handoff ZIP, or a verbatim combination of complete source maps
-    and index. The user controls synthesis, every reported fix, and article decisions; source
-    fidelity preserves meaning without defaulting to quotation, and every canonical passage
-    retains Human/Mixed/AI provenance. Supports independent theory/metatheory source maps,
-    automatic excerpt indexing, white box gap-gated synthesis, global/local arcs, whole-predraft
-    diagnostics, previous-schema migration, disclosed removals, and tracker-led handoffs.
-  icon_small: assets/icon.svg
-  icon_large: assets/icon.svg
+  display_name: "Draft Writing"
+  short_description: "User-led, source-grounded research and drafting"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
 policy:
   products:
-  - chatgpt
-  - codex
-  - api
-  - atlas
+  - "chatgpt"
+  - "codex"
+  - "api"
+  - "atlas"
   allow_implicit_invocation: true

@@ -2,7 +2,7 @@
 
 Maintain one active `{project}-predraft-YYYY-MM-DD-HHMMSS.md` containing every exact passage the user has selected as local raw material. Update it immediately after each selection.
 
-Work on one arc-defined local argument at a time. Before discussing wording, establish its exact local-arc row—or reader-facing title/heading row—and the applicable proposition, role, emphasis, entry, exit, destination, and boundary. Complete the relevant-source rescan, resolve questions, and save selected wording/tracker before another argument. Only the user may suspend or switch; still pause at every required question/use decision.
+Work on one arc-defined local argument at a time. Before discussing wording, require its exact local-arc row—or reader-facing title/heading row—with proposition, role, emphasis, entry, exit, destination, and boundary, plus a current relevant-source rescan. If either input is missing/stale, name **article-arc** or **map-source** and return control. Resolve questions and save selected wording/tracker before another argument. Only the user may suspend or switch; still pause at every required question/use decision.
 
 Predraft selection means **available as raw material**, not unchanged draft inclusion. Keep still-active alternatives until the user withdraws or supersedes them. Exclude questions, discussion, rationale, unselected candidates, raw synthesis inputs, intermediate construction traces, arc decisions, report findings, and draft-use history; retain the final white box record as required provenance.
 
@@ -26,4 +26,4 @@ Use the Human default only for Human passages. A substantive heading shares its 
 
 Individual passage selections do not approve the complete predraft. When every active local-arc need has raw material and every active passage/alternative has an arc disposition, show the entire predraft and its coverage. Only explicit user approval sets the complete file to **Approved** for whole-predraft review. Approval means the set is ready for global diagnosis, not that any passage is final prose or may be silently changed.
 
-Any added, replaced, withdrawn, or corrected passage returns the predraft to **Working**, reopens affected arc dispositions, and invalidates the current predraft report and draft after the required removal-impact notice. Reapprove the complete predraft before regenerating [predraft report](predraft-report.md).
+Any added, replaced, withdrawn, or corrected passage returns the predraft to **Working**, marks affected arc dispositions unresolved, and invalidates the current predraft report/draft after the required removal-impact notice. Reapprove the complete predraft before the user may call [review-predraft](predraft-report.md) again.

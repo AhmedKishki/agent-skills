@@ -11,7 +11,7 @@
       "name": "draft-writing",
       "displayName": "Draft Writing",
       "source": "./draft-writing",
-      "description": "Collaboratively build a user-controlled, source-grounded article through local predrafting, whole-predraft diagnosis, and report-gated global refinement.",
+      "description": "User-led, source-grounded research and drafting through a canonical thesis-to-draft workflow of callable functions.",
       "tags": [
         "writing",
         "research",
