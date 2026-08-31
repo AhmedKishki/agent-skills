@@ -1,13 +1,13 @@
 interface:
   display_name: draft writing
   short_description: Collaboratively assemble a user-controlled, source-grounded article
-    through a lean five-stage workflow. Use for thesis-led drafting or a requested
-    Markdown source export or consolidated current-project user export. The user controls
+    through a lean five-stage workflow. Use for thesis-led drafting, a requested full-export
+    handoff ZIP, or a verbatim combination of complete source maps and index. The user controls
     synthesis and article decisions, source fidelity preserves meaning without defaulting
     to quotation, and every canonical content passage retains Human/Mixed/AI provenance.
-    Supports letter-coded source maps with theory/metatheory roles, argument-led work,
-    global/local arcs, a keyword/theme index over excerpts, previous-major migration,
-    and requested hand-offs.
+    Supports independent letter-coded source maps with theory/metatheory roles, automatic
+    excerpt indexing, white box gap-gated synthesis, lean current-state files with
+    disclosed removals, global/local arcs, previous-major migration, and tracker-led handoffs.
   icon_small: assets/icon.svg
   icon_large: assets/icon.svg
 policy:

@@ -4,7 +4,7 @@ Build from active thesis-and-vision, source maps, user-synthesis, and predraft. 
 
 The **global arc** gives each section its questions, goal/motivation, thesis contribution, include/exclude boundary, entry, exit, adjacent handoffs, and source contributions. The **local arcs** give each paragraph its claim, role, section contribution, boundary, entry/exit/handoff, source contributions, predraft passage, draft action, and repetition home.
 
-Every paragraph makes one distinct section contribution; every section serves a question and the thesis. Remove filler, loops, excess scope, and repeated claims outside their sole home.
+Every paragraph makes one distinct section contribution; every section serves a question and the thesis. Remove filler, loops, excess scope, and repeated claims outside their sole home only through the [removal-impact protocol](file-output-standard.md).
 
 Structural fields require exact user wording or an exact selected Mixed/AI process proposal. Sources establish contributions, not structure. Leave unsupported fields **Undecided** and ask. Each claimed source contribution needs an active item and states its Article role and function—claim, mechanism, evidence, example, qualification, limit, or contest; missing support triggers rescan. Cross-source relations require source/user support or a labelled post-rescan AI gap suggestion.
 

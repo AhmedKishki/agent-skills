@@ -4,7 +4,7 @@ Begin only when thesis-and-vision, all active source maps, and both arc scales a
 
 Copy each **Include unchanged** passage once to its named location. Use no **Omit** row, unreferenced alternative, chat wording, or other canonical wording. Never choose, paraphrase, or synthesise during assembly.
 
-Make Human-preserving corrections in predraft before copying. Delete only a duplicate with a selected retained copy. Ask about non-identical alternatives or any flow, heading, transition, consolidation, or move needing new wording or a relation.
+Make Human-preserving corrections to eligible non-white-box passages in predraft before copying. Never correct a white-box-derived passage in place: return to its original Human bases, run white box synthesis again, and obtain new predraft selection/removal authority for the replacement passage and final record. Delete only a duplicate with a selected retained copy and only after the [removal-impact protocol](file-output-standard.md). Ask about non-identical alternatives or any flow, heading, transition, consolidation, or move needing new wording or a relation.
 
 Verify operative-metatheory fit silently. If assembly exposes a mismatch or the framework, ask and return to the earliest affected stage.
 
@@ -45,4 +45,4 @@ Draft v1 has none. For v2 onward create {project}-draft-vN-changelog-YYYY-MM-DD-
     | Exact article location | New change information | Authority or production method | Provenance effect | Citation effect |
     |---|---|---|---|---|
 
-Classify each delta as Human-preserving correction, deletion, intact movement, user wording, source use, Mixed synthesis, or post-rescan AI gap wording. Reference its predraft passage, basis, arc row, and action; copy no prose or claim. Group only identical changes with identical locations and bases. Keep only the current draft's changelog; after the next pair validates, delete both prior files. Omit retracted attempts.
+Classify each delta as Human-preserving correction, deletion, intact movement, user wording, source use, white box synthesis (Mixed), or post-rescan AI gap wording. Reference its predraft passage, basis, arc row, and action; copy no prose or claim. Group only identical changes with identical locations and bases. Keep only the current draft's changelog; after the next pair validates, retire both prior files within the removal impact already shown and authorised. Omit only disclosed retracted attempts.

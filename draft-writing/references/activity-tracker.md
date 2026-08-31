@@ -1,28 +1,30 @@
 # Activity tracker
 
-Maintain `{project}-activity-tracker-YYYY-MM-DD-HHMMSS.md` as the active-file list and resume checkpoint. Read it before resuming, deciding, or delivering.
+Maintain `{project}-activity-tracker-YYYY-MM-DD-HHMMSS.md` as the complete tracked working-set list and resume checkpoint. Read it before resuming, deciding, exporting, or delivering.
 
-List accessible source originals, required conversions, one active map per source, and one active file per applicable lineage. Exclude trackers, superseded or unused files, reserves, and history. During migration also list every remaining governing legacy or reconciliation input until processed, whether ambiguous or not.
+List every file needed to resume—accessible source originals, required conversions, one active map per source, one active file per applicable lineage, and every unresolved migration or reconciliation input—plus the current request-only combined sources file, if any. Use the role/state cell to distinguish active files from request artifacts and non-active inputs retained for reconciliation. Exclude trackers, full-export ZIPs, superseded or unused files, reserves, and history.
 
 Create a tracker after each save and whenever stage, state, **Now**, or **Next** changes alone. Name omitted dependents in **Now** or **Next**.
 
     # Activity tracker
 
-    - **Workflow:** draft-writing v6.20.0
+    - **Workflow:** draft-writing · schema v6 · release: exact Git tag, abbreviated commit, or unversioned copy
     - **Project/stage/state:** Project · Stage 1 Thesis and vision | 2 Sources | 3 Arc | 4 Predraft/Draft | 5 Audit · Working | Awaiting approval | Approved | Complete
     - **Next source code:** A
-    - **Now:** Exact current action, blocker, or waiting state with its governing reference
-    - **Next:** One concrete action or awaited user decision with its governing reference
+    - **Now:** Self-contained current action, blocker, open question, or waiting state · consequence · governing reference
+    - **Next:** One concrete action or awaited user decision, stated so work can resume without chat history · governing reference
     - **Collaboration:** Ask when uncertain; never infer
     - **Process prose:** AI
 
-    | Active filename | Role/state |
+    | Tracked filename | Role/state |
     |---|---|
 
-Use exact filenames, readable headings, exact skill version, and next never-used source code. Point to content; record no past direction/discussion. Timestamps never establish authority. Apply the [candidate test](file-output-standard.md); on failure keep only the predecessor active, name the candidate/discrepancy in **Now**, and omit dependents.
+Use archive-safe paths relative to the tracker's directory, readable headings, Git-derived release identity, and next never-used source code. Row order is the recommended open/read order for resumption. Every file required to continue must have a row; do not mention a needed file only in **Now** or **Next**. The tracker itself is never a row.
+
+Use the exact matching annotated tag only for a clean checkout; otherwise use the abbreviated commit with `-dirty` when applicable. If Git metadata is unavailable, record **unversioned copy**. The schema label describes project-file compatibility, not the release version. **Now** and **Next** retain only the current open state, with enough exact detail to re-ask an unresolved question or continue after handoff; record no past discussion. Timestamps never establish authority. Apply the [candidate test](file-output-standard.md); on failure keep the predecessor active, list every needed candidate/dependent with an accurate non-active role/state, name the discrepancy in **Now**, and omit invalid material from use.
 
 During predrafting, **Now** names the sole argument and rescan state; **Next** names its one next question or action.
 
-Request-only artifacts follow [cleanup](file-output-standard.md) and require a new request to regenerate. Their rows name the exact reuse basis: source export—source maps and index; user export—included canonical files, source maps used by its key, and captured stage/state/Now/Next and open question/suggestion set.
+The **combined sources** row names its exact source-map and index reuse basis and becomes stale when any basis changes; retire it through [cleanup](file-output-standard.md) and regenerate only on a new request. A **full export** requires a new request every time and is never a tracker row: the ZIP contains this tracker plus every row, so tracking the ZIP would create recursion.
 
-For v5 migration use **Workflow: draft-writing v6.20.0 · v5 → v6 migration** plus **Migration remaining:**. For v6 reconciliation use **Workflow: draft-writing v6.20.0 · v6 reconciliation** plus **Reconciliation remaining:**. List every exact remaining governing legacy or reconciliation input; use the plain workflow label only when none remain.
+For v5 migration append **migration v5 → v6** to the workflow line and add **Migration remaining:**. For v6 reconciliation append **reconciliation v6** and add **Reconciliation remaining:**. List every exact remaining governing legacy or reconciliation input; use the plain workflow line only when none remain.

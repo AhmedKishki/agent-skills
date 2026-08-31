@@ -5,7 +5,7 @@ For every substantive passage, suggestion, reformulation, source-contribution st
 - **Human wording:** percentage traceable to exact source/user wording or a word form changed only by a Human-preserving operation.
 - **Origin:** **Human**, **Mixed**, or **AI**, plus actual method, basis, and any controlled use.
 
-Source and user wording is Human. Omission markers are not words. Assistant wording remains AI after selection; assistant reductive synthesis remains Mixed even at 100% Human wording. Only user replacement spans become Human. Provenance does not prove source fidelity; apply [source-map](source-maps.md) meaning tests.
+Source and user wording is Human. Omission markers are not words. Assistant wording remains AI after selection; assistant white box synthesis remains Mixed even at 100% Human wording. Only user replacement spans become Human. Provenance does not prove source fidelity; apply [source-map](source-maps.md) meaning tests.
 
 ## Inheritance and stamps
 
@@ -20,7 +20,7 @@ Per item add only basis/use not supplied by the declaration. A local stamp cover
 
 Split exceptions when a field changes. Count whitespace-separated reader-facing words; exclude Markdown/citation markers, keep hyphenated/apostrophised words whole, count traceable spans once, and round to one decimal. Human passages are 100%. **Unresolved** blocks migration dependents.
 
-**Process prose: AI** without a percentage covers only process headings, fixed labels, question framing, and non-substantive notes. Reader-facing headings, proposed content, role assignments, and explanations are substantive. **Basis** names each source item and user exchange. Map draft prose in its appendix. Only the requested [source export](export.md) omits provenance; the [user export](user-export.md) preserves it.
+**Process prose: AI** without a percentage covers only process headings, fixed labels, question framing, and non-substantive notes. Reader-facing headings, proposed content, role assignments, and explanations are substantive. **Basis** names each source item and user exchange. Map draft prose in its appendix. [Combined sources](combine-sources.md) and [full export](full-export.md) preserve their input files and provenance unchanged.
 
 ## Exact uses
 
@@ -30,9 +30,9 @@ Route Human wording automatically only when it passes [faithful routing](file-ou
 
 ## Human-preserving operations
 
-Without asking: remove a selected duplicate or explicitly rejected/withdrawn/superseded wording; move an intact cleared block to its selected destination; or correct spelling, grammar, tense, inflection, number, agreement, capitalisation, punctuation, paragraphing, citation markers, and meaning-neutral word order. Add no lexical content or change meaning, relation, scope, qualification, or emphasis. Never alter quotations, delete unique active wording, or choose between differing alternatives. Record the method in the canonical passage before reuse; origin and use remain.
+Without asking, correct spelling, grammar, tense, inflection, number, agreement, capitalisation, punctuation, paragraphing, citation markers, and meaning-neutral word order. Moving an intact cleared block or removing a selected duplicate or rejected/withdrawn/superseded wording is Human-preserving only after the exact removal impact has been shown and authorised under [file-output-standard.md](file-output-standard.md). A direct user removal request authorises only its exact target. Add no lexical content or change meaning, relation, scope, qualification, or emphasis. Never alter quotations, delete unique active wording, or choose between differing alternatives. Record the method in the canonical passage before reuse; origin and use remain. These general operations do not expand white box synthesis's closed **INFLECT** list or make a downstream assistant correction an eligible synthesis input. Never apply them directly to a white-box-derived predraft passage: restart from its original Human bases, produce a new terminal candidate and final record, and obtain new selection/removal authority before replacement.
 
-If an operation needs a word, connector, heading, explanation, relation, synthesis, combination, or new order, pause and follow [reductive synthesis](reductive-synthesis.md) or ask.
+If an operation before draft assembly needs a word, connector, heading, explanation, relation, synthesis, combination, or new order, follow [white box synthesis](white-box-synthesis.md); do not bypass its same-turn gap gate by asking or proposing. During assembly, return to the affected arc or predraft work instead.
 
 ## Draft metrics
 

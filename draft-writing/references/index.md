@@ -1,10 +1,10 @@
 # Keyword and theme index
 
-Maintain `{project}-index-YYYY-MM-DD-HHMMSS.md` as the themes → keywords → active excerpt lookup. Build it when absent and update it after any excerpt content/code change or approved thesis-and-vision change that alters retrieval labels.
+Maintain `{project}-index-YYYY-MM-DD-HHMMSS.md` as the themes → keywords → active excerpt lookup. Build it automatically with the first active excerpt. Immediately refresh, save, read-check, and track it after every active excerpt addition, removal, content change, code change, or active-label change, and after an approved thesis-and-vision change that alters retrieval labels. Do not proceed to another question, rescan, synthesis, or delivery while the index is stale.
 
 Infer retrieval labels only from active Human thesis, user, and excerpt wording. **Keywords** are the smallest set of terms needed to retrieve each item's main claim or topic; do not index surrounding context separately. Merge terms only when Human material explicitly treats them as the same concept. **Themes** group at least two keywords only when Human material makes them part of one approved thesis question or article concern. Co-occurrence or similarity is insufficient. Keep an independent keyword ungrouped. Every active excerpt item belongs to at least one keyword; create no empty keyword or theme.
 
-Record item codes only (A1, B2-MT); copy no wording. The index is a retrieval aid, never evidence, synthesis input, or article wording; membership never substitutes for role, relevance, or fit decisions. Assistant-selected labels use exact Human words but remain AI-produced.
+Record item codes only (A1, B2-MT); copy no wording. The index is a downstream retrieval aid, never evidence, synthesis input, article wording, or authority to suppress or alter an independently mapped source item. Membership never substitutes for role, relevance, or fit decisions. Assistant-selected labels use exact Human words but remain AI-produced.
 
     # Index
 

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "ahmedkishki-skills",
+  "description": "Agent Skills maintained by Ahmed Kishki for Claude and other compatible agents.",
+  "owner": {
+    "name": "Ahmed Kishki",
+    "url": "https://github.com/AhmedKishki"
+  },
+  "plugins": [
+    {
+      "name": "draft-writing",
+      "displayName": "Draft Writing",
+      "source": "./draft-writing",
+      "description": "Collaboratively build a user-controlled, source-grounded article with independent source maps, white box synthesis, and tracker-based handoffs.",
+      "tags": [
+        "writing",
+        "research",
+        "source-mapping"
+      ]
+    }
+  ]
+}
