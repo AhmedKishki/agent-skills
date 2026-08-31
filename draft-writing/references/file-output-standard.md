@@ -42,9 +42,9 @@ Once the disclosed successor and dependents validate, remove the authorised obso
 
 ## Change authority
 
-A change is substantive when it alters meaning, thesis/vision, metatheory, source role, arc structure/boundary/emphasis, passage wording/use, an approved predraft-report treatment/exception, authorship basis, or a dependent's validity. Before it follow [collaborative questions](collaborative-questions.md) and leave canonical content unchanged until the post-alert answer authorises that exact change. Once the complete predraft is approved, even a normally automatic cleanup identified by its report requires explicit approval. Report the resulting direction and reopened work in chat only.
+A change is substantive when it alters meaning, thesis/vision, metatheory, source role, arc structure/boundary/emphasis, passage use, wording beyond Human-preserving operations, an approved predraft-report treatment/exception, authorship basis, or a dependent's validity. Before it follow [collaborative questions](collaborative-questions.md) and leave canonical content unchanged until the post-alert answer authorises that exact change. Once the complete predraft is approved, even a normally automatic cleanup identified by its report requires explicit approval. Report the resulting direction and reopened work in chat only.
 
-**Faithful routing** is unchanged Human wording placed in its already-established thesis, user-synthesis, source-map, or arc function without changing meaning, role, or use. It excludes new functions, thesis/vision revision, predraft selection, predraft-report treatment/exception approval, and draft use. **Authorised cleanup** removes only an exact span or file named in the user's direct removal request or an approved removal-impact notice, plus lossless lineage cleanup under the exception above. Human-preserving operations, faithful routing, and authorised cleanup are non-substantive; cleanup still cannot exceed the disclosed scope.
+**Faithful routing** is unchanged Human wording placed in its already-established purpose within thesis-and-vision, user synthesis, a source map, or the arc without changing meaning, role, or use. It excludes new purposes, thesis/vision revision, predraft selection, predraft-report treatment/exception approval, and draft use. **Authorised cleanup** removes only an exact span or file named in the user's direct removal request or an approved removal-impact notice, plus lossless lineage cleanup under the exception above. Human-preserving operations, faithful routing, and authorised cleanup are non-substantive; cleanup still cannot exceed the disclosed scope.
 
 Work is unaffected only if its thesis basis, meaning, Article/Framework role, boundary, placement/use, provenance, and metatheory fit all remain unchanged. Otherwise omit it from use until decided or revalidated.
 
@@ -75,12 +75,12 @@ After the required notice and authority, delete an invalidated dependent as soon
 
 ## Lean header
 
-Every canonical workflow file states **Collaboration: Ask when uncertain; never infer**. Specialised headers retain it. Combined sources preserves each embedded file's complete header; the full-export ZIP adds no document header.
+Every canonical workflow file states **Collaboration: Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority**. Specialised headers retain it. Combined sources preserves each embedded file's complete header; the full-export ZIP adds no document header.
 
     - **Project:** Project name
     - **Status:** Working | Awaiting approval | Approved | Complete
     - **Depends on:** Exact active filenames
-    - **Collaboration:** Ask when uncertain; never infer
+    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
     - **Process prose:** AI
 
 Omit optional absent fields. Ordinary files carry no predecessor history; unresolved migration relationships stay in the tracker. **Process prose** covers administrative scaffolding only; apply [provenance](authorship-and-provenance.md) to substantive content. The tracker replaces **Depends on** with resume fields.

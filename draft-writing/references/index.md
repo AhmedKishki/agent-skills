@@ -10,7 +10,7 @@ Record item codes only (A1, B2-MT); copy no wording. The index is a downstream r
 
     - **Project:** Project name
     - **Status:** Working
-    - **Collaboration:** Ask when uncertain; never infer
+    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
     - **Process prose:** AI
     - **Index content:** AI · Human wording: 100% · Method: selection and grouping of exact Human terms · Basis/Use: supplied per row · Process: retrieval index
 

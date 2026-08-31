@@ -6,7 +6,7 @@ A collection of source-controlled skills for Codex and Claude. Each top-level di
 
 | Skill | Purpose |
 |---|---|
-| [`draft-writing`](draft-writing/) | User-led, source-grounded research and drafting through a canonical thesis-to-draft workflow of callable functions. |
+| [`draft-writing`](draft-writing/) | User-led, source-grounded research and drafting through user-directed modules and a canonical thesis-to-draft path. |
 
 ## Install
 

@@ -7,15 +7,15 @@ For each question:
 - give only the established material, exact gap, and consequence needed to decide;
 - use plain language, full source names, readable descriptions, and affected wording—never filenames, timestamps, codes, IDs, tracker/workflow labels, or internal status;
 - summarise enough backend content that the user need not open a file;
-- ask one concrete question and give exactly one concise suggestion with origin, Human-word percentage, and full-name/user-wording bases, except that a first-turn synthesis gap uses only the unresolved process suggestion required below.
+- ask one concrete question and give exactly one concise suggestion with origin, Human-word percentage, and full-name/user-wording bases, except that a first-turn substantive synthesis gap uses only the unresolved process suggestion required below.
 
 For a substantive change, also show the current point, proposed net-new change, reason, any exact removal impact, and affected article/process parts before asking; store only the resolved direction. Follow the removal-impact protocol even when the change appears to be simple cleanup. For unclear metatheory fit, ask how the ideas connect in ordinary article language. For unclear source role, describe the passage, ask article/framework/both, and suggest the narrowest established function.
 
 Build the suggestion in this order, including for a predraft-report finding:
 
-1. Before global draft production, attempt eligible Human wording and relations with [white box synthesis](white-box-synthesis.md). If draft production exposed the gap, mark the report and affected owner invalid, name the required functions, and return control.
-2. If the attempt exposes a gap, issue its gap alert, keep the point unresolved, and stop that turn. The sole suggestion is to leave it unresolved pending a rescan or the user's wording: **Process suggestion: AI · Human wording: 0% · not article wording · Basis: reported synthesis gap**.
-3. In a later turn, the user may call **map-source** to rescan relevant originals and record sources, locators, and coverage. After it returns, wait for the user to call **white-box-synthesis** or re-call the originating function.
+1. Before global draft production, attempt eligible Human wording and relations with [white box synthesis](white-box-synthesis.md). If draft production exposed a substantive gap, mark the report and affected owner invalid, name the modules needed to resolve it, and wait for user direction.
+2. If the attempt exposes a substantive gap, issue its gap alert, keep the point unresolved, and stop that turn. The sole suggestion is to leave it unresolved pending a rescan or the user's wording: **Process suggestion: AI · Human wording: 0% · not article wording · Basis: reported synthesis gap**.
+3. In a later turn, the user may request a [source review](source-review.md) to rescan relevant originals and record sources, locators, and coverage. After it returns, suggest resuming [white-box synthesis](white-box-synthesis.md) or the originating module, then wait for user direction.
 4. If that coverage contains no support, alert the user that the gap remains. Only then offer one linear **AI gap suggestion** for the readable paragraph location, role, boundary, starting point, and intended conclusion; name partial/inaccessible sources. Show **Origin: AI gap suggestion, not source-supported synthesis · Human wording: P% · Sources checked: full names and coverage · Human words retained: exact phrase → full source name or user wording | none**. Keep framework/use details internal and the gap unresolved until the user responds.
 5. If the rescan or coverage record is missing, suggest leaving the point unresolved and give an empty frame labelled **Process suggestion: AI · Human wording: 0% · not article wording · Basis: missing rescan or coverage**.
 
@@ -23,7 +23,7 @@ A decision suggestion first reduces exact Human criteria; if they do not decide 
 
 ## Route the answer
 
-Route each function once under [file-output-standard.md](file-output-standard.md); if indivisible, keep it in its primary home and reference it elsewhere. Exclude acknowledgements, navigation, milestones, questions, rejected fixes, and temporary organisation. Wording/raw-material fixes belong in predraft; structure, sequence, placement, emphasis, and sole homes belong in the arc; approved execution-level adjacency/combination/cut/consolidation treatments within those arc decisions and permitted diagnostic exceptions belong in the predraft report; workflow state belongs in the tracker. If an answer contradicts thesis/vision, show both formulations and ask which governs before saving content.
+Route each distinct contribution once under [file-output-standard.md](file-output-standard.md); if indivisible, keep it in its primary home and reference it elsewhere. Exclude acknowledgements, navigation, milestones, questions, rejected fixes, and temporary organisation. Wording/raw-material fixes belong in predraft; structure, sequence, placement, emphasis, and sole homes belong in the arc; approved execution-level adjacency/combination/cut/consolidation treatments within those arc decisions and permitted diagnostic exceptions belong in the predraft report; workflow state belongs in the tracker. If an answer contradicts thesis/vision, show both formulations and ask which governs before saving content.
 
 ## User synthesis file
 

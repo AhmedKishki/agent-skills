@@ -11,7 +11,7 @@ Each passage has independent roles:
 - **Article:** Theory | Other article support | None | Unresolved
 - **Framework:** Metatheory | None | Unresolved
 
-Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. Role fields—not suffixes—authorise use. After a role change, mark affected dependents invalid; if framework commitments may change, name **thesis-and-vision** and return control.
+Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. Role fields—not suffixes—authorise use. After a role change, mark affected dependents invalid; if framework commitments may change, suggest revisiting [thesis and vision](thesis-and-vision.md) and wait.
 
 Apply only the operative metatheory recorded in thesis-and-vision. Framework material silently tests fit; it never supplies article evidence, citations, contributions, vocabulary, wording, relations, or synthesis inputs. MT-qualified wording needs separate Article role, predraft selection, arc disposition, and global draft use.
 
@@ -32,7 +32,7 @@ Keep every identity, qualification, main-move cell, topic, quotation, and locato
     - **Selection basis:** Exact active thesis-and-vision filename; operative metatheory location when defined
     - **Coverage:** Complete | Partial, exact limit
     - **Source role default:** Passage-specific | User-designated full Metatheory · **Decision provenance:** compact passage stamp
-    - **Collaboration:** Ask when uncertain; never infer
+    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
     - **Process prose:** AI
     - **Item wording authorship:** Human · Human wording: 100% · Method: exact source/user topic label and exact source quotation · Basis/Use: item heading and locator
 

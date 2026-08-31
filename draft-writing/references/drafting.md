@@ -10,7 +10,7 @@ Use the predraft as raw material and the arc as the global structure. Form one c
 4. consolidating semantic repetition, repeated lists, and competing conclusions only through exact approved report treatments; and
 5. retaining qualifications, modality, attribution, citation scope, and distinct intentional repetition.
 
-An approved treatment authorises only its exact adjacency, combination, cut, or consolidation inside its arc-assigned destination. It does not authorise article sequence, placement, emphasis, a new word or relation, a changed claim, or a stronger conclusion. Add no unreferenced predraft alternative, chat wording, or hidden bridge. If continuous prose needs new wording, if two spans cannot combine without an unsupported relation, or if production reveals an unreported problem, stop without saving a partial draft. Name the affected canonical owner and **review-predraft** requirement, then return control; do not start another function. A wording/raw-material fix requires **predraft**, a structure/sequence/placement/emphasis/sole-home fix requires **article-arc**, and any changed dependency requires a new **review-predraft** before **draft-article** becomes available again.
+An approved treatment authorises only its exact adjacency, combination, cut, or consolidation inside its arc-assigned destination. It does not authorise article sequence, placement, emphasis, a new word or relation, a changed claim, or a stronger conclusion. Add no unreferenced predraft alternative, chat wording, or hidden bridge. If continuous prose needs new wording, if two spans cannot combine without an unsupported relation, or if production reveals an unreported problem, stop without saving a partial draft. Name the affected canonical owner, suggest returning to predraft review, and wait. Wording/raw-material fixes belong in [predraft](predraft.md); structure/sequence/placement/emphasis/sole-home fixes belong in the [article arc](article-arc.md); any changed dependency requires a new [predraft report](predraft-report.md) before drafting becomes available again.
 
 During production, recheck the report categories across the whole article: gaps, repetition, premature conclusions, announcements, repeated lists, unstable propositions, awkward noun–verb pairings, jargon, and global sequence/emphasis. Apply no automatic cleanup to an approved predraft passage. Human-preserving or white-box changes must already exist in an explicitly approved dependency; draft production merely executes them.
 
@@ -24,7 +24,7 @@ Use `{project}-draft-vN-YYYY-MM-DD-HHMMSS.md`. Put uninterrupted reader-facing p
 
     - **Draft/status:** Draft vN · Awaiting approval | Approved | Complete
     - **Depends on:** Exact active thesis-and-vision, article arc, predraft, and approved predraft report
-    - **Collaboration:** Ask when uncertain; never infer
+    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
     - **Process prose:** AI
 
     ## Bidirectional passage provenance
@@ -37,7 +37,7 @@ Use `{project}-draft-vN-YYYY-MM-DD-HHMMSS.md`. Put uninterrupted reader-facing p
 
 Cover every reader-facing word and every span of each passage marked **Use as raw material**, without repeating article wording in the appendix. Split a passage when represented and cut portions differ; a cut row names its exact approved report treatment. A draft span must resolve to exact predraft raw material and an approved operation, and no raw-material span may disappear without that reverse record. Group consecutive locations only when operation, bases, authority, and citation effect are identical. Assistant ordering or cutting makes Human input Mixed; input that was already AI remains AI. Approval never changes origin.
 
-The draft is a candidate until the user explicitly approves it. A requested change marks its canonical owner and report invalid; name the required functions and return control unless the user explicitly called or delegated them. Never patch substantive draft prose directly. Correct only a mechanical execution error that departs from approved dependencies, then record it in the changelog.
+The draft is a candidate until the user explicitly approves it. A requested change marks its canonical owner and report invalid; name the required modules and wait unless the request includes those outcomes. Never patch substantive draft prose directly or newly normalise approved wording during production. Correct only a mechanical execution error that departs from approved dependencies, then record it in the changelog.
 
 ## Changelog (v2 onward)
 

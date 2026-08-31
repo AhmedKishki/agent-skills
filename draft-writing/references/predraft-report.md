@@ -1,6 +1,6 @@
 # Predraft report
 
-When the user calls **review-predraft**, create `{project}-predraft-report-YYYY-MM-DD-HHMMSS.md` only if the complete predraft and complete article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and return control without calling another function. Review the whole raw-material set at global scale. The report is process analysis, never article wording, evidence, a synthesis input, or authority to change its dependencies.
+When the user's request routes to predraft review, create `{project}-predraft-report-YYYY-MM-DD-HHMMSS.md` only if the complete predraft and article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and stop. Review the whole raw-material set at global scale. The report is process analysis, never article wording, evidence, a synthesis input, or authority to change its dependencies.
 
 Review every predraft passage and both arc scales for:
 
@@ -58,7 +58,7 @@ Omit empty treatment/exception sections. Record no proposed fix in the file befo
 
 Resolve one finding at a time in chat. Show the minimum affected wording and established context, explain the global consequence, and give exactly one concise suggested fix with provenance, basis, and any removal impact. Even a normally Human-preserving cleanup requires explicit approval once the report identifies it. Never batch unless every exact change and consequence is listed and the user explicitly approves that set.
 
-After the user approves a fix, name its owner below. Update that owner only when the approval explicitly authorises the named function and exact change; otherwise return control. Route the authorised fix once:
+After the user approves a fix, name its owner below. Update that owner only when the approval explicitly authorises the owner and exact change; otherwise stop and wait. Route the authorised fix once:
 
 - changed or new wording/raw material → [predraft](predraft.md), with separate exact selection;
 - structure, sequence, placement, point of emphasis, sole repetition/list home, or local function → [article arc](article-arc.md);
@@ -71,4 +71,4 @@ A post-rescan AI gap exception is valid only when the exact selected passage is 
 
 Any predraft or arc change invalidates this report. Replace it only after those dependencies are approved again and the entire global review is rerun. Keep only current open findings, still-operative approved drafting treatments, and approved exceptions; remove resolved findings and superseded treatments through the shared removal-impact rules.
 
-When no finding remains, rerun every coverage check and reconfirm that all active source roles are resolved and the index is current. Set **Awaiting approval** and **Ready for global drafting—0 open findings**, show the complete report, and obtain explicit approval. Only the exact approved report may govern [global drafting](drafting.md). If drafting exposes a new problem, drafting stops and identifies **review-predraft** as required; run it only when the user calls it. Never improvise a fix in the draft.
+When no finding remains, rerun every coverage check and reconfirm that all active source roles are resolved and the index is current. Set **Awaiting approval** and **Ready for global drafting—0 open findings**, show the complete report, and obtain explicit approval. Only the exact approved report may govern [global drafting](drafting.md). If drafting exposes a new problem, stop drafting, suggest returning to the predraft report, and wait for user direction. Never improvise a fix in the draft.
