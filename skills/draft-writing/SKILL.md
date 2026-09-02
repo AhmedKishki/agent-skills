@@ -45,7 +45,7 @@ When the user requests work spanning several modules, follow the order they choo
 - [Combined sources](references/combine-sources.md) collects the active complete source maps and current index in one Markdown file.
 - [Full export](references/full-export.md) packages the tracker and every file it tracks for handoff.
 - [Activity tracker](references/activity-tracker.md) records current project state; use [schema migration](references/migration-to-v7.md) when an older tracked project requires reconciliation.
-- [Project memory](references/memory.md) keeps the project's agreed entities, observations, and relations — arguments, concepts, decisions, and open questions — in one durable, human-readable file.
+- [Project memory](references/memory.md) holds the project's agreed arguments, concepts, decisions, sources, and structures in the knowledge graph, with open questions and research tasks in the markdown memory and Now/Next in the tracker.
 
 ## Automatic safeguards
 
@@ -55,7 +55,7 @@ Apply these only within the requested work:
 - Apply the [shared output-file standard](references/file-output-standard.md) to every file change.
 - Read and update the [activity tracker](references/activity-tracker.md) when resuming, saving, reconciling, approving, or delivering. It records current state; it never authorises the next module.
 - Refresh the [index](references/index.md) immediately whenever an active source-map excerpt changes.
-- Read and update [project memory](references/memory.md) at session start (recover state), during the session (record agreed decisions), and at session end (state and next steps).
+- Read and update [project memory](references/memory.md) — the knowledge graph, the markdown memory, and the activity tracker — at session start (recover state), during the session (record agreed decisions), and at session end (state and next steps).
 
 ## Shared guarantees
 

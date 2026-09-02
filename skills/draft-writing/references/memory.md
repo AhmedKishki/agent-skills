@@ -1,49 +1,57 @@
 # Project memory
 
-Maintain `{project}-memory-YYYY-MM-DD-HHMMSS.md` as the project-specific memory: the durable, human-readable store of the entities, observations, and relations the project has agreed on. Read it before working to recover state, arguments, concepts, and open questions; record agreed items during the session; update it at the end with what changed, new decisions, and next steps.
+Project memory is held in three stores, each owning a distinct kind of content. No fact has two homes: nothing is duplicated between them, and there is no mirroring or reconciliation.
 
-The file is the authoritative store and works with no memory server. If a memory MCP server is available it may mirror the same entities and relations, but reading and writing always go through `{project}-memory-YYYY-MM-DD-HHMMSS.md`; treat any server as an optional, disposable copy of this file, never a substitute for it.
+- **The knowledge graph** — the project's own memory server, backed by `{project}-memory.jsonl` in the repo — owns drafts, arcs, sections, arguments, concepts, distinctions, examples, sources, decisions, the relations between them, and atomic observations about them.
+- **`{project}-memory.md`** owns open questions with stable IDs (`Q1`, `Q2`, …) and long-lived research tasks.
+- **`{project}-activity-tracker.md`** owns Now and Next, drafting-stage status, and anything actionable this session.
 
-## Entities, observations, relations
+## The knowledge graph
 
-Memory is a small knowledge graph reduced to three parts:
+The graph is the authoritative store for arguments, concepts, decisions, structures, and sources. Read and write it through the project's memory server tools (`search_nodes`, `open_nodes`, `create_entities`, `create_relations`, `add_observations`, `delete_observations`, `delete_relations`, `delete_entities`, `read_graph`). Commit `{project}-memory.jsonl` to the repo whenever the graph changes.
 
-- **Entity** — a named, reusable thing: the project, a section, an argument, a concept, a distinction, a decision, a source, or an open question. Each entity carries a `Type` label and a list of **observations**.
-- **Observation** — one self-contained, dated fact, decision, or question attached to an entity. Keep it concise and structured (a bullet, a clear label). Store no raw draft prose; reference the owning file instead.
-- **Relation** — a directed, active-voice link between two entities (`part of`, `governs`, `supports`, `precedes`).
+If the project's memory server is unavailable, report the configuration failure once, then continue from the repository files (the markdown memory, the tracker, and the source files). Never fall back to another memory server, and never invent remembered content.
 
-Keep the file current, not historical: replace an outdated observation rather than stacking it, and retire a superseded entity.
+### Entities, observations, relations
+
+The graph reduces durable information to three parts:
+
+- **Entity** — a named, reusable thing: a draft, arc, section, argument, concept, distinction, example, source, or decision. Names are lowercase kebab-case with a type prefix (for example `arc-seven-part`, `section-minerals`, `argument-the-machine-is-labour`, `concept-real-abstraction`, `source-valdivia`, `decision-energy-as-common-thread`); stable once created, no project prefix, no timestamps.
+- **Observation** — one self-contained fact, decision, or status attached to an entity: one claim, one sentence. Anything longer belongs in the draft, not in memory. Record origin where it is not self-evident (approved by the user; derived from source X; the user's own synthesis).
+- **Relation** — a directed, active-voice link between two entities (`contains`, `argues`, `depends_on`, `cites`, `illustrates`, `contrasts_with`, `revises`, `supersedes`). Create entities before relations; create a relation only where it improves future retrieval.
+
+There is no `question` or `task` entity type — those live in the markdown memory. Keep the graph current, not historical: supersede rather than accumulate, and delete stale observations rather than silently overwriting a claim the user agreed to.
+
+## `{project}-memory.md`
+
+The markdown memory owns only open questions and research tasks, each with a stable ID. Question IDs (`Q1`, `Q2`, …) are never reused once a question closes. The markdown never restates an argument, structure, or relation that lives in the graph; a graph observation may point at a question by ID (for example "blocked by Q4") without restating the question text.
+
+## `{project}-activity-tracker.md`
+
+The tracker owns Now and Next, drafting-stage status, and anything actionable this session. It records current state; it never authorises the next module.
 
 ## When to use it
 
-- **Session start** — read the whole file, summarise the relevant state in three to five bullets, and ask the user to confirm or correct it before working.
-- **During** — whenever the user and assistant agree on a thesis or central claim, a section structure, a key argument or example, a conceptual distinction, or an open question, record it immediately as an entity or observation.
-- **Session end** — update the file with what changed in the draft, new decisions, and next steps and open questions.
+- **Session start** — read the tracker (Now/Next), the active thesis, arc, predraft/draft, and the markdown memory (questions and tasks); query the graph for the topic named in the request.
+- **During** — whenever the user and assistant agree on a thesis or central claim, a section structure, a key argument or example, a conceptual distinction, or a decision, record it immediately in the graph. An open question or research task goes to the markdown memory.
+- **Session end** — update the graph (what changed, new dependencies, decisions), the markdown memory (resolve or add questions, update research tasks), and the tracker (Now/Next).
 
-## File shape
+## File shape — `{project}-memory.md`
 
     # Writing memory
 
-    **Exported:** date · **Source:** this file (authoritative)
+    **Exported:** date · **Source:** this file (authoritative for open questions and research tasks)
 
     ---
 
-    ## 1 · Group name
+    ## Open questions
 
-    ### Entity name
-    *Type: article | structure | section | process | instruction | concept | question*
+    ### Q1 · short question title
 
-    - Observation one — dated.
-    - Observation two — dated.
+    - The question, stated in one sentence.
 
-    ---
+    ## Research tasks
 
-    ## Relations
+    - A long-lived research task, stated in one sentence.
 
-    | From | Relation | To |
-    |---|---|---|
-    | Entity A | relationType | Entity B |
-
-Group entities under numbered headings by theme. Use the `Type` label for the entity kind. The `Relations` table lists every relation between entity names.
-
-Save and track the file per the [shared output-file standard](file-output-standard.md).
+Save and track the markdown file and the `.jsonl` per the [shared output-file standard](file-output-standard.md).

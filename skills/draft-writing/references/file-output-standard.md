@@ -17,7 +17,7 @@
 | Complete resume working set and resume/migration state | Activity tracker |
 | Requested handoff package of the complete tracked working set | Full export |
 | Requested verbatim combination of complete source maps and index | Combined sources |
-| Project-specific memory (entities, observations, relations) | Project memory |
+| Project-specific memory (knowledge graph, open questions, research tasks) | Project memory |
 
 Questions stay in chat; the activity tracker records only the current self-contained resume question or decision, never Q&A history. Store each substantive item once and reference it elsewhere. Predraft deliberately copies selected raw wording; the draft deliberately combines approved raw material; combined sources and full export copy their defined inputs. The predraft report references affected passages and stores only current findings, approved global treatments, and approved exceptions—not duplicated passages or discussion. Every field must add information not already supplied by its filename, header, reference, or inherited provenance. Omit repeated context, labels, explanations, empty sections, unchanged status, and superseded reasoning.
 
@@ -75,7 +75,7 @@ After the required notice and authority, delete an invalidated dependent as soon
 | Source list | {project}-source-list |
 | Combined sources | {project}-combined-sources |
 | Full export | {project}-full-export |
-| Project memory | {project}-memory |
+| Project memory | {project}-memory.md and {project}-memory.jsonl |
 
 ## Lean header
 
