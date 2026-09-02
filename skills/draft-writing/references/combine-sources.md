@@ -1,6 +1,6 @@
 # Requested combined sources
 
-Create `{project}-combined-sources-YYYY-MM-DD-HHMMSS.md` only when the user explicitly requests **combine sources**. This request-only file is neither canonical nor a drafting, evidence, synthesis, or approval input.
+Create `{project}-combined-sources.md` only when the user explicitly requests **combine sources**. This request-only file is neither canonical nor a drafting, evidence, synthesis, or approval input.
 
 Read the current [activity tracker](activity-tracker.md). Collect every active source map once in assigned source-code order, preserving gaps and established legacy order, followed by the active [index](index.md). With no active source maps, report that and create nothing. Refresh a missing or stale index under its owner rules before combining.
 

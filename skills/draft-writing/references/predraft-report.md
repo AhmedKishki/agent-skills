@@ -1,6 +1,6 @@
 # Predraft report
 
-When the user's request routes to predraft review, create `{project}-predraft-report-YYYY-MM-DD-HHMMSS.md` only if the complete predraft and article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and stop. Review the whole raw-material set at global scale. The report is process analysis, never article wording, evidence, a synthesis input, or authority to change its dependencies.
+When the user's request routes to predraft review, create `{project}-predraft-report.md` only if the complete predraft and article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and stop. Review the whole raw-material set at global scale. The report is process analysis, never article wording, evidence, a synthesis input, or authority to change its dependencies.
 
 Review every predraft passage and both arc scales for:
 

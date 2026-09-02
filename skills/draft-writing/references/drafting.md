@@ -18,7 +18,7 @@ Use a selected post-rescan AI gap passage only with its matching approved report
 
 Verify operative-metatheory fit silently. Follow the citation contract and preserve source meaning, whether quoted or not. Check each source-derived claim against its source-map item and locator; cite the narrowest supported clause. Reader-facing prose/citations use full names or the chosen style, never codes. Never cite a source for a user/Mixed claim it does not establish or fact-check user claims without authority.
 
-Use `{project}-draft-vN-YYYY-MM-DD-HHMMSS.md`. Put uninterrupted reader-facing prose first, then:
+Use `{project}-draft-vN.md`. Put uninterrupted reader-facing prose first, then:
 
     # Process appendix — not part of the article
 
@@ -41,7 +41,7 @@ The draft is a candidate until the user explicitly approves it. A requested chan
 
 ## Changelog (v2 onward)
 
-Draft v1 has none. For v2 onward create `{project}-draft-vN-changelog-YYYY-MM-DD-HHMMSS.md` for current deltas only.
+Draft v1 has none. For v2 onward create `{project}-draft-vN-changelog.md` for current deltas only.
 
     # Draft vN changelog
 

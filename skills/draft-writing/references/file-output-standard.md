@@ -38,7 +38,7 @@ Then identify every active span, row, item, use, dependent, or file that the cha
 
 Keep semantic active state unchanged until the user authorises the combined change after seeing that notice. A direct request to remove exact named material authorises only that material; disclose and obtain authority for any additional consequence. Never infer supersession from recency, similarity, or a new addition. If an undisclosed removal appears during validation, stop, preserve the active predecessor, and alert the user again.
 
-Lossless lineage cleanup is the only no-confirmation exception: after prospective notice, a timestamped predecessor or previous tracker may be retired without separate assent when the candidate test proves that no governing content, use, authority, dependency, or unresolved state is lost. The underlying substantive change must already be authorised. A tracker-only replacement may use this exception to record a newly disclosed pause or gap. Any semantic omission, invalidation, or retirement still waits for explicit authority.
+Lossless lineage cleanup is the only no-confirmation exception: after prospective notice, a superseded predecessor or previous tracker may be retired without separate assent when the candidate test proves that no governing content, use, authority, dependency, or unresolved state is lost. The underlying substantive change must already be authorised. A tracker-only replacement may use this exception to record a newly disclosed pause or gap. Any semantic omission, invalidation, or retirement still waits for explicit authority.
 
 Once the disclosed successor and dependents validate, remove the authorised obsolete information rather than retaining history. This protocol governs semantic omissions and physical file deletion; it does not turn request-only combinations or archives into canonical history.
 
@@ -52,7 +52,7 @@ Work is unaffected only if its thesis basis, meaning, Article/Framework role, bo
 
 ## Save and cleanup
 
-Name every created or changed file `{stem}-YYYY-MM-DD-HHMMSS.ext` in the user's timezone, or system timezone if unknown; add `-01`, `-02`, and so on on collision. Keep supplied source names. Never overwrite.
+Name every file `{stem}.ext` — a stable name with no timestamp suffix; edit in place. Track changes through git diff, never by renaming. Keep supplied source names.
 
 After each authorised change, save and read-check the complete candidate. Compare it with its active predecessor: every governing item must be retained, traceably changed/removed within the disclosed scope, or validated in another canonical home; required fields and dependencies must resolve. If valid, create a tracker listing the candidate and omitting its predecessor, then delete only the predecessor and previous tracker covered by authority or the lossless-cleanup exception. If invalid, keep the predecessor active, list the candidate as a reconciliation input, name the discrepancy in tracker **Now**, omit invalid dependents from active use while retaining any needed for reconciliation, and ask. While a substantive decision is pending, change no canonical content; save a tracker only if **Now** or **Next** changes. Never save a partial or unchanged copy; tracker creation does not recurse.
 
@@ -60,7 +60,7 @@ Creating or delivering a full-export ZIP is the sole save exception: it changes 
 
 After the required notice and authority, delete an invalidated dependent as soon as its useful material is transferred or revalidated; while needed for reconciliation, keep it in the tracked working set with a non-active role/state and name it in **Now** or **Next**. Apply the same notice to stale combined-sources files, retained full-export ZIPs, retired legacy request artifacts, and unused conversions. Never delete supplied sources or non-workflow inputs, active files, unresolved migration inputs, or sole governing copies. An uploaded legacy workflow file is deletable only after complete migration. Before deleting a tracked file without a replacement, save one tracker that omits it; deletion creates no second tracker. Keep one active version per lineage.
 
-| Output | Filename stem |
+| Output | Filename |
 |---|---|
 | Thesis and vision | {project}-thesis-and-vision |
 | User synthesis | {project}-user-synthesis |

@@ -27,7 +27,7 @@ Route each distinct contribution once under [file-output-standard.md](file-outpu
 
 ## User synthesis file
 
-Create `{project}-user-synthesis-YYYY-MM-DD-HHMMSS.md` only for the user's article wording, supplementary ideas, or synthesis outside thesis/durable guidance. Keep active wording once with Human-preserving corrections; omit discussion, approvals, placement, organisation, and superseded content. Cite only user-named sources. Ask about conflict with operative metatheory; never manufacture fit.
+Create `{project}-user-synthesis.md` only for the user's article wording, supplementary ideas, or synthesis outside thesis/durable guidance. Keep active wording once with Human-preserving corrections; omit discussion, approvals, placement, organisation, and superseded content. Cite only user-named sources. Ask about conflict with operative metatheory; never manufacture fit.
 
     # User synthesis
 

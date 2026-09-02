@@ -1,6 +1,6 @@
 # Predraft
 
-Maintain one active `{project}-predraft-YYYY-MM-DD-HHMMSS.md` containing every exact passage the user has selected as local raw material. Update it immediately after each selection.
+Maintain one active `{project}-predraft.md` containing every exact passage the user has selected as local raw material. Update it immediately after each selection.
 
 Work on one arc-defined local argument at a time. Before discussing wording, require its exact local-arc row—or reader-facing title/heading row—with proposition, role, emphasis, entry, exit, destination, and boundary, plus a current relevant-source rescan. If either input is missing/stale, state whether the [article arc](article-arc.md) or [source review](source-review.md) is required and stop. Resolve questions and save selected wording/tracker before another argument. Only the user may suspend or switch; still pause at every required question/use decision.
 

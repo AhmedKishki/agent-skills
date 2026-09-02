@@ -1,6 +1,6 @@
 # Thesis and vision
 
-Maintain one active `{project}-thesis-and-vision-YYYY-MM-DD-HHMMSS.md` as the contradiction-free article authority. Establish and approve it before source mapping.
+Maintain one active `{project}-thesis-and-vision.md` as the contradiction-free article authority. Establish and approve it before source mapping.
 
 Record only thesis-raised main questions. During [arc design](article-arc.md), sources may reveal a thesis-required question but never expand scope. The user approves every exact question.
 

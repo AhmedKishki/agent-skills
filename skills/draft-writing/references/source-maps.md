@@ -4,7 +4,7 @@ Keep one lineage per source. Assign and increment the tracker's monotonic **Next
 
 Map one source at a time using that source, the approved thesis-and-vision (including its operative-metatheory commitments), and explicit user decisions. Never use another source, its map, or the index to decide what the current source contains, fill its context, assign its roles, or suppress an item as cross-source duplication. Establish cross-source relations only downstream after every source has its own mapping.
 
-Name maps `{project}-source-map-{code}-{author-short-title}-YYYY-MM-DD-HHMMSS.md`; head with full author/title. Assign then increment **Next item**; never reuse/renumber. Base IDs are A1, A2, and so on; add **-MT** to the active label when Framework is Metatheory. Role changes alter the label/references, not the base. Corrections retain numbers; splits, merges, and replacements get new ones. Preserve legacy dual namespaces.
+Name maps `{project}-source-map-{code}-{author-short-title}.md`; head with full author/title. Assign then increment **Next item**; never reuse/renumber. Base IDs are A1, A2, and so on; add **-MT** to the active label when Framework is Metatheory. Role changes alter the label/references, not the base. Corrections retain numbers; splits, merges, and replacements get new ones. Preserve legacy dual namespaces.
 
 Each passage has independent roles:
 

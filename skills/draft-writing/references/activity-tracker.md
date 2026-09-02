@@ -1,6 +1,6 @@
 # Activity tracker
 
-Maintain `{project}-activity-tracker-YYYY-MM-DD-HHMMSS.md` as the complete tracked working-set list and resume checkpoint. Read it before resuming, deciding, exporting, or delivering.
+Maintain `{project}-activity-tracker.md` as the complete tracked working-set list and resume checkpoint. Read it before resuming, deciding, exporting, or delivering.
 
 List every file needed to resume—accessible source originals, required conversions, one active map per source, one active file per applicable lineage, and every unresolved migration or reconciliation input—plus the current request-only combined sources file, if any. Use the role/state cell to distinguish active files from request artifacts and non-active inputs retained for reconciliation. Exclude trackers, full-export ZIPs, superseded or unused files, reserves, and history.
 

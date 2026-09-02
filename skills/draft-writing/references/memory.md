@@ -40,7 +40,7 @@ The tracker owns Now and Next, drafting-stage status, and anything actionable th
 
     # Writing memory
 
-    **Exported:** date · **Source:** this file (authoritative for open questions and research tasks)
+    **Source:** this file (authoritative for open questions and research tasks)
 
     ---
 
