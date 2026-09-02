@@ -76,7 +76,7 @@ The portable workflow follows the open [Agent Skills specification](https://agen
 
 ## Versions and releases
 
-Git is the sole source of release-version truth. Do not add a `VERSION` file, a hand-maintained changelog, or a release number inside a skill.
+Each skill directory may carry a `version` file (for example `draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Do not add a hand-maintained changelog.
 
 - Commits on `main` are unreleased development state.
 - Published skill versions use immutable annotated tags named `<skill-name>-vMAJOR.MINOR.PATCH` and a matching GitHub Release.
@@ -85,7 +85,7 @@ Git is the sole source of release-version truth. Do not add a `VERSION` file, a 
 - Each release attaches a ZIP for every released skill, with exactly one top-level skill directory.
 - `PATCH` fixes compatible behavior, `MINOR` adds compatible behavior, and `MAJOR` changes a workflow or persisted format incompatibly.
 
-Inspect a checkout without duplicating its version in tracked files:
+Inspect a checkout (the tag remains the canonical version identifier; the `version` file mirrors it):
 
 ```sh
 git describe --tags --match 'draft-writing-v*' --always --dirty
