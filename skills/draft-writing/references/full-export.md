@@ -17,7 +17,7 @@ Every tracked path must be relative to the tracker's directory and archive-safe.
 
 ## Build and verify
 
-Choose a collision-free output name and never overwrite. Run the bundled [build_full_export.py](../scripts/build_full_export.py) with the exact tracker and output paths; if Python is unavailable, use an equivalent ZIP implementation that enforces every rule above.
+Use the stable output name. Run the bundled [build_full_export.py](../scripts/build_full_export.py) with the exact tracker and output paths; if Python is unavailable, use an equivalent ZIP implementation that enforces every rule above.
 
 Before delivery, verify that the archive member set is exactly the tracker plus its rows, every member path is safe and unique, and every archived file matches its input byte-for-byte. On any mismatch, delete only the invalid new archive and report the discrepancy; change no canonical file or tracker state.
 
