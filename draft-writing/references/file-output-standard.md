@@ -7,7 +7,8 @@
 | Thesis, durable vision, operative metatheory | Thesis-and-vision |
 | User article content outside the thesis | User-synthesis |
 | One source's argument path, excerpts, roles, and qualifications | Its coded source map |
-| Theme/keyword retrieval | Index |
+| Theme/keyword retrieval | Source index |
+| Source list (code + excerpt count per source) | Source list |
 | Section/paragraph structure, source contributions, placement, repetition | Article arc |
 | Exact non-final article wording selected as raw material | Predraft |
 | Whole-predraft findings, approved global drafting treatments, diagnostic exceptions | Predraft report |
@@ -70,7 +71,8 @@ After the required notice and authority, delete an invalidated dependent as soon
 | Draft | {project}-draft-vN |
 | Changelog | {project}-draft-vN-changelog |
 | Activity tracker | {project}-activity-tracker |
-| Index | {project}-index |
+| Source index | {project}-source-index |
+| Source list | {project}-source-list |
 | Combined sources | {project}-combined-sources |
 | Full export | {project}-full-export |
 | Project memory | {project}-memory |
