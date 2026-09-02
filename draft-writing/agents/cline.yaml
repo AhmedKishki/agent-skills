@@ -1,0 +1,9 @@
+# Cline working conventions — draft-writing skill
+# These conventions apply to this skill only, not the whole project.
+
+working_conventions:
+  file_naming:
+    - "Project files use stable names — no timestamps (no -YYYY-MM-DD-HHMMSS suffixes)."
+    - "Edit files in place; changes are tracked via git diff, never by renaming."
+  git_workflow:
+    - "Every time the user accepts changes, the changes are committed to git by the user."
