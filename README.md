@@ -6,7 +6,7 @@ A collection of source-controlled skills for Codex and Claude. Each top-level di
 
 | Skill | Purpose |
 |---|---|
-| [`draft-writing`](draft-writing/) | User-led, source-grounded research and drafting through user-directed modules and a canonical thesis-to-draft path. |
+| [`draft-writing`](skills/draft-writing/) | User-led, source-grounded research and drafting through user-directed modules and a canonical thesis-to-draft path. |
 
 ## Install
 
@@ -26,7 +26,7 @@ Codex discovers personal skills in `~/.agents/skills` and supports symlinked ski
 
 ```sh
 mkdir -p ~/.agents/skills
-ln -s "$PWD/draft-writing" ~/.agents/skills/draft-writing
+ln -s "$PWD/skills/draft-writing" ~/.agents/skills/draft-writing
 ```
 
 Invoke the skill with `$draft-writing`, or describe a task that matches it. See the [official Codex skill documentation](https://developers.openai.com/codex/skills).
@@ -59,7 +59,7 @@ Claude Code also discovers personal skills in `~/.claude/skills`; a project can 
 
 ```sh
 mkdir -p ~/.claude/skills
-ln -s "$PWD/draft-writing" ~/.claude/skills/draft-writing
+ln -s "$PWD/skills/draft-writing" ~/.claude/skills/draft-writing
 ```
 
 Invoke this standalone installation with `/draft-writing`, or describe a matching task. See the [official Claude Code skill documentation](https://code.claude.com/docs/en/skills).
@@ -76,7 +76,7 @@ The portable workflow follows the open [Agent Skills specification](https://agen
 
 ## Versions and releases
 
-Each skill directory may carry a `version` file (for example `draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Do not add a hand-maintained changelog.
+Each skill directory may carry a `version` file (for example `skills/draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Do not add a hand-maintained changelog.
 
 - Commits on `main` are unreleased development state.
 - Published skill versions use immutable annotated tags named `<skill-name>-vMAJOR.MINOR.PATCH` and a matching GitHub Release.
