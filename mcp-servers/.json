@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "memory-ai-fetishism": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/ahmed-home/Documents/ai-and-fetishism/ai-and-fetishism-memory.jsonl"
+      },
+      "disabled": false,
+      "autoApprove": ["search_nodes", "open_nodes", "read_graph"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "disabled": false,
+      "autoApprove": ["sequentialthinking"]
+    }
+  }
+}

@@ -5,7 +5,6 @@ description: >-
   Use for humanising, auditing, tightening, editing, or rewriting. Diagnose
   first, apply only authorised general changes, then seek explicit approval for
   every rewording.
-disabled: true
 ---
 
 # Humaniser
