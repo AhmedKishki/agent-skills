@@ -87,7 +87,7 @@ Every canonical workflow file states **Collaboration: Infer the module from a cl
     - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
     - **Process prose:** AI
 
-Omit optional absent fields. Ordinary files carry no predecessor history; unresolved migration relationships stay in the tracker. **Process prose** covers administrative scaffolding only; apply [provenance](authorship-and-provenance.md) to substantive content. The tracker replaces **Depends on** with resume fields.
+Omit optional absent fields. Ordinary files carry no predecessor history; unresolved migration relationships stay in the tracker. **Process prose: AI** is the metadata label: it marks the header and all non-article scaffolding as AI-generated, and is the only header field that records origin — substantive provenance is recorded once per passage, not repeated on every item. The tracker replaces **Depends on** with resume fields.
 
 **Working** means unresolved work remains. **Awaiting approval** means the complete current file and one named decision are before the user. **Approved** means the user explicitly approved that complete file for its named use and exact dependency set. **Complete** means the user declared the final draft and workflow complete. Status never selects predraft, report-treatment, or draft use.
 

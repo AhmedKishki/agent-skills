@@ -7,20 +7,19 @@ For every substantive passage, suggestion, reformulation, source-contribution st
 
 Source and user wording is Human. Omission markers are not words. Assistant wording remains AI after selection; assistant white box synthesis remains Mixed even at 100% Human wording. Only user replacement spans become Human. Provenance does not prove source fidelity; apply [source-map](source-maps.md) meaning tests.
 
-## Inheritance and stamps
+## Metadata
 
-Declare uniform fields once at the widest scope. A declaration below the title covers the file; below a heading, that section until the next heading of equal/higher level; in a row, that row. Every covered sentence and substantive label inherits it.
+All metadata — file headers, provenance declarations, locators, roles, qualifications and process notes — is AI-generated process scaffolding, never article content. It is labelled as metadata and reduced to the minimum that uniquely identifies a passage's **origin** (Human, Mixed or AI) and its **Human-wording percentage**. Omit method, basis and use unless they are the only way to trace that origin.
 
-    **Content authorship:** Human · Human wording: 100% · Method: shared method · Basis/Use: supplied by each heading, item, or compact map
+Declare uniform provenance once at the widest scope. A declaration below the title covers the file; below a heading, that section until the next heading of equal or higher level; in a row, that row. Every covered passage and substantive label inherits it:
 
-Per item add only basis/use not supplied by the declaration. A local stamp covers only the preceding passage/row. Record only differing fields in an exception; use a full stamp only without inheritance:
+    **Provenance:** Human | Mixed | AI · Human wording: P%
 
-    **Provenance:** Human | Mixed | AI · Human wording: P% · Method: operation · Basis: readable exact references · Use: exact current use
-    **Provenance exception:** differing fields only · Basis/Use: local values
+Record an exception only where the origin or percentage differs. Count whitespace-separated reader-facing words; exclude Markdown/citation markers, keep hyphenated/apostrophised words whole, count traceable spans once, and round to one decimal. Human passages are 100%. **Unresolved** blocks migration dependents.
 
-Split exceptions when a field changes. Count whitespace-separated reader-facing words; exclude Markdown/citation markers, keep hyphenated/apostrophised words whole, count traceable spans once, and round to one decimal. Human passages are 100%. **Unresolved** blocks migration dependents.
+**Source maps carry no per-item metadata.** Every blockquote is understood as an exact source quotation; every other map field — locator, article role, framework role, qualification — is understood as AI process scaffolding. No provenance, wording-authorship or role-decision stamps appear on source-map items.
 
-**Process prose: AI** without a percentage covers only process headings, fixed labels, question framing, and non-substantive notes. Reader-facing headings, proposed content, role assignments, diagnostic explanations, and suggested fixes are substantive. **Basis** names each source item and user exchange. Map draft prose and approved global operations in its appendix. [Combined sources](combine-sources.md) and [full export](full-export.md) preserve their input files and provenance unchanged.
+[Combined sources](combine-sources.md) and [full export](full-export.md) preserve their input files and provenance unchanged.
 
 ## Exact uses
 

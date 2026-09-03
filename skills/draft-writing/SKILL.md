@@ -52,6 +52,7 @@ When the user requests work spanning several modules, follow the order they choo
 Apply these only within the requested work:
 
 - Apply [authorship and provenance](references/authorship-and-provenance.md) whenever substantive wording is proposed, changed, selected, or used.
+- Keep metadata minimal. All metadata — headers, provenance declarations, locators, roles and qualifications — is AI-generated process scaffolding, never article content. It is labelled as such and reduced to the minimum that uniquely identifies a passage's origin (Human, Mixed or AI) and its Human-wording percentage. Source maps carry no per-item metadata: every blockquote is understood as an exact source quotation and every other map field as AI process scaffolding.
 - Apply the [shared output-file standard](references/file-output-standard.md) to every file change.
 - Read and update the [activity tracker](references/activity-tracker.md) when resuming, saving, reconciling, approving, or delivering. It records current state; it never authorises the next module.
 - Refresh the [index](references/index.md) immediately whenever an active source-map excerpt changes.
