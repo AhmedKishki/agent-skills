@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.4.2
+- Source maps are a table of excerpts, not per-excerpt headings: each row is `Code | Excerpt | Location | Article role | Framework role | Qualification`, with no topic titles.
+
 ## 7.4.1
 - Metadata is AI-origin process scaffolding, never article content, and reduced to the minimum that identifies a passage's origin and Human-wording percentage.
 - Source maps carry no per-item metadata: blockquotes are understood as exact source quotations, every other map field as AI process scaffolding.
