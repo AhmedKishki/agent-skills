@@ -11,7 +11,7 @@ Each passage has independent roles:
 - **Article:** Theory | Other article support | None | Unresolved
 - **Framework:** Metatheory | None | Unresolved
 
-Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. Role fields—not suffixes—authorise use. After a role change, mark affected dependents invalid; if framework commitments may change, suggest revisiting [thesis and vision](thesis-and-vision.md) and wait.
+Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. The identified role—not suffixes—authorises use. After a role change, mark affected dependents invalid; if framework commitments may change, suggest revisiting [thesis and vision](thesis-and-vision.md) and wait.
 
 Apply only the operative metatheory recorded in thesis-and-vision. Framework material silently tests fit; it never supplies article evidence, citations, contributions, vocabulary, wording, relations, or synthesis inputs. MT-qualified wording needs separate Article role, predraft selection, arc disposition, and global draft use.
 
@@ -45,11 +45,11 @@ Keep every identity, qualification, main-move cell, quotation, and location read
 
     ## Selected items
 
-    | Code | Excerpt | Location | Article role | Framework role | Qualification |
-    |---|---|---|---|---|---|
-    | A1 | Exact source fragment centred on one claim; mark editorial omissions with […]. | locator | role | role | Exact item-specific qualification, limit, or counterclaim; omit when none |
+    | Code | Excerpt | Location | Qualification |
+    |---|---|---|---|
+    | A1 | Exact source fragment centred on one claim; mark editorial omissions with […]. | locator | Article: role · Framework: role · item-specific qualification, limit, or counterclaim; omit the caveat when none |
 
-Identity, status, next item, source, selection basis, coverage, both roles, code, excerpt, and location are mandatory. Stamp any legacy non-quotation item locally. Omit empty qualifications. Within one source, add an excerpt only when it contributes a distinct claim, relation, scope, modality, qualification, role, function, or materially useful occurrence. A newly discovered qualification at the same locator that governs an existing excerpt corrects that item and retains its number; a qualification established at a different locator gets a new minimal item without repeating more of the claim than meaning requires. Otherwise record a useful repeated locator in the source path or coverage without duplicating the item. Across sources, overlapping support remains independently mapped because its source provenance is distinct.
+Identity, status, next item, source, selection basis, coverage, role (article and framework, recorded in Qualification), code, excerpt, and location are mandatory. Stamp any legacy non-quotation item locally. Omit empty qualifications. Within one source, add an excerpt only when it contributes a distinct claim, relation, scope, modality, qualification, role, function, or materially useful occurrence. A newly discovered qualification at the same locator that governs an existing excerpt corrects that item and retains its number; a qualification established at a different locator gets a new minimal item without repeating more of the claim than meaning requires. Otherwise record a useful repeated locator in the source path or coverage without duplicating the item. Across sources, overlapping support remains independently mapped because its source provenance is distinct.
 
 Record **No relevant material retained** with local provenance and coverage basis when applicable. Rescans update the path and append only net-new items in discovery order. After a direction change or item split/merge/replacement, follow the [removal-impact protocol](file-output-standard.md) before omitting superseded items; preserve **Next item** and never reuse numbers. Never replace an item in place or save an unchanged map. Every active item addition, removal, split, merge, replacement, content change, code change, or active-label change automatically triggers an immediate [index](index.md) refresh before the next question, action, synthesis, or delivery.
 
