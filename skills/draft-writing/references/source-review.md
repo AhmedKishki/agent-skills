@@ -4,7 +4,7 @@ Work source by source from approved thesis-and-vision. Read the whole accessible
 
 For each source, follow [source-maps.md](source-maps.md) to:
 
-1. map every main argument or move, used or unused;
+1. map every main argument step, used or unused;
 2. retain each directly supportive, qualifying, or contesting claim, argument, concept, conclusion, or requested example as a minimal one-topic exact excerpt;
 3. prepare separate Article and Framework roles, source/item qualifications, coverage, and provenance;
 4. show the user the full source name, readable excerpt/role, uncertainty, and any removal impact, then resolve any authority required by the substantive-change rules; and
@@ -14,4 +14,4 @@ Complete each source's selection, path, coverage, roles, and qualifications inde
 
 Create no registry, summary, or evidence map. A source that qualifies, contests, or may strengthen the thesis triggers a plain-language question. An accepted revision marks thesis-and-vision and affected dependents invalid; suggest revising [thesis and vision](thesis-and-vision.md) and wait unless the request already includes that outcome. Establish a source-supported cross-source relation only from direct source/user Human support; completed white box synthesis may assemble but never supply that support. A labelled post-rescan AI gap suggestion may expose a proposed relation only through its separate unsupported, approval-gated path; it never establishes source support.
 
-Source review is ready when every active source map and role is resolved and every active excerpt resolves in the refreshed index. When a request routes here for a move rescan, use source paths/index to rescan the named source, append only newly relevant net-new excerpts, refresh the index, and mark only affected work invalid. Process sources one at a time.
+Source review is ready when every active source map and role is resolved and every active excerpt resolves in the refreshed index. When a request routes here for a paragraph rescan, use source paths/index to rescan the named source, append only newly relevant net-new excerpts, refresh the index, and mark only affected work invalid. Process sources one at a time.

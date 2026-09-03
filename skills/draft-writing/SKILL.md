@@ -1,6 +1,6 @@
 ---
 name: draft-writing
-description: "Support user-controlled, source-grounded article development from a required thesis-and-vision through independent source mapping, arc design, local predrafting, whole-predraft review, and global drafting. Use to develop or resume such an article, audit its fidelity, combine its source maps, or export its tracked project files."
+description: "Support user-controlled, source-grounded article development from a required thesis-and-vision through independent source mapping, arc design, paragraph-level predrafting, whole-predraft review, and global drafting. Use to develop or resume such an article, audit its fidelity, combine its source maps, or export its tracked project files."
 ---
 
 # User-directed thesis-to-draft collaboration
@@ -23,7 +23,7 @@ Use this path as the normal recommendation, not an automatic sequence. After com
 
 Treat modules as capabilities, not commands. Infer the relevant module from the user's natural-language request; never require a module name or special syntax. If the intent is clear, read only that module and its applicable dependencies. If different modules would produce materially different results, ask which outcome the user wants before changing files. If a dependency is missing, inconsistent, or invalidated, name it and stop.
 
-When the user requests work spanning several modules, follow the order they choose and stop at every required decision or approval gate. Save only outputs owned by the routed module plus automatic tracker/index updates; changing another owner requires explicit authority for that outcome.
+When work spans several modules, follow the order the user chooses and stop at every required decision or approval gate. Save only outputs owned by the routed module plus automatic tracker/index updates; changing another owner requires explicit authority for that outcome.
 
 ## Modules
 
@@ -32,8 +32,8 @@ When the user requests work spanning several modules, follow the order they choo
 - [Thesis and vision](references/thesis-and-vision.md) establishes or revises the thesis, main questions, vision, and optional metatheory.
 - [Source review](references/source-review.md) and [source maps](references/source-maps.md) map each source independently.
 - [Index](references/index.md) supports theme and keyword lookup; verify every candidate in its source map.
-- [Article arc](references/article-arc.md) defines the global section sequence and each section's ordered series of moves — each move one proposition, role, position, boundary, and emphasis — with every move the exact target of one synthesis.
-- [Predraft](references/predraft.md) develops and selects raw material, one arc move at a time.
+- [Article arc](references/article-arc.md) maps the article at three scales — the article as a chain of sections, each section as a chain of paragraphs, each paragraph a single argument — in plain arrow form, giving paragraph-level synthesis its context.
+- [Predraft](references/predraft.md) develops and selects raw material one arc paragraph at a time, keeping the user's voice authoritative and present.
 - [Predraft report](references/predraft-report.md) diagnoses the approved complete predraft and governs collaborative resolution of its findings.
 - [Drafting](references/drafting.md) forms the article globally from the approved arc, predraft, and report.
 - [Fidelity audit](references/fidelity-audit.md) tests a complete draft and reports unresolved decisions without patching prose.
@@ -41,29 +41,28 @@ When the user requests work spanning several modules, follow the order they choo
 ### Collaboration and project support
 
 - [Collaborative questions](references/collaborative-questions.md) records user material and resolves decisions with explicit approval.
-- [White-box synthesis](references/white-box-synthesis.md) produces a traceable candidate for exactly one arc move from eligible Human inputs and exposes substantive gaps before resolution.
+- [White-box synthesis](references/white-box-synthesis.md) produces a traceable candidate for exactly one arc paragraph, building the user's own synthesis up and strengthening it with source support; it exposes substantive gaps before resolution.
 - [Combined sources](references/combine-sources.md) collects the active complete source maps and current index in one Markdown file.
 - [Full export](references/full-export.md) packages the tracker and every file it tracks for handoff.
-- [Activity tracker](references/activity-tracker.md) records current project state; use [schema migration](references/migration-to-v7.md) when an older tracked project requires reconciliation.
-- [Project memory](references/memory.md) holds the project's agreed arguments, concepts, decisions, sources, and structures in the knowledge graph, with open questions and research tasks in the markdown memory and Now/Next in the tracker.
+- [Activity tracker](references/activity-tracker.md) records current project state.
+- [Project memory](references/memory.md) is the project's FIFO working record — current focus, decisions, open and closed questions, rejected formulations — updated from the top.
 
 ## Automatic safeguards
 
 Apply these only within the requested work:
 
-- Apply [authorship and provenance](references/authorship-and-provenance.md) whenever substantive wording is proposed, changed, selected, or used.
-- Keep metadata minimal. All metadata — headers, provenance declarations, locators, roles and qualifications — is AI-generated process scaffolding, never article content. It is labelled as such and reduced to the minimum that uniquely identifies a passage's origin (Human, Mixed or AI) and its Human-wording percentage. Source maps carry no per-item metadata: every blockquote is understood as an exact source quotation and every other map field as AI process scaffolding.
+- Apply [authorship and provenance](references/authorship-and-provenance.md) whenever substantive wording is proposed, changed, selected, or used. All metadata — headers, provenance declarations, locators, roles, qualifications — is AI-generated process scaffolding, never article content; label it as such and reduce it to the minimum that identifies a passage's origin (Human, Mixed or AI) and its Human-wording percentage. Source maps carry no per-item metadata: every blockquote is an exact source quotation and every other map field is AI process scaffolding.
 - Apply the [shared output-file standard](references/file-output-standard.md) to every file change.
 - Read and update the [activity tracker](references/activity-tracker.md) when resuming, saving, reconciling, approving, or delivering. It records current state; it never authorises the next module.
 - Refresh the [index](references/index.md) immediately whenever an active source-map excerpt changes.
-- Read and update [project memory](references/memory.md) — the knowledge graph, the markdown memory, and the activity tracker — at session start (recover state), during the session (record agreed decisions), and at session end (state and next steps).
+- Read and update [project memory](references/memory.md) at session start, when something substantial is agreed, and at session end.
 
 ## Shared guarantees
 
 Preserve source meaning; quotation is optional. Keep Article and Framework roles separate: Framework-only material cannot supply article wording or synthesis input.
 
-Map each source independently. For every substantive wording suggestion before global drafting, including report Q&A, use [white-box synthesis](references/white-box-synthesis.md), one arc move per run. Disclosed, meaning-neutral spelling—including American-to-British variants—capitalisation, and punctuation changes are mechanical, not gaps. If a candidate would require missing substantive content, an unsupported semantic relation, or choosing between unresolved meaning-bearing alternatives, expose the gap and stop; only a later collaborative-question turn, after rescan, may offer a labelled AI gap suggestion. During drafting, do not synthesise new wording. Black-box synthesis is prohibited.
+Map each source independently. For every substantive wording suggestion before global drafting, use [white-box synthesis](references/white-box-synthesis.md), one arc paragraph per run: the user's own synthesis wording leads and is strengthened, never replaced. Disclosed, meaning-neutral spelling, capitalisation, and punctuation changes are mechanical, not gaps. If a candidate would require missing substantive content, an unsupported semantic relation, or a choice between unresolved meaning-bearing alternatives, expose the gap and stop. During drafting, do not synthesise new wording. Black-box synthesis is prohibited.
 
-Each project file has one purpose and retains only current useful state. Before a change removes, supersedes, invalidates, deduplicates, or retires anything, identify exactly what would be lost and obtain approval. Then remove only the disclosed obsolete state and mark only affected dependents invalid. Never strengthen the approved thesis or run a post-draft rewriting or “humanising” pass.
+Each project file has one purpose and retains only current useful state. Before a change removes, supersedes, invalidates, deduplicates, or retires anything, identify exactly what would be lost and obtain approval. Then remove only the disclosed obsolete state and mark only affected dependents invalid. Never strengthen the approved thesis or run a post-draft rewriting or "humanising" pass.
 
 For a handoff request, use [full export](references/full-export.md); create no separate handoff file. The retired names **export** and **export user** are not aliases; clarify whether the user wants **full export** or **combine sources**.

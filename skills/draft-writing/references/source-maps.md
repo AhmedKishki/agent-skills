@@ -15,7 +15,7 @@ Theory supplies an article concept, mechanism, or argument; Other supplies evide
 
 Apply only the operative metatheory recorded in thesis-and-vision. Framework material silently tests fit; it never supplies article evidence, citations, contributions, vocabulary, wording, relations, or synthesis inputs. MT-qualified wording needs separate Article role, predraft selection, arc disposition, and global draft use.
 
-Record one readable path row per main argument/move, including unused moves, with locator, item range, possible roles, relevance, and provenance. The path is retrieval guidance only; copy no passage.
+Record one readable path row per main argument step, used or unused, with locator, item range, possible roles, relevance, and provenance. The path is retrieval guidance only; copy no passage.
 
 Each excerpt is an exact Human quotation centred on one relevant claim/topic. Retain only enough context to identify the subject and preserve meaning, relation, scope, modality, and qualification; omit unrelated setup, examples, and adjacent claims. One item may join same-topic fragments from one contiguous paragraph or bounded consecutive page/section range, in source order, with **[…]** only between retained words. Different locators or an intervening topic require separate items. Preserve source-authored ellipses; add no leading/trailing **[…]** merely for a mid-unit boundary. The excerpt and location define the quotation.
 
@@ -40,7 +40,7 @@ Keep every identity, qualification, main-move cell, quotation, and location read
     Source-wide edition, access caveat, scope, limit, counterclaim, or caution, each with provenance.
 
     ## Source argument path
-    | Main source argument or move | Locator / item range | Article role · Framework role | Current or possible relevance | Authority/provenance |
+    | Main source argument step | Locator / item range | Article role · Framework role | Current or possible relevance | Authority/provenance |
     |---|---|---|---|---|
 
     ## Selected items
