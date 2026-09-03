@@ -4,9 +4,9 @@ Drafting is whole-article refinement, not unchanged passage assembly. Begin only
 
 Use the predraft as raw material and the arc as the global structure. Form one continuous article by:
 
-1. following the approved global sequence, section purposes, handoffs, and points of emphasis;
+1. following the approved global sequence, each section's move order, section purposes, handoffs, and points of emphasis;
 2. accounting for every span of every passage marked **Use as raw material** by either representing it in the article or applying an exact approved report cut/consolidation treatment;
-3. combining local material at the approved global home;
+3. combining move material at the approved global home;
 4. consolidating semantic repetition, repeated lists, and competing conclusions only through exact approved report treatments; and
 5. retaining qualifications, modality, attribution, citation scope, and distinct intentional repetition.
 
@@ -28,7 +28,7 @@ Use `{project}-draft-vN.md`. Put uninterrupted reader-facing prose first, then:
     - **Process prose:** AI
 
     ## Bidirectional passage provenance
-    | Predraft raw-material passage/span | Draft location or approved cut/consolidation | Production operation | Arc disposition and approved report treatment | Origin · Human percentage · citation effect |
+    | Move and predraft raw-material passage/span | Draft location or approved cut/consolidation | Production operation | Arc disposition and approved report treatment | Origin · Human percentage · citation effect |
     |---|---|---|---|---|
 
     ## Draft metrics

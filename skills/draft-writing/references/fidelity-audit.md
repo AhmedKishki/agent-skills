@@ -1,6 +1,6 @@
 # Fidelity audit
 
-Audit the complete draft against the exact approved thesis-and-vision, source maps, referenced user-synthesis, both arc scales, predraft, predraft report, and index.
+Audit the complete draft against the exact approved thesis-and-vision, source maps, referenced user-synthesis, the global arc and every section arc, predraft, predraft report, and index.
 
 Verify:
 
@@ -10,7 +10,7 @@ Verify:
 - meaning-preserving support for each source-derived claim/reformulation/synthesis; exact quotation, locator, qualification, attribution, and narrow citation scope;
 - source paths stayed navigation-only; relevant originals were rescanned; new support entered numbered, indexed items; every index code resolves;
 - every active excerpt change triggered and completed its index refresh before later work;
-- the arc's global sequence, section purpose, handoffs, emphasis, sole homes, and each local contribution are realised without filler, loops, excess, abrupt gaps, or unapproved scope;
+- the arc's global sequence, section purpose, handoffs, emphasis, sole homes, and each move's contribution are realised without filler, loops, excess, abrupt gaps, or unapproved scope;
 - the approved predraft report covered the complete current predraft and arc, had no open finding, and every retained treatment or exception has exact user authority;
 - the draft contains no unresolved gap, semantic repetition outside an approved distinct function, premature conclusion, redundant/unfulfilled announcement, repeated or drifting list, unstable proposition, awkward noun–verb pairing, undefined/inconsistent jargon, or accidental metatheory vocabulary;
 - every draft span resolves to approved predraft raw material, one arc disposition, and any required approved report treatment; every span marked **Use as raw material** appears in the draft or has an exact approved cut/consolidation record; no hidden loss, combination, cut, reorder, wording, or relation remains;

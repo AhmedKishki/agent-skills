@@ -12,11 +12,11 @@ Only exact active Article-role source wording and exact user wording stamped **H
 
 The inputs must supply every substantive word, claim, relation, scope, qualification, modality, and conclusion. Permitted mechanical normalisation supplies no content. The inputs must also establish the target:
 
-- body wording: paragraph, role, destination, entry, exit, and boundary;
+- body wording: exactly one arc move—its proposition, role, destination section, and entry, exit, and include/exclude boundary, taken from the move's arc row;
 - title or heading: heading row, placement, purpose, and boundary; or
 - thesis, vision, or process candidate: function, purpose, and boundary.
 
-If the target could support materially different meanings or uses, ask one clarifying question before synthesis. Once the target is established, apply the substantive gap test below.
+Run one synthesis per move, never several moves in one run. The move row's named Article-role source items define the source collection scope; thesis-and-vision, user-synthesis, and user-message wording remain eligible under the same rules. If the move row or its rescan is missing or stale, the target is not established: state that the [article arc](article-arc.md) or [source review](source-review.md) is required and stop. If the target could support materially different meanings or uses, ask one clarifying question before synthesis. Once the target is established, apply the substantive gap test below.
 
 ## Closed operations
 
@@ -40,7 +40,7 @@ Apply operative-metatheory tests without importing their wording. Framework-only
 
 ## Method
 
-1. **Collect:** identify each relevant eligible passage.
+1. **Collect:** identify each relevant eligible passage within the move's named source items and other eligible Human wording.
 2. **Construct:** COPY, INFLECT, or NORMALISE spans, then ORDER them.
 3. **Reduce:** DELETE only qualifying repetition.
 4. **Verify:** build the span map; test the target, one linear Human-supported argument path, every adjacency and cut, quotation integrity, every mechanical-change disclosure, and operative-metatheory fit.
@@ -95,7 +95,7 @@ In chat, use full source names and plain descriptions; show no filename, timesta
 
 The arrangement is assistant work, so it remains terminal **Mixed** even at 100% Human wording and is never a later synthesis input. Disclosed NORMALISE forms remain Human wording; punctuation does not affect the word percentage. A correction or revision also restarts from original Human bases and produces a new terminal result.
 
-Selection creates a separate **Predraft raw material** copy; it never relabels the chat candidate. Copy only the exact result, final white box record, and this canonical stamp:
+Selection creates a separate **Predraft raw material** copy keyed to its move (exact move ID and readable title); it never relabels the chat candidate. Copy only the exact result, final white box record, and this canonical stamp:
 
     **Provenance:** Mixed · Human wording: 100% · Method: white box synthesis · Basis: final record's Input keys · Use: Predraft raw material
 

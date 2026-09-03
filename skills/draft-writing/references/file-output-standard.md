@@ -9,7 +9,7 @@
 | One source's argument path, excerpts, roles, and qualifications | Its coded source map |
 | Theme/keyword retrieval | Source index |
 | Source list (code + excerpt count per source) | Source list |
-| Section/paragraph structure, source contributions, placement, repetition | Article arc |
+| Section and move structure, source contributions, placement, repetition | Article arc |
 | Exact non-final article wording selected as raw material | Predraft |
 | Whole-predraft findings, approved global drafting treatments, diagnostic exceptions | Predraft report |
 | Current article and authorship metrics | Draft |
@@ -24,6 +24,17 @@ Questions stay in chat; the activity tracker records only the current self-conta
 Create only the outputs above, durable sources, and necessary conversions. Never create Q&A, brief, evidence-map, provenance, source-addition, thesis-impact, fidelity-status, migration, or general-note files. Retire a legacy workflow file only after [migration](migration-to-v7.md) validates every governing item elsewhere.
 
 Each replacement is the lean current state, not history. After an authorised replacement validates, omit its disclosed withdrawn wording, rationale, alternatives, and former status. Retain only current useful information and its minimum traceable basis.
+
+## Standard file skeleton
+
+Every canonical workflow file has, in order:
+
+1. a `# Title`;
+2. the lean process header below (or its specialised form, which retains the **Collaboration** line);
+3. one or more scoped authorship declarations in the uniform form `**<Scope>:** Origin · Human wording: P% · Method · Basis/Use`, declared once at the widest scope with exceptions stamped locally per [authorship and provenance](authorship-and-provenance.md); and
+4. the module body defined by its reference.
+
+The draft is the sole exception: uninterrupted reader-facing prose first, then a process appendix carrying the header, declarations, provenance map, and metrics. Module references define each body; no file adds cover material, contents pages, or narrative introductions.
 
 ## Novelty and removal impact
 

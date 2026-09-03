@@ -32,8 +32,8 @@ When the user requests work spanning several modules, follow the order they choo
 - [Thesis and vision](references/thesis-and-vision.md) establishes or revises the thesis, main questions, vision, and optional metatheory.
 - [Source review](references/source-review.md) and [source maps](references/source-maps.md) map each source independently.
 - [Index](references/index.md) supports theme and keyword lookup; verify every candidate in its source map.
-- [Article arc](references/article-arc.md) defines global sequence and each local section's role, boundary, handoff, emphasis, and sole home.
-- [Predraft](references/predraft.md) develops and selects local raw material.
+- [Article arc](references/article-arc.md) defines the global section sequence and each section's ordered series of moves — each move one proposition, role, position, boundary, and emphasis — with every move the exact target of one synthesis.
+- [Predraft](references/predraft.md) develops and selects raw material, one arc move at a time.
 - [Predraft report](references/predraft-report.md) diagnoses the approved complete predraft and governs collaborative resolution of its findings.
 - [Drafting](references/drafting.md) forms the article globally from the approved arc, predraft, and report.
 - [Fidelity audit](references/fidelity-audit.md) tests a complete draft and reports unresolved decisions without patching prose.
@@ -41,7 +41,7 @@ When the user requests work spanning several modules, follow the order they choo
 ### Collaboration and project support
 
 - [Collaborative questions](references/collaborative-questions.md) records user material and resolves decisions with explicit approval.
-- [White-box synthesis](references/white-box-synthesis.md) produces a traceable candidate from eligible Human inputs and exposes substantive gaps before resolution.
+- [White-box synthesis](references/white-box-synthesis.md) produces a traceable candidate for exactly one arc move from eligible Human inputs and exposes substantive gaps before resolution.
 - [Combined sources](references/combine-sources.md) collects the active complete source maps and current index in one Markdown file.
 - [Full export](references/full-export.md) packages the tracker and every file it tracks for handoff.
 - [Activity tracker](references/activity-tracker.md) records current project state; use [schema migration](references/migration-to-v7.md) when an older tracked project requires reconciliation.
@@ -62,7 +62,7 @@ Apply these only within the requested work:
 
 Preserve source meaning; quotation is optional. Keep Article and Framework roles separate: Framework-only material cannot supply article wording or synthesis input.
 
-Map each source independently. For every substantive wording suggestion before global drafting, including report Q&A, use [white-box synthesis](references/white-box-synthesis.md). Disclosed, meaning-neutral spelling—including American-to-British variants—capitalisation, and punctuation changes are mechanical, not gaps. If a candidate would require missing substantive content, an unsupported semantic relation, or choosing between unresolved meaning-bearing alternatives, expose the gap and stop; only a later collaborative-question turn, after rescan, may offer a labelled AI gap suggestion. During drafting, do not synthesise new wording. Black-box synthesis is prohibited.
+Map each source independently. For every substantive wording suggestion before global drafting, including report Q&A, use [white-box synthesis](references/white-box-synthesis.md), one arc move per run. Disclosed, meaning-neutral spelling—including American-to-British variants—capitalisation, and punctuation changes are mechanical, not gaps. If a candidate would require missing substantive content, an unsupported semantic relation, or choosing between unresolved meaning-bearing alternatives, expose the gap and stop; only a later collaborative-question turn, after rescan, may offer a labelled AI gap suggestion. During drafting, do not synthesise new wording. Black-box synthesis is prohibited.
 
 Each project file has one purpose and retains only current useful state. Before a change removes, supersedes, invalidates, deduplicates, or retires anything, identify exactly what would be lost and obtain approval. Then remove only the disclosed obsolete state and mark only affected dependents invalid. Never strengthen the approved thesis or run a post-draft rewriting or “humanising” pass.
 

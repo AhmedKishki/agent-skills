@@ -34,6 +34,6 @@ User selection never cures a fidelity failure.
 9. Reconcile an older **Active filename** table to the current **Tracked filename** working set. Track every non-active file still needed for migration/reconciliation with an accurate role/state and self-contained **Now/Next**. The full-export helper's legacy-header support does not prove completeness.
 10. After each migrated canonical file, save a tracker naming every remaining reconciliation input. Use the plain schema-v7 workflow line only when none remains. Retire predecessors only after their successors and dependents validate under the candidate test.
 
-Recover one current local-predrafting argument or one open predraft-report finding; ask on ambiguity and never batch inferred decisions. Reopen completed migration only for a new governing v6 input, user correction, or invalidating audit finding. Never remigrate unaffected work.
+Recover one current predrafting move or one open predraft-report finding; ask on ambiguity and never batch inferred decisions. Reopen completed migration only for a new governing v6 input, user correction, or invalidating audit finding. Never remigrate unaffected work.
 
 <!-- Maintainer rule: at schema v8 replace this v6→v7 migration with v7→v8 and update its links, metadata, and tracker clauses. Retain exactly the immediately preceding schema migration path. -->

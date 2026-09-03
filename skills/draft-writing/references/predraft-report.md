@@ -2,7 +2,7 @@
 
 When the user's request routes to predraft review, create `{project}-predraft-report.md` only if the complete predraft and article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and stop. Review the whole raw-material set at global scale. The report is process analysis, never article wording, evidence, a synthesis input, or authority to change its dependencies.
 
-Review every predraft passage and both arc scales for:
+Review every predraft passage, the global arc, and every section's move series for:
 
 - **Gap:** missing premise, relation, transition, definition, required support, qualification, conclusion, destination, or raw material; a selected post-rescan AI gap passage remains unsupported and is usable only through the controlled exception below;
 - **Repetition:** exact or semantic duplication with the same function, scope, modality, and qualification, including whether one approved sole home exists;
@@ -12,9 +12,9 @@ Review every predraft passage and both arc scales for:
 - **Unstable proposition:** subject, key term, relation, scope, modality, qualification, attribution, or conclusion changes without an approved development;
 - **Awkward noun–verb pairing:** grammar or semantic agency reads unnaturally or changes the intended actor/action;
 - **Jargon:** a term is undefined, inconsistent, audience-inappropriate, unnecessary, or accidental framework/metatheory leakage; and
-- **Global formation:** every arc need has raw material, every raw-material passage has one unambiguous use, points of emphasis and handoffs can be realised, and approved combinations form one linear article path. Any execution-level adjacency, combination, cut, or consolidation needed beyond exact arc placement and unchanged passage use is a finding until its treatment is explicitly approved.
+- **Global formation:** every move has raw material, every raw-material passage has one unambiguous use, the move chain's handoffs and the points of emphasis can be realised, and approved combinations form one linear article path. Any execution-level adjacency, combination, cut, or consolidation needed beyond exact arc placement and unchanged passage use is a finding until its treatment is explicitly approved.
 
-Create findings without changing predraft or arc. Reference passage headings and readable arc locations; do not copy full passages. The report may be saved as **Working** without content authority because it changes no article decision. Its analysis is AI and must not be presented as Human judgement.
+Create findings without changing predraft or arc. Reference passage headings and readable arc locations (section and move); do not copy full passages. The report may be saved as **Working** without content authority because it changes no article decision. Its analysis is AI and must not be presented as Human judgement.
 
     # Predraft report
 
@@ -26,7 +26,7 @@ Create findings without changing predraft or arc. Reference passage headings and
     | Check | Coverage and result |
     |---|---|
     | Predraft passages and headings | N of N · finding headings or none |
-    | Arc rows and raw-material dispositions | N of N · finding headings or none |
+    | Arc rows, moves, and raw-material dispositions | N of N · finding headings or none |
     | Active source roles and index | resolved and current · exact dependencies checked |
     | Gap | finding headings or none |
     | Repetition | finding headings or none |
@@ -61,7 +61,7 @@ Resolve one finding at a time in chat. Show the minimum affected wording and est
 After the user approves a fix, name its owner below. Update that owner only when the approval explicitly authorises the owner and exact change; otherwise stop and wait. Route the authorised fix once:
 
 - changed or new wording/raw material → [predraft](predraft.md), with separate exact selection;
-- structure, sequence, placement, point of emphasis, sole repetition/list home, or local function → [article arc](article-arc.md);
+- structure, sequence, placement, point of emphasis, sole repetition/list home, or move function → [article arc](article-arc.md);
 - an execution-level adjacency/combination/cut/consolidation treatment inside an approved arc destination that changes neither owner nor meaning → **Approved drafting treatments**; or
 - an intentionally retained, coherent diagnosed condition that does not block fidelity or global formation, including a compliant controlled AI gap → **Approved exceptions**.
 

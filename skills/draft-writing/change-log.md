@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.5.0
+- Move-based arc: the article arc is now two levels — the global arc (sections) and, per section, an ordered series of moves. The section arcs replace the local-arc tables and any separate moves list as the single moves representation; a conversion note folds pre-7.5 local-arc units into moves under the removal-impact protocol.
+- Arc ↔ synthesis integration: each move row is the target of exactly one white-box run (proposition, role, destination, entry, exit, boundary, named source items); one move per synthesis run, and the predraft passage is keyed to its move.
+- Standard file skeleton in file-output-standard.md: every canonical workflow file is `# Title` → lean process header → scoped authorship declarations → module body, with the draft's prose-first layout as the sole documented exception.
+- Terminology aligned across modules: "move" replaces "argument unit"/"local argument"; tracker, predraft report, drafting, fidelity audit, and source review now speak of moves.
+
 ## 7.4.3
 - Fold article role and framework role into the Qualification column: selected items are now `Code | Excerpt | Location | Qualification`, where the cell identifies the role alongside any item-specific qualification, limit, or counterclaim.
 
