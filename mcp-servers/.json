@@ -15,22 +15,6 @@
       "disabled": false,
       "autoApprove": []
     },
-    "memory-ai-fetishism": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
-      "env": {
-        "MEMORY_FILE_PATH": "/home/ahmed/Documents/projects/ai-and-fetishism/ai-and-fetishism-memory.jsonl"
-      },
-      "disabled": true,
-      "autoApprove": [
-        "search_nodes",
-        "open_nodes",
-        "read_graph"
-      ]
-    },
     "sequential-thinking": {
       "command": "npx",
       "args": [
