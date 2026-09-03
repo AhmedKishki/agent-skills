@@ -1,19 +1,46 @@
 {
   "mcpServers": {
-    "memory-ai-fetishism": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+    "memory-service-ai-fetishism": {
+      "command": "/home/ahmed/Documents/projects/ai-and-fetishism/.venv-memory/bin/python",
+      "args": [
+        "-m",
+        "mcp_memory_service.server"
+      ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/ahmed-home/Documents/ai-and-fetishism/ai-and-fetishism-memory.jsonl"
+        "MCP_MEMORY_STORAGE_BACKEND": "sqlite_vec",
+        "MCP_MEMORY_SQLITE_PATH": "/home/ahmed/Documents/projects/ai-and-fetishism/ai-and-fetishism-semantic.db",
+        "MCP_MEMORY_SQLITE_PRAGMAS": "busy_timeout=15000,cache_size=20000",
+        "MCP_MAX_RESPONSE_CHARS": "30000"
       },
       "disabled": false,
-      "autoApprove": ["search_nodes", "open_nodes", "read_graph"]
+      "autoApprove": []
+    },
+    "memory-ai-fetishism": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/ahmed/Documents/projects/ai-and-fetishism/ai-and-fetishism-memory.jsonl"
+      },
+      "disabled": true,
+      "autoApprove": [
+        "search_nodes",
+        "open_nodes",
+        "read_graph"
+      ]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
       "disabled": false,
-      "autoApprove": ["sequentialthinking"]
+      "autoApprove": [
+        "sequentialthinking"
+      ]
     }
   }
 }
