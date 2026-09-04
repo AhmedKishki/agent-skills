@@ -20,7 +20,7 @@ Create findings without changing predraft or arc. Reference passage headings and
 
     [Lean process header; depends on the exact Approved predraft and article arc, plus exact thesis/source/index dependencies actually checked]
 
-    **Report analysis:** AI · Human wording: 0% · Method: whole-predraft diagnostic comparison · Basis/Use: dependencies and rows · Process: predraft review
+    **Report analysis:** AI · Human wording: 0%
 
     ## Coverage
     | Check | Coverage and result |

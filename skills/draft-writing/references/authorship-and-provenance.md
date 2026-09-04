@@ -15,7 +15,7 @@ Declare uniform provenance once at the widest scope. A declaration below the tit
 
     **Provenance:** Human | Mixed | AI · Human wording: P%
 
-Record an exception only where the origin or percentage differs. Count whitespace-separated reader-facing words; exclude Markdown/citation markers, keep hyphenated/apostrophised words whole, count traceable spans once, and round to one decimal. Human passages are 100%. **Unresolved** blocks migration dependents.
+Record an exception only where the origin or percentage differs. Count whitespace-separated reader-facing words; exclude Markdown/citation markers, keep hyphenated/apostrophised words whole, count traceable spans once, and round to one decimal. Human passages are 100%. **Unresolved** blocks dependent use.
 
 **Source maps carry no per-item metadata.** Every blockquote is understood as an exact source quotation; every other map field — locator, article role, framework role, qualification — is understood as AI process scaffolding. No provenance, wording-authorship or role-decision stamps appear on source-map items.
 

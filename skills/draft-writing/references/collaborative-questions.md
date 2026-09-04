@@ -33,7 +33,7 @@ Create `{project}-user-synthesis.md` for the user's article wording, supplementa
 
     [Lean process header]
 
-    **Content authorship:** Human · Human wording: 100% · Method: user wording · Basis/Use: supplied by each heading
+    **Content authorship:** Human · Human wording: 100%
 
     ## Readable topic
     Exact user synthesis.

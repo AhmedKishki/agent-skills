@@ -31,7 +31,7 @@ Every canonical workflow file has, in order:
 
 1. a `# Title`;
 2. the lean process header below (or its specialised form, which retains the **Collaboration** line);
-3. one or more scoped authorship declarations in the uniform form `**<Scope>:** Origin · Human wording: P% · Method · Basis/Use`, declared once at the widest scope with exceptions stamped locally per [authorship and provenance](authorship-and-provenance.md); and
+3. one or more scoped authorship declarations in the minimal uniform form `**<Scope>:** Origin · Human wording: P%` — add method, basis, or use only where they are needed to trace origin or a controlled use — declared once at the widest scope, with exceptions stamped locally per [authorship and provenance](authorship-and-provenance.md); and
 4. the module body defined by its reference.
 
 The draft is the sole exception: uninterrupted reader-facing prose first, then a process appendix carrying the header, declarations, provenance map, and metrics. Module references define each body; no file adds cover material, contents pages, or narrative introductions.

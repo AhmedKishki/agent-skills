@@ -30,9 +30,9 @@ The complete arc becomes **Approved** only when the user explicitly approves the
 
     [Lean process header]
 
-    **Arc structure and source-use decisions:** AI · Human wording: 0% · Method: structural proposal · Basis: the approved thesis-and-vision, the user-synthesis, and the active source-map items named per paragraph · Use: Process: article-arc structure only, not article wording
+    **Arc structure:** AI · Human wording: 0%
 
-    **Exact source names:** Human · Human wording: 100% · Method: unchanged source wording
+    **Exact source names:** Human · Human wording: 100%
 
     **Thesis:** the exact thesis sentence
 

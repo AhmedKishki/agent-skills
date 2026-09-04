@@ -6,6 +6,7 @@
 - Predraft development happens one arc paragraph at a time, and the user's voice is authoritative and stays present in every passage.
 - Project memory becomes a single FIFO markdown working record — Current focus, Decisions, Questions (open and closed), Rejected — updated from the top, with entries falling away from the bottom as they stop being useful; the knowledge-graph model and its separate graph layer are removed.
 - Terminology aligned across the predraft report, drafting, fidelity audit, source review and source maps: "move" and "local arc" give way to paragraphs and argument steps.
+- The migration module is removed.
 
 ## 7.5.0
 - Move-based arc: the article arc is now two levels — the global arc (sections) and, per section, an ordered series of moves. The section arcs replace the local-arc tables and any separate moves list as the single moves representation; a conversion note folds pre-7.5 local-arc units into moves under the removal-impact protocol.

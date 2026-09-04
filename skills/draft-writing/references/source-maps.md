@@ -21,7 +21,7 @@ Each excerpt is an exact Human quotation centred on one relevant claim/topic. Re
 
 Legacy reformulations retain their established provenance/use but are not active excerpts; **combine sources** copies them only as part of the complete map. Coverage records scan extent, not excerpt completeness. Record source identity, selection basis, coverage, source-wide qualifications once, and item qualifications locally. Exclude summaries, unrelated material, thesis changes, cross-source comparison, and placement.
 
-Keep every identity, qualification, main-move cell, quotation, and location readable without project codes; locations may retain source-native numbering or identifiers.
+Keep every identity, qualification, main-step cell, quotation, and location readable without project codes; locations may retain source-native numbering or identifiers.
 
     # Source map A — Full author, full title
 

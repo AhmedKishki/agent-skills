@@ -1,6 +1,8 @@
 # Project memory
 
-`{project}-memory.md` is the project's working record: the substantial information a session needs that the workflow files do not already state. It provides context — it is not a history log and holds no article content.
+`{project}-memory.md` preserves context between tasks so that a new session can pick up the project without the conversation that produced it: it is the handoff record of the substantial information the workflow files do not already state. It is not a history log and holds no article content.
+
+The project's actual memory is handled by MCP tooling outside this skill. This skill maintains only the markdown record — never read from or write to a memory server on the skill's behalf.
 
 ## What it holds
 

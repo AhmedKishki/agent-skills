@@ -12,7 +12,7 @@ Metatheory is optional and becomes operative only after this file states its exa
 
     [Lean process header]
 
-    **Content authorship:** Human · Human wording: 100% · Method: user wording · Use: Thesis-and-vision headings
+    **Content authorship:** Human · Human wording: 100%
     **Human bases:** Operative thesis — exact exchange; Main questions — exact exchange; Article vision — exact exchange(s); Operative metatheory — exact exchange and source items; Durable requirements — exact exchange(s)
 
     List only present headings in **Human bases**.

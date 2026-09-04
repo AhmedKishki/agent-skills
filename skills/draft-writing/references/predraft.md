@@ -16,7 +16,7 @@ Apply the role rules in [source-maps.md](source-maps.md): MT-only items may gove
 
     [Lean process header; omit **Depends on** because each passage supplies its basis]
 
-    **Content authorship:** Human · Human wording: 100% · Method: exact source/user wording · Basis/Use: supplied per passage
+    **Content authorship:** Human · Human wording: 100%
 
     ## Exact paragraph ID and readable title, or neutral Passage N
 
