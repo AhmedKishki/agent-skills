@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.6.1
+- Standardised, minimal provenance declarations across all module templates: `**<Scope>:** Origin · Human wording: P%`, adding method/basis/use only where needed to trace origin or a controlled use.
+- Memory module reframed: `{project}-memory.md` is the context-preservation/handoff record between tasks; the project's actual memory is handled by MCP tooling outside the skill.
+
 ## 7.6.0
 - The article arc becomes three scales in plain arrow form: the article as a chain of sections, each section as a chain of paragraphs, and each paragraph as a single argument that is the exact target of one white-box run. The move-based two-scale arc is superseded.
 - The user's own synthesis wording leads every candidate: white-box synthesis runs one candidate per arc paragraph, building the user's synthesis up and strengthening it with source support; source wording grounds and qualifies the user's claims, never the reverse.
