@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.8.0
+- The memory module becomes the project's context-preservation record: `{project}-memory.md` stores everything a different AI, in a new chat, needs to resume the project seamlessly — what the project is, where things stand, the plan, what is expected, and where everything lives — brought current at every session end. Decisions, Questions and Rejected keep their forms.
+- The article arc's file shape moves to heading-level structure for readability: sections are H2 headings, paragraph claims are H3 headings, and sentences are plain numbered lines; the in-section paragraph-chain line is dropped and the trailing arrows are removed — the document order carries reading order.
+
 ## 7.7.0
 - The arc's vocabulary is fixed as article → section → paragraph → sentence → fragment: the article's claim is the thesis; each section supports the thesis; each paragraph makes one claim and is the target of one white-box run; sentences are the constitutive elements of paragraphs; fragments — exact source-map excerpts and user wording — are the smallest unit, synthesised into sentences, and sentences into paragraphs. Numbering nests per level: section, section.paragraph, section.paragraph.sentence, section.paragraph.sentence.fragment.
 - The arc is a sketch, built from a general overview of the source maps and user wording: sentences carry no source-item citations (provenance lives in the predraft records and the source index), and the arc does not fix which fragment supports which claim. It is a dynamic document — revision at any stage, including mid-drafting, is expected; a revision marks affected dependents invalid and waits for user direction.
