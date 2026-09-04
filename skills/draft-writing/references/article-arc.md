@@ -42,9 +42,9 @@ The complete arc becomes **Approved** only when the user explicitly approves the
 
     **Exact source names:** Human · Human wording: 100%
 
-    **Thesis:** the exact thesis sentence
-
     ## Article
+
+    **Thesis:** the exact thesis sentence
 
     Section 1 claim → section 2 claim → …
 
