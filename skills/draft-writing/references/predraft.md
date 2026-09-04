@@ -24,7 +24,7 @@ Apply the role rules in [source-maps.md](source-maps.md): MT-only items may gove
 
     Exact selected wording. [No process metadata in this part.]
 
-    ## Part 2 — Production records
+    ## Part 2 — Records
 
     ### [The passage's heading, repeated from Part 1]
 
