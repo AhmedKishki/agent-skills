@@ -18,13 +18,21 @@ Apply the role rules in [source-maps.md](source-maps.md): MT-only items may gove
 
     **Content authorship:** Human · Human wording: 100%
 
-    ## Exact paragraph ID and readable title, or neutral Passage N
+    ## Part 1 — Passages
 
-    Exact selected wording.
+    ### Exact paragraph ID and readable title, or neutral Passage N
+
+    Exact selected wording. [No process metadata in this part.]
+
+    ## Part 2 — Production records
+
+    ### [The passage's heading, repeated from Part 1]
 
     **Basis/Use:** exact canonical references · Predraft raw material
 
-Use the Human default only for Human passages. A substantive heading shares its passage provenance; **Passage N** is a fixed process label reserved for material without an arc paragraph. Give each Mixed/AI passage a full local **Provenance** stamp with compact references to every original Human input. For white-box synthesis, retain its final record: Input keys, span map, Ordering, Cuts, Argument path, Metatheory fit, and Verification. Never correct a selected white-box passage in place; rerun the method from its original Human bases and obtain new selection and removal authority for the replacement passage and record. Selection never waives fidelity.
+    [For a white-box-synthesised passage, its final record: Input keys, span map, Ordering, Cuts, Argument path, Metatheory fit, Verification]
+
+The file is two parts: Part 1 holds every selected passage as prose under its heading — exact paragraph ID and readable title, or neutral **Passage N** — with no process metadata; Part 2 holds each passage's production record under the same heading. Use the Human default only for Human passages. A substantive heading shares its passage provenance; **Passage N** is a fixed process label reserved for material without an arc paragraph. Give each Mixed/AI passage a full local **Provenance** stamp in its Part 2 record with compact references to every original Human input. For white-box synthesis, the Part 2 record retains the final record: Input keys, span map, Ordering, Cuts, Argument path, Metatheory fit, and Verification. Never correct a selected white-box passage in place; rerun the method from its original Human bases and obtain new selection and removal authority for the replacement passage and record. Selection never waives fidelity.
 
 Individual passage selections do not approve the complete predraft. When every active arc paragraph has raw material, show the entire predraft and its coverage. Only explicit user approval sets the complete file to **Approved** for whole-predraft review. Approval means the set is ready for global diagnosis, not that any passage is final prose or may be silently changed.
 

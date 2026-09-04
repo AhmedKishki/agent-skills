@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.6.2
+- The predraft file becomes two parts: Part 1 holds the selected passages as clean prose under their headings; Part 2 holds each passage's production record (Basis/Use stamp and, for white-box passages, the final record) under the same heading. A readability and footprint change only; no rule changes.
+
 ## 7.6.1
 - Standardised, minimal provenance declarations across all module templates: `**<Scope>:** Origin · Human wording: P%`, adding method/basis/use only where needed to trace origin or a controlled use.
 - Memory module reframed: `{project}-memory.md` is the context-preservation/handoff record between tasks; the project's actual memory is handled by MCP tooling outside the skill.
