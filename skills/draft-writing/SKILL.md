@@ -32,7 +32,7 @@ When work spans several modules, follow the order the user chooses and stop at e
 - [Thesis and vision](references/thesis-and-vision.md) establishes or revises the thesis, main questions, vision, and optional metatheory.
 - [Source review](references/source-review.md) and [source maps](references/source-maps.md) map each source independently.
 - [Index](references/index.md) supports theme and keyword lookup; verify every candidate in its source map.
-- [Article arc](references/article-arc.md) maps the article at three scales — the article as a chain of sections, each section as a chain of paragraphs, each paragraph a single argument — in plain arrow form, giving paragraph-level synthesis its context.
+- [Article arc](references/article-arc.md) maps the article by decomposing it — article → section → paragraph → sentence → fragment — each section supporting the thesis, each paragraph making one claim, each sentence supporting its paragraph, in plain arrow form, giving paragraph-level synthesis its context. Fragments — exact source-map excerpts and user wording — are what synthesis composes.
 - [Predraft](references/predraft.md) develops and selects raw material one arc paragraph at a time, keeping the user's voice authoritative and present.
 - [Predraft report](references/predraft-report.md) diagnoses the approved complete predraft and governs collaborative resolution of its findings.
 - [Drafting](references/drafting.md) forms the article globally from the approved arc, predraft, and report.

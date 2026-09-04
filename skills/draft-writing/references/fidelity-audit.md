@@ -10,7 +10,7 @@ Verify:
 - meaning-preserving support for each source-derived claim, reformulation, and synthesis; exact quotation, locator, qualification, attribution, and narrow citation scope;
 - source paths stayed navigation-only; relevant originals were rescanned; new support entered numbered, indexed items; every index code resolves;
 - every active excerpt change triggered and completed its index refresh before later work;
-- the arc's section chain, section questions and goals, paragraph chains, points of emphasis, and sole homes are realised — every paragraph's single argument present — without filler, loops, excess, abrupt gaps, or unapproved scope;
+- the arc's section chain, section questions and goals, paragraph chains, points of emphasis, and sole homes are realised — every paragraph's claim present and supported by its sentences — without filler, loops, excess, abrupt gaps, or unapproved scope;
 - the article reads in the user's voice: user-synthesis wording strengthened, not displaced;
 - the approved predraft report covered the complete current predraft and arc, had no open finding, and every retained treatment or exception has exact user authority;
 - the draft contains no unresolved gap, semantic repetition outside an approved distinct function, premature conclusion, redundant or unfulfilled announcement, repeated or drifting list, unstable proposition, awkward noun–verb pairing, undefined or inconsistent jargon, or accidental metatheory vocabulary;

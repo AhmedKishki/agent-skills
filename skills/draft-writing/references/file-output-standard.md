@@ -9,7 +9,7 @@
 | One source's argument path, excerpts, roles, and qualifications | Its coded source map |
 | Theme/keyword retrieval | Source index |
 | Source list (code + excerpt count per source) | Source list |
-| Article, section, and paragraph structure, source contributions, placement, repetition homes | Article arc |
+| Article, section, paragraph, and sentence structure, source contributions, placement, repetition homes | Article arc |
 | Exact non-final article wording selected as raw material | Predraft |
 | Whole-predraft findings, approved global drafting treatments, diagnostic exceptions | Predraft report |
 | Current article and authorship metrics | Draft |

@@ -1,6 +1,6 @@
 # White-box synthesis
 
-White-box synthesis assembles an unselected chat candidate from existing Human wording — one candidate for exactly one arc paragraph per run. Every result span maps to a named original Human source or user message and uses only the closed, disclosed operations below. Every adjacency between mapped spans has original-source continuity or a stated Human basis, and every cut is disclosed.
+White-box synthesis assembles an unselected chat candidate from existing Human wording — one candidate for exactly one arc paragraph per run, composing the paragraph from its sentences, and the sentences from fragments: exact source-map excerpts and user wording. Every result span maps to a named original Human source or user message and uses only the closed, disclosed operations below. Every adjacency between mapped spans has original-source continuity or a stated Human basis, and every cut is disclosed.
 
 Black-box synthesis — any result with an unmapped span, an unsupported relation, a hidden transformation, or a fluent passage shown without its span map — is prohibited.
 
@@ -16,7 +16,7 @@ Only exact active Article-role source wording and exact user wording stamped **H
 
 The inputs must supply every substantive word, claim, relation, scope, qualification, modality, and conclusion; permitted mechanical normalisation supplies no content. The inputs must also establish the target:
 
-- body wording: exactly one arc paragraph — its proposition, its place in the section chain (what precedes and follows it), and its named source items, with the section's question and the article thesis as context;
+- body wording: exactly one arc paragraph — its claim, its place in the section chain (what precedes and follows it), and its sentences' propositions, with the section's question and the article thesis as context; the fragments come from the user's own wording and a current relevant-source rescan;
 - a title or heading: its placement, purpose, and boundary; or
 - a thesis, vision, or process candidate: its function, purpose, and boundary.
 
@@ -42,7 +42,7 @@ Apply operative-metatheory tests without importing their wording. Framework-only
 
 ## Method
 
-1. **Collect:** identify each relevant eligible passage within the paragraph's named source items and other eligible Human wording — the user's own synthesis first.
+1. **Collect:** identify each relevant fragment — the eligible passages in the rescanned source maps and other eligible Human wording — the user's own synthesis first.
 2. **Construct:** COPY, INFLECT, or NORMALISE spans, then ORDER them.
 3. **Reduce:** DELETE only qualifying repetition.
 4. **Verify:** build the span map; test the target, one linear Human-supported argument path, every adjacency and cut, quotation integrity, every mechanical-change disclosure, and operative-metatheory fit.
@@ -70,14 +70,14 @@ Before the candidate, show every raw input passage once:
     | Input | Full source name or user's wording | Locator or user exchange in ordinary language | Raw Human passage, verbatim |
     |---|---|---|---|
 
-Then the final span map — one row per maximal contiguous result span:
+Then the final span map — one row per maximal contiguous result span. Number the candidate's sentences within the paragraph (`section.paragraph.sentence`) and each fragment within its sentence (`section.paragraph.sentence.fragment`), so every span carries a global address:
 
     | Result span, verbatim | Input | Human basis span, verbatim | COPY, INFLECT, and/or NORMALISE · readable result location · one exact original → final change, or unchanged |
     |---|---|---|---|
 
 The span map plus **Ordering** and **Cuts** below is the user's change alert; add no duplicate summary. Then show:
 
-    - **Purpose:** the paragraph and its proposition · chain position · boundary · starting point → intended result
+    - **Purpose:** the paragraph and its claim · chain position · boundary · starting point → intended result
     - **Input keys:** each Input → full source name or user's wording · ordinary-language locator or user exchange · all Human · 100%
     - **Ordering:** each mapped-span adjacency → original continuity or its stated Human basis
     - **Cuts:** each removed span → retained repetition and its Human basis, or none
@@ -95,7 +95,7 @@ In chat, use full source names and plain descriptions; show no filename, timesta
 
 The arrangement is assistant work, so the result remains terminal **Mixed** even at 100% Human wording and is never a later synthesis input. Disclosed NORMALISE forms remain Human wording; punctuation does not affect the word percentage. A correction or revision also restarts from original Human bases and produces a new terminal result.
 
-Selection creates a separate **Predraft raw material** copy keyed to its paragraph (exact paragraph ID and readable title); it never relabels the chat candidate. Copy only the exact result, the final white-box record, and this canonical stamp:
+Selection creates a separate **Predraft raw material** copy naming the arc elements it covers — its paragraph (exact paragraph ID and readable title) and its sentences; it never relabels the chat candidate. Copy only the exact result, the final white-box record, and this canonical stamp:
 
     **Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: final record's Input keys · Use: Predraft raw material
 

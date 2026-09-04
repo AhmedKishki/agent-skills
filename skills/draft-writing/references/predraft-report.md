@@ -2,7 +2,7 @@
 
 When the request routes to predraft review, create `{project}-predraft-report.md` only if the complete predraft and article arc are mutually consistent and explicitly **Approved**, every active source role is resolved, and the index is current. Otherwise name the missing input and stop. Review the whole raw-material set at global scale. The report is process analysis — never article wording, evidence, a synthesis input, or authority to change its dependencies.
 
-Review every predraft passage and the arc at all three scales for:
+Review every predraft passage and the arc at every scale for:
 
 - **Gap:** a missing premise, relation, transition, definition, required support, qualification, conclusion, destination, or raw material; a selected post-rescan AI gap passage remains unsupported and is usable only through the controlled exception below;
 - **Repetition:** exact or semantic duplication with the same function, scope, modality, and qualification, including whether one approved sole home exists;
@@ -12,9 +12,9 @@ Review every predraft passage and the arc at all three scales for:
 - **Unstable proposition:** subject, key term, relation, scope, modality, qualification, attribution, or conclusion changing without an approved development;
 - **Awkward noun–verb pairing:** grammar or semantic agency that reads unnaturally or changes the intended actor or action;
 - **Jargon:** a term undefined, inconsistent, audience-inappropriate, or unnecessary, or accidental framework/metatheory leakage; and
-- **Global formation:** every arc paragraph has raw material, every passage is keyed to one paragraph, the chains' handoffs and points of emphasis can be realised, and approved combinations form one linear article path. Any adjacency, combination, cut, or consolidation needed beyond exact arc placement and unchanged passage use is a finding until its treatment is explicitly approved.
+- **Global formation:** every arc paragraph has covering raw material or an approved treatment, every passage names the arc elements it covers, the chains' handoffs and points of emphasis can be realised, and approved combinations form one linear article path. Any adjacency, combination, cut, or consolidation needed beyond unchanged passage use is a finding until its treatment is explicitly approved.
 
-Create findings without changing predraft or arc. Reference passage headings and readable arc locations (section and paragraph); do not copy full passages. The report may be saved as **Working** without content authority because it changes no article decision. Its analysis is AI and must not be presented as Human judgement.
+Create findings without changing predraft or arc. Reference passage headings and readable arc locations (section, paragraph, or sentence); do not copy full passages. The report may be saved as **Working** without content authority because it changes no article decision. Its analysis is AI and must not be presented as Human judgement.
 
     # Predraft report
 
@@ -26,7 +26,7 @@ Create findings without changing predraft or arc. Reference passage headings and
     | Check | Coverage and result |
     |---|---|
     | Predraft passages and headings | N of N · finding headings or none |
-    | Arc sections and paragraphs | N of N · finding headings or none |
+    | Arc sections, paragraphs, and sentences | N of N · finding headings or none |
     | Active source roles and index | resolved and current · exact dependencies checked |
     | Gap | finding headings or none |
     | Repetition | finding headings or none |

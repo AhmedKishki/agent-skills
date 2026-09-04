@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.7.0
+- The arc's vocabulary is fixed as article → section → paragraph → sentence → fragment: the article's claim is the thesis; each section supports the thesis; each paragraph makes one claim and is the target of one white-box run; sentences are the constitutive elements of paragraphs; fragments — exact source-map excerpts and user wording — are the smallest unit, synthesised into sentences, and sentences into paragraphs. Numbering nests per level: section, section.paragraph, section.paragraph.sentence, section.paragraph.sentence.fragment.
+- The arc is a sketch, built from a general overview of the source maps and user wording: sentences carry no source-item citations (provenance lives in the predraft records and the source index), and the arc does not fix which fragment supports which claim. It is a dynamic document — revision at any stage, including mid-drafting, is expected; a revision marks affected dependents invalid and waits for user direction.
+- Predrafting repeats paragraph synthesis — find and choose fragments, synthesise them into sentences and the paragraph — until the predraft is fully formed. The predraft remains a raw-material pool: not arc-keyed, and not all selected material need be used; each passage names the arc elements it covers.
+
 ## 7.6.2
 - The predraft file becomes two parts: Part 1 holds the selected passages as clean prose under their headings; Part 2 holds each passage's production record (Basis/Use stamp and, for white-box passages, the final record) under the same heading. A readability and footprint change only; no rule changes.
 
