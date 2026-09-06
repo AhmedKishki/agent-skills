@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "sequentialthinking"
+      ]
+    },
+    "desktop-commander": {
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@wonderwhy-er/desktop-commander@latest"
+        ]
+      }
+    },
+    "basic-memory": {
+      "command": "uvx",
+      "args": [
+        "--prerelease=allow",
+        "basic-memory",
+        "mcp"
+      ],
+      "disabled": false
+    }
+  }
+}
