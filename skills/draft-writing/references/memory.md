@@ -2,7 +2,7 @@
 
 `{project}-memory.md` is the project's context-preservation record: it stores everything a different AI, in a new chat, needs to resume the project seamlessly without the conversation that produced it — what the project is, where things stand, the plan, what is expected, and where everything lives. A new session reads it first and works from it. It is not a history log and holds no article content.
 
-The project's actual memory is handled by MCP tooling outside this skill. This skill maintains only the markdown record — never read from or write to a memory server on the skill's behalf.
+The project's recall layer is external tooling — where a project adopts Basic Memory, it indexes the project's markdown files in place as notes. This skill maintains only the markdown record: never read from or write to a memory server, and never write memory notes, on the skill's behalf.
 
 ## What it holds
 

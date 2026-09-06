@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.8.1
+- The memory module's reference no longer mentions MCP tooling: a project's recall layer is external tooling that indexes the project's markdown in place as notes (Basic Memory where adopted); the skill maintains only the markdown record and never reads from or writes to a memory server on its behalf.
+
 ## 7.8.0
 - The memory module becomes the project's context-preservation record: `{project}-memory.md` stores everything a different AI, in a new chat, needs to resume the project seamlessly — what the project is, where things stand, the plan, what is expected, and where everything lives — brought current at every session end. Decisions, Questions and Rejected keep their forms.
 - The article arc's file shape moves to heading-level structure for readability: sections are H2 headings, paragraph claims are H3 headings, and sentences are plain numbered lines; the in-section paragraph-chain line is dropped and the trailing arrows are removed — the document order carries reading order.
