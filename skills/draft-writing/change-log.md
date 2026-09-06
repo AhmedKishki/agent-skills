@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.8.2
+- The project-memory module is removed: the skill no longer defines or references a `{project}-memory.md` record — memory is external tooling (Basic Memory where adopted), never a skill module.
+
 ## 7.8.1
 - The memory module's reference no longer mentions MCP tooling: a project's recall layer is external tooling that indexes the project's markdown in place as notes (Basic Memory where adopted); the skill maintains only the markdown record and never reads from or writes to a memory server on its behalf.
 

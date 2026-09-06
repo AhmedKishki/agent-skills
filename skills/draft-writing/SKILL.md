@@ -45,7 +45,6 @@ When work spans several modules, follow the order the user chooses and stop at e
 - [Combined sources](references/combine-sources.md) collects the active complete source maps and current index in one Markdown file.
 - [Full export](references/full-export.md) packages the tracker and every file it tracks for handoff.
 - [Activity tracker](references/activity-tracker.md) records current project state.
-- [Project memory](references/memory.md) is the project's FIFO working record — current focus, decisions, open and closed questions, rejected formulations — updated from the top.
 
 ## Automatic safeguards
 
@@ -55,7 +54,6 @@ Apply these only within the requested work:
 - Apply the [shared output-file standard](references/file-output-standard.md) to every file change.
 - Read and update the [activity tracker](references/activity-tracker.md) when resuming, saving, reconciling, approving, or delivering. It records current state; it never authorises the next module.
 - Refresh the [index](references/index.md) immediately whenever an active source-map excerpt changes.
-- Read and update [project memory](references/memory.md) at session start, when something substantial is agreed, and at session end.
 
 ## Shared guarantees
 
