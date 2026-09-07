@@ -1,6 +1,6 @@
 # White-box synthesis
 
-Develop supporting arguments from supplied human wording and assemble one paragraph. Return the paragraph and its construction record, or a precise gap.
+Develop supporting arguments from supplied human wording and assemble one paragraph. Return the paragraph, a compact provenance summary and a full construction record, or a precise gap.
 
 ## Inputs
 
@@ -16,7 +16,7 @@ The claim and supporting arguments specify the target. Fragments supply the voca
 1. Match each argument to the supplied fragments. Establish its claim, qualifications and contribution to the paragraph's claim.
 2. Develop each argument as prose, using the five operations below on meaningful contiguous spans. Keep every substantive word traceable to a supplied passage.
 3. Assemble the argument passages in the supplied order. Check that they jointly establish the paragraph's claim; verify connections and source qualifications against their original context.
-4. Return **Paragraph**, **Used**, and **Construction** when all checks pass. Otherwise return **Gap**: the affected argument ID, the missing wording or support, and one focused question requesting the required human contribution.
+4. Return **Paragraph**, **Provenance**, and **Record** when all wording and support checks pass. Otherwise return **Gap**: the affected argument ID, the missing wording or support, and one focused question requesting the required human contribution.
 
 | Operation | Rule |
 |---|---|
@@ -35,16 +35,18 @@ Every meaning-bearing join requires an explicit basis in the supplied human pass
 ```markdown
 Paragraph: <complete paragraph>
 
-Used:
+**Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A4, user-21, user-22
 
-- 1.1.1: user-21; src:A4 — Service log.
-- 1.1.2: user-22.
+Record:
 
-Construction: <meaningful joins, transformations, evidence/framework use, and interpretive limits>
+| Argument | Result span | Original fragments | Construction and support |
+|---|---|---|---|
+| 1.1.1 | <exact output passage> | <codes, locators and exact human spans> | <operations in order, source support and limits> |
+| 1.1.2 | <exact output passage> | <codes, locators and exact human spans> | <operations in order, source support and limits> |
 ```
 
-Give each argument one **Used** entry in the supplied order. Before the colon, give its argument ID; after it, identify the original fragments. Cover the complete paragraph. Where an argument's prose boundaries are ambiguous, add short exact start/end quotations after its ID. Retain original fragment codes and name each source once. Mention paragraph-wide evidence or framework consultation in Construction, identifying any source used only there.
+Give each argument one record row and cover the complete paragraph. Quote every exact fragment used, identify its original code and location, and name each source once. Show the order of operations and every join, cut or grammatical change needed to reconstruct the result. Explain what the evidence establishes and what remains the user's interpretation. Include the context needed to judge qualifications. State any paragraph-wide evidence or framework consultation after the table.
 
-Identify original spans only where needed: `full`, `paragraph N`, `paragraphs N–M`, `line N`, or `lines N–M`, counted from 1 within the coded entry, excluding headings and metadata. Count stored lines. Use short exact start/end quotations where boundaries remain ambiguous.
+For unchanged wording, identify its exact original span and COPY. Locate fragments by `full`, `paragraph N`, `paragraphs N–M`, `line N` or `lines N–M`, counted within the coded entry, excluding headings and metadata. Count stored lines. Resolve ambiguous spans with short exact start/end quotations.
 
-Keep **Construction** to the changes and limits needed to understand the result. For unchanged user prose, write `unchanged user wording`.
+Derive the provenance from the verified inputs and operations: distinguish unchanged human wording from assistant composition, and list the actual basis codes once. A result built entirely from verified human originals through the permitted operations has `Human wording: 100%`; unresolved wording returns a Gap.

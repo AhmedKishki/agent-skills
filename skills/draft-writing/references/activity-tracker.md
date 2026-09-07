@@ -25,7 +25,7 @@ Maintain `{project}-activity-tracker.md` as the file inventory, allocation check
 
 Keep all six header fields and the table in this order. Now states actual progress or the unanswered question; Next states the next action conditional on the required user decision.
 
-List existing files needed to resume, using paths relative to the tracker. Include required originals, conversions and retained wording bases. The inventory consists of working inputs and outputs.
+List existing files needed to resume, using paths relative to the tracker. Include required originals, conversions and every retained wording basis named in saved provenance. The inventory consists of working inputs and outputs.
 
 Each map row owns checked coverage, access limits and next excerpt ID. Record an unavailable original in that map row, and in Now/Next when it blocks current work.
 

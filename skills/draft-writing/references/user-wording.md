@@ -25,10 +25,10 @@ Capture is mechanical preservation. Predraft selection requires explicit approva
 
 Use one H1, then H2 entries in allocation order. Wrap every passage line, including blank lines, in one blockquote level. Removing that wrapper recovers the exact wording. References resolve to the passage.
 
-Add `Origin:` after the blockquote only for mixed or uncertain origin, identifying the affected portion. Resolve that uncertainty before using it. Source quotations remain source material; assistant arrangements retain their origin.
+For mixed or uncertain origin, add the [compact provenance line](file-output-standard.md#compact-provenance) after the blockquote and a short `Note:` identifying the affected portion. Use verified basis codes when available; clarify the unresolved portion before using it. Source quotations remain source material; assistant arrangements retain their origin.
 
 Directions belong in thesis, structural choices in arc, and actual uses and selections in predraft. Execute routine commands such as “apply this” and “next” without allocating wording IDs.
 
 ## Earlier wording
 
-Preserve user edits in place. If a current construction record still needs the previous exact passage, retain it under a final `## Earlier wording still in use`, using H3 `### user-n — Earlier wording of user-m` and the same blockquote format. Allocate from the same counter and repoint the affected record. Request recovery when the required original is unavailable.
+Preserve user edits in place. If a saved provenance trail still needs the previous exact passage, retain it under a final `## Earlier wording still in use`, using H3 `### user-n — Earlier wording of user-m` and the same blockquote format. Allocate from the same counter and update the affected Basis reference. Request recovery when the required original is unavailable.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.2.0
+
+- Standardise compact provenance as origin, Human wording, Method and original Basis codes. Verify the human-wording declaration against recoverable originals.
+- Present the full synthesis record before each user decision: exact inputs and output spans, ordered operations, argument coverage, support and limits.
+- Replace saved construction ledgers with compact provenance records while retaining the two-part predraft layout. Align drafting, audits and wording retention with feasible reconstruction from the saved bases.
+
 ## 10.1.2
 
 - Keep article-arc concerned with structure; predraft selects relevant sources and user wording for each argument and records their use.

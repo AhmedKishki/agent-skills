@@ -42,4 +42,4 @@ Arc: 1 → 2
 
 Use exactly this structure: Status, Thesis and one article Arc line, then H2 sections, H3 paragraphs and plain argument lines separated by blank lines. The Arc line lists section numbers once in reading order. Nesting records the dependence of parent claims on their children.
 
-Number sections `1`, paragraphs `1.1` and arguments `1.1.1`, restarting each local sequence at 1. Keep source/user fragment codes in predraft's Used lists.
+Number sections `1`, paragraphs `1.1` and arguments `1.1.1`, restarting each local sequence at 1. Predraft owns source/user fragment selection and the saved provenance trail.
