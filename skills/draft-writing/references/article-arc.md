@@ -1,67 +1,61 @@
 # Article arc
 
-Build the arc from a general overview of the active source maps and the user's wording — the approved thesis-and-vision, the user-synthesis, and whichever selected predraft material is currently available. Begin with the approved main questions; add one only when the user agrees the thesis needs it. Leave what cannot yet be supported undecided and ask. Arc and predraft may alternate at the user's direction; neither complete artifact is a prerequisite for starting the other.
+Build the user's editable argument map in `{project}-article-arc.md`.
 
-The arc is always a sketch, not a rigorous file: it does not identify specific fragments, and it does not aim to fix which fragment supports which claim. It is a dynamic document — modified as predrafting and drafting proceed; revision is expected.
+## Collaboration
 
-## The scales
+1. Read accepted thesis and structural decisions.
+2. Propose the next unresolved level: section progression, paragraph claims, or sentence arguments. Show each arrow's intended causal or explanatory relationship.
+3. Ask for approval or comments on the exact proposal. Apply accepted changes.
+4. Ask a focused question for any missing claim or relationship; keep it as `Open:` at that location.
 
-The arc maps the article by decomposing it into its constitutive elements. The vocabulary is fixed: **article → section → paragraph → sentence → fragment**.
+Each paragraph makes one claim. Its sentence chain provides the argument for that claim. Use short planning propositions throughout; actual article prose and fragment-use codes belong in predraft.
 
-- **Article** — the full scale. The article's claim is the thesis; the article is one arrow chain of sections in reading order.
-- **Section** — supports the thesis: the question the section resolves, its goal, and its paragraphs as an arrow chain.
-- **Paragraph** — makes one claim supporting its section; the exact target of one [white-box synthesis](white-box-synthesis.md) run; synthesised from its sentences.
-- **Sentence** — the constitutive element of a paragraph: one numbered line stating a proposition that supports the paragraph's claim.
-- **Fragment** — the smallest unit, and the material the arc does not hold: exact source-map excerpts and user wording. Synthesis finds fragments and composes them into sentences, and sentences into paragraphs.
+## Output
 
-The arc phase resolves the decomposition: sections into paragraphs, paragraphs into their sentences. The document order carries position. Everything before a paragraph is already argued — do not repeat it; everything after it is still to come — do not anticipate it. A section's first paragraph builds from the previous section's last; its last prepares the next section's first. Predrafting and synthesis work with the paragraph in view of the section and article chains, so synthesis knows what already came and what is coming.
+```markdown
+# Article arc
 
-Number the sections in reading order, paragraphs `section.paragraph`, and sentences `section.paragraph.sentence` — so 2.3 is the third paragraph of section 2 and 2.3.1 its first sentence. The scheme continues globally to fragments — `section.paragraph.sentence.fragment`, so 2.3.1.2 is the second fragment supporting sentence 2.3.1 — but the arc holds no fragments: fragment IDs live in the records that hold them (the predraft's production records) and shift as synthesis choices shift. IDs are stable: never renumber or reuse one. An inserted section, paragraph, or sentence takes the next unused number; the document order, not the numbers, carries reading order.
+Status: Working
+Thesis: [General picture](demo-thesis-and-vision.md#general-picture)
+Arc: 1 — Recurring work → 2 — Conditions of that work
 
-Every paragraph's claim is one distinct contribution, every sentence supports its paragraph's claim, and every section serves a main question and the thesis. Each claim or list has one sole home; an intentional repetition needs a distinct function and exact user authority. Remove filler, loops, and excess scope only through the [removal-impact protocol](file-output-standard.md).
+## 1 — Recurring work
 
-## Revision at any stage
+Question: What sustains the apparent automation?
+Arc: 1.1 — Review sustains service
 
-The user may revise the arc at any stage, including mid-drafting. On revision, apply the [unaffected-work test](file-output-standard.md) to everything built on the arc — predraft coverage, the predraft report, the draft — mark affected work invalid, name the required modules, and wait for user direction.
+### 1.1 — Review sustains service
 
-## Authority
+Function: Establish the continuing work before examining its conditions.
+Arc: 1.1.1 — Daily checking → 1.1.2 — Service continuity
+Connection: 1.1.1 → 1.1.2 — recurring checks explain continued operation.
 
-Structure requires exact user wording or an exact selected proposal; sources establish contributions, never structure. Metatheory fit is applied silently; Framework-only material is never an article contribution.
+#### 1.1.1 — Daily checking
 
-The arc carries structure and context only — no article wording, no copied source passages, no fragment citations, no raw-material decisions. Titles and reader-facing headings are wording, decided in [predrafting](predraft.md) like any other wording. The predraft is a raw-material pool, not keyed paragraph-by-paragraph to the arc; each selected passage names the arc elements it covers.
+#### 1.1.2 — Service continuity
 
-The complete arc becomes **Approved** only when the user explicitly approves the whole file; revisions follow the revision rule above.
+## 2 — Conditions of that work
 
-## File shape — `{project}-article-arc.md`
+Question: Under what conditions is that work performed?
+Arc: Open
+Open: What claim should this section establish?
+```
 
-    # Article arc
+Keep this field order: article Status / Thesis / Arc; section Question / Arc; paragraph Function / Arc; sentence heading. Optional `Connection:` explains an unclear arrow, `Boundary:` explains a necessary paragraph boundary, and `Open:` asks a concrete question. Put optional fields after required fields, before children.
 
-    [Lean process header]
+## Numbering and arrows
 
-    **Arc structure:** AI · Human wording: 0%
+- Sections: `1`, `2`; paragraphs: `1.1`, `1.2`; sentences: `1.1.1`, `1.1.2`.
+- Number each level from 1 in reading order.
+- Each Arc line repeats its direct children's exact numbers and short labels, once each, joined by ` → `.
+- A single child stands alone. An unresolved chain uses `Arc: Open` and its question.
+- Keep fragment identities in predraft's Used lists.
 
-    **Exact source names:** Human · Human wording: 100%
+Check that each arrow expresses the accepted relationship and each chain matches its child blocks.
 
-    ## Article
+## Edits
 
-    **Thesis:** the exact thesis sentence
+After an accepted move, split or insertion, map old content to new positions and update affected arc chains, predraft headings, sentence references and draft links together. Carry wording and selection authority with their content. Ask about ambiguous correspondence.
 
-    Section 1 claim → section 2 claim → …
-
-    ## 1 · Section name
-
-    **Question:** the main question the section resolves · **Goal:** its thesis contribution
-
-    ### 1.1 The paragraph's claim
-
-    1.1.1 A sentence supporting the claim
-
-    1.1.2 The next sentence
-
-    ### 1.2 The next paragraph's claim
-
-    1.2.1 A sentence
-
-    ## 2 · …
-
-A section is an H2 heading; a paragraph's claim is an H3 heading (`### section.paragraph`); each sentence is a plain numbered line stating its proposition — the document order carries the reading sequence. Add a short em-dash note — a point of emphasis or an include/exclude boundary — only where synthesis genuinely needs it. List only the sources that inform the sketch. The section names above are illustrative.
+Synchronise a clear direct user edit between chain and child blocks. Markdown anchors remove dots: `1.1 — Record` links as `#11--record`.

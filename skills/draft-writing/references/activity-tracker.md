@@ -1,30 +1,34 @@
 # Activity tracker
 
-Maintain `{project}-activity-tracker.md` as the tracked working-set list and resume checkpoint. Read it before resuming, deciding, exporting, or delivering.
+Maintain `{project}-activity-tracker.md` as the file inventory, allocation checkpoint and resumption point. Update it after a coherent save or a change in the pending question.
 
-List every file needed to resume — accessible source originals, required conversions, one active map per source, one active file per applicable lineage, and every unresolved reconciliation input — plus the current request-only combined-sources file, if any. Use the role/state cell to distinguish active files from request artifacts and non-active inputs retained for reconciliation. Exclude trackers, full-export ZIPs, superseded or unused files, reserves, and history.
+## Output
 
-Create a tracker after each save and whenever the selected module, state, **Now**, or **Next** changes alone. Name omitted dependents in **Now** or **Next**. Full export is the sole exception: do not change these fields or create a tracker for that delivery-only request.
+```markdown
+# Activity tracker
 
-    # Activity tracker
+- **Project:** Demo
+- **Focus:** Predraft 1.1
+- **Now:** The presented 1.1 candidate awaits the user's approval or comments.
+- **Next:** Apply the user's response to 1.1, then propose 1.2.
+- **Next source code:** B
+- **Next user number:** 23
 
-    - **Workflow:** draft-writing · release: exact Git tag, abbreviated commit, or unversioned copy
-    - **Project:** Project name
-    - **Focus:** Module selected from the user's request | None—awaiting clarification or direction
-    - **State:** Working | Awaiting approval | Approved | Complete
-    - **Next source code:** A
-    - **Now:** Self-contained current action, blocker, open question, or waiting state · consequence · governing reference
-    - **Next:** One action inside the selected module, an awaited user decision, or the user's already-requested next outcome; when complete, **Suggested: next eligible canonical module for current project state—awaiting user direction** · governing reference
-    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
-    - **Process prose:** AI
+| Tracked filename | Role/state |
+|---|---|
+| demo-user-wording.md | Original user language |
+| demo-article-arc.md | Accepted argument plan |
+| demo-predraft.md | Selected paragraphs; next H03 |
+| demo-source-map-a-service-log.md | Source A; pages 1–12 checked; next item A5 |
+| original-file.pdf | Source original |
+```
 
-    | Tracked filename | Role/state |
-    |---|---|
+Keep all six header fields and the table in this order. Now states actual progress or the unanswered question; Next states the next action conditional on the required user decision.
 
-Use archive-safe paths relative to the tracker's directory, readable headings, and the next never-used source code. Row order is the read order needed to reconstruct state during resumption, not a recommended drafting sequence. Every file required to continue must have a row; do not mention a needed file only in **Now** or **Next**. The tracker itself is never a row.
+List existing files needed to resume, using paths relative to the tracker. Include required originals, conversions and retained wording bases. The inventory consists of working inputs and outputs.
 
-Use the exact matching annotated tag only for a clean checkout; otherwise the abbreviated commit, with `-dirty` when applicable. If Git metadata is unavailable, record **unversioned copy**. **Focus** records the module inferred from the user's natural-language request; ask before setting it when materially different modules fit. Artifact readiness and a suggested **Next** never authorise automatic progression. **Now** and **Next** retain only the current open state, with enough exact detail to re-ask an unresolved question or continue after handoff; record no past discussion. Timestamps never establish authority. Apply the [candidate test](file-output-standard.md); on failure keep the predecessor active, list every needed candidate or dependent with an accurate non-active role/state, name the discrepancy in **Now**, and omit invalid material from use.
+Each map row owns checked coverage, access limits and next excerpt ID. Record an unavailable original in that map row, and in Now/Next when it blocks current work.
 
-During local predrafting, **Now** names the sole working unit — the passage or arc paragraph — and rescan state; **Next** names its one next question or action. During predraft-report Q&A, **Now** names the sole open finding, affected raw material, and consequence; **Next** names its one exact suggestion or decision. Global drafting may begin only when the tracked arc, complete predraft, and predraft report are mutually consistent and Approved.
+Advance source codes, user numbers, excerpt IDs and heading IDs on allocation. Recover their highest allocated values from reliable history before replacing a missing counter; retired IDs remain retired. Arc numbers follow current positions.
 
-The **combined sources** row names its exact source-map and index reuse basis and becomes stale when any basis changes; retire it through [cleanup](file-output-standard.md) and regenerate only on a new request. A **full export** requires a new request every time and is never a tracker row: the ZIP contains this tracker plus every row, so tracking the ZIP would create recursion.
+On resumption, check inventory paths and pending work against actual files, then continue from the last user decision.

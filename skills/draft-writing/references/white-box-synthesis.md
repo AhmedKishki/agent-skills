@@ -1,104 +1,50 @@
 # White-box synthesis
 
-White-box synthesis assembles an unselected chat candidate from existing Human wording — one candidate for exactly one arc paragraph per run, composing the paragraph from its sentences, and the sentences from fragments: exact source-map excerpts and user wording. Every result span maps to a named original Human source or user message and uses only the closed, disclosed operations below. Every adjacency between mapped spans has original-source continuity or a stated Human basis, and every cut is disclosed.
+Build one paragraph from supplied human wording. Return the paragraph and its construction record, or a precise gap.
 
-Black-box synthesis — any result with an unmapped span, an unsupported relation, a hidden transformation, or a fluent passage shown without its span map — is prohibited.
+## Inputs
 
-Use this method for a requested suggestion, synthesis, content question, or predraft-report wording fix before global drafting. Never run it while producing the draft. If draft production exposes missing wording, mark the report and affected owner invalid, name the modules needed to resolve it, and wait for user direction.
+- **Claim:** the single claim the paragraph must establish.
+- **Sentences:** ordered sentence IDs and short propositions, including the intended relationships between them.
+- **Fragments:** original codes (`user-n` or `src:A4`), exact human passages with their original span locations, relevant context, and permitted use: wording, evidence, user interpretation, or framework check.
+- **Constraints:** the user's wording priorities, spelling convention, quotation requirements, and applicable conceptual limits.
 
-## The user's wording leads
+The claim and sentence plan specify the target. Fragments supply the vocabulary and substantive basis. Original user wording supplies the paragraph's backbone; source passages supply the agreed additions.
 
-The article is written in the user's voice, and synthesis exists to build the user's synthesis up and strengthen it. The user-synthesis, the thesis-and-vision, and the user's messages carry that voice: the user's own wording is the backbone of every candidate, and source material grounds, evidences, and qualifies what the user argues. Where the user has synthesised a point in their own words, that wording leads and source wording serves it — never the reverse. A candidate that reads in a source's voice rather than the user's has failed, however traceable.
+## Algorithm
 
-## Inputs and target
+1. Match each planned sentence to the supplied fragments. Establish the basis for its proposition, qualifications, and relationship to adjacent sentences.
+2. Build one sentence per ID, using the five operations below on meaningful contiguous spans. Keep every substantive word traceable to a supplied passage.
+3. Assemble the sentences in the supplied order. Check the single claim, sentence relationships, and source qualifications against their original context.
+4. Return **Paragraph**, **Used**, and **Construction** when all checks pass. Otherwise return **Gap**: the affected sentence ID, the missing wording or support, and one focused question requesting the required human contribution.
 
-Only exact active Article-role source wording and exact user wording stamped **Human · 100%** are eligible. Mixed wording, reformulations, assistant output, and earlier syntheses are not. A draft or downstream file may help locate a span, but the span must resolve to its original Human basis. Every revision restarts from those bases plus any new Human wording. Similarity and adjacency supply nothing.
+| Operation | Rule |
+|---|---|
+| COPY | Reproduce an exact contiguous original span with its necessary context. |
+| INFLECT | Change only tense, number, grammatical case, article, or an unambiguous pronoun to a referent established in the same original passage. Preserve meaning, scope, modality, qualification, and emphasis. |
+| NORMALISE | Correct unambiguous spelling or make meaning-neutral capitalization/punctuation changes under the supplied spelling convention. Preserve vocabulary and grammar. |
+| ORDER | Arrange spans when original continuity or an explicit original user/source basis establishes their relationship. |
+| DELETE | Remove equivalent repetition when subject, claim, scope, modality, and qualification match; retain the equivalent meaning. |
 
-The inputs must supply every substantive word, claim, relation, scope, qualification, modality, and conclusion; permitted mechanical normalisation supplies no content. The inputs must also establish the target:
+Apply INFLECT and NORMALISE to unquoted output. Keep direct quotations, saved originals, code, URLs, titles, and citation data exact. Preserve the spelling of proper names, trademarks, official names, and defined terms; adjust their capitalization only where unambiguous and meaning-neutral.
 
-- body wording: exactly one arc paragraph — its claim, its place in the section chain (what precedes and follows it), and its sentences' propositions, with the section's question and the article thesis as context; the fragments come from the user's own wording and a current relevant-source rescan;
-- a title or heading: its placement, purpose, and boundary; or
-- a thesis, vision, or process candidate: its function, purpose, and boundary.
+Every meaning-bearing join requires an explicit basis in the supplied human passages. Preserve a user's interpretation as their argument; treat source evidence as support only for what it establishes. Use framework-only inputs for fit checks. Return a gap when a required connection, unique deletion, substitution, or sentence-plan change exceeds the supplied basis and permitted operations.
 
-Run one synthesis per paragraph, never several paragraphs in one run. If the arc paragraph or its rescan is missing or stale, the target is not established: state that the [article arc](article-arc.md) or [source review](source-review.md) is required and stop. If the target could support materially different meanings or uses, ask one clarifying question before synthesis.
+## Output
 
-## Closed operations
+```markdown
+Paragraph: <complete paragraph>
 
-Only five operations are permitted:
+Used:
 
-- **COPY:** reproduce one contiguous source or user-message span verbatim.
-- **INFLECT:** change only tense, number, grammatical case, article, or an unambiguous pronoun to a referent already named in the same Human basis passage. Preserve meaning, relation, scope, qualification, modality, and emphasis. A synonym, modality or quantifier change, or hedge-to-claim conversion is invention.
-- **NORMALISE:** correct unambiguous spelling, convert American to British spelling, or make a meaning-neutral capitalisation or punctuation change. This does not permit vocabulary or grammar substitution.
-- **ORDER:** place mapped spans in sequence. Record every adjacency between them and its Human basis; original continuity may cite the basis's original order.
-- **DELETE:** remove only exact semantic repetition with the same subject, claim, scope, modality, and qualification. Record the removed span and what it repeated.
+- 1.1.1: user-21 (sentence 1); src:A4 — Service log.
+- 1.1.2: user-21 (sentence 2).
 
-INFLECT and NORMALISE apply only to unquoted result text. Neither may alter direct quotations, raw-input displays, code, URLs, source titles, citation data, or the spelling or wording of proper names, trademarks, official organisation or product names, and defined terms; change such names' capitalisation only when unambiguous and meaning-neutral.
+Construction: <meaningful joins, transformations, evidence/framework use, and interpretive limits>
+```
 
-Do not atomise passages into word fragments to manufacture new phrasing. Unless copied from an eligible span, insert no connective (such as *however*, *therefore*, or *while*), hedge, intensifier, topic/summary/closing sentence, or parallel construction made to create continuity. Human-established equivalence permits choosing an existing Human variant, never assistant substitution. If a possible normalisation is ambiguous or meaning-changing, retain the original form; invoke the gap gate only under its substantive test below.
+Give each output sentence one **Used** entry in the supplied order. Retain original fragment codes and name each source once. Mention paragraph-wide evidence or framework consultation in Construction, identifying any source used only there.
 
-For a span changed by INFLECT, NORMALISE, or both, record one exact original → final pair with the applied operations, and give each changed occurrence a readable location; write punctuation insertion as ∅ → mark and deletion as mark → ∅. Record ORDER only under **Ordering** and DELETE only under **Cuts**.
+Identify spans only where needed: `full`, `sentence N`, `sentences N–M`, `paragraph N`, or `lines N–M`, counted from 1 within the original coded entry, excluding headings and metadata. Resolve ambiguous boundaries with short exact start/end quotations.
 
-Apply operative-metatheory tests without importing their wording. Framework-only material tests fit; it never supplies article words or relations.
-
-## Method
-
-1. **Collect:** identify each relevant fragment — the eligible passages in the rescanned source maps and other eligible Human wording — the user's own synthesis first.
-2. **Construct:** COPY, INFLECT, or NORMALISE spans, then ORDER them.
-3. **Reduce:** DELETE only qualifying repetition.
-4. **Verify:** build the span map; test the target, one linear Human-supported argument path, every adjacency and cut, quotation integrity, every mechanical-change disclosure, and operative-metatheory fit.
-
-Fix an incomplete change record before showing the candidate. If traceability cannot be restored, stop and report a provenance failure, not a synthesis gap.
-
-## Gap gate
-
-A gap is blocking only when completing the established target would require missing substantive content, an unsupported semantic relation, or choosing between unresolved meaning-bearing alternatives. A meaning-neutral mechanical correction or style choice, or a record defect, is not a synthesis gap.
-
-Show:
-
-- **Target and consequence:** the paragraph, its boundary, and what cannot be completed;
-- **Established path:** each supported step and its full-name Human basis;
-- **Exact gap:** the missing substantive wording, premise, claim, definition, semantic connection, scope, qualification, modality, conclusion, or unresolved meaning-bearing choice;
-- **Coverage:** sources and locators already checked, including partial or inaccessible limits; and
-- **State:** **Synthesis stopped—no bridge supplied.**
-
-Keep the point unresolved for that turn: add no connector, infer no relation, show no completed candidate. In a later turn the user may request a [source review](source-review.md) or supply new Human wording under [collaborative questions](collaborative-questions.md); then suggest resuming white-box synthesis or the originating module and wait for user direction. Any new attempt restarts from the original Human bases. A post-rescan AI gap suggestion is a separate unsupported proposal, never completion of the stopped synthesis.
-
-## Visible record
-
-Before the candidate, show every raw input passage once:
-
-    | Input | Full source name or user's wording | Locator or user exchange in ordinary language | Raw Human passage, verbatim |
-    |---|---|---|---|
-
-Then the final span map — one row per maximal contiguous result span. Number the candidate's sentences within the paragraph (`section.paragraph.sentence`) and each fragment within its sentence (`section.paragraph.sentence.fragment`), so every span carries a global address:
-
-    | Result span, verbatim | Input | Human basis span, verbatim | COPY, INFLECT, and/or NORMALISE · readable result location · one exact original → final change, or unchanged |
-    |---|---|---|---|
-
-The span map plus **Ordering** and **Cuts** below is the user's change alert; add no duplicate summary. Then show:
-
-    - **Purpose:** the paragraph and its claim · chain position · boundary · starting point → intended result
-    - **Input keys:** each Input → full source name or user's wording · ordinary-language locator or user exchange · all Human · 100%
-    - **Ordering:** each mapped-span adjacency → original continuity or its stated Human basis
-    - **Cuts:** each removed span → retained repetition and its Human basis, or none
-    - **Argument path:** each step → its Human basis · unresolved jump or loop: none
-    - **Metatheory fit:** none | full framework name · readable bases · function and fit · reader-facing framework wording: none
-    - **Verification:** unmapped spans: 0 · outside-list changes: 0 · undisclosed permitted changes: 0 · unsupported adjacencies: 0 · unsupported cuts: 0 · unpermitted protected-text changes: 0 · missing substantive target decisions: 0
-
-    Exact final passage.
-
-    **Origin:** Mixed · **Human wording:** 100% · **Method:** white-box synthesis · **Based on:** full source names, ordinary-language locators, and the user's wording. Not selected for the article.
-
-In chat, use full source names and plain descriptions; show no filename, timestamp, code, item ID, internal use, or workflow term. Do not ship with an unfillable row or a nonzero verification count. The final white-box record is **Input keys**, the span map, **Ordering**, **Cuts**, **Argument path**, **Metatheory fit**, and **Verification**; the raw-input display and purpose summary are shown once and are not part of that record.
-
-## Terminal output
-
-The arrangement is assistant work, so the result remains terminal **Mixed** even at 100% Human wording and is never a later synthesis input. Disclosed NORMALISE forms remain Human wording; punctuation does not affect the word percentage. A correction or revision also restarts from original Human bases and produces a new terminal result.
-
-Selection creates a separate **Predraft raw material** copy naming the arc elements it covers — its paragraph (exact paragraph ID and readable title) and its sentences; it never relabels the chat candidate. Copy only the exact result, the final white-box record, and this canonical stamp:
-
-    **Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: final record's Input keys · Use: Predraft raw material
-
-Do not copy the raw-input display, chat stamp, purpose summary, or intermediate construction.
-
-Never return a fluent result without its complete span map. If no result can be returned, report the substantive gap, provenance failure, or verification failure under the rules above.
+Keep **Construction** to the changes and limits needed to understand the result. For unchanged user prose, write `unchanged user wording`.

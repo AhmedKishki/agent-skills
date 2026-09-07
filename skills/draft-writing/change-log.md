@@ -1,5 +1,46 @@
 # Changelog
 
+## 10.0.0
+
+- Require explicit user consent for substantive decisions and each synthesis result. Predraft presents one paragraph, waits for approval or comments, saves the approved result, then proceeds to the next paragraph.
+- Make white-box synthesis a standalone algorithm: supplied claim, sentence plan, human fragments and constraints produce a paragraph with Used and Construction, or a precise gap. Keep workflow and approval orchestration in the calling modules.
+- Shorten the active instructions and use concrete, affirmative procedures while preserving editable schemas, section.paragraph.sentence numbering, stable user/source codes and brief provenance.
+- Develop the final article from approved predraft material; route structural changes through the arc and changed paragraphs through synthesis and user approval.
+- Remove the predraft-report and full-export modules, the export script, and their active workflow references.
+
+## 9.2.0
+- Make section.paragraph.sentence numbering explicit in both arc and predraft. Keep paragraph prose clean and give each sentence one Used entry identifying its original user-n / source-coded fragments.
+- Keep the four-field construction record: Arc locates the paragraph, Used owns the sentence-to-fragment mapping, Construction explains meaningful changes and uses, and Selection records authority. Require finer span locators only where needed; add no fragment IDs or fourth numeric level.
+- Reconcile sentence boundaries and update Used labels with positional renumbering. Align review, audit, shared checks, and the report with the clarified construction trail.
+
+## 9.1.0
+- Rename user-inputs to user-wording, restoring the reusable-language function of user-synthesis. Allocate user-n only to human article wording; route meta direction, structure, and selection to their owners and discard purely procedural commands.
+- Record thesis direction directly without a numbered-input prerequisite, routine Basis header, or completed-task checklist. Keep exact selection authority in predraft's brief record rather than a numbered approval entry; create predraft only when prose is selected.
+- Give the article, each section, and each paragraph an explicit Arc line: section to section, paragraph to paragraph, and sentence to sentence. Use compact positional numbering 1 / 1.1 / 1.1.1 with short planning labels and no source codes or full prose in the arc.
+- Make each paragraph's single claim and its sentences' causal or explanatory argument concrete. Check the relationship at every arrow rather than treating sequence as support.
+- Select human fragments during synthesis, build the sentences, then compose one paragraph. Predraft alone owns actual source/user references, uses, spans when needed, interpretive limits, and selected heading placement; remove duplicate use mappings from arc and user-wording.
+- Synchronize arrow chains and detailed blocks, renumbering affected positions and dependent references together. Preserve the content and authority behind each record during moves.
+- Limit source maps to source identity and Code / Location / Excerpt entries without excerpt titles. Keep keyword/theme assignments only in the index and mapping coverage only in the tracker. Align consumers and the report with these separate responsibilities.
+
+## 9.0.0
+- Restore the required article → section → paragraph → sentence → fragment arc with stable IDs, exact source/user references, and contextual uses and limits.
+- Specify readable editable schemas for every output and reconcile direct user edits before regeneration. Preserve earlier human bases only while current records need them.
+- Number contributions as user-n, with persistent allocation checkpoints. Keep thesis-and-vision to the general picture, questions, and specifications; capture its article-relevant human prose in user inputs for synthesis.
+- Limit source maps to identity, access coverage, exact excerpts, codes, and locators. Move interpretive decisions to arc occurrences and keep the index focused on retrieval.
+- Replace exhaustive synthesis span records with actual inputs, named sources, meaningful construction, and exact selection authority. Retain the five human-wording operations and checks for unsupported connections.
+- Align predraft, readiness review, draft, audit, tracker, and export with the new structures. Keep source-heading handling explicit and small; preserve the existing export transport and validation.
+
+## 8.0.1
+- Remove the combine-sources module and its routing. Full export remains the handoff utility; legacy combined-source deliveries remain excluded from exports.
+
+## 8.0.0
+- Replace scattered question/provenance rules with a shared contract and user-inputs module: preserve exact contributions, pending parts, incorporation links, and standing permissions independently of approval.
+- Give modules one output responsibility; merge source review into mapping and remove the separate authorship reference. Simplify source maps, index, tracker, and document headers; remove authorship percentages, default source lists, draft changelogs, and forced AI-gap exceptions.
+- Rebuild the arc around stable section/paragraph IDs and optional sentence plans. Keep strict original-wording synthesis with five operations, concrete evidence freshness, semantic join checks, and one compact construction record.
+- Store exact predraft selections in two linked parts; assemble one chosen complete selection per paragraph. Keep review focused on findings, recheck affected work through authorized fixes, and run one final readiness check without repeated whole-file approval loops.
+- Use a stable draft filename. Treat combined sources and full export as requested deliveries outside the tracked working set; retain compatibility guidance for existing projects without converting them automatically.
+- Validate export resume fields, roles, table boundaries, delivery exclusions, and input aliases. Add verified replacement of a known prior delivery with failure preservation, plus exporter regression tests.
+
 ## 7.8.2
 - The project-memory module is removed: the skill no longer defines or references a `{project}-memory.md` record — memory is external tooling (Basic Memory where adopted), never a skill module.
 

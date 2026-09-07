@@ -1,56 +1,36 @@
-# Per-source maps
+# Source maps
 
-Keep one lineage per source. Assign and increment the tracker's monotonic **Next source code**: A–Z, then AA onward; never reuse. Retire an unneeded map only after its references and stale combined-sources file are handled and its removal is authorised under [file-output-standard.md](file-output-standard.md). Concurrent editions get separate codes; a replacement keeps the code only after all locators/dependents are revalidated.
+Record a source's exact excerpts and locations in `{project}-source-map-{code}-{author-short-title}.md`.
 
-Map one source at a time using that source, the approved thesis-and-vision (including its operative-metatheory commitments), and explicit user decisions. Never use another source, its map, or the index to decide what the current source contains, fill its context, assign its roles, or suppress an item as cross-source duplication. Establish cross-source relations only downstream after every source has its own mapping.
+## Procedure
 
-Name maps `{project}-source-map-{code}-{author-short-title}.md`; head with full author/title. Assign then increment **Next item**; never reuse/renumber. Base IDs are A1, A2, and so on; add **-MT** to the active code when Framework is Metatheory. Role changes alter the code's references, not the base. Corrections retain numbers; splits, merges, and replacements get new ones. Preserve legacy dual namespaces.
+1. Establish the source and reading scope with the user. Read the accessible original independently.
+2. Propose relevant excerpts, preserving their subject, scope, modality and qualifications. Ask the user to confirm the selection or direct further extraction.
+3. Save the accepted excerpts in source order. Update reading coverage and access limits in the source's tracker row.
+4. Refresh the index after the accepted map changes.
 
-Each passage has independent roles:
+Choose contiguous passages centred on one claim or topic. For omissions within one bounded passage, retain source order and mark the join with `[…]`. Give different occurrences separate entries. Preserve additional occurrences when they add context or qualification.
 
-- **Article:** Theory | Other article support | None | Unresolved
-- **Framework:** Metatheory | None | Unresolved
+## Output
 
-Theory supplies an article concept, mechanism, or argument; Other supplies evidence, context, example, qualification, limit, or contest; Metatheory supplies silent fit only. A user-designated metatheory source defaults to Framework: Metatheory and Article: None; select Article separately. **Unresolved** blocks use. The identified role—not suffixes—authorises use. After a role change, mark affected dependents invalid; if framework commitments may change, suggest revisiting [thesis and vision](thesis-and-vision.md) and wait.
+```markdown
+# Source A — Full author, full title
 
-Apply only the operative metatheory recorded in thesis-and-vision. Framework material silently tests fit; it never supplies article evidence, citations, contributions, vocabulary, wording, relations, or synthesis inputs. MT-qualified wording needs separate Article role, predraft selection, arc disposition, and global draft use.
+Original: [Original](original-file.pdf)
 
-Record one readable path row per main argument step, used or unused, with locator, item range, possible roles, relevance, and provenance. The path is retrieval guidance only; copy no passage.
+| Code | Location | Excerpt |
+|---|---|---|
+| A1 | Page 8, paragraph 2 | Reviewers check flagged results every day. |
+```
 
-Each excerpt is an exact Human quotation centred on one relevant claim/topic. Retain only enough context to identify the subject and preserve meaning, relation, scope, modality, and qualification; omit unrelated setup, examples, and adjacent claims. One item may join same-topic fragments from one contiguous paragraph or bounded consecutive page/section range, in source order, with **[…]** only between retained words. Different locators or an intervening topic require separate items. Preserve source-authored ellipses; add no leading/trailing **[…]** merely for a mid-unit boundary. The excerpt and location define the quotation.
+Use exactly the identity heading, Original reference and Code / Location / Excerpt table. Every excerpt is attributed by the source heading. Put keyword/theme labels in the index and actual article uses in predraft.
 
-Legacy reformulations retain their established provenance/use but are not active excerpts; **combine sources** copies them only as part of the complete map. Coverage records scan extent, not excerpt completeness. Record source identity, selection basis, coverage, source-wide qualifications once, and item qualifications locally. Exclude summaries, unrelated material, thesis changes, cross-source comparison, and placement.
+Preserve supplied original filenames; use lowercase codes in map filenames. Identify the edition in Original when needed. Use source-native pages, sections or paragraph positions. Represent literal pipes as `\|` and excerpt line breaks as `<br>`; decoding these recovers the quotation's text.
 
-Keep every identity, qualification, main-step cell, quotation, and location readable without project codes; locations may retain source-native numbering or identifiers.
+## IDs and corrections
 
-    # Source map A — Full author, full title
+Allocate source codes A–Z, then AA onward. Allocate excerpt IDs A1, A2 and onward from `next item A2` in the map's tracker row. Retain retired allocation limits and existing IDs.
 
-    - **Project:** Project name
-    - **Status:** Working | Approved
-    - **Next item:** A1
-    - **Source:** Original filename or citation
-    - **Selection basis:** Exact active thesis-and-vision filename; operative metatheory location when defined
-    - **Coverage:** Complete | Partial, exact limit
-    - **Source role default:** Passage-specific | User-designated full Metatheory · **Decision provenance:** compact passage stamp
-    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
-    - **Process prose:** AI
+A verified transcription or locator correction retains its ID. Different material, splits or merges receive new IDs. Check user-edited excerpts against the original and resolve changed meaning with the user. Preserve originals still needed by current records.
 
-    ## Additional source qualifications
-
-    Source-wide edition, access caveat, scope, limit, counterclaim, or caution, each with provenance.
-
-    ## Source argument path
-    | Main source argument step | Locator / item range | Article role · Framework role | Current or possible relevance | Authority/provenance |
-    |---|---|---|---|---|
-
-    ## Selected items
-
-    | Code | Excerpt | Location | Qualification |
-    |---|---|---|---|
-    | A1 | Exact source fragment centred on one claim; mark editorial omissions with […]. | locator | Article: role · Framework: role · item-specific qualification, limit, or counterclaim; omit the caveat when none |
-
-Identity, status, next item, source, selection basis, coverage, role (article and framework, recorded in Qualification), code, excerpt, and location are mandatory. Stamp any legacy non-quotation item locally. Omit empty qualifications. Within one source, add an excerpt only when it contributes a distinct claim, relation, scope, modality, qualification, role, function, or materially useful occurrence. A newly discovered qualification at the same locator that governs an existing excerpt corrects that item and retains its number; a qualification established at a different locator gets a new minimal item without repeating more of the claim than meaning requires. Otherwise record a useful repeated locator in the source path or coverage without duplicating the item. Across sources, overlapping support remains independently mapped because its source provenance is distinct.
-
-Record **No relevant material retained** with local provenance and coverage basis when applicable. Rescans update the path and append only net-new items in discovery order. After a direction change or item split/merge/replacement, follow the [removal-impact protocol](file-output-standard.md) before omitting superseded items; preserve **Next item** and never reuse numbers. Never replace an item in place or save an unchanged map. Every active item addition, removal, split, merge, replacement, content change, code change, or active-label change automatically triggers an immediate [index](index.md) refresh before the next question, action, synthesis, or delivery.
-
-After one full-name key, internal files use codes such as A, A1, and A2-MT. Chat, article prose, and citations use full names and readable descriptions, never codes. [Combined sources](combine-sources.md) preserves each complete map, including its codes and full-name key, unchanged.
+Reopen source context when the intended claim changes, a quotation lacks context, the original changes, or the user requests a rescan. Record actual checked coverage even when access is partial.

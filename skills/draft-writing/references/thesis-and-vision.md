@@ -1,37 +1,32 @@
 # Thesis and vision
 
-Maintain one active `{project}-thesis-and-vision.md` as the contradiction-free article authority. Establish and approve it before source mapping.
+Record the user's article direction in `{project}-thesis-and-vision.md`.
 
-Record only thesis-raised main questions. During [arc design](article-arc.md), sources may reveal a thesis-required question but never expand scope. The user approves every exact question.
+1. Read supplied commitments and current direction.
+2. Capture general picture, questions and specifications below. Route reusable article prose to user wording.
+3. Ask about missing or conflicting direction. Present any proposed interpretation for explicit approval.
+4. Save accepted changes and identify the affected arc decisions for the user's review.
 
-Keep the thesis, main questions, and durable aim, direction, structural principles, scope, exclusions, audience, form, length, language, voice, attribution, citation, fact-checking, and analytical requirements. Put article architecture only in the arc. Omit absent categories, discussion, Q&A prompts, article passages, and approval exchanges.
+## Output
 
-Metatheory is optional and becomes operative only after this file states its exact framework, fit tests, prohibited uses, and bases and the user approves that section. Ask for missing commitments. Only the user revises the thesis or metatheory. Show and resolve any conflict before saving; keep no Q&A trace.
+```markdown
+# Thesis and vision
 
-    # Thesis and vision
+Status: Working
 
-    [Lean process header]
+## General picture
 
-    **Content authorship:** Human · Human wording: 100%
-    **Human bases:** Operative thesis — exact exchange; Main questions — exact exchange; Article vision — exact exchange(s); Operative metatheory — exact exchange and source items; Durable requirements — exact exchange(s)
+<What the user wants to argue and achieve.>
 
-    List only present headings in **Human bases**.
+## Main questions
 
-    ## Operative thesis
-    Exact wording.
+<Questions the article must answer.>
 
-    ## Main questions
-    The main questions the article attempts to resolve—only those raised by the thesis.
+## Specifications
 
-    ## Article vision
-    Only active purpose and argument-direction guidance.
+<Supplied scope, audience, length, form, language, voice and citation requirements.>
+```
 
-    ## Operative metatheory — optional
-    Framework, internal unifying language, approved functional fit tests, prohibited uses, and basis/provenance, including exact MT-qualified source items when available. Omit when undefined.
+Use `Open:` beneath the relevant heading for a specific unresolved question. Write “No additional specifications supplied” when applicable.
 
-    ## Durable requirements
-    Only active scope, form, voice, authority, and citation constraints.
-
-The default covers exact user wording; stamp every retained AI/Mixed exception locally with its basis and use. User adoption never changes AI origin. Obtain approval of the complete file before using it as the selection basis for source maps.
-
-After a change, apply the [unaffected-work test](file-output-standard.md), mark affected maps/arc/predraft/report/draft invalid, and record them in the tracker. Name the affected modules; do not run another unless the request includes that outcome. A later source-mapping request may refresh selection-basis metadata in an otherwise unaffected map without rewriting substantive content. Keep invalid work available for reconciliation until useful material is transferred or exact removal is authorised. Ask on uncertain relevance or fit; create no impact file.
+An optional final `## Metatheory` holds the user's accepted framework, its interpretation constraints and relevant source references. Link a `user-n` entry where its wording clarifies the direction. Keep paragraph architecture in the arc and actual source uses in predraft.

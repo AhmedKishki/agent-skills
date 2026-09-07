@@ -1,53 +1,35 @@
-# Global collaborative drafting
+# Drafting
 
-Drafting is whole-article refinement, not unchanged passage assembly. Begin only when the current thesis-and-vision, article arc, complete predraft, and predraft report are mutually consistent and **Approved**, every active source role is resolved, and the index is current. The report must state **Ready for global drafting—0 open findings**.
+Create the final article from the approved predraft as raw material, guided by the accepted thesis and arc.
 
-Use the predraft as raw material and the arc as the structure. Form one continuous article by:
+## Procedure
 
-1. following the approved section chain and each section's paragraph chain, section purposes, and points of emphasis;
-2. accounting for every span of every selected passage by either representing it in the article or applying an exact approved report cut or consolidation;
-3. combining paragraph material at its approved home;
-4. consolidating semantic repetition, repeated lists, and competing conclusions only through exact approved report treatments; and
-5. retaining qualifications, modality, attribution, citation scope, and distinct intentional repetition.
+1. Read current files and preserve direct user edits. Ask the user to resolve open choices about final scope, length, headings or citation style.
+2. Check that each paragraph in the intended article scope has approved wording and recoverable construction bases.
+3. Review the raw material for the agreed length, repetition, transitions and whole-article argument. Present any proposed cuts, combinations, reordering or wording changes for explicit consent.
+4. Apply accepted structural changes in the arc. Develop changed paragraphs through the predraft's synthesis-and-approval loop, resolving their original human fragments.
+5. Assemble selected paragraphs and reader-facing headings in the accepted order. Add citation metadata in the agreed style, using the predraft's actual source uses.
+6. Check the complete article's argument, paragraph handoffs, wording, qualifications, citations and length. Present it and ask for final approval or comments.
 
-An approved treatment authorises only its exact adjacency, combination, cut, or consolidation inside its arc-assigned destination. It does not authorise article sequence, placement, emphasis, a new word or relation, a changed claim, or a stronger conclusion. Add no unreferenced predraft alternative, chat wording, or hidden bridge. If continuous prose needs new wording, if two spans cannot combine without an unsupported relation, or if production reveals an unreported problem, stop without saving a partial draft. Name the affected canonical owner, suggest returning to predraft review, and wait. Wording and raw-material fixes belong in [predraft](predraft.md); structure and sequence fixes belong in the [article arc](article-arc.md); any changed dependency requires a new [predraft report](predraft-report.md) before drafting becomes available again. On an arc revision, stop drafting and follow the [revision rule](article-arc.md).
+A requested new transition needs human wording and paragraph approval through the same loop. The user's article language supplies its original wording entry; predraft owns its approved construction.
 
-During production, recheck the report categories across the whole article: gaps, repetition, premature conclusions, announcements, repeated lists, unstable propositions, awkward noun–verb pairings, jargon, and global sequence and emphasis. Apply no automatic cleanup to an approved predraft passage. Human-preserving or white-box changes must already exist in an explicitly approved dependency; draft production merely executes them.
+## Output
 
-Use a selected post-rescan AI gap passage only with its matching approved report exception. Keep its unsupported status, search limits, function, and citation effect visible in the appendix; never present it as source-supported synthesis or cite a checked source for it.
+Save `{project}-draft.md` with reader-facing prose first. Append:
 
-Verify operative-metatheory fit silently. Follow the citation contract and preserve source meaning, whether quoted or not. Check each source-derived claim against its source-map item and locator; cite the narrowest supported clause. Reader-facing prose and citations use full names or the chosen style, never codes. Never cite a source for a user or Mixed claim it does not establish, or fact-check user claims without authority.
+```markdown
+---
 
-Use `{project}-draft-vN.md`. Put uninterrupted reader-facing prose first, then:
+# Process appendix — outside the article
 
-    # Process appendix — not part of the article
+Status: Working
+Basis: [Direction](demo-thesis-and-vision.md); [Arc](demo-article-arc.md); [Predraft](demo-predraft.md)
 
-    - **Draft/status:** Draft vN · Awaiting approval | Approved | Complete
-    - **Depends on:** Exact active thesis-and-vision, article arc, predraft, and approved predraft report
-    - **Collaboration:** Infer the module from a clear request; ask on ambiguity; never infer substantive content or authority
-    - **Process prose:** AI
+| Draft location | Predraft selection |
+|---|---|
+| Section 1, paragraph 1 | [1.1](demo-predraft.md#11--record) |
+```
 
-    ## Bidirectional passage provenance
-    | Paragraph and predraft raw-material passage/span | Draft location or approved cut/consolidation | Production operation | Approved report treatment | Origin · Human percentage · citation effect |
-    |---|---|---|---|---|
+Include each paragraph and selected heading. Link to the existing construction records; group consecutive locations when unambiguous. Keep explanatory footnotes within the approved human wording process; bibliography and citation formatting are mechanical.
 
-    ## Draft metrics
-    | Total words | Human words | AI words | Human percentage | AI percentage |
-    |---|---|---|---|---|
-
-Cover every reader-facing word and every span of each selected passage, without repeating article wording in the appendix. Split a passage when represented and cut portions differ; a cut row names its exact approved report treatment. A draft span must resolve to exact predraft raw material and an approved operation, and no raw-material span may disappear without that reverse record. Group consecutive locations only when operation, bases, authority, and citation effect are identical. Assistant ordering or cutting makes Human input Mixed; input that was already AI remains AI. Approval never changes origin.
-
-The draft is a candidate until the user explicitly approves it. A requested change marks its canonical owner and report invalid; name the required modules and wait unless the request includes those outcomes. Never patch substantive draft prose directly or newly normalise approved wording during production. Correct only a mechanical execution error that departs from approved dependencies, then record it in the changelog.
-
-## Changelog (v2 onward)
-
-Draft v1 has none. For v2 onward create `{project}-draft-vN-changelog.md` for current deltas only.
-
-    # Draft vN changelog
-
-    [Lean process header; depends on the current draft]
-
-    | Exact article location | New change information | Canonical owner and exact authority | Provenance effect | Citation effect |
-    |---|---|---|---|---|
-
-Classify each delta as corrected execution, approved global combination/consolidation, authorised deletion or movement, user wording, source use, white-box synthesis (Mixed), or post-rescan AI gap wording. Reference its predraft basis, arc location, and approved report treatment; copy no prose or claim. Keep only the current draft's changelog; retire prior draft/changelog pairs only within disclosed and authorised removal impact.
+Mark the exact article Approved when the user accepts it, and Complete when the user declares it finished. Route later comments to their owners and re-present changed paragraphs before updating the final article.
