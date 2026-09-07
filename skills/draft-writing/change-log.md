@@ -1,29 +1,45 @@
 # Changelog
 
+## 10.1.2
+
+- Keep article-arc concerned with structure; predraft selects relevant sources and user wording for each argument and records their use.
+- Make user-directed arc revision explicit within the predraft loop. Require approval of structural changes and resulting prose separately; move renumbering and reference maintenance into the shared editing rules.
+
+## 10.1.1
+
+- Standardise argument terminology across modules, examples and historical changelog descriptions.
+- Key Used by argument ID and original fragment codes. Resolve ambiguous prose and source spans with exact text boundaries, paragraph positions or stored line positions.
+
+## 10.1.0
+
+- Simplify the arc to H2 sections, H3 paragraph claims and plain numbered arguments, with one top-level section progression. Section labels state claims or governing questions; final article headings are selected separately.
+- Make dependence hierarchical: arguments establish paragraph claims, and paragraphs establish section claims or answer their questions. Keep explanations in prose and pending questions in the conversation/tracker.
+- Use section.paragraph.argument numbering throughout active instructions. Synthesis develops arguments from human fragments; predraft records their prose spans and original codes while retaining paragraph-by-paragraph user approval.
+
 ## 10.0.0
 
 - Require explicit user consent for substantive decisions and each synthesis result. Predraft presents one paragraph, waits for approval or comments, saves the approved result, then proceeds to the next paragraph.
-- Make white-box synthesis a standalone algorithm: supplied claim, sentence plan, human fragments and constraints produce a paragraph with Used and Construction, or a precise gap. Keep workflow and approval orchestration in the calling modules.
-- Shorten the active instructions and use concrete, affirmative procedures while preserving editable schemas, section.paragraph.sentence numbering, stable user/source codes and brief provenance.
+- Make white-box synthesis a standalone algorithm: supplied claim, argument plan, human fragments and constraints produce a paragraph with Used and Construction, or a precise gap. Keep workflow and approval orchestration in the calling modules.
+- Shorten the active instructions and use concrete, affirmative procedures while preserving editable schemas, section.paragraph.argument numbering, stable user/source codes and brief provenance.
 - Develop the final article from approved predraft material; route structural changes through the arc and changed paragraphs through synthesis and user approval.
 - Remove the predraft-report and full-export modules, the export script, and their active workflow references.
 
 ## 9.2.0
-- Make section.paragraph.sentence numbering explicit in both arc and predraft. Keep paragraph prose clean and give each sentence one Used entry identifying its original user-n / source-coded fragments.
-- Keep the four-field construction record: Arc locates the paragraph, Used owns the sentence-to-fragment mapping, Construction explains meaningful changes and uses, and Selection records authority. Require finer span locators only where needed; add no fragment IDs or fourth numeric level.
-- Reconcile sentence boundaries and update Used labels with positional renumbering. Align review, audit, shared checks, and the report with the clarified construction trail.
+- Make section.paragraph.argument numbering explicit in both arc and predraft. Keep paragraph prose clean and give each argument one Used entry identifying its original user-n / source-coded fragments.
+- Keep the four-field construction record: Arc locates the paragraph, Used owns the argument-to-fragment mapping, Construction explains meaningful changes and uses, and Selection records authority. Require finer span locators only where needed; add no fragment IDs or fourth numeric level.
+- Reconcile argument boundaries and update Used labels with positional renumbering. Align review, audit, shared checks, and the report with the clarified construction trail.
 
 ## 9.1.0
 - Rename user-inputs to user-wording, restoring the reusable-language function of user-synthesis. Allocate user-n only to human article wording; route meta direction, structure, and selection to their owners and discard purely procedural commands.
 - Record thesis direction directly without a numbered-input prerequisite, routine Basis header, or completed-task checklist. Keep exact selection authority in predraft's brief record rather than a numbered approval entry; create predraft only when prose is selected.
-- Give the article, each section, and each paragraph an explicit Arc line: section to section, paragraph to paragraph, and sentence to sentence. Use compact positional numbering 1 / 1.1 / 1.1.1 with short planning labels and no source codes or full prose in the arc.
-- Make each paragraph's single claim and its sentences' causal or explanatory argument concrete. Check the relationship at every arrow rather than treating sequence as support.
-- Select human fragments during synthesis, build the sentences, then compose one paragraph. Predraft alone owns actual source/user references, uses, spans when needed, interpretive limits, and selected heading placement; remove duplicate use mappings from arc and user-wording.
+- Give the article, each section, and each paragraph an explicit Arc line: section to section, paragraph to paragraph, and argument to argument. Use compact positional numbering 1 / 1.1 / 1.1.1 with short planning labels and no source codes or full prose in the arc.
+- Make each paragraph's single claim and its arguments' causal or explanatory argument concrete. Check the relationship at every arrow rather than treating sequence as support.
+- Select human fragments during synthesis, build the arguments, then compose one paragraph. Predraft alone owns actual source/user references, uses, spans when needed, interpretive limits, and selected heading placement; remove duplicate use mappings from arc and user-wording.
 - Synchronize arrow chains and detailed blocks, renumbering affected positions and dependent references together. Preserve the content and authority behind each record during moves.
 - Limit source maps to source identity and Code / Location / Excerpt entries without excerpt titles. Keep keyword/theme assignments only in the index and mapping coverage only in the tracker. Align consumers and the report with these separate responsibilities.
 
 ## 9.0.0
-- Restore the required article → section → paragraph → sentence → fragment arc with stable IDs, exact source/user references, and contextual uses and limits.
+- Restore the required article → section → paragraph → argument → fragment arc with stable IDs, exact source/user references, and contextual uses and limits.
 - Specify readable editable schemas for every output and reconcile direct user edits before regeneration. Preserve earlier human bases only while current records need them.
 - Number contributions as user-n, with persistent allocation checkpoints. Keep thesis-and-vision to the general picture, questions, and specifications; capture its article-relevant human prose in user inputs for synthesis.
 - Limit source maps to identity, access coverage, exact excerpts, codes, and locators. Move interpretive decisions to arc occurrences and keep the index focused on retrieval.
@@ -36,7 +52,7 @@
 ## 8.0.0
 - Replace scattered question/provenance rules with a shared contract and user-inputs module: preserve exact contributions, pending parts, incorporation links, and standing permissions independently of approval.
 - Give modules one output responsibility; merge source review into mapping and remove the separate authorship reference. Simplify source maps, index, tracker, and document headers; remove authorship percentages, default source lists, draft changelogs, and forced AI-gap exceptions.
-- Rebuild the arc around stable section/paragraph IDs and optional sentence plans. Keep strict original-wording synthesis with five operations, concrete evidence freshness, semantic join checks, and one compact construction record.
+- Rebuild the arc around stable section/paragraph IDs and optional argument plans. Keep strict original-wording synthesis with five operations, concrete evidence freshness, semantic join checks, and one compact construction record.
 - Store exact predraft selections in two linked parts; assemble one chosen complete selection per paragraph. Keep review focused on findings, recheck affected work through authorized fixes, and run one final readiness check without repeated whole-file approval loops.
 - Use a stable draft filename. Treat combined sources and full export as requested deliveries outside the tracked working set; retain compatibility guidance for existing projects without converting them automatically.
 - Validate export resume fields, roles, table boundaries, delivery exclusions, and input aliases. Add verified replacement of a known prior delivery with failure preservation, plus exporter regression tests.
@@ -49,12 +65,12 @@
 
 ## 7.8.0
 - The memory module becomes the project's context-preservation record: `{project}-memory.md` stores everything a different AI, in a new chat, needs to resume the project seamlessly — what the project is, where things stand, the plan, what is expected, and where everything lives — brought current at every session end. Decisions, Questions and Rejected keep their forms.
-- The article arc's file shape moves to heading-level structure for readability: sections are H2 headings, paragraph claims are H3 headings, and sentences are plain numbered lines; the in-section paragraph-chain line is dropped and the trailing arrows are removed — the document order carries reading order.
+- The article arc's file shape moves to heading-level structure for readability: sections are H2 headings, paragraph claims are H3 headings, and arguments are plain numbered lines; the in-section paragraph-chain line is dropped and the trailing arrows are removed — the document order carries reading order.
 
 ## 7.7.0
-- The arc's vocabulary is fixed as article → section → paragraph → sentence → fragment: the article's claim is the thesis; each section supports the thesis; each paragraph makes one claim and is the target of one white-box run; sentences are the constitutive elements of paragraphs; fragments — exact source-map excerpts and user wording — are the smallest unit, synthesised into sentences, and sentences into paragraphs. Numbering nests per level: section, section.paragraph, section.paragraph.sentence, section.paragraph.sentence.fragment.
-- The arc is a sketch, built from a general overview of the source maps and user wording: sentences carry no source-item citations (provenance lives in the predraft records and the source index), and the arc does not fix which fragment supports which claim. It is a dynamic document — revision at any stage, including mid-drafting, is expected; a revision marks affected dependents invalid and waits for user direction.
-- Predrafting repeats paragraph synthesis — find and choose fragments, synthesise them into sentences and the paragraph — until the predraft is fully formed. The predraft remains a raw-material pool: not arc-keyed, and not all selected material need be used; each passage names the arc elements it covers.
+- The arc's vocabulary is fixed as article → section → paragraph → argument → fragment: the article's claim is the thesis; each section supports the thesis; each paragraph makes one claim and is the target of one white-box run; arguments are the constitutive elements of paragraphs; fragments — exact source-map excerpts and user wording — are the smallest unit, synthesised into arguments, and arguments into paragraphs. Numbering nests per level: section, section.paragraph, section.paragraph.argument, section.paragraph.argument.fragment.
+- The arc is a sketch, built from a general overview of the source maps and user wording: arguments carry no source-item citations (provenance lives in the predraft records and the source index), and the arc does not fix which fragment supports which claim. It is a dynamic document — revision at any stage, including mid-drafting, is expected; a revision marks affected dependents invalid and waits for user direction.
+- Predrafting repeats paragraph synthesis — find and choose fragments, synthesise them into arguments and the paragraph — until the predraft is fully formed. The predraft remains a raw-material pool: not arc-keyed, and not all selected material need be used; each passage names the arc elements it covers.
 
 ## 7.6.2
 - The predraft file becomes two parts: Part 1 holds the selected passages as clean prose under their headings; Part 2 holds each passage's production record (Basis/Use stamp and, for white-box passages, the final record) under the same heading. A readability and footprint change only; no rule changes.

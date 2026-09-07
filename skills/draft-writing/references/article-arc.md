@@ -1,15 +1,17 @@
 # Article arc
 
-Build the user's editable argument map in `{project}-article-arc.md`.
+Build the structural map in `{project}-article-arc.md`: sections contain paragraph claims; paragraphs contain supporting arguments.
+
+Each section's claim depends on its paragraph claims; each paragraph's claim depends on its arguments. A section may be named by the governing question its paragraphs answer. Use concise claims for paragraph and argument names. Section labels guide composition; final article headings are selected separately.
 
 ## Collaboration
 
-1. Read accepted thesis and structural decisions.
-2. Propose the next unresolved level: section progression, paragraph claims, or sentence arguments. Show each arrow's intended causal or explanatory relationship.
-3. Ask for approval or comments on the exact proposal. Apply accepted changes.
-4. Ask a focused question for any missing claim or relationship; keep it as `Open:` at that location.
+1. Read the accepted thesis and the user's current structure.
+2. Propose section, paragraph and argument claims. Check what each child contributes to establishing its parent's claim or answering its question.
+3. Ask for approval or comments; save accepted changes.
+4. Resolve structural gaps with the user in conversation. Keep the pending decision in the tracker.
 
-Each paragraph makes one claim. Its sentence chain provides the argument for that claim. Use short planning propositions throughout; actual article prose and fragment-use codes belong in predraft.
+The prose supplies explanations, evidence and connections. [Predraft](predraft.md) selects and records the relevant sources and user wording for each argument.
 
 ## Output
 
@@ -18,44 +20,26 @@ Each paragraph makes one claim. Its sentence chain provides the argument for tha
 
 Status: Working
 Thesis: [General picture](demo-thesis-and-vision.md#general-picture)
-Arc: 1 — Recurring work → 2 — Conditions of that work
 
-## 1 — Recurring work
+Arc: 1 → 2
 
-Question: What sustains the apparent automation?
-Arc: 1.1 — Review sustains service
+## 1 — Why does apparent automation depend on human work?
 
-### 1.1 — Review sustains service
+### 1.1 — Human review sustains the service
 
-Function: Establish the continuing work before examining its conditions.
-Arc: 1.1.1 — Daily checking → 1.1.2 — Service continuity
-Connection: 1.1.1 → 1.1.2 — recurring checks explain continued operation.
+1.1.1 — Flagged results require human checks
 
-#### 1.1.1 — Daily checking
+1.1.2 — Recurring checks enable continued operation
 
-#### 1.1.2 — Service continuity
+## 2 — Recurring review requires staffing
 
-## 2 — Conditions of that work
+### 2.1 — Schedules must provide review time
 
-Question: Under what conditions is that work performed?
-Arc: Open
-Open: What claim should this section establish?
+2.1.1 — Daily checks require working time
+
+2.1.2 — Staffing must make that time available
 ```
 
-Keep this field order: article Status / Thesis / Arc; section Question / Arc; paragraph Function / Arc; sentence heading. Optional `Connection:` explains an unclear arrow, `Boundary:` explains a necessary paragraph boundary, and `Open:` asks a concrete question. Put optional fields after required fields, before children.
+Use exactly this structure: Status, Thesis and one article Arc line, then H2 sections, H3 paragraphs and plain argument lines separated by blank lines. The Arc line lists section numbers once in reading order. Nesting records the dependence of parent claims on their children.
 
-## Numbering and arrows
-
-- Sections: `1`, `2`; paragraphs: `1.1`, `1.2`; sentences: `1.1.1`, `1.1.2`.
-- Number each level from 1 in reading order.
-- Each Arc line repeats its direct children's exact numbers and short labels, once each, joined by ` → `.
-- A single child stands alone. An unresolved chain uses `Arc: Open` and its question.
-- Keep fragment identities in predraft's Used lists.
-
-Check that each arrow expresses the accepted relationship and each chain matches its child blocks.
-
-## Edits
-
-After an accepted move, split or insertion, map old content to new positions and update affected arc chains, predraft headings, sentence references and draft links together. Carry wording and selection authority with their content. Ask about ambiguous correspondence.
-
-Synchronise a clear direct user edit between chain and child blocks. Markdown anchors remove dots: `1.1 — Record` links as `#11--record`.
+Number sections `1`, paragraphs `1.1` and arguments `1.1.1`, restarting each local sequence at 1. Keep source/user fragment codes in predraft's Used lists.

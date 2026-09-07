@@ -26,7 +26,7 @@ Read the [shared file contract](references/file-output-standard.md) and the rele
 | Extract a source | [Source maps](references/source-maps.md) |
 | Organise retrieval labels | [Source index](references/index.md) |
 | Design the argument | [Article arc](references/article-arc.md) |
-| Construct one paragraph | [White-box synthesis](references/white-box-synthesis.md): standalone algorithm |
+| Synthesise arguments into paragraph prose | [White-box synthesis](references/white-box-synthesis.md): standalone algorithm |
 | Develop raw material paragraph by paragraph | [Predraft](references/predraft.md): synthesis and approval loop |
 | Create the final article | [Drafting](references/drafting.md) |
 | Check fidelity when requested | [Fidelity audit](references/fidelity-audit.md) |

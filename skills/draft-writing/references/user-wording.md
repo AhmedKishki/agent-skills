@@ -1,6 +1,6 @@
 # User wording
 
-Preserve reusable human article language in `{project}-user-wording.md`: passages, definitions, sentences, titles and meaningful fragments supplied in conversation or identified direct edits.
+Preserve reusable human article language in `{project}-user-wording.md`: passages, definitions, arguments, titles and meaningful fragments supplied in conversation or identified direct edits.
 
 ## Capture
 

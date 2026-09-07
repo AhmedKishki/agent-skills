@@ -8,7 +8,7 @@ Create the final article from the approved predraft as raw material, guided by t
 2. Check that each paragraph in the intended article scope has approved wording and recoverable construction bases.
 3. Review the raw material for the agreed length, repetition, transitions and whole-article argument. Present any proposed cuts, combinations, reordering or wording changes for explicit consent.
 4. Apply accepted structural changes in the arc. Develop changed paragraphs through the predraft's synthesis-and-approval loop, resolving their original human fragments.
-5. Assemble selected paragraphs and reader-facing headings in the accepted order. Add citation metadata in the agreed style, using the predraft's actual source uses.
+5. Assemble selected paragraphs and reader-facing headings in the accepted order. Use separately selected headings for the article; arc section labels identify structural claims or governing questions. Add citation metadata in the agreed style, using the predraft's actual source uses.
 6. Check the complete article's argument, paragraph handoffs, wording, qualifications, citations and length. Present it and ask for final approval or comments.
 
 A requested new transition needs human wording and paragraph approval through the same loop. The user's article language supplies its original wording entry; predraft owns its approved construction.

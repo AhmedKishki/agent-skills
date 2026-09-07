@@ -4,7 +4,7 @@ Check the requested article scope against thesis, arc, selected predraft, origin
 
 1. State the checked scope and available originals.
 2. Compare selected prose with its construction records and exact human bases.
-3. Check sentence-to-fragment mappings, source meaning and qualifications, citation scope, and the causal or explanatory relationships in the arc.
+3. Check each argument's prose coverage and original fragments, source meaning and qualifications, and citation scope. Verify that arguments establish paragraph claims and paragraphs establish section claims or answer their governing questions.
 4. Check that current user edits, numbering and selection authority correspond to the intended content.
 5. Present each issue with its location, consequence and proposed owner correction. Ask for consent before a substantive fix.
 
