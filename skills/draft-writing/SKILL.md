@@ -28,7 +28,7 @@ Read the [file standard](references/file-output-standard.md), [ownership rules](
 | Establish direction | User commitments | [Thesis and vision](references/thesis-and-vision.md) | Approved governing direction |
 | Preserve human language | User-authored article language | [User wording](references/user-wording.md) | Stable exact originals |
 | Extract a source | Accessible source original and agreed scope | [Source maps](references/source-maps.md) | Approved coded excerpts |
-| Design the argument | Approved direction | [Article arc](references/article-arc.md) | Approved sections, passages, arguments, comments and broad fragment inventories |
+| Design the argument | Approved direction | [Article arc](references/article-arc.md) | Approved sections, passages, arguments, qualifications and broad fragment inventories |
 | Construct one candidate | Approved passage plan and limited approved input set | [White-box synthesis](references/white-box-synthesis.md) | Candidate with record, or typed gap |
 | Develop raw material | Approved arc | [Predraft](references/predraft.md) | Approved raw passages with inline provenance |
 | Create the article | Complete approved predraft | [Drafting](references/drafting.md) | Connected reader-facing draft |

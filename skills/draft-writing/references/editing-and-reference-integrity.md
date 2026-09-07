@@ -15,11 +15,11 @@ The exact approved change and every file directly or transitively affected by it
 3. Route newly identified content through [ownership and routing](ownership-and-routing.md).
 4. After an approved move, insertion, removal, split or merge, update positional passage and argument numbers and every dependent reference in the same change.
 5. Preserve stable source and user IDs. Retire an allocated ID instead of reusing it.
-6. Identify every approved downstream passage affected by a changed thesis constraint, arc claim, argument, governing comment, source basis or user original; mark each one `Invalidated`.
+6. Identify every approved downstream passage affected by a changed thesis constraint, arc claim, argument, governing qualification, source basis or user original; mark each one `Invalidated`.
 7. Validate exact wording, source context, argument coverage, basis codes, claim dependencies, numbering, links and states.
 8. Update the tracker with the completed edit and exact next action.
 
-Changing a broad arc inventory alone does not select an input, trigger synthesis or invalidate prose. Adding or reordering an unused candidate fragment has no effect on approved prose. Removing an actual approved basis, changing its original, or changing a comment that governs approved prose requires impact review and invalidation of every affected passage. Do not invalidate a passage for a comment change that leaves its governing directions, limitations, boundaries and specifications unchanged.
+Changing a broad arc inventory alone does not select an input, trigger synthesis or invalidate prose. Adding or reordering an unused candidate fragment has no effect on approved prose. Removing an actual approved basis, changing its original, or changing a qualification that governs approved prose requires impact review and invalidation of every affected passage. Do not invalidate a passage for a qualification change that leaves its governing directions, limitations, boundaries and specifications unchanged.
 
 During an authorized migration, preserve stable IDs and originals required by current provenance, follow the user's retention scope, and apply the current schemas only within the approved migration scope.
 

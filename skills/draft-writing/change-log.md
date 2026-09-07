@@ -2,6 +2,10 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 10.4.1
+
+- Replace the `> comments:` header with an unlabeled `>` qualification under a section, passage or argument; its content may be a question, comment, direction, limit, boundary, specification or other qualification.
+
 ## 10.4.0
 
 - Add optional `> comments:` blocks beneath article-arc sections, passages and arguments for their directions, limitations, boundaries, specifications and qualifications.

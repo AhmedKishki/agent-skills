@@ -12,7 +12,7 @@ Predrafting must process every passage included in the approved article arc. The
 
 ## Procedure
 
-1. **Open.** Read the governing section, passage ID and claim, ordered arguments, their broad fragment inventories, applicable arc comments, thesis constraints, tracker and any existing selection. Set the passage to `Unstarted` or retain `Invalidated`.
+1. **Open.** Read the governing section, passage ID and claim, ordered arguments, their broad fragment inventories, applicable arc qualifications, thesis constraints, tracker and any existing selection. Set the passage to `Unstarted` or retain `Invalidated`.
 2. **Propose inputs.** Begin with each argument's arc inventory and propose only a limited synthesis set for the passage. For every proposed `user-n` or source code, present its exact span, location, context, intended use, support and limits. Keep unselected inventory fragments available for later proposals; inventory membership is not input approval.
 3. **Obtain input approval.** Ask: **“Do you approve this input set for passage {ID}, or what should change?”** Set `Inputs awaiting approval` and wait. Do not run synthesis before approval.
 4. **Synthesize.** Run [white-box synthesis](white-box-synthesis.md) for this passage only. For a typed gap, set `Blocked by gap`, present its focused question and wait; route the answer before retrying.

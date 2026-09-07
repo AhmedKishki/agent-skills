@@ -11,7 +11,7 @@ The declared scope, thesis, arc, predraft, draft when present, user wording, sou
 ## Procedure
 
 1. State the checked scope, files and access limits.
-2. Check thesis-to-section, section-to-passage and passage-to-argument correspondence, including the effect of applicable arc comments.
+2. Check thesis-to-section, section-to-passage and passage-to-argument correspondence, including the effect of applicable arc qualifications.
 3. Verify that every argument ends with exactly one unlabeled fragment-inventory bullet; each code resolves to user wording or a source map; and `- None identified` is used only as the complete empty inventory.
 4. Check argument-to-approved-fragment correspondence. Verify that every synthesis run used a limited explicitly approved set, not the broad inventory automatically, and that no inventory-only fragment appears in provenance as if used.
 5. Check every provenance line against exact originals and the [reconstruction test](provenance.md#reconstruction-test).

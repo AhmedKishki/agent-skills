@@ -9,7 +9,7 @@ Transform one approved passage plan and one limited approved input set into one 
 - **Passage ID and claim:** the single claim the passage must establish.
 - **Arguments:** ordered argument IDs and claims that together establish the passage claim.
 - **Fragments:** only the limited input set explicitly approved in predraft: original codes (`user-n` or `src:A4`), exact human passages with their original span locations, context that identifies subject, scope, modality and qualification, and permitted use: wording, evidence, user interpretation, or framework check.
-- **Constraints:** the user's wording priorities, spelling convention, quotation requirements, applicable conceptual limits and governing article-arc comments.
+- **Constraints:** the user's wording priorities, spelling convention, quotation requirements, applicable conceptual limits and governing article-arc qualifications.
 
 The approved claim and arguments fix the target. Approved fragments supply vocabulary and substantive bases. The article arc's broad inventories are not synthesis inputs and must never be passed to a run automatically. One run targets exactly one passage, which may contain zero, one or multiple paragraph breaks.
 
