@@ -36,7 +36,7 @@ Reviewers check flagged results every day. Daily review keeps the service runnin
 **Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A1, user-21, user-22
 ```
 
-Apply the [compact provenance rule](file-output-standard.md#compact-provenance). The paragraph number identifies its arc target. Part 1 contains only exact user-selected prose; its matching record keeps the source trail. Retain a short `Use:` note only when a material interpretation limit or scoped permission would otherwise be lost. The full construction record belongs to the approval presentation.
+Apply the [compact provenance rule](file-output-standard.md#compact-provenance). The paragraph number identifies its arc target. Part 1 contains only exact user-selected prose; its matching record contains the provenance line. Present construction details and source-use explanations in the full approval record.
 
 Keep one current selection per paragraph. Present alternatives in conversation. Preserve original passages needed to reconstruct selected prose in their source/user-wording owners.
 

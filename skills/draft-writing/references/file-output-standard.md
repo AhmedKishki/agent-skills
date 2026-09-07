@@ -11,7 +11,7 @@ Use stable `{project}-` filenames and edit in place. Each fact or decision has o
 | Source identity, excerpt codes, locations, exact excerpts | `source-map-{code}-{author-short-title}.md` |
 | Keywords, themes, excerpt retrieval assignments | `source-index.md` |
 | Section, paragraph and supporting argument claims | `article-arc.md` |
-| Selected prose, compact provenance and material use limits | `predraft.md` |
+| Selected prose and compact provenance | `predraft.md` |
 | Reader-facing article and links to its provenance trail | `draft.md` |
 | Working inventory, reading coverage, allocation counters, next action | `activity-tracker.md` |
 
@@ -44,7 +44,7 @@ Use this field order whenever an explicit provenance declaration is needed:
 - **Method:** the actual process, such as `white-box synthesis`, `verbatim user wording` or `verbatim source excerpt`.
 - **Basis:** original source/user codes actually used, deduplicated in order of use. Write source codes as `T1` here; they resolve to the same entries as `src:T1`. Include actual framework consultation. Use `Unverified` for an unrecovered basis.
 
-The declaration supplies a traceable basis for feasible reconstruction. Source support and authorship remain separate checks. Present the full construction record for each synthesis decision; save the compact line after selection. Preserve originals needed by the trail. Retain a brief use restriction only where it matters.
+The declaration supplies a traceable basis for feasible reconstruction. Source support and authorship remain separate checks. Present the full construction record for each synthesis decision; save the compact line after selection. Preserve originals needed by the trail and route the user's continuing directions to their established owners.
 
 Source maps and established user originals identify their origin through their defined structures. Arc, index and tracker retain their planning and retrieval formats. Draft references the predraft's saved declarations.
 
