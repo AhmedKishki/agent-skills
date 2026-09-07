@@ -1,39 +1,43 @@
 # White-box synthesis
 
-Develop supporting arguments from supplied human wording and assemble one paragraph. Return the paragraph, a compact provenance summary and a full construction record, or a precise gap.
+## Purpose
+
+Transform one approved passage plan and one approved input set into one candidate passage with a complete construction record, or one typed gap.
 
 ## Inputs
 
-- **Claim:** the single claim the paragraph must establish.
-- **Arguments:** ordered argument IDs and claims that together establish the paragraph's claim.
-- **Fragments:** original codes (`user-n` or `src:A4`), exact human passages with their original span locations, relevant context, and permitted use: wording, evidence, user interpretation, or framework check.
+- **Passage ID and claim:** the single claim the passage must establish.
+- **Arguments:** ordered argument IDs and claims that together establish the passage claim.
+- **Fragments:** original codes (`user-n` or `src:A4`), exact human passages with their original span locations, context that identifies subject, scope, modality and qualification, and permitted use: wording, evidence, user interpretation, or framework check.
 - **Constraints:** the user's wording priorities, spelling convention, quotation requirements, and applicable conceptual limits.
 
-The claim and supporting arguments specify the target. Fragments supply the vocabulary and substantive basis. Original user wording supplies the paragraph's backbone; source passages supply the agreed additions.
+The approved claim and arguments fix the target. Approved fragments supply vocabulary and substantive bases. One run targets exactly one passage, which may contain zero, one or multiple paragraph breaks.
 
-## Algorithm
+## Procedure
 
-1. Match each argument to the supplied fragments. Establish its claim, qualifications and contribution to the paragraph's claim.
-2. Develop each argument as prose, using the five operations below on meaningful contiguous spans. Keep every substantive word traceable to a supplied passage.
-3. Assemble the argument passages in the supplied order. Check that they jointly establish the paragraph's claim; verify connections and source qualifications against their original context.
-4. Return **Paragraph**, **Provenance**, and **Record** when all wording and support checks pass. Otherwise return **Gap**: the affected argument ID, the missing wording or support, and one focused question requesting the required human contribution.
+1. Match each argument to approved fragments. Identify its claim, qualifications and contribution to the passage claim.
+2. Develop each argument as prose, using the five operations below on contiguous spans that contain a complete word, phrase or clause. Keep every meaning-bearing word traceable to an approved passage.
+3. Assemble the argument spans in approved order. Check that they jointly establish the passage claim and that internal connections and qualifications follow from approved originals.
+4. Return **Passage**, **Provenance**, and **Record** only when every argument and output span passes the checks below. Otherwise return one typed **Gap**.
 
 | Operation | Rule |
 |---|---|
-| COPY | Reproduce an exact contiguous original span with its necessary context. |
-| INFLECT | Change only tense, number, grammatical case, article, or an unambiguous pronoun to a referent established in the same original passage. Preserve meaning, scope, modality, qualification, and emphasis. |
-| NORMALISE | Correct unambiguous spelling or make meaning-neutral capitalization/punctuation changes under the supplied spelling convention. Preserve vocabulary and grammar. |
-| ORDER | Arrange spans when original continuity or an explicit original user/source basis establishes their relationship. |
-| DELETE | Remove equivalent repetition when subject, claim, scope, modality, and qualification match; retain the equivalent meaning. |
+| COPY | Reproduce an exact contiguous span. Valid: copy a complete clause. Invalid: insert an absent synonym. |
+| INFLECT | Change only tense, number, grammatical case, article, or an unambiguous pronoun. Valid: `workers are` → `a worker is`. Invalid: `may` → `will`. |
+| NORMALISE | Make meaning-neutral spelling, capitalization or punctuation changes. Valid: apply the approved spelling convention. Invalid: replace vocabulary. |
+| ORDER | Arrange spans only when an approved original explicitly establishes their relation. Valid: reorder an enumerated list. Invalid: imply causation from co-occurrence. |
+| DELETE | Remove repetition only when subject, claim, scope, modality and qualification are identical. Valid: delete a repeated identical clause. Invalid: delete a limiting qualification. |
 
 Apply INFLECT and NORMALISE to unquoted output. Keep direct quotations, saved originals, code, URLs, titles, and citation data exact. Preserve the spelling of proper names, trademarks, official names, and defined terms; adjust their capitalization only where unambiguous and meaning-neutral.
 
-Every meaning-bearing join requires an explicit basis in the supplied human passages. Preserve a user's interpretation as their argument; treat source evidence as support only for what it establishes. Use framework-only inputs for fit checks. Return a gap when a required connection, unique deletion, substitution, or argument-plan change exceeds the supplied basis and permitted operations.
+Every word, including a function word inserted at a join, must occur in an approved fragment in the required sense and be recorded by an operation. Do not alter the passage plan. Preserve a user's interpretation as their argument; treat source evidence as support only for what it establishes; use framework-only inputs only for fit checks.
+
+Use one gap type: `Missing user wording`, `Missing evidence`, `Unsupported connection`, `Source-context ambiguity`, `Arc inconsistency`, or `Constraint conflict`. State the passage ID, affected argument ID, missing requirement, authoritative owner, one focused question and allowed resolution paths.
 
 ## Output
 
 ```markdown
-Paragraph: <complete paragraph>
+Passage: <complete candidate passage>
 
 **Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A4, user-21, user-22
 
@@ -45,8 +49,20 @@ Record:
 | 1.1.2 | <exact output passage> | <codes, locators and exact human spans> | <operations in order, source support and limits> |
 ```
 
-Give each argument one record row and cover the complete paragraph. Quote every exact fragment used, identify its original code and location, and name each source once. Show the order of operations and every join, cut or grammatical change needed to reconstruct the result. Explain what the evidence establishes and what remains the user's interpretation. Include the context needed to judge qualifications. State any paragraph-wide evidence or framework consultation after the table.
+Give each argument one record row and cover the complete passage. Quote every exact fragment used, identify its original code and location, and name each source once. Show every operation in execution order. Explain what evidence establishes and what remains the user's interpretation. State passage-wide evidence or framework consultation after the table.
 
 For unchanged wording, identify its exact original span and COPY. Locate fragments by `full`, `paragraph N`, `paragraphs N–M`, `line N` or `lines N–M`, counted within the coded entry, excluding headings and metadata. Count stored lines. Resolve ambiguous spans with short exact start/end quotations.
 
-Derive the provenance from the verified inputs and operations: distinguish unchanged human wording from assistant composition, and list the actual basis codes once. A result built entirely from verified human originals through the permitted operations has `Human wording: 100%`; unresolved wording returns a Gap.
+Apply the [provenance contract](provenance.md). Internal connections among a passage's arguments belong to this synthesis; connectors between distinct passages or sections belong to drafting.
+
+## Completion condition
+
+Every argument has one record row, every output span is reconstructable, all sources retain their scope and qualifications, and the candidate establishes exactly the approved passage claim.
+
+## Blocking condition
+
+Return a typed gap instead of prose when any completion check fails.
+
+## Next owner
+
+Predraft presents the candidate and complete record to the user.

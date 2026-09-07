@@ -1,53 +1,72 @@
 # Predraft
 
-Assemble approved raw material according to the article arc, one paragraph at a time. Save it in `{project}-predraft.md`.
+## Purpose
 
-## Paragraph loop
+Collaboratively develop, revise, approve and save the raw material for every in-scope article-arc passage.
 
-1. Read the accepted paragraph claim, supporting arguments, governing section claim or question, and thesis requirements.
-2. Propose relevant sources and exact user/source fragments for each argument. Resolve their originals and context.
-3. Run [white-box synthesis](white-box-synthesis.md) with Claim, Arguments, Fragments and Constraints.
-4. For a Gap, ask its precise question and wait. Route the answer to its owner, then retry.
-5. Present the complete paragraph, its provenance line and the full synthesis record: exact fragments, argument coverage, ordered operations, support and limits. Ask: **“Do you approve this paragraph, or what should change?”** Wait for explicit approval or comments.
-6. Apply the user's comments. For a changed claim, argument, order or boundary, obtain explicit approval of the proposed arc change, update its references through the shared rules, then repeat synthesis. Present the revised prose and full record for approval.
-7. Save the exact selected prose and compact provenance, then proceed to the next paragraph.
+## Inputs
 
-Keep the unselected candidate and full record in the conversation, with the pending decision in the tracker. Recover or re-present the exact candidate before acting on a later approval. A batch request still requires each paragraph's presentation and selection. A direct instruction to use exact user prose supplies consent for that unchanged passage.
+The approved article arc, thesis and vision, user wording, source maps, tracker, and any existing predraft or working candidate.
 
-## Saved output
+Predrafting must process every passage included in the approved article arc. The default order is arc reading order. Change the order or exclude a passage only after the user explicitly approves the corresponding arc change.
 
-Use two H2 parts. Part 1 has H3 sections and H4 selected paragraphs. Part 2 has one H3 provenance record per paragraph.
+## Procedure
+
+1. **Open.** Read the governing section, passage ID and claim, ordered arguments, thesis constraints, tracker and any existing selection. Set the passage to `Unstarted` or retain `Invalidated`.
+2. **Propose inputs.** For every argument, present proposed `user-n` and source codes, exact spans, locations, context, intended use, support and limits.
+3. **Obtain input approval.** Ask: **“Do you approve this input set for passage {ID}, or what should change?”** Set `Inputs awaiting approval` and wait. Do not run synthesis before approval.
+4. **Synthesize.** Run [white-box synthesis](white-box-synthesis.md) for this passage only. For a typed gap, set `Blocked by gap`, present its focused question and wait; route the answer before retrying.
+5. **Persist and present the candidate.** Save the unapproved candidate and full record in `{project}-predraft-working.md`. Present passage ID and claim, complete prose, compact provenance, argument coverage, exact fragments, ordered operations, support, limits, qualifications and revision ID. Ask: **“Do you approve passage {ID}, reject it, or what should change?”** Set `Candidate awaiting decision` and wait.
+6. **Classify the response.** Apply [consent and state](consent-and-state.md). Route prose, inputs, arc, wording and source changes to their owners. A request for explanation changes no candidate. Give every revision a new `{passage}-r{number}` ID and present its complete record.
+7. **Save after approval.** Save the exact approved prose in arc order with its compact provenance immediately below it. Verify exact correspondence and every basis, clear the working candidate, set `Approved and saved`, update the tracker, then open the next passage.
+
+Never prepare a later passage before the current one is approved and saved. Rejection retires only that revision. It does not skip or remove the passage.
+
+## Raw-material boundary
+
+Predraft includes the internal connections required for a passage's arguments to establish its single claim. It normally excludes wording whose sole function is to connect distinct passages or sections, reader-facing headings, final paragraph decisions, citation formatting and bibliography formatting. Include an inter-passage or inter-section connector only when the user explicitly assigns it to a passage's claim; then synthesize and approve it as part of that passage.
+
+## Output
+
+### Selected predraft
 
 ```markdown
 # Predraft
 
-## Part 1 — Selected prose
+## 1 — Human work
 
-### 1 — Human work
-
-#### 1.1 — Prose
+### 1.1 — Human review sustains the service
 
 Reviewers check flagged results every day. Daily review keeps the service running.
-
-## Part 2 — Provenance
-
-### 1.1 — Record
 
 **Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A1, user-21, user-22
 ```
 
-Apply the [compact provenance rule](file-output-standard.md#compact-provenance). The paragraph number identifies its arc target. Part 1 contains only exact user-selected prose; its matching record contains the provenance line. Present construction details and source-use explanations in the full approval record.
+Use one H1, H2 arc sections and H3 passages. Put exactly one compact [provenance](provenance.md) line immediately after each approved passage. Do not create separate prose and provenance parts or save the full construction record here.
 
-Keep one current selection per paragraph. Present alternatives in conversation. Preserve original passages needed to reconstruct selected prose in their source/user-wording owners.
+### Working candidate
 
-## Titles and headings
+```markdown
+# Predraft working candidate
 
-Present exact user wording, or an explicitly requested exact source heading, for selection. Allocate stable `H01` IDs from the predraft row's heading counter.
+Passage: 1.1
+Revision: 1.1-r1
+State: Candidate awaiting decision
+Not selected: This candidate has not been approved for the article.
 
-Put an article title at `### H01 — Prose` before Part 1's sections, or a section heading at `#### H02 — Prose` before that section's paragraphs. This position owns its placement. Give it a matching Part 2 record containing the same compact provenance format.
+<Complete candidate, provenance and full construction record.>
+```
 
-## Check and save
+Overwrite this file for a revised candidate of the same passage. Clear it only after approval, explicit abandonment, or removal of the passage from the approved arc. On resumption, re-present its exact candidate before acting on a later approval.
 
-Before selection, verify that the full synthesis record covers every argument and the complete prose. Check that arguments establish the paragraph claim and paragraphs establish their section claim or answer its question. Verify original wording, source scope, joins and explicit consent.
+## Completion condition
 
-After saving, check that the listed bases resolve and can support a feasible reconstruction through permitted operations. Preserve direct edits; resolve uncertain origin or changed meaning with the user before further synthesis.
+Every in-scope arc passage is present once in arc order, has explicit approval and is followed immediately by exactly one resolving provenance line. No working candidate or invalidated passage remains.
+
+## Blocking condition
+
+An unapproved input set, typed gap, pending passage decision or invalidated passage blocks that passage and every later passage.
+
+## Next owner
+
+[Drafting](drafting.md) turns the complete raw predraft into a connected reader-facing article.

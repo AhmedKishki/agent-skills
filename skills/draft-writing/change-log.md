@@ -1,5 +1,16 @@
 # Changelog
 
+This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
+
+## 10.3.0
+
+- Replace article-arc paragraph units with single-claim passages. A passage is developed and approved independently of final paragraph boundaries and may become part of one paragraph, one paragraph, or multiple paragraphs.
+- Make predrafting explicitly passage-by-passage: every in-scope arc passage is presented with its full construction record and must receive explicit approval before it is saved or work advances.
+- Store each approved passage's compact provenance immediately after that passage. Remove the predraft's two-part prose/provenance structure.
+- Define predraft as raw approved passage material that normally lacks connectors between passages and sections. Drafting owns collaborative connector development, final paragraph boundaries and connected article assembly.
+- Simplify source maps to a single `Code | Excerpt | Location` table.
+- Retire and delete the source-index module and remove all active index dependencies.
+
 ## 10.2.0
 
 - Standardise compact provenance as origin, Human wording, Method and original Basis codes. Verify the human-wording declaration against recoverable originals.

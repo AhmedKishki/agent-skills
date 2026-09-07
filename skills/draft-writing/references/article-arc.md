@@ -1,17 +1,32 @@
 # Article arc
 
-Build the structural map in `{project}-article-arc.md`: sections contain paragraph claims; paragraphs contain supporting arguments.
+## Purpose
 
-Each section's claim depends on its paragraph claims; each paragraph's claim depends on its arguments. A section may be named by the governing question its paragraphs answer. Use concise claims for paragraph and argument names. Section labels guide composition; final article headings are selected separately.
+Define the article's ordered claim structure as sections containing passages and passages containing supporting arguments.
 
-## Collaboration
+## Inputs
 
-1. Read the accepted thesis and the user's current structure.
-2. Propose section, paragraph and argument claims. Check what each child contributes to establishing its parent's claim or answering its question.
-3. Ask for approval or comments; save accepted changes.
-4. Resolve structural gaps with the user in conversation. Keep the pending decision in the tracker.
+The approved thesis and vision, the user's current structural instructions, and any existing arc.
 
-The prose supplies explanations, evidence and connections. [Predraft](predraft.md) selects and records the relevant sources and user wording for each argument.
+## Structure
+
+The hierarchy is `article → section → passage → argument`.
+
+- A section establishes one section claim or answers one governing question.
+- A passage performs exactly one claim. It is independent of final paragraph boundaries.
+- An argument performs one supporting step required to establish its parent passage claim.
+- Every in-scope passage belongs to exactly one section and contains at least one argument.
+- Every argument belongs to exactly one passage.
+- The arc records no exact source excerpt or user-wording selection.
+
+## Procedure
+
+1. Read the approved direction and preserve the user's accepted structure.
+2. Propose section claims or questions in reading order and obtain approval of the exact proposal.
+3. For each approved section, propose its ordered single-claim passages and obtain approval.
+4. For each passage, propose the ordered arguments and state how each argument establishes the passage claim; obtain approval.
+5. Save only approved structure. Record one focused structural question in the tracker when a claim, dependency, order or boundary is unresolved.
+6. After an approved structural change, apply [editing and reference integrity](editing-and-reference-integrity.md) and invalidate affected selected passages.
 
 ## Output
 
@@ -40,6 +55,16 @@ Arc: 1 → 2
 2.1.2 — Staffing must make that time available
 ```
 
-Use exactly this structure: Status, Thesis and one article Arc line, then H2 sections, H3 paragraphs and plain argument lines separated by blank lines. The Arc line lists section numbers once in reading order. Nesting records the dependence of parent claims on their children.
+Use exactly this structure: Status, Thesis and one Arc line, then H2 sections, H3 passages and plain argument lines separated by blank lines. The Arc line lists section numbers once in reading order. Number sections `1`, passages `1.1` and arguments `1.1.1`, restarting each local sequence at 1.
 
-Number sections `1`, paragraphs `1.1` and arguments `1.1.1`, restarting each local sequence at 1. Predraft owns source/user fragment selection and the saved provenance trail.
+## Completion condition
+
+Every in-scope section has an approved claim or question; every passage performs one approved claim; every passage has at least one approved ordered argument; and no structural question blocks the first unapproved passage.
+
+## Blocking condition
+
+An unresolved section purpose, passage claim, argument contribution, order or boundary blocks only dependent structure and predrafting.
+
+## Next owner
+
+[Predraft](predraft.md) selects passage inputs and develops every in-scope passage in arc order.

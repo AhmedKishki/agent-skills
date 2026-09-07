@@ -1,6 +1,6 @@
 interface:
   display_name: "Draft Writing"
-  short_description: "User-led, source-grounded research and drafting"
+  short_description: "Collaborative passage-by-passage synthesis and drafting"
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon.svg"
 policy:
