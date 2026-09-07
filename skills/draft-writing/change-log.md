@@ -2,6 +2,13 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 10.4.0
+
+- Add optional `> comments:` blocks beneath article-arc sections, passages and arguments for their directions, limitations, boundaries, specifications and qualifications.
+- Require every argument to end with one unlabeled, broad, user-revisable fragment-inventory bullet, using `- None identified` when no candidate is known.
+- Distinguish inventory membership from synthesis selection: predraft proposes a limited set for explicit approval, white-box synthesis receives only that set, and provenance records only fragments actually used.
+- Prevent inventory-only revisions from triggering synthesis, approving fragment use or invalidating unaffected prose.
+
 ## 10.3.0
 
 - Replace article-arc paragraph units with single-claim passages. A passage is developed and approved independently of final paragraph boundaries and may become part of one paragraph, one paragraph, or multiple paragraphs.

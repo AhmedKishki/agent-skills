@@ -21,7 +21,8 @@ A user message, agent finding or accepted change that may affect project files.
 | Direction, purpose, questions, constraints and metatheory | Thesis and vision |
 | Exact reusable user-authored article language | User wording |
 | Source identity, exact excerpts and locations | Source maps |
-| Sections, passages, passage claims, arguments and order | Article arc |
+| Sections, passages, passage claims, arguments, order, attached comments and broad argument fragment inventories | Article arc |
+| Limited proposed and approved synthesis selections | Predraft workflow state |
 | Current unapproved passage and full construction record | Predraft working candidate |
 | Approved raw passage and inline compact provenance | Predraft |
 | Connectors, headings, final paragraph boundaries, citations and assembled article | Drafting |

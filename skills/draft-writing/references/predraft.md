@@ -12,8 +12,8 @@ Predrafting must process every passage included in the approved article arc. The
 
 ## Procedure
 
-1. **Open.** Read the governing section, passage ID and claim, ordered arguments, thesis constraints, tracker and any existing selection. Set the passage to `Unstarted` or retain `Invalidated`.
-2. **Propose inputs.** For every argument, present proposed `user-n` and source codes, exact spans, locations, context, intended use, support and limits.
+1. **Open.** Read the governing section, passage ID and claim, ordered arguments, their broad fragment inventories, applicable arc comments, thesis constraints, tracker and any existing selection. Set the passage to `Unstarted` or retain `Invalidated`.
+2. **Propose inputs.** Begin with each argument's arc inventory and propose only a limited synthesis set for the passage. For every proposed `user-n` or source code, present its exact span, location, context, intended use, support and limits. Keep unselected inventory fragments available for later proposals; inventory membership is not input approval.
 3. **Obtain input approval.** Ask: **“Do you approve this input set for passage {ID}, or what should change?”** Set `Inputs awaiting approval` and wait. Do not run synthesis before approval.
 4. **Synthesize.** Run [white-box synthesis](white-box-synthesis.md) for this passage only. For a typed gap, set `Blocked by gap`, present its focused question and wait; route the answer before retrying.
 5. **Persist and present the candidate.** Save the unapproved candidate and full record in `{project}-predraft-working.md`. Present passage ID and claim, complete prose, compact provenance, argument coverage, exact fragments, ordered operations, support, limits, qualifications and revision ID. Ask: **“Do you approve passage {ID}, reject it, or what should change?”** Set `Candidate awaiting decision` and wait.
@@ -21,6 +21,8 @@ Predrafting must process every passage included in the approved article arc. The
 7. **Save after approval.** Save the exact approved prose in arc order with its compact provenance immediately below it. Verify exact correspondence and every basis, clear the working candidate, set `Approved and saved`, update the tracker, then open the next passage.
 
 Never prepare a later passage before the current one is approved and saved. Rejection retires only that revision. It does not skip or remove the passage.
+
+Do not propose an unlisted fragment silently. Explain why it is needed, propose adding it to the relevant argument inventory, obtain approval for that arc revision, synchronize the arc, and then include it in a limited input proposal. Approval of an inventory revision does not approve the synthesis set. Compact provenance names only fragments actually used in the approved passage, not every inventory member.
 
 ## Raw-material boundary
 
@@ -65,7 +67,7 @@ Every in-scope arc passage is present once in arc order, has explicit approval a
 
 ## Blocking condition
 
-An unapproved input set, typed gap, pending passage decision or invalidated passage blocks that passage and every later passage.
+An unapproved limited input set, an unsynchronized proposed inventory addition, typed gap, pending passage decision or invalidated passage blocks that passage and every later passage.
 
 ## Next owner
 
