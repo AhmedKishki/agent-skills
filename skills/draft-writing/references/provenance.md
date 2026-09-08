@@ -18,8 +18,8 @@ Use this field order:
 
 - **Provenance:** `Human` for unchanged wording from one human original; `Mixed` for human wording arranged from multiple spans; `AI` for assistant-authored wording; `Unverified` when origin is unresolved.
 - **Human wording:** `100%` only when every meaning-bearing span passes the reconstruction test; `0%` for wholly assistant-authored wording; `Unverified` when the check is incomplete.
-- **Method:** use exactly `white-box synthesis`, `verbatim user wording`, `verbatim source excerpt` or `AI drafting`.
-- **Basis:** list only source and user codes actually used, once each, in first-use order. Write source codes as `A4`, not `src:A4`. Use `Unverified` only for an unrecovered basis.
+- **Method:** use exactly `white-box synthesis`, `verbatim user wording`, `verbatim source excerpt`, `AI drafting` or `unknown`. Use `unknown` only for accepted retained prose whose actual construction method cannot be verified; never infer `white-box synthesis` from an incomplete historical record.
+- **Basis:** for verified construction, list only source and user codes actually used, once each, in first-use order. For accepted unverified prose, list only stable source and user codes recovered, reconstructed or feasible as bases; this does not claim a verified execution history. Write source codes as `A4`, not `src:A4`. Use `Unverified` only when no stable basis code can be identified.
 
 ## Reconstruction test
 
@@ -38,7 +38,7 @@ Preserve these distinctions:
 2. Record every operation in execution order.
 3. Verify source scope, modality and qualifications separately from authorship.
 4. Deduplicate basis codes in first-use order.
-5. Derive the four compact fields from these checks; do not derive authorship from approval.
+5. Derive the four compact fields from these checks; do not derive authorship or method from approval. For accepted retained prose that fails reconstruction, declare `Provenance: Unverified · Human wording: unverified · Method: unknown` and preserve the recovered, reconstructed or feasible stable basis codes.
 
 ## Output
 
