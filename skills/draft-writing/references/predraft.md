@@ -41,7 +41,7 @@ Predraft includes the internal connections required for a passage's arguments to
 
 Reviewers check flagged results every day. Daily review keeps the service running.
 
-**Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A1, user-21, user-22
+**Provenance:** Mixed · **Method:** white-box synthesis · **Basis:** A1, user-21, user-22
 ```
 
 Use one H1, H2 arc sections and H3 passages. Put exactly one compact [provenance](provenance.md) line immediately after each approved passage. Do not create separate prose and provenance parts or save the full construction record here.

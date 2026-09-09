@@ -33,11 +33,12 @@ Use exactly: `Unstarted`, `Inputs awaiting approval`, `Blocked by gap`, `Candida
 
 ## Procedure
 
-1. Match the user's response to one or more classes: `Approve`, `Reject`, `Revise prose`, `Change inputs`, `Change arc`, `Supply new wording`, `Supply new source material`, `Request explanation`.
+1. Match the user's response to one or more classes: `Approve`, `Reject`, `Revise prose`, `Change inputs`, `Change arc`, `Change direction`, `Confirm contradiction`, `Make operative`, `Supply new wording`, `Supply new source material`, `Request explanation`.
 2. Route each class through [ownership and routing](ownership-and-routing.md). A structural change and its resulting prose require separate approvals.
-3. Apply only the transition in the table. A request for explanation changes no state.
-4. Rejection does not remove or skip a passage. Remove or skip it only through an explicitly approved arc change.
-5. Record the resulting state and next action in the tracker.
+3. When new direction may contradict an operational commitment, pause the passage transition. Present both commitments and their consequences, ask whether the contradiction is intended, and separately confirm that the new commitment shall become operative. Only then mark the superseded aspect `Outdated`, apply the replacement and invalidate affected downstream passages.
+4. Apply only the transition in the table. A request for explanation changes no state.
+5. Rejection does not remove or skip a passage. Remove or skip it only through an explicitly approved arc change.
+6. Record the resulting state and next action in the tracker.
 
 ## Output
 
@@ -49,7 +50,7 @@ The response is classified, routed and reflected in the tracker without inferrin
 
 ## Blocking condition
 
-If the response could authorize more than one incompatible transition, ask which transition the user intends.
+If the response could authorize more than one incompatible transition, or does not establish whether contradictory new direction shall become operative, ask one focused question and wait.
 
 ## Next owner
 

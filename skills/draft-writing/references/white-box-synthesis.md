@@ -39,7 +39,7 @@ Use one gap type: `Missing user wording`, `Missing evidence`, `Unsupported conne
 ```markdown
 Passage: <complete candidate passage>
 
-**Provenance:** Mixed · Human wording: 100% · Method: white-box synthesis · Basis: A4, user-21, user-22
+**Provenance:** Mixed · **Method:** white-box synthesis · **Basis:** A4, user-21, user-22
 
 Record:
 

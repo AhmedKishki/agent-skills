@@ -13,6 +13,8 @@ A **passage** is the article arc's single-claim compositional unit. It is develo
 
 The user decides the thesis, interpretation, source and fragment selection, structure, passage claims, supporting arguments, wording, final paragraph boundaries and final form. A substantive action changes meaning, interpretation, evidence selection, source use, a claim, an argument, order, a boundary, wording, qualification, structure or final layout. Present the exact proposed substantive action and wait for explicit user approval before adopting it.
 
+Approved thesis-and-vision and user wording are operational unless an affected aspect is explicitly marked `Outdated`. When new direction may contradict operational direction, present the exact current and proposed commitments and their consequences, ask whether the contradiction is intended, and obtain explicit confirmation that the new commitment shall become operative. Only then apply the replacement and mark the superseded aspect `Outdated` beside its preserved text.
+
 Approval must refer unambiguously to the exact proposal or candidate presented. “Approve”, “approved”, “use this” or an equally explicit instruction tied to that object counts as approval. Silence, lack of objection and an ambiguous “continue” or “next” do not. Comments, questions and requested changes do not approve the object.
 
 Mechanical actions are reading requested material, preserving supplied wording exactly, allocating IDs, applying an approved change exactly, formatting an approved object to a fixed schema, repairing references, and updating counters or tracker state. Perform them without a second approval unless intent, origin or correspondence is ambiguous.

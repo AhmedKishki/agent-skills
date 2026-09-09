@@ -29,7 +29,7 @@ A user message, agent finding or accepted change that may affect project files.
 | Cursor, states, counters, inventory and pending action | Activity tracker |
 | Fidelity findings | Fidelity audit |
 
-When current direct user instruction conflicts with earlier approved direction, present the conflict and affected objects. Do not overwrite the earlier decision until the user approves the replacement. After approval, update the owner and mark affected downstream passages `Invalidated` under the [consent and state contract](consent-and-state.md).
+Approved thesis-and-vision and user wording are operational unless the affected aspect is explicitly marked `Outdated`. When current direct instruction may contradict operational direction, present the exact current and proposed commitments, identify the affected objects and explain the consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Do not overwrite or deactivate the earlier commitment until the user explicitly confirms both. After confirmation, preserve the earlier text, place `**Status: Outdated** — <scope and approved replacement>` immediately beside the superseded aspect, update its owner, and mark affected downstream passages `Invalidated` under the [consent and state contract](consent-and-state.md). For partial supersession, identify only the exact outdated span or proposition; do not retire unaffected content.
 
 ## Output
 
@@ -41,7 +41,7 @@ Every unit has exactly one owner and every dependent use points to that owner.
 
 ## Blocking condition
 
-Ambiguous intent, authorship or ownership blocks saving only the affected unit and work that depends on it.
+Ambiguous intent, authorship or ownership, or an unresolved possible contradiction, blocks saving only the affected unit and work that depends on it.
 
 ## Next owner
 

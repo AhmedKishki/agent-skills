@@ -2,6 +2,12 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 11.0.0
+
+- Treat approved thesis-and-vision and user wording as operational unless an affected aspect is explicitly marked `Outdated`; require the user to confirm both an emerging contradiction and that the new commitment shall become operative before applying it.
+- Preserve superseded content and place an `Outdated` marker beside the exact affected aspect, identifying its operative replacement and invalidating only affected downstream passages.
+- Simplify compact provenance to `Provenance`, `Method` and `Basis`; remove the uncalculated human-wording percentage while retaining exact reconstruction and authorship checks.
+
 ## 10.4.1
 
 - Replace the `> comments:` header with an unlabeled `>` qualification under a section, passage or argument; its content may be a question, comment, direction, limit, boundary, specification or other qualification.

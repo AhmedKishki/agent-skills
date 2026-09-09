@@ -15,6 +15,7 @@ The project name and the output schema in the active task module.
 3. Use relative Markdown links. Link to section and passage headings; identify a plain-text argument by its full number through its passage link.
 4. Form heading anchors by lowercasing and omitting dots: `1.1 — Passage` becomes `#11--passage`.
 5. Create a canonical file only when its module has accepted content to store. Include an optional field only when the module names both the field and its inclusion condition.
+6. In thesis-and-vision and user-wording, place an approved `**Status: Outdated** — <scope and approved replacement>` immediately after the exact superseded aspect. Preserve the original text; unmarked content remains operational.
 
 | Content | Filename after the prefix |
 |---|---|
@@ -35,7 +36,7 @@ A file conforming exactly to the active module's schema and these shared convent
 
 ## Completion condition
 
-All required fields occur once in the prescribed order and every relative link and heading anchor resolves.
+All required fields occur once in the prescribed order, every relative link and heading anchor resolves, and each `Outdated` marker is adjacent to preserved superseded content and identifies its operative replacement.
 
 ## Blocking condition
 

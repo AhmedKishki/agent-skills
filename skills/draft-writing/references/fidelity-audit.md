@@ -14,7 +14,7 @@ The declared scope, thesis, arc, predraft, draft when present, user wording, sou
 2. Check thesis-to-section, section-to-passage and passage-to-argument correspondence, including the effect of applicable arc qualifications.
 3. Verify that every argument ends with exactly one unlabeled fragment-inventory bullet; each code resolves to user wording or a source map; and `- None identified` is used only as the complete empty inventory.
 4. Check argument-to-approved-fragment correspondence. Verify that every synthesis run used a limited explicitly approved set, not the broad inventory automatically, and that no inventory-only fragment appears in provenance as if used.
-5. Check every provenance line against exact originals and the [reconstruction test](provenance.md#reconstruction-test).
+5. Check every provenance line has exactly `Provenance`, `Method` and `Basis`; resolve each basis against exact originals and apply the [reconstruction test](provenance.md#reconstruction-test) without calculating a human-wording percentage.
 6. Verify that every in-scope arc passage occurs once in predraft, in arc order, with exactly one provenance line immediately after it; verify that no separate provenance part exists.
 7. Verify that predraft contains no unapproved connector whose sole function is to join passages or sections.
 8. Verify that every source map has only `Code | Excerpt | Location`, and that no source-index dependency remains.

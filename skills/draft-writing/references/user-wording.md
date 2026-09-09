@@ -14,6 +14,7 @@ Text authored by the user and intended or potentially intended to appear in the 
 2. Preserve exact spelling, punctuation, qualifications and paragraph breaks. Reuse an existing ID only for an exact duplicate; allocate a new ID for a revision or partial overlap.
 3. Allocate `user-n` from the tracker's Next user number and advance it. Keep IDs stable and retain retired allocation limits.
 4. Add the entry below. Ask about unclear authorship or whether a passage is intended as article language.
+5. Treat each entry and each unaffected aspect as operational unless it is explicitly marked `Outdated`. When new wording may contradict it, follow [ownership and routing](ownership-and-routing.md) before changing currency.
 
 Do not capture procedural commands, approval or rejection statements, workflow comments, or source quotations. Capture is mechanical preservation; predraft selection requires explicit approval of the resulting passage.
 
@@ -31,17 +32,25 @@ Do not capture procedural commands, approval or rejection statements, workflow c
 
 Use one H1, then H2 entries in allocation order. Wrap every passage line, including blank lines, in one blockquote level. Removing that wrapper recovers the exact wording. References resolve to the passage.
 
+After explicit confirmation that contradictory new wording shall become operative, preserve the earlier entry and add immediately below its blockquote:
+
+```markdown
+**Status: Outdated** — <exact affected aspect and approved replacement>
+```
+
+For partial supersession, name the exact outdated span or proposition; all unmarked aspects remain operational. The lack of an `Outdated` marker means the entry is operational.
+
 For mixed or uncertain origin, add the [compact provenance line](provenance.md#compact-declaration) after the blockquote and a short `Note:` identifying the affected portion. Clarify unresolved authorship before using the entry.
 
 Directions belong in thesis, structural choices in arc, and actual uses and selections in predraft. Execute routine commands such as “apply this” and “next” without allocating wording IDs.
 
 ## Earlier wording
 
-Once approved provenance cites a `user-n`, its exact text is immutable. Give a later rewrite a new `user-n`; retain the earlier entry while any selected passage depends on it. Correct only a verified transcription error in place and invalidate affected passages when the correction changes saved wording.
+Once approved provenance cites a `user-n`, its exact text is immutable. Give a later rewrite a new `user-n`; retain the earlier entry and mark only the superseded aspect `Outdated` after the user confirms that the replacement shall become operative. Correct only a verified transcription error in place and invalidate affected passages when the correction changes saved wording.
 
 ## Completion condition
 
-Every eligible contribution is preserved exactly once under a stable ID, and every cited original remains recoverable.
+Every eligible contribution is preserved exactly once under a stable ID, every cited original remains recoverable, and every superseded aspect has an adjacent `Outdated` marker that identifies its operative replacement.
 
 ## Blocking condition
 
