@@ -16,21 +16,21 @@ The exact approved change and every file directly or transitively affected by it
 4. After an approved move, insertion, removal, split or merge, update positional passage and argument numbers and every dependent reference in the same change.
 5. Preserve stable source and user IDs. Retire an allocated ID instead of reusing it.
 6. For an approved contradictory replacement, preserve the earlier text and place the approved `Outdated` marker immediately beside the exact superseded aspect before applying the new operative commitment.
-7. Identify every approved downstream passage affected by a changed thesis constraint, arc claim, argument, governing qualification, source basis or user original; mark each one `Invalidated`.
+7. Identify every affected approved passage, blueprint version, section candidate, draft version and citation record. Mark mutable affected objects `Invalidated`; preserve immutable versions and record that they are superseded.
 8. Validate operational and outdated status, exact wording, source context, argument coverage, basis codes, claim dependencies, numbering, links and states.
 9. Update the tracker with the completed edit and exact next action.
 
 Changing a broad arc inventory alone does not select an input, trigger synthesis or invalidate prose. Adding or reordering an unused candidate fragment has no effect on approved prose. Removing an actual approved basis, changing its original, or changing a qualification that governs approved prose requires impact review and invalidation of every affected passage. Do not invalidate a passage for a qualification change that leaves its governing directions, limitations, boundaries and specifications unchanged.
 
-During an authorized migration, preserve stable IDs and originals required by current provenance, follow the user's retention scope, and apply the current schemas only within the approved migration scope.
+During an authorised migration, preserve stable IDs and originals required by current provenance, follow the user's retention scope, and apply current schemas only within the approved migration scope.
 
 ## Output
 
-The approved edit, repaired dependent references and explicit invalidation of affected downstream passages.
+The approved edit, repaired dependent references and explicit invalidation or supersession of affected downstream objects.
 
 ## Completion condition
 
-The diff contains no unapproved substantive change, every superseded aspect is preserved and marked `Outdated` beside its operative replacement, all references resolve and every affected downstream passage has the correct state.
+The diff contains no unapproved substantive change, every superseded aspect is preserved with its operative replacement, all references resolve and every affected downstream object has the correct state.
 
 ## Blocking condition
 

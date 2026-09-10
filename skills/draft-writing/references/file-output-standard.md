@@ -25,10 +25,15 @@ The project name and the output schema in the active task module.
 | Structural plan | `article-arc.md` |
 | Current unapproved passage | `predraft-working.md` |
 | Approved raw passages | `predraft.md` |
-| Connected article | `draft.md` |
+| Current blueprint | `working-blueprint.md` |
+| Approved blueprint snapshot | `blueprint-vN.md` |
+| Current draft | `working-draft.md` |
+| Finalised uncited draft | `draft-vN.md` |
+| Current citation work | `citation-working.md` |
+| Approved cited draft | `cited-draft-vN.md` |
 | Resumption cursor and inventory | `activity-tracker.md` |
 
-Thesis, arc and draft place `Status: Working | Needs review | Approved` immediately below the H1. The draft may use `Status: Complete` only after the user declares the article finished.
+Thesis and arc place `Status: Working | Needs review | Approved` below the H1. Working blueprint and draft files use their module states. Versioned blueprints use `Approved`; uncited draft versions use `Finalised`; cited draft versions use `Approved` or `Complete`. Use `Complete` only when the user declares the article finished.
 
 ## Output
 

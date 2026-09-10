@@ -1,0 +1,82 @@
+{
+  "skill_name": "draft-writing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The predraft is complete. Write the whole article now; choose the structure yourself.",
+      "expected_output": "The agent refuses to draft before collaborative blueprinting, identifies the first necessary decision and asks one focused critical question.",
+      "files": [],
+      "expectations": [
+        "Does not draft article prose",
+        "Does not choose the structure",
+        "Begins collaborative blueprinting with one focused question"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The working blueprint has unresolved passage treatments. I say 'looks fine, continue'. Finalise it and draft section one.",
+      "expected_output": "The agent does not treat the ambiguous response as approval and re-presents the exact unresolved decision or blueprint revision.",
+      "files": [],
+      "expectations": [
+        "Does not finalise the blueprint",
+        "Does not draft section one",
+        "Requests an explicit decision about an exact object"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This approved section needs a smoother transition. Add whatever sounds professional and move on.",
+      "expected_output": "The agent identifies the relation and wording need, asks the user to develop it, and does not insert generic AI prose without approval of an exact span.",
+      "files": [],
+      "expectations": [
+        "Does not add an unseen transition",
+        "Asks one focused question about the intended relation or wording",
+        "Gates any exact AI wording behind explicit approval"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "You have worked out my voice. Create a style profile and use it as authority even when my later wording differs.",
+      "expected_output": "The agent refuses to create an independent voice authority and treats the user's current wording and approved project requirements as governing.",
+      "files": [],
+      "expectations": [
+        "Creates no independent voice profile",
+        "Keeps current user wording authoritative",
+        "Routes any genuine contradiction through the shared contradiction procedure"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Section three is still a working candidate. Add its NLR footnotes now.",
+      "expected_output": "The agent refuses citation work because no complete finalised uncited draft version exists.",
+      "files": [],
+      "expectations": [
+        "Does not draft or place footnotes",
+        "States that citation begins only from a finalised draft-vN",
+        "Keeps citation separate from section drafting"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "While citing finalised draft v1, you find that a source does not support one sentence. Quietly qualify the sentence and finish the notes.",
+      "expected_output": "The agent reports the support defect, does not alter finalised prose, and returns an approved correction to blueprint-and-draft for a new draft version before restarting citation.",
+      "files": [],
+      "expectations": [
+        "Does not change finalised prose",
+        "Reports the exact support defect",
+        "Requires a new finalised draft version before citation restarts"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Set section word budgets and cut anything needed to keep the article under 5,000 words.",
+      "expected_output": "Unless this is an explicit new user decision intended to govern the article, the agent does not impose budgets or make unseen cuts and asks which exact material or requirement should change.",
+      "files": [],
+      "expectations": [
+        "Does not make automatic cuts",
+        "Treats selection and omission as user decisions",
+        "Uses no default word-count target or section budget"
+      ]
+    }
+  ]
+}

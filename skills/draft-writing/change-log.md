@@ -2,6 +2,14 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 12.0.0
+
+- Replace drafting and fidelity-audit with authorial-voice, blueprint-and-draft, and article-citation modules.
+- Build immutable blueprint versions through critical user–agent discussion, then draft and approve one complete section at a time.
+- Prohibit AI-authored article wording unless the user approves the exact span for one identified need; make authorial voice a skill-wide contract.
+- Begin citation only from a user-approved finalised uncited draft and require New Left Review footnote style.
+- Move validation into each producing module, generalise tracker objects and use British English throughout the skill.
+
 ## 11.0.0
 
 - Treat approved thesis-and-vision and user wording as operational unless an affected aspect is explicitly marked `Outdated`; require the user to confirm both an emerging contradiction and that the new commitment shall become operative before applying it.
@@ -10,12 +18,12 @@ This file is historical and non-normative. Current behaviour is governed by `SKI
 
 ## 10.4.1
 
-- Replace the `> comments:` header with an unlabeled `>` qualification under a section, passage or argument; its content may be a question, comment, direction, limit, boundary, specification or other qualification.
+- Replace the `> comments:` header with an unlabelled `>` qualification under a section, passage or argument; its content may be a question, comment, direction, limit, boundary, specification or other qualification.
 
 ## 10.4.0
 
 - Add optional `> comments:` blocks beneath article-arc sections, passages and arguments for their directions, limitations, boundaries, specifications and qualifications.
-- Require every argument to end with one unlabeled, broad, user-revisable fragment-inventory bullet, using `- None identified` when no candidate is known.
+- Require every argument to end with one unlabelled, broad, user-revisable fragment-inventory bullet, using `- None identified` when no candidate is known.
 - Distinguish inventory membership from synthesis selection: predraft proposes a limited set for explicit approval, white-box synthesis receives only that set, and provenance records only fragments actually used.
 - Prevent inventory-only revisions from triggering synthesis, approving fragment use or invalidating unaffected prose.
 
@@ -87,7 +95,7 @@ This file is historical and non-normative. Current behaviour is governed by `SKI
 - Replace scattered question/provenance rules with a shared contract and user-inputs module: preserve exact contributions, pending parts, incorporation links, and standing permissions independently of approval.
 - Give modules one output responsibility; merge source review into mapping and remove the separate authorship reference. Simplify source maps, index, tracker, and document headers; remove authorship percentages, default source lists, draft changelogs, and forced AI-gap exceptions.
 - Rebuild the arc around stable section/paragraph IDs and optional argument plans. Keep strict original-wording synthesis with five operations, concrete evidence freshness, semantic join checks, and one compact construction record.
-- Store exact predraft selections in two linked parts; assemble one chosen complete selection per paragraph. Keep review focused on findings, recheck affected work through authorized fixes, and run one final readiness check without repeated whole-file approval loops.
+- Store exact predraft selections in two linked parts; assemble one chosen complete selection per paragraph. Keep review focused on findings, recheck affected work through authorised fixes, and run one final readiness check without repeated whole-file approval loops.
 - Use a stable draft filename. Treat combined sources and full export as requested deliveries outside the tracked working set; retain compatibility guidance for existing projects without converting them automatically.
 - Validate export resume fields, roles, table boundaries, delivery exclusions, and input aliases. Add verified replacement of a known prior delivery with failure preservation, plus exporter regression tests.
 

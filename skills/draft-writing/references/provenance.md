@@ -55,4 +55,4 @@ Return an `Unverified` declaration and block selection when an original, locatio
 
 ## Next owner
 
-Predraft saves an approved passage with its compact declaration; drafting records approved connectors in its process appendix.
+Predraft saves an approved passage with its compact declaration; blueprint and draft records approved AI-authored spans and connector bases in the draft appendix.

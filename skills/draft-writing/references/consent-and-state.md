@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define proposal authority, passage states, user-response classes and valid state transitions.
+Define proposal authority, shared response classes and predraft passage transitions. Later modules define their own object states.
 
 ## Inputs
 
@@ -10,7 +10,7 @@ The exact presented object, its current state and the user's response.
 
 ## Approval rule
 
-Approval must refer unambiguously to the exact object presented. Silence, lack of objection, partial approval, and an ambiguous “continue” or “next” do not approve it. A changed candidate is a new object and requires new approval. Approval selects wording without changing its authorship.
+Approval must name or unambiguously identify the exact presented object and revision. Silence, lack of objection, partial approval, and an ambiguous “continue” or “next” do not approve it. A changed object requires a new revision and approval. Approval selects a decision or wording without changing its authorship or authorising unlisted action.
 
 ## Passage states
 
@@ -33,8 +33,8 @@ Use exactly: `Unstarted`, `Inputs awaiting approval`, `Blocked by gap`, `Candida
 
 ## Procedure
 
-1. Match the user's response to one or more classes: `Approve`, `Reject`, `Revise prose`, `Change inputs`, `Change arc`, `Change direction`, `Confirm contradiction`, `Make operative`, `Supply new wording`, `Supply new source material`, `Request explanation`.
-2. Route each class through [ownership and routing](ownership-and-routing.md). A structural change and its resulting prose require separate approvals.
+1. Match the user's response to one or more classes: `Approve`, `Reject`, `Revise prose`, `Change inputs`, `Change arc`, `Change blueprint`, `Change direction`, `Confirm contradiction`, `Make operative`, `Supply new wording`, `Supply new source material`, `Request explanation`.
+2. Route each class through [ownership and routing](ownership-and-routing.md). A structural decision, its resulting prose and its citation are separate approval objects.
 3. When new direction may contradict an operational commitment, pause the passage transition. Present both commitments and their consequences, ask whether the contradiction is intended, and separately confirm that the new commitment shall become operative. Only then mark the superseded aspect `Outdated`, apply the replacement and invalidate affected downstream passages.
 4. Apply only the transition in the table. A request for explanation changes no state.
 5. Rejection does not remove or skip a passage. Remove or skip it only through an explicitly approved arc change.

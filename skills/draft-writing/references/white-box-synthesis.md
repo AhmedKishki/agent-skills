@@ -9,7 +9,7 @@ Transform one approved passage plan and one limited approved input set into one 
 - **Passage ID and claim:** the single claim the passage must establish.
 - **Arguments:** ordered argument IDs and claims that together establish the passage claim.
 - **Fragments:** only the limited input set explicitly approved in predraft: original codes (`user-n` or `src:A4`), exact human passages with their original span locations, context that identifies subject, scope, modality and qualification, and permitted use: wording, evidence, user interpretation, or framework check.
-- **Constraints:** the user's wording priorities, spelling convention, quotation requirements, applicable conceptual limits and governing article-arc qualifications.
+- **Constraints:** the approved [authorial-voice basis](authorial-voice.md), spelling convention, quotation requirements, conceptual limits and governing article-arc qualifications.
 
 The approved claim and arguments fix the target. Approved fragments supply vocabulary and substantive bases. The article arc's broad inventories are not synthesis inputs and must never be passed to a run automatically. One run targets exactly one passage, which may contain zero, one or multiple paragraph breaks.
 
@@ -24,11 +24,11 @@ The approved claim and arguments fix the target. Approved fragments supply vocab
 |---|---|
 | COPY | Reproduce an exact contiguous span. Valid: copy a complete clause. Invalid: insert an absent synonym. |
 | INFLECT | Change only tense, number, grammatical case, article, or an unambiguous pronoun. Valid: `workers are` → `a worker is`. Invalid: `may` → `will`. |
-| NORMALISE | Make meaning-neutral spelling, capitalization or punctuation changes. Valid: apply the approved spelling convention. Invalid: replace vocabulary. |
+| NORMALISE | Make meaning-neutral spelling, capitalisation or punctuation changes. Valid: apply the approved spelling convention. Invalid: replace vocabulary. |
 | ORDER | Arrange spans only when an approved original explicitly establishes their relation. Valid: reorder an enumerated list. Invalid: imply causation from co-occurrence. |
 | DELETE | Remove repetition only when subject, claim, scope, modality and qualification are identical. Valid: delete a repeated identical clause. Invalid: delete a limiting qualification. |
 
-Apply INFLECT and NORMALISE to unquoted output. Keep direct quotations, saved originals, code, URLs, titles, and citation data exact. Preserve the spelling of proper names, trademarks, official names, and defined terms; adjust their capitalization only where unambiguous and meaning-neutral.
+Apply INFLECT and NORMALISE to unquoted output. Keep direct quotations, saved originals, code, URLs, titles and citation data exact. Preserve proper names, trademarks, official names and defined terms; adjust their capitalisation only where unambiguous and meaning-neutral.
 
 Every word, including a function word inserted at a join, must occur in an approved fragment in the required sense and be recorded by an operation. Do not alter the passage plan. Preserve a user's interpretation as their argument; treat source evidence as support only for what it establishes; use framework-only inputs only for fit checks.
 
@@ -57,7 +57,7 @@ Apply the [provenance contract](provenance.md). Internal connections among a pas
 
 ## Completion condition
 
-Every argument has one record row, every output span is reconstructable, all sources retain their scope and qualifications, and the candidate establishes exactly the approved passage claim.
+Every argument has one record row, every output span is reconstructable, all sources retain their scope and qualifications, the candidate establishes exactly the approved claim, and it passes [authorial-voice validation](authorial-voice.md#validation).
 
 ## Blocking condition
 

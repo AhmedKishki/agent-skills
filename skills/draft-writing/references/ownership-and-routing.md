@@ -25,15 +25,16 @@ A user message, agent finding or accepted change that may affect project files.
 | Limited proposed and approved synthesis selections | Predraft workflow state |
 | Current unapproved passage and full construction record | Predraft working candidate |
 | Approved raw passage and inline compact provenance | Predraft |
-| Connectors, headings, final paragraph boundaries, citations and assembled article | Drafting |
+| Reader-facing selection, omission, treatment, placement, headings, boundaries and relations | Blueprint |
+| Section candidates, connectors, assembled prose and uncited draft versions | Draft |
+| Claim support, footnote wording and marker placement in a finalised draft | Article citation |
 | Cursor, states, counters, inventory and pending action | Activity tracker |
-| Fidelity findings | Fidelity audit |
 
 Approved thesis-and-vision and user wording are operational unless the affected aspect is explicitly marked `Outdated`. When current direct instruction may contradict operational direction, present the exact current and proposed commitments, identify the affected objects and explain the consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Do not overwrite or deactivate the earlier commitment until the user explicitly confirms both. After confirmation, preserve the earlier text, place `**Status: Outdated** — <scope and approved replacement>` immediately beside the superseded aspect, update its owner, and mark affected downstream passages `Invalidated` under the [consent and state contract](consent-and-state.md). For partial supersession, identify only the exact outdated span or proposition; do not retire unaffected content.
 
 ## Output
 
-An explicit owner for every content unit, plus one focused question for any unit that cannot be classified.
+An explicit owner for every content unit, plus one focused question for any unit that cannot be classified. Authorial voice is a shared contract, not a content owner.
 
 ## Completion condition
 

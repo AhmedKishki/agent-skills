@@ -17,8 +17,8 @@ The hierarchy is `article → section → passage → argument`. Qualifications 
 - An argument performs one supporting step required to establish its parent passage claim.
 - Every in-scope passage belongs to exactly one section and contains at least one argument.
 - Every argument belongs to exactly one passage.
-- A section, passage or argument may have an unlabeled `>` blockquote immediately below it. It may state a question, comment, direction, limit, boundary, specification or other qualification governing that object; it is not article prose or a synthesis input.
-- Every argument ends with exactly one unlabeled bullet containing all known fragments that could help develop it. Use comma-separated stable `user-n` or `src:A4` codes, deduplicated in first-listed order, or `- None identified` when none is known.
+- A section, passage or argument may have an unlabelled `>` blockquote immediately below it. It may state a question, comment, direction, limit, boundary, specification or other qualification governing that object; it is not article prose or a synthesis input.
+- Every argument ends with exactly one unlabelled bullet containing all known fragments that could help develop it. Use comma-separated stable `user-n` or `src:A4` codes, deduplicated in first-listed order, or `- None identified` when none is known.
 - The fragment bullet is the argument's final element: it follows any argument comments and precedes the next argument, passage, section or end of file.
 - An inventory is broad and user-revisable. Listing a fragment does not select it for prose, approve it for synthesis, establish its evidential scope or put it in provenance.
 - The arc records fragment references, not exact source excerpts, user-wording spans or approved synthesis selections.
@@ -29,7 +29,7 @@ The hierarchy is `article → section → passage → argument`. Qualifications 
 2. Propose section claims or questions in reading order and obtain approval of the exact proposal.
 3. For each approved section, propose its ordered single-claim passages and obtain approval.
 4. For each passage, propose the ordered arguments, state how each argument establishes the passage claim, and propose one broad fragment inventory for each argument; obtain approval.
-5. Add or revise a section, passage or argument qualification only under the user's direction. Put its content directly in an unlabeled `>` blockquote under its owner; do not add a header or treat it as article language.
+5. Add or revise a section, passage or argument qualification only under the user's direction. Put its content directly in an unlabelled `>` blockquote under its owner; do not add a header or treat it as article language.
 6. Revise an inventory when the user adds, removes or reorders a potential fragment. The revision alone neither approves an input set nor triggers synthesis.
 7. Save only approved structure, comments and inventories. Record one focused structural question in the tracker when a claim, dependency, order or boundary is unresolved.
 8. After an approved change, apply [editing and reference integrity](editing-and-reference-integrity.md) and invalidate only affected selected passages.
@@ -40,7 +40,7 @@ The hierarchy is `article → section → passage → argument`. Qualifications 
 # Article arc
 
 Status: Working
-Thesis: [General picture](demo-thesis-and-vision.md#general-picture)
+Thesis: {project}-thesis-and-vision.md#general-picture
 
 Arc: 1 → 2
 
@@ -75,7 +75,7 @@ Arc: 1 → 2
 - None identified
 ```
 
-Use exactly this structure: Status, Thesis and one Arc line, then H2 sections, H3 passages and plain argument lines separated by blank lines. Put an optional unlabeled `>` qualification immediately below the section, passage or argument it governs. End every argument with one unlabeled fragment bullet. The Arc line lists section numbers once in reading order. Number sections `1`, passages `1.1` and arguments `1.1.1`, restarting each local sequence at 1.
+Use exactly this structure: Status, Thesis and one Arc line, then H2 sections, H3 passages and plain argument lines separated by blank lines. Put an optional unlabelled `>` qualification immediately below the section, passage or argument it governs. End every argument with one unlabelled fragment bullet. The Arc line lists section numbers once in reading order. Number sections `1`, passages `1.1` and arguments `1.1.1`, restarting each local sequence at 1.
 
 ## Completion condition
 

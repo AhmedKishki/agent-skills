@@ -10,7 +10,7 @@ The current workflow event and the actual project files after that event.
 
 ## Procedure
 
-Update the tracker after every input proposal, input approval, gap, candidate presentation, user decision, approved save, invalidation, connector presentation and focus change. Verify listed paths and counters against actual files before saving.
+Update the tracker after every question, proposal, approval, gap, candidate presentation, user decision, save, version creation, invalidation and focus change. Verify paths, versions and counters against actual files before saving.
 
 ## Output
 
@@ -18,9 +18,9 @@ Update the tracker after every input proposal, input approval, gap, candidate pr
 # Activity tracker
 
 - **Project:** Demo
-- **Stage:** Predrafting
-- **Focus passage:** 1.1
-- **Focus connector:** None
+- **Stage:** Predrafting | Blueprinting | Drafting | Citation
+- **Focus object:** Passage 1.1
+- **Focus type:** Passage
 - **Focus state:** Candidate awaiting decision
 - **Candidate revision:** 1.1-r1
 - **Blocking question:** None
@@ -40,7 +40,7 @@ Update the tracker after every input proposal, input approval, gap, candidate pr
 | original-file.pdf | Source original |
 ```
 
-Keep all twelve header fields and the table in this order. During drafting, set `Focus passage: None`, use `Focus connector: C01`, and use connector revision IDs such as `C01-r1`.
+Keep all twelve header fields and the table in this order. `Focus object` names the exact passage, blueprint question or revision, section candidate, complete draft revision, or citation item. `Focus type` is `Passage`, `Blueprint`, `Section`, `Draft` or `Citation`. `Candidate revision` is the exact pending revision or `None`.
 
 List existing files needed to resume, using paths relative to the tracker. Include required originals, conversions and every retained wording basis named in saved provenance. The inventory consists of working inputs and outputs.
 
@@ -48,7 +48,7 @@ Each map row owns checked coverage, access limits and next excerpt ID. Record an
 
 Advance source codes, user numbers and excerpt IDs on allocation. Recover their highest allocated values from reliable history before replacing a missing counter; retired IDs remain retired. Arc numbers follow current positions.
 
-On resumption, check inventory paths and pending work against actual files. Re-present the exact working candidate before interpreting a later approval.
+On resumption, check inventory paths, versions and pending work against actual files. Re-present the exact working question, proposal or candidate before interpreting a later decision.
 
 ## Completion condition
 
