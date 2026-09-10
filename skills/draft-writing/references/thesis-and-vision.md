@@ -22,8 +22,6 @@ The user's current commitments, any earlier approved direction and the current d
 ```markdown
 # Thesis and vision
 
-Status: Working
-
 ## General picture
 
 <What the user wants to argue and achieve.>

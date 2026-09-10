@@ -39,11 +39,6 @@ The hierarchy is `article → section → passage → argument`. Qualifications 
 ```markdown
 # Article arc
 
-Status: Working
-Thesis: {project}-thesis-and-vision.md#general-picture
-
-Arc: 1 → 2
-
 ## 1 — Why does apparent automation depend on human work?
 
 > Establish the section's material scope before addressing its ideological appearance.
