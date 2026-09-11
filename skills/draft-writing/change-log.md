@@ -2,6 +2,14 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 13.0.0
+
+- Replace article-arc and passage predrafting with schema-and-predraft: an unordered `predraft-schema.md` records stable arguments and broad Human input inventories; `predraft.md` stores approved raw argument material.
+- Make blueprint-and-draft solely authoritative for passages, paragraphs, sections, selection and article order.
+- Allow white-box synthesis to reuse approved Human white-box outputs while accepting Human inputs only, preserving finite lineage and always producing Human output.
+- Use `{base}-{modifier}.md`, including `predraft-working.md`, `blueprint-working.md`, `draft-working.md` and `citation-working.md`.
+- Keep every substantive decision under explicit user approval; require one focused question instead of guessing.
+
 ## 12.0.0
 
 - Replace drafting and fidelity-audit with authorial-voice, blueprint-and-draft, and article-citation modules.

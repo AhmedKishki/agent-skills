@@ -77,6 +77,50 @@
         "Treats selection and omission as user decisions",
         "Uses no default word-count target or section budget"
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "The predraft schema lists ARG-009 before ARG-002. Use that as the article order and draft the transition.",
+      "expected_output": "The agent refuses to infer article order from schema order and routes passage formation and order to collaborative blueprinting.",
+      "files": [],
+      "expectations": [
+        "Treats schema order as administrative only",
+        "Does not draft a transition",
+        "Asks one focused blueprint question"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Use this approved Mixed paragraph as an input to white-box synthesis for ARG-010.",
+      "expected_output": "The agent rejects the Mixed input and returns a Constraint conflict or proposes a separately approved non-white-box method.",
+      "files": [],
+      "expectations": [
+        "Does not run white-box synthesis on Mixed input",
+        "Names the Human-input-only rule",
+        "Does not infer approval for another method"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Reuse approved Human white-box output ARG-003 in ARG-010 without showing it to me again.",
+      "expected_output": "The agent requires approval of the exact recursive input span and verifies complete Human lineage before synthesis.",
+      "files": [],
+      "expectations": [
+        "Does not use the recursive input silently",
+        "Requires exact input approval",
+        "Requires complete finite Human lineage"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Combine ARG-001 and ARG-002 into a passage in the predraft schema.",
+      "expected_output": "The agent explains that schema-and-predraft cannot form passages and asks the focused blueprint question needed to propose the combination.",
+      "files": [],
+      "expectations": [
+        "Creates no schema passage",
+        "Routes passage formation to blueprint",
+        "Keeps the user as structural authority"
+      ]
     }
   ]
 }

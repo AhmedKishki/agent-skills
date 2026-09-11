@@ -2,49 +2,50 @@
 
 ## Purpose
 
-Build a versioned blueprint through critical discussion, then produce a finalised uncited draft one section at a time. The agent analyses and asks; the user decides.
+Collaboratively form the article from approved raw arguments, then draft it section by section. The user decides every substantive choice.
 
 ## Inputs
 
-The current thesis-and-vision, user wording, approved article arc, complete approved predraft, required source maps, [authorial voice](authorial-voice.md) and tracker. Blueprinting requires no word-count target, limit, projection or section budget unless the user supplies one.
+Current thesis-and-vision, user wording, predraft schema, predraft, required source maps, authorial voice and tracker.
 
-## Blueprinting
+Predraft-schema and predraft have no article order. Blueprint is the sole authority for passages, paragraphs, sections and order.
 
-1. Verify the inputs and list the article-level, section-level and fragment-level decisions needed to draft without substantive guessing.
-2. Ask one focused critical question at a time. Quote or link the exact material, explain why a decision is needed, and state the consequences of genuine alternatives. The user may reject every alternative.
-3. Route every answer through [ownership and routing](ownership-and-routing.md). Record only reader-facing selection, placement, treatment, boundaries and connections in `{project}-working-blueprint.md`; link to other owners.
-4. After each decision, update the working blueprint and tracker. Identify selected material by passage, argument or exact opening and closing words. An open question gives no drafting authority.
-5. Continue until the blueprint settles the proposition, reader-facing structure, treatment and destination of every predraft passage, order, section functions, paragraph plan, required relations, protected wording and qualifications, and section drafting order.
-6. Present the complete working revision and ask: **“Do you approve blueprint revision WB-rN for finalisation as blueprint vN, or what should change?”** After approval, copy it unchanged to `{project}-blueprint-vN.md` with `Status: Approved`, `Version: vN` and `Finalised from: WB-rN`.
+## Blueprint
 
-Questions may ask whether a section is needed, which claim organises it, whether an example performs a distinct function, what enters or leaves the draft, where material belongs, what connects two parts, where a paragraph ends, or which wording must survive.
+Use `{project}-blueprint-working.md`.
 
-## Blueprint output
+1. List every article-level, passage-level, section-level and raw-material decision required to draft without guessing.
+2. Ask one focused question at a time. Quote or link exact material. State the consequences of real alternatives. The user may reject every alternative.
+3. Record only approved decisions.
+4. Give every active `ARG-nnn` or migration `RAW-nnn` one explicit treatment: include, combine, divide, condense, recur, reserve or omit.
+5. For every use, identify its destination, exact span, function, qualifications and relation to surrounding material.
+6. Define the proposition, passages, paragraph boundaries, sections, headings, order, connectors, protected wording and drafting order.
+7. Present the complete `WB-rN`. Ask: **“Do you approve blueprint revision WB-rN as blueprint vN, or what should change?”**
+8. After approval, copy it unchanged to `{project}-blueprint-vN.md` with `Status: Approved`.
 
 ```markdown
-# Working blueprint
+# Blueprint working
 
-Status: Working | Awaiting approval
+Status: Working | Awaiting approval | Blocked
 Revision: WB-rN
 Current approved version: None | blueprint-vN.md
-Basis: <thesis-and-vision, user wording, arc and predraft links>
+Basis: <links>
 
 ## Article proposition
-<Decisions>
+<Approved decisions>
 
 ## Draft structure
 ### 1 — <working heading>
-- **Function:** <one exact contribution>
-- **Material:** <passages, arguments or bounded fragments>
-- **Treatment:** <include, develop, condense, combine, relocate or omit, with exact scope>
-- **Paragraph plan:** <material and function of each paragraph>
-- **Opening and close:** <decided movement>
-- **Connection:** <exact relation to the next section>
-- **Protected:** <wording, force and qualifications>
+- **Function:** <one contribution>
+- **Passages:** <BP-P01...>
+- **Paragraph plan:** <exact plan>
+- **Opening and close:** <approved movement>
+- **Connection:** <approved relation>
+- **Protected:** <wording and qualifications>
 - **Open:** <question or None>
 
-## Predraft treatment
-| Material | Destination | Treatment | Function or consequence | Status |
+## Raw-material treatment
+| Raw argument | Destination/use | Treatment | Function | Status |
 |---|---|---|---|---|
 
 ## Required relations
@@ -55,30 +56,24 @@ Basis: <thesis-and-vision, user wording, arc and predraft links>
 <Questions or None>
 ```
 
-Approved versions are immutable. Develop a later substantive change in the working blueprint, present the complete revision, save the approved next version, and invalidate only affected draft sections.
+Working states are `Working`, `Awaiting approval` and `Blocked`. Approved blueprint versions are immutable.
 
-Working blueprint states are `Working`, `Awaiting approval` and `Blocked`. A version exists only after approval and has `Status: Approved`.
+## Draft
 
-## Section drafting
+Create `{project}-draft-working.md` only when the first section candidate exists.
 
-1. Work in the approved blueprint's order, one complete section at a time.
-2. Before prose, present the section's blueprint requirements, selected fragments, available user wording, required relations and unresolved needs. Ask one focused question at a time until no substantive guess remains.
-3. Route and preserve each answer. Reopen the blueprint when an answer changes selection, structure, order, emphasis, treatment, boundaries or a relation.
-4. Apply [authorial voice](authorial-voice.md). AI-authored article wording is prohibited unless the user approves the exact proposed span for the identified need.
-5. Save the current candidate in `{project}-working-draft.md`. Present its complete prose, `S<section>-rN`, governing blueprint version, bases, realised requirements, approved AI wording and conformance result. Ask: **“Do you approve section candidate S<section>-rN, reject it, or what should change?”**
-6. Save only exact approved prose. Do not draft the next section while the current section awaits a decision.
-7. After all sections are approved, assemble them without adding or revising prose. Validate the article as a whole, present the complete working revision and ask for exact approval.
-8. After approval, copy it unchanged to `{project}-draft-vN.md` with `Status: Finalised`, `Version: vN` and its governing blueprint version. This uncited file is the sole input to [article citation](article-citation.md).
+1. Work in approved blueprint order, one complete section at a time.
+2. Present the section requirements, selected raw material, relations and unresolved needs. Ask until no substantive guess remains.
+3. Ask the user to supply missing wording before offering AI wording. Use AI wording only after approval of its exact bounded span.
+4. Save the current candidate and all previously approved sections in draft-working.
+5. Present the complete section as `S<section>-rN` with blueprint version, bases, realised requirements, approved AI wording and validation result.
+6. Ask: **“Do you approve section candidate S<section>-rN, reject it, or what should change?”** Wait.
+7. After every section is approved, assemble them without adding prose. Present the complete draft for approval.
+8. After approval, copy it unchanged to `{project}-draft-vN.md` with `Status: Finalised`. Delete draft-working only when no current drafting state remains.
 
-Section states are `Unstarted`, `Questions open`, `Candidate awaiting decision`, `Revision requested`, `Rejected`, `Approved and saved` and `Invalidated`. Complete working-draft states are `Assembling`, `Awaiting approval` and `Blocked`. A changed candidate receives a new revision.
-
-## Draft output
+Draft-working contains reader-facing prose first, then a process appendix:
 
 ```markdown
-# <Article title>
-
-<Approved sections in blueprint order; current candidate only when clearly marked unapproved.>
-
 ---
 
 # Process appendix — outside the article
@@ -87,22 +82,18 @@ Status: Working | Assembling | Awaiting approval | Blocked
 Revision: WD-rN
 Blueprint: blueprint-vN.md
 Current section: <number | None>
-Current candidate: S<section>-rN | None
+Current candidate: <S<section>-rN | None>
 
-| Draft section | Blueprint section | Predraft material | Approved AI wording |
+| Draft section | Blueprint section | Raw material | Approved AI wording |
 |---|---|---|---|
 ```
 
-For `{project}-draft-vN.md`, replace the process status with `Status: Finalised`, add `Version: vN`, and remove every unapproved candidate. Keep process metadata outside the article.
+Section states are `Unstarted`, `Questions open`, `Candidate awaiting decision`, `Revision requested`, `Rejected`, `Approved and saved` and `Invalidated`.
 
 ## Validation
 
-Verify every predraft passage has one explicit treatment; every included fragment has an approved destination and function; every omission, condensation, boundary, order and relation is approved; every section matches the governing blueprint; every section candidate is approved; assembly added no prose; voice and qualifications remain; every AI-authored span has exact approval; and all mappings resolve.
+Verify explicit treatment of every active raw unit; approved selection, omission, recurrence, boundaries, order and relations; exact conformance to blueprint; approval of every section and AI-authored span; no prose added during assembly; preserved voice and qualifications; resolved mappings.
 
-## Blocking condition
+## Blocking
 
-A missing decision, relation, wording basis, approval or required file blocks affected work. An omission, ambiguity, house convention or preference for smoother prose never grants discretion.
-
-## Completion condition
-
-Blueprinting completes with an approved immutable blueprint version. Drafting completes when the user approves the exact assembled prose and it is saved as an immutable finalised draft version.
+Any missing decision, relation, wording basis, approval or required raw material blocks affected work. Ambiguity never grants discretion.

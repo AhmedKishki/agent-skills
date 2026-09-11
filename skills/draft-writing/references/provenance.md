@@ -2,57 +2,58 @@
 
 ## Purpose
 
-Define minimal authorship, method and basis declarations and the test for reconstructing selected wording.
-
-## Inputs
-
-The exact output wording, original human spans actually used, their locations, and the ordered white-box operations applied to them.
+Declare authorship, method and basis without confusing authorship with approval.
 
 ## Compact declaration
 
-Use this field order:
+Use exactly:
 
 ```markdown
-**Provenance:** Mixed · **Method:** white-box synthesis · **Basis:** A4, user-21, user-22
+**Provenance:** Human · **Method:** white-box synthesis · **Basis:** A4, user-21
 ```
 
-- **Provenance:** `Human` for unchanged wording from one human original; `Mixed` for wording arranged from multiple human originals; `AI` for assistant-authored wording; `Unverified` when authorship is unresolved.
-- **Method:** use exactly `white-box synthesis`, `verbatim user wording`, `verbatim source excerpt`, `AI drafting` or `unknown`. Use `unknown` only for accepted retained prose whose actual construction method cannot be verified; never infer `white-box synthesis` from an incomplete historical record.
-- **Basis:** list source and user codes actually used, once each, in first-use order. For accepted unverified prose, list only stable codes recovered, reconstructed or feasible as bases; this does not claim a verified execution history. Write source codes as `A4`, not `src:A4`. Write `Unverified` only when no stable basis code can be identified.
+Allowed provenance values:
 
-Do not declare a human-wording percentage. The reconstruction test verifies wording directly; it is not a percentage calculation.
+- `Human`: wording comes only from verified Human inputs.
+- `Mixed`: retained wording contains Human and AI authorship.
+- `AI`: wording is assistant-authored.
+- `Unverified`: authorship or construction cannot be recovered.
+
+Allowed methods: `white-box synthesis`, `verbatim user wording`, `verbatim source excerpt`, `AI drafting` or `unknown`.
+
+White-box synthesis accepts Human inputs only and always returns Human output. `Mixed`, `AI` and `Unverified` material cannot be a white-box input.
+
+## Recursive lineage
+
+An approved Human white-box output may be a later input as `arg:ARG-001`. The full record must identify that intermediate output and every operation. Compact `Basis` lists the ultimate source and user codes actually retained, once each in first-use order. A missing intermediate record, unresolved input or infinite/circular dependency blocks synthesis.
 
 ## Reconstruction test
 
-Wording is reconstructable only when every meaning-bearing output span maps to quoted original spans and a finite ordered sequence of operations permitted by [white-box synthesis](white-box-synthesis.md), with no unrecorded substitution, insertion, inference or change of scope.
+Every meaning-bearing output span must map through a finite recorded operation chain to exact Human source or user wording. No unrecorded word, substitution, inference, scope change or deleted qualification is allowed.
 
-Preserve these distinctions:
+Keep distinct:
 
-- **Authorship:** who supplied the wording.
-- **Evidence:** what a source establishes in context.
-- **Interpretation:** the user's claim made with or about that evidence.
-- **Selection:** the user's approval of the exact result.
+- authorship: who supplied wording;
+- evidence: what a source establishes;
+- interpretation: the user's claim;
+- selection: what the user approved.
+
+Approval changes none of these.
 
 ## Procedure
 
-1. Map every meaning-bearing output span to its exact original and location.
-2. Record every operation in execution order.
-3. Verify source scope, modality and qualifications separately from authorship.
-4. Deduplicate basis codes in first-use order.
-5. Derive the three compact fields from these checks; do not derive authorship or method from approval. For accepted retained prose whose authorship or method cannot be verified, declare `**Provenance:** Unverified · **Method:** unknown · **Basis:** <codes or Unverified>`.
+1. Map every output span to exact inputs and locations.
+2. Record every operation in order.
+3. Resolve recursive inputs to ultimate Human bases.
+4. Check source scope, modality and qualifications.
+5. Derive the compact declaration.
 
-## Output
+For retained historical prose with unresolved construction, use `**Provenance:** Unverified · **Method:** unknown · **Basis:** <known codes or Unverified>`.
 
-The compact declaration and, when synthesis is presented, its complete construction record.
+## Completion
 
-## Completion condition
+Every basis and intermediate input resolves; every output span passes reconstruction; evidence and interpretation remain distinct.
 
-Every basis resolves, every output span passes the reconstruction test, and evidence and interpretation remain distinct.
+## Blocking
 
-## Blocking condition
-
-Return an `Unverified` declaration and block selection when an original, location, operation or authorship cannot be established.
-
-## Next owner
-
-Predraft saves an approved passage with its compact declaration; blueprint and draft records approved AI-authored spans and connector bases in the draft appendix.
+Missing Human provenance, lineage, location or operation blocks white-box synthesis.

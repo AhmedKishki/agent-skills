@@ -21,16 +21,15 @@ A user message, agent finding or accepted change that may affect project files.
 | Direction, purpose, questions, constraints and metatheory | Thesis and vision |
 | Exact reusable user-authored article language | User wording |
 | Source identity, exact excerpts and locations | Source maps |
-| Sections, passages, passage claims, arguments, order, attached qualifications and broad argument fragment inventories | Article arc |
-| Limited proposed and approved synthesis selections | Predraft workflow state |
-| Current unapproved passage and full construction record | Predraft working candidate |
-| Approved raw passage and inline compact provenance | Predraft |
-| Reader-facing selection, omission, treatment, placement, headings, boundaries and relations | Blueprint |
+| Argument claims, qualifications, dependencies and broad Human input inventories | Predraft schema |
+| Limited Human input selections and approved raw argument material | Schema and predraft |
+| Current unapproved argument and full construction record | Predraft-working |
+| Passages, paragraphs, sections, headings, selection, omission, treatment, recurrence, placement, boundaries, relations and order | Blueprint |
 | Section candidates, connectors, assembled prose and uncited draft versions | Draft |
 | Claim support, footnote wording and marker placement in a finalised draft | Article citation |
 | Cursor, states, counters, inventory and pending action | Activity tracker |
 
-Approved thesis-and-vision and user wording are operational unless the affected aspect is explicitly marked `Outdated`. When current direct instruction may contradict operational direction, present the exact current and proposed commitments, identify the affected objects and explain the consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Do not overwrite or deactivate the earlier commitment until the user explicitly confirms both. After confirmation, preserve the earlier text, place `**Status: Outdated** — <scope and approved replacement>` immediately beside the superseded aspect, update its owner, and mark affected downstream passages `Invalidated` under the [consent and state contract](consent-and-state.md). For partial supersession, identify only the exact outdated span or proposition; do not retire unaffected content.
+Approved thesis-and-vision and user wording remain operational until the affected aspect is marked `Outdated`. For a possible contradiction, present the exact current and proposed commitments, affected objects and consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Wait for both confirmations. Then preserve the earlier text, place the approved `Outdated` marker beside the affected aspect, update its owner, and invalidate affected raw arguments, blueprint uses and draft sections under [consent and state](consent-and-state.md). Do not invalidate unaffected content.
 
 ## Output
 

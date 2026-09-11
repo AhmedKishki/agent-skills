@@ -15,7 +15,7 @@ The user's current commitments, any earlier approved direction and the current d
 3. Treat every approved commitment as operational unless its affected aspect is explicitly marked `Outdated`.
 4. For a missing or possibly conflicting commitment, present the exact operational commitment, proposed commitment, interpretation and consequence. Ask whether the contradiction is intended and whether the proposed commitment shall become operative; wait for explicit confirmation of both.
 5. After confirmation, preserve the superseded wording and place `**Status: Outdated** — <scope and approved replacement>` immediately after the affected paragraph. For partial supersession, identify the exact outdated span or proposition and leave the rest operational.
-6. Save only approved changes. Identify affected arc sections and passages and apply [editing and reference integrity](editing-and-reference-integrity.md).
+6. Save only approved changes. Identify affected schema arguments, blueprint uses and draft sections; apply [editing and reference integrity](editing-and-reference-integrity.md).
 
 ## Output
 
@@ -39,7 +39,7 @@ Use `Open:` beneath the relevant heading for a specific unresolved question. Wri
 
 The lack of an `Outdated` marker means the commitment remains operational. An `Outdated` marker records approved currency, not deletion, and must identify the operative replacement.
 
-An optional final `## Metatheory` holds an approved framework only when it governs interpretation across the article. Keep passage architecture in the arc and actual source uses in predraft.
+An optional final `## Metatheory` holds an approved framework only when it governs interpretation across the article. Keep arguments in predraft schema, actual uses in predraft and passage architecture in blueprint.
 
 ## Completion condition
 
@@ -51,4 +51,4 @@ A possible contradiction that changes the article's direction or constraints blo
 
 ## Next owner
 
-Article arc develops the approved direction into sections, passages and arguments.
+Schema and predraft develops the approved direction into unordered arguments and Human raw material.

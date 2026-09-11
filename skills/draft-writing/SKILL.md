@@ -1,42 +1,43 @@
 ---
 name: draft-writing
-description: Collaboratively plan, write and cite an article under the user's explicit direction through source-grounded synthesis, versioned blueprinting and staged approval.
+description: Collaboratively plan, write and cite an article under the user's explicit authority.
 ---
 
 # Draft writing
 
-Empower the user to realise their thesis and vision while preserving their authorship, voice and decisions throughout the article.
+Help the user write the article they intend. The user is the ultimate authority over thesis, interpretation, evidence, arguments, structure, wording, voice and final form.
 
-## Governing collaboration
+## Authority
 
-A **passage** is the article arc's single-claim compositional unit. It is developed and approved as one rhetorical unit independently of final paragraph boundaries. In the draft, one passage may form part of a paragraph, one paragraph, or multiple paragraphs.
+- Present every substantive proposal exactly. Apply it only after explicit user approval.
+- Ask one focused question when intent, wording, evidence, authorship, scope or a connection is unclear. Do not guess.
+- Silence, lack of objection, “continue” and “next” do not approve a substantive object.
+- A changed object requires a new revision and approval.
+- Preserve approved direction and user wording until the user explicitly makes a replacement operative. Preserve superseded text and mark only its affected aspect `Outdated`.
+- AI-authored article wording is prohibited unless the user approves the exact bounded wording for an identified need.
 
-The user decides the thesis, interpretation, source and fragment selection, structure, passage claims, supporting arguments, wording, voice, final paragraph boundaries and final form. A substantive action changes meaning, interpretation, evidence selection, source use, a claim, an argument, order, boundary, wording, qualification, emphasis, structure or final layout. Present the exact proposed action and wait for explicit approval before adopting it.
+## Units
 
-AI-authored article wording is prohibited unless the user approves the exact proposed span for one identified need. Ask the user to develop missing language before offering AI wording. Apply [authorial voice](references/authorial-voice.md) to every substantive task.
+- A **fragment** is exact Human source or user wording under a stable code.
+- An **argument** is one unordered claim in the predraft schema. Predraft develops its raw material.
+- A **passage** is a reader-facing rhetorical unit created only in blueprint and draft.
+- Predraft-schema and predraft order have no article authority. The approved blueprint alone owns passages, paragraphs, sections and order.
 
-Approved thesis-and-vision and user wording are operational unless an affected aspect is explicitly marked `Outdated`. When new direction may contradict operational direction, present the exact current and proposed commitments and their consequences, ask whether the contradiction is intended, and obtain explicit confirmation that the new commitment shall become operative. Only then apply the replacement and mark the superseded aspect `Outdated` beside its preserved text.
+White-box synthesis accepts Human inputs only. It may reuse an approved Human white-box output with complete finite lineage. Every valid white-box output is Human.
 
-Approval must refer unambiguously to the exact proposal or candidate presented. “Approve”, “approved”, “use this” or an equally explicit instruction tied to that object counts as approval. Silence, lack of objection and an ambiguous “continue” or “next” do not. Comments, questions and requested changes do not approve the object.
+## Required modules
 
-Mechanical actions are reading requested material, preserving supplied wording exactly, allocating IDs, applying an approved change exactly, formatting an approved object to a fixed schema, repairing references, and updating counters or tracker state. Perform them without a second approval unless intent, origin or correspondence is ambiguous.
+Read the shared [file standard](references/file-output-standard.md), [ownership rules](references/ownership-and-routing.md), [consent rules](references/consent-and-state.md), [provenance contract](references/provenance.md), [authorial-voice contract](references/authorial-voice.md), [editing rules](references/editing-and-reference-integrity.md), tracker and every affected task module before acting.
 
-During predrafting, develop one passage at a time in arc order. Present every candidate with its complete prose, compact provenance and full construction record. During drafting, develop one complete blueprint section at a time. Wait for the user's decision before saving any candidate or advancing. A gap blocks dependent work until its focused question is answered. A direct instruction to use exact prose approves only that prose.
+| Task | Module | Output |
+|---|---|---|
+| Establish direction | [Thesis and vision](references/thesis-and-vision.md) | Approved governing direction |
+| Preserve user language | [User wording](references/user-wording.md) | Exact stable user wording |
+| Extract a source | [Source maps](references/source-maps.md) | Approved exact excerpts |
+| Define and develop arguments | [Schema and predraft](references/schema-and-predraft.md) | Unordered argument schema and approved raw material |
+| Construct Human raw material | [White-box synthesis](references/white-box-synthesis.md) | Human candidate with complete record, or gap |
+| Compose and draft | [Blueprint and draft](references/blueprint-and-draft.md) | Approved blueprint and finalised uncited draft |
+| Cite | [Article citation](references/article-citation.md) | Approved cited draft |
+| Record state | [Activity tracker](references/activity-tracker.md) | Exact resumption cursor |
 
-## Use
-
-Read the [file standard](references/file-output-standard.md), [ownership rules](references/ownership-and-routing.md), [consent and state rules](references/consent-and-state.md), [provenance contract](references/provenance.md), [authorial-voice contract](references/authorial-voice.md), [editing rules](references/editing-and-reference-integrity.md), and every affected task module. On resumption, read the [tracker](references/activity-tracker.md), inspect its files and re-present any pending candidate before interpreting a later decision.
-
-| Task | Required input | Module | Result |
-|---|---|---|---|
-| Establish direction | User commitments | [Thesis and vision](references/thesis-and-vision.md) | Approved governing direction |
-| Preserve human language | User-authored article language | [User wording](references/user-wording.md) | Stable exact originals |
-| Extract a source | Accessible source original and agreed scope | [Source maps](references/source-maps.md) | Approved coded excerpts |
-| Design the argument | Approved direction | [Article arc](references/article-arc.md) | Approved sections, passages, arguments, qualifications and broad fragment inventories |
-| Construct one candidate | Approved passage plan and limited approved input set | [White-box synthesis](references/white-box-synthesis.md) | Candidate with record, or typed gap |
-| Develop raw material | Approved arc | [Predraft](references/predraft.md) | Approved raw passages with inline provenance |
-| Design and draft the article | Complete approved predraft | [Blueprint and draft](references/blueprint-and-draft.md) | Approved blueprint and finalised uncited draft versions |
-| Cite the article | Finalised uncited draft | [Article citation](references/article-citation.md) | Approved cited draft version |
-| Record progress | Current workflow event | [Activity tracker](references/activity-tracker.md) | Exact resumption cursor |
-
-Workflow: direction → user wording and source maps → article arc → passage-by-passage predrafting → collaborative blueprint → section-by-section draft → finalised uncited draft → article citation. Revisit an owner when the user requests a change or a gap requires one.
+Workflow: direction → user wording and sources → schema and predraft → blueprint → draft → citation. Return to an owner whenever approved upstream content changes.

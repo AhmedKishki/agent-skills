@@ -25,7 +25,7 @@ Choose contiguous passages centred on one claim or topic. For omissions within o
 | A1 | Reviewers check flagged results every day. | Page 8, paragraph 2 |
 ```
 
-The file contains only one `Code | Excerpt | Location` table. Add no heading, Original field, second table, keyword, theme, role, qualification, interpretation, intended-use, argument, passage or selection-status column. The filename identifies the source; the tracker lists its original. Predraft's full approval record explains use, context, support and limits.
+The file contains only one `Code | Excerpt | Location` table. Add no heading, Original field, second table, keyword, theme, role, qualification, interpretation, intended-use, argument, passage or selection-status column. The filename identifies the source; the tracker lists its original. Predraft-working records proposed use, context, support and limits.
 
 Preserve supplied original filenames in the tracker and use lowercase codes in map filenames. Include edition information in the tracker row when editions have different text or locators. Use source-native pages, sections or paragraph positions. Represent literal pipes as `\|` and excerpt line breaks as `<br>`; decoding these recovers the quotation's text.
 
@@ -47,4 +47,4 @@ Unavailable originals, ambiguous transcription, missing location or unapproved s
 
 ## Next owner
 
-Predraft retrieves exact excerpts and inspects original context before proposing a passage use.
+Schema and predraft retrieves exact excerpts and inspects original context before proposing an argument use.

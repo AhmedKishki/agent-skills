@@ -2,40 +2,30 @@
 
 ## Purpose
 
-Apply an approved edit without losing user wording, provenance, IDs, links or downstream review state.
-
-## Inputs
-
-The exact approved change and every file directly or transitively affected by it.
+Apply an approved change without losing wording, provenance, IDs, links or downstream state.
 
 ## Procedure
 
-1. Read every affected current file and preserve the immediate pre-edit state in a temporary snapshot.
-2. Preserve direct user edits and apply only the approved substantive change plus its necessary mechanical consequences.
-3. Route newly identified content through [ownership and routing](ownership-and-routing.md).
-4. After an approved move, insertion, removal, split or merge, update positional passage and argument numbers and every dependent reference in the same change.
-5. Preserve stable source and user IDs. Retire an allocated ID instead of reusing it.
-6. For an approved contradictory replacement, preserve the earlier text and place the approved `Outdated` marker immediately beside the exact superseded aspect before applying the new operative commitment.
-7. Identify every affected approved passage, blueprint version, section candidate, draft version and citation record. Mark mutable affected objects `Invalidated`; preserve immutable versions and record that they are superseded.
-8. Validate operational and outdated status, exact wording, source context, argument coverage, basis codes, claim dependencies, numbering, links and states.
-9. Update the tracker with the completed edit and exact next action.
+1. Read every affected current file and preserve a temporary pre-edit snapshot.
+2. Apply only the approved substantive change and required mechanical consequences.
+3. Preserve direct user edits. Ask when origin or intent is unclear.
+4. Route new content to one owner.
+5. Keep `ARG-nnn`, source and user IDs stable. Retire IDs; never reuse them.
+6. Blueprint moves do not rename or invalidate raw arguments. They may invalidate affected draft sections and connectors.
+7. A changed argument claim, qualification, Human basis or source context invalidates affected predraft material and every dependent blueprint use.
+8. For an approved contradiction, preserve superseded wording and place the approved `Outdated` marker beside the exact affected aspect.
+9. Preserve immutable versions. Mark mutable affected objects `Invalidated`; record immutable versions as superseded.
+10. Validate wording, lineage, scope, qualifications, IDs, dependencies, links, states and filenames.
+11. Update the tracker.
 
-Changing a broad arc inventory alone does not select an input, trigger synthesis or invalidate prose. Adding or reordering an unused candidate fragment has no effect on approved prose. Removing an actual approved basis, changing its original, or changing a qualification that governs approved prose requires impact review and invalidation of every affected passage. Do not invalidate a passage for a qualification change that leaves its governing directions, limitations, boundaries and specifications unchanged.
+Changing a broad input inventory alone does not select an input, trigger synthesis or invalidate prose. Removing an actual basis or changing its meaning requires impact review.
 
-During an authorised migration, preserve stable IDs and originals required by current provenance, follow the user's retention scope, and apply current schemas only within the approved migration scope.
+During an approved migration, preserve stable identities and originals. Apply only the approved migration scope. Use migration-only `RAW-nnn` units when approved legacy prose cannot be split mechanically.
 
-## Output
+## Completion
 
-The approved edit, repaired dependent references and explicit invalidation or supersession of affected downstream objects.
+The diff contains no unapproved substantive change; all references resolve; every affected object has the correct state.
 
-## Completion condition
+## Blocking
 
-The diff contains no unapproved substantive change, every superseded aspect is preserved with its operative replacement, all references resolve and every affected downstream object has the correct state.
-
-## Blocking condition
-
-Stop before editing when intent, origin, correspondence, migration scope or the operative status of contradictory direction is ambiguous.
-
-## Next owner
-
-Return changed content to its authoritative module and invalidated passages to predraft.
+Unclear intent, origin, correspondence, migration scope or operative contradiction blocks the affected edit.

@@ -6,7 +6,7 @@ Verify and cite claims in a finalised article without changing its argument or p
 
 ## Inputs and precondition
 
-Begin only from an immutable `{project}-draft-vN.md` with `Status: Finalised`, created after the user's approval of its exact complete prose. Never cite a working blueprint, working draft or section candidate. Load the finalised draft, its blueprint, predraft provenance, source maps, accessible originals, publication requirements and tracker. Cite only works the author has read.
+Begin only from an immutable `{project}-draft-vN.md` with `Status: Finalised`, created after the user's approval of its exact complete prose. Never cite `{project}-blueprint-working.md`, `{project}-draft-working.md` or a section candidate. Load the finalised draft, approved blueprint, predraft provenance, source maps, accessible originals, publication requirements and tracker. Cite only works the author has read.
 
 ## Procedure
 

@@ -2,15 +2,11 @@
 
 ## Purpose
 
-Persist the exact workflow cursor, allocation counters and file inventory required to resume.
-
-## Inputs
-
-The current workflow event and the actual project files after that event.
+Preserve the exact workflow cursor, counters and files required to resume.
 
 ## Procedure
 
-Update the tracker after every question, proposal, approval, gap, candidate presentation, user decision, save, version creation, invalidation and focus change. Verify paths, versions and counters against actual files before saving.
+Update after every question, proposal, approval, gap, candidate, decision, save, invalidation, version and focus change. Verify every path and counter.
 
 ## Output
 
@@ -18,46 +14,39 @@ Update the tracker after every question, proposal, approval, gap, candidate pres
 # Activity tracker
 
 - **Project:** Demo
-- **Stage:** Predrafting | Blueprinting | Drafting | Citation
-- **Focus object:** Passage 1.1
-- **Focus type:** Passage
+- **Stage:** Schema | Predrafting | Blueprinting | Drafting | Citation
+- **Focus object:** Argument ARG-014
+- **Focus type:** Argument
 - **Focus state:** Candidate awaiting decision
-- **Candidate revision:** 1.1-r1
+- **Candidate revision:** ARG-014-r1
 - **Blocking question:** None
-- **Now:** Passage 1.1 revision 1 has been presented with its full construction record.
-- **Next after approval:** Save passage 1.1 with inline provenance, then open passage 1.2.
-- **Next after comments:** Route comments and prepare passage 1.1-r2.
+- **Now:** ARG-014-r1 has been presented with its complete record.
+- **Next after approval:** Save ARG-014; select the next focus from dependencies, user priority or blueprint need.
+- **Next after comments:** Route comments; prepare ARG-014-r2.
 - **Next source code:** B
 - **Next user number:** 23
+- **Next argument ID:** ARG-023
 
 | Tracked filename | Role/state |
 |---|---|
-| demo-user-wording.md | Original user language |
-| demo-article-arc.md | Accepted argument plan |
-| demo-predraft.md | Approved raw passages through 1.0 |
-| demo-predraft-working.md | Unapproved passage 1.1-r1 and full record |
-| demo-source-map-a-service-log.md | Source A; pages 1–12 checked; next item A5 |
-| original-file.pdf | Source original |
+| demo-predraft-schema.md | Approved unordered arguments; next ARG-023 |
+| demo-predraft.md | Approved raw argument material |
+| demo-predraft-working.md | Unapproved ARG-014-r1 and full record |
+| demo-source-map-a-service-log.md | Source A; pages 1–12 checked; next A5 |
 ```
 
-Keep all twelve header fields and the table in this order. `Focus object` names the exact passage, blueprint question or revision, section candidate, complete draft revision, or citation item. `Focus type` is `Passage`, `Blueprint`, `Section`, `Draft` or `Citation`. `Candidate revision` is the exact pending revision or `None`.
+Keep these thirteen fields and the table in this order. Use `None` when no candidate or question exists. `Focus type` is `Argument`, `Blueprint`, `Section`, `Draft` or `Citation`.
 
-List existing files needed to resume, using paths relative to the tracker. Include required originals, conversions and every retained wording basis named in saved provenance. The inventory consists of working inputs and outputs.
+List every file needed to resume, including originals and every retained provenance basis. A source-map row records coverage, limits and next excerpt ID.
 
-Each map row owns checked coverage, access limits and next excerpt ID. Record an unavailable original in that map row, and in Now/Next when it blocks current work.
+Allocate source, user and argument IDs monotonically. Never reuse a retired ID. Schema and predraft file positions are not counters and have no article meaning.
 
-Advance source codes, user numbers and excerpt IDs on allocation. Recover their highest allocated values from reliable history before replacing a missing counter; retired IDs remain retired. Arc numbers follow current positions.
+On resumption, verify files and state. Re-present any exact pending proposal or candidate before interpreting a later response.
 
-On resumption, check inventory paths, versions and pending work against actual files. Re-present the exact working question, proposal or candidate before interpreting a later decision.
+## Completion
 
-## Completion condition
+The header identifies one current state and exact next actions; all required files and counters are present and correct.
 
-The fields identify one current state, one candidate revision or `None`, one blocking question or `None`, and exact next actions for approval and comments; every required file is listed.
+## Blocking
 
-## Blocking condition
-
-A missing working candidate, unresolved counter or mismatch between tracker and files blocks continuation until recovered from reliable history or resolved with the user.
-
-## Next owner
-
-The module named by `Stage` and the current state.
+A missing candidate, unresolved counter or file mismatch blocks continuation until recovered or resolved with the user.
