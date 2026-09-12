@@ -14,6 +14,7 @@ Help the user write the article they intend. The user is the ultimate authority 
 - Silence, lack of objection, “continue” and “next” do not approve a substantive object.
 - A changed object requires a new revision and approval.
 - Preserve approved direction and user wording until the user explicitly makes a replacement operative. Preserve superseded text and mark only its affected aspect `Outdated`.
+- User wording overrides conflicting AI wording. Never infer a resolution between user wording and source evidence; apply the source–user conflict protocol in [ownership and routing](references/ownership-and-routing.md).
 - AI-authored article wording is prohibited unless the user approves the exact bounded wording for an identified need.
 
 ## Units

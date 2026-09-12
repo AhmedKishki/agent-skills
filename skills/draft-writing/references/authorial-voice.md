@@ -16,7 +16,7 @@ Use only operational user wording, direct user answers and corrections, exact us
 
 1. Identify the exact basis relevant to the argument, passage or section: vocabulary, directness, rhythm, argumentative movement, political force, modality, qualifications and purposeful repetition.
 2. When wording, emphasis or intended force is unclear, quote the affected material and ask one focused question that helps the user articulate it.
-3. Prefer exact user wording, then approved prose. Keep the user as the speaking and arguing subject; source language supports rather than governs the argument.
+3. Prefer exact user wording, then approved prose. User wording overrides AI wording. Source language supports rather than governs the argument; resolve any conflict through [ownership and routing](ownership-and-routing.md#sourceuser-conflict).
 4. Ask the user to develop missing language before offering AI wording. When requested, present one exact bounded proposal, identify its basis and offer to retain the original. Apply it only after explicit approval.
 5. Report any departure with its exact location, effect and required decision. Diagnosis authorises no revision.
 

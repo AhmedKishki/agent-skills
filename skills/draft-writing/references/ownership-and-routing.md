@@ -31,6 +31,18 @@ A user message, agent finding or accepted change that may affect project files.
 
 Approved thesis-and-vision and user wording remain operational until the affected aspect is marked `Outdated`. For a possible contradiction, present the exact current and proposed commitments, affected objects and consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Wait for both confirmations. Then preserve the earlier text, place the approved `Outdated` marker beside the affected aspect, update its owner, and invalidate affected raw arguments, blueprint uses and draft sections under [consent and state](consent-and-state.md). Do not invalidate unaffected content.
 
+## Source–user conflict
+
+A conflict exists when source evidence and user wording cannot both support the same claim because their fact, scope, modality, causation or interpretation is incompatible. On a possible conflict:
+
+1. Stop the affected work; change no claim, wording or source use.
+2. Quote both exact spans and state the incompatibility and consequences.
+3. If useful, give one explicitly labelled recommendation.
+4. Ask the user to choose: revise or qualify their claim; keep it without that source as support; reject that source use; separate the scopes; or supply further evidence.
+5. Apply only the explicit choice. Never cite a source as support for a claim it contradicts.
+
+User wording governs conflicting AI wording without mediation. Source wording remains evidence; the user alone decides the article's interpretation and use of it.
+
 ## Output
 
 An explicit owner for every content unit, plus one focused question for any unit that cannot be classified. Authorial voice is a shared contract, not a content owner.
@@ -41,7 +53,7 @@ Every unit has exactly one owner and every dependent use points to that owner.
 
 ## Blocking condition
 
-Ambiguous intent, authorship or ownership, or an unresolved possible contradiction, blocks saving only the affected unit and work that depends on it.
+Ambiguous intent, authorship or ownership, or an unresolved direction or source–user conflict, blocks saving only the affected unit and work that depends on it.
 
 ## Next owner
 

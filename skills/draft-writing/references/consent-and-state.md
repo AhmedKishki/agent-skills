@@ -27,9 +27,9 @@ Use exactly: `Unstarted`, `Inputs awaiting approval`, `Blocked by gap`, `Candida
 
 ## Procedure
 
-1. Classify the response: approve, reject, revise prose, change inputs, change schema, change blueprint, change direction, confirm contradiction, make operative, supply wording, supply source or request explanation.
+1. Classify the response: approve, reject, revise prose, change inputs, change schema, change blueprint, change direction, resolve source–user conflict, confirm contradiction, make operative, supply wording, supply source or request explanation.
 2. Route each class to its owner.
-3. If new direction may contradict operational direction, present both commitments and consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Wait for both confirmations.
+3. Resolve direction contradictions and source–user conflicts through [ownership and routing](ownership-and-routing.md) before applying a transition.
 4. Apply only the matching state transition.
 5. Record the state and exact next action.
 

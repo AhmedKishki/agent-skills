@@ -2,6 +2,12 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 14.1.0
+
+- Make user wording authoritative over AI wording.
+- Block possible source–user conflicts until the agent quotes both positions, states the incompatibility and consequences, and the user explicitly resolves the article claim and source use.
+- Permit an explicitly labelled recommendation; prohibit inferred resolutions and citation of a source as support for a claim it contradicts.
+
 ## 14.0.0
 
 - Replace source-map tables with one `# Author, Full Source Title` heading and one `## CODE — Short topic, location` plus exact blockquote per excerpt.

@@ -28,10 +28,11 @@ Every output word, including words at joins, must occur in an approved Human inp
 ## Procedure
 
 1. Verify that every input is Human. Resolve each `arg:ARG-nnn` input through a finite lineage to ultimate source/user codes.
-2. Match approved inputs to the argument claim and qualifications.
-3. Apply only the permitted operations.
-4. Check that the output establishes exactly the argument claim.
-5. Return the candidate and full record, or one typed gap.
+2. Check every source input against user wording under the [source–user conflict protocol](ownership-and-routing.md#sourceuser-conflict). Stop on a possible conflict.
+3. Match approved inputs to the argument claim and qualifications.
+4. Apply only the permitted operations.
+5. Check that the output establishes exactly the argument claim.
+6. Return the candidate and full record, or one typed gap.
 
 ## Output
 
@@ -53,7 +54,7 @@ Flatten compact `Basis` to ultimate source/user codes. Keep intermediate `arg:AR
 
 ## Gaps
 
-Use exactly one: `Missing user wording`, `Missing evidence`, `Unsupported connection`, `Source-context ambiguity`, `Schema inconsistency` or `Constraint conflict`. State the argument ID, missing requirement, owner, one focused question and allowed resolution paths.
+Use exactly one: `Missing user wording`, `Missing evidence`, `Unsupported connection`, `Source-context ambiguity`, `Source–user conflict`, `Schema inconsistency` or `Constraint conflict`. State the argument ID, missing requirement, owner, one focused question and allowed resolution paths.
 
 Use `Constraint conflict` when required input is Mixed, AI or Unverified. Any alternative method must be separately disclosed and explicitly approved outside white-box synthesis.
 
