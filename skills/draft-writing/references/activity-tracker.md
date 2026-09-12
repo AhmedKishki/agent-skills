@@ -32,7 +32,7 @@ Update after every question, proposal, approval, gap, candidate, decision, save,
 | demo-predraft-schema.md | Approved unordered arguments; next ARG-023 |
 | demo-predraft.md | Approved raw argument material |
 | demo-predraft-working.md | Unapproved ARG-014-r1 and full record |
-| demo-source-map-a-service-log.md | Source A; pages 1–12 checked; next A5 |
+| demo-source-map-a-alex-rivera-daily-service-log.md | Source A; pages 1–12 checked; next A5 |
 ```
 
 Keep these thirteen fields and the table in this order. Use `None` when no candidate or question exists. `Focus type` is `Argument`, `Blueprint`, `Section`, `Draft` or `Citation`.

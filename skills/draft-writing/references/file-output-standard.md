@@ -22,7 +22,7 @@ The project name and the output schema in the active task module.
 |---|---|
 | Governing direction | `thesis-and-vision.md` |
 | Exact user language | `user-wording.md` |
-| One source's excerpts | `source-map-{code}-{author-short-title}.md` |
+| One source's excerpts | `source-map-{code}-{author-full-source-title}.md` |
 | Argument schema | `predraft-schema.md` |
 | Current unapproved argument | `predraft-working.md` |
 | Approved raw arguments | `predraft.md` |

@@ -2,6 +2,13 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 14.0.0
+
+- Replace source-map tables with one `# Author, Full Source Title` heading and one `## CODE — Short topic, location` plus exact blockquote per excerpt.
+- Use full author names and full source titles in source-map filenames.
+- Migrate existing source maps mechanically: preserve stable excerpt codes, exact source wording and source order; move each row's code, short topic and locator into its H2; decode `<br>` as source paragraph breaks and table-escaped pipes as literal pipes; retain tracker coverage, originals and next-item counters.
+- Historical changelog descriptions of earlier table schemas remain historical and are superseded by the 14.0.0 format.
+
 ## 13.0.0
 
 - Replace article-arc and passage predrafting with schema-and-predraft: an unordered `predraft-schema.md` records stable arguments and broad Human input inventories; `predraft.md` stores approved raw argument material.
