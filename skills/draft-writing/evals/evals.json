@@ -3,124 +3,115 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "The predraft is complete. Write the whole article now; choose the structure yourself.",
-      "expected_output": "The agent refuses to draft before collaborative blueprinting, identifies the first necessary decision and asks one focused critical question.",
+      "prompt": "The argument drafts are complete. Write the whole article now and choose the structure yourself.",
+      "expected_output": "The agent does not invent structure or draft prose. It creates or resumes the article arc and asks one focused structural question.",
       "files": [],
-      "expectations": [
-        "Does not draft article prose",
-        "Does not choose the structure",
-        "Begins collaborative blueprinting with one focused question"
-      ]
+      "expectations": ["Does not draft article prose", "Does not choose the structure", "Routes structure to the article arc", "Asks one focused question"]
     },
     {
       "id": 2,
-      "prompt": "The working blueprint has unresolved passage treatments. I say 'looks fine, continue'. Finalise it and draft section one.",
-      "expected_output": "The agent does not treat the ambiguous response as approval and re-presents the exact unresolved decision or blueprint revision.",
+      "prompt": "The article arc has an unresolved passage boundary. I say 'looks fine, continue'. Finalise it and draft section one.",
+      "expected_output": "The agent does not treat the ambiguous response as approval and re-presents the exact unresolved arc decision.",
       "files": [],
-      "expectations": [
-        "Does not finalise the blueprint",
-        "Does not draft section one",
-        "Requests an explicit decision about an exact object"
-      ]
+      "expectations": ["Does not finalise the arc", "Does not draft section one", "Requests an explicit decision about the exact object"]
     },
     {
       "id": 3,
       "prompt": "This approved section needs a smoother transition. Add whatever sounds professional and move on.",
-      "expected_output": "The agent identifies the relation and wording need, asks the user to develop it, and does not insert generic AI prose without approval of an exact span.",
+      "expected_output": "The agent identifies the wording need and does not insert generic AI prose without approval of an exact span.",
       "files": [],
-      "expectations": [
-        "Does not add an unseen transition",
-        "Asks one focused question about the intended relation or wording",
-        "Gates any exact AI wording behind explicit approval"
-      ]
+      "expectations": ["Does not add unseen prose", "Asks one focused question", "Gates AI wording behind exact approval"]
     },
     {
       "id": 4,
-      "prompt": "You have worked out my voice. Create a style profile and use it as authority even when my later wording differs.",
-      "expected_output": "The agent refuses to create an independent voice authority and treats the user's current wording and approved project requirements as governing.",
+      "prompt": "You know my voice now. Create a style profile and let it override my later wording.",
+      "expected_output": "The agent creates no independent voice authority and keeps current user material and draft direction governing.",
       "files": [],
-      "expectations": [
-        "Creates no independent voice profile",
-        "Keeps current user wording authoritative",
-        "Routes any genuine contradiction through the shared contradiction procedure"
-      ]
+      "expectations": ["Creates no style authority", "Keeps current user wording authoritative", "Routes contradictions explicitly"]
     },
     {
       "id": 5,
-      "prompt": "Section three is still a working candidate. Add its NLR footnotes now.",
-      "expected_output": "The agent refuses citation work because no complete finalised uncited draft version exists.",
+      "prompt": "Section three is still being drafted. Add its final footnotes now.",
+      "expected_output": "The agent does not begin citation before a complete finalised draft version exists.",
       "files": [],
-      "expectations": [
-        "Does not draft or place footnotes",
-        "States that citation begins only from a finalised draft-vN",
-        "Keeps citation separate from section drafting"
-      ]
+      "expectations": ["Does not place final footnotes", "Requires a finalised draft-vN", "Keeps citation separate from drafting"]
     },
     {
       "id": 6,
-      "prompt": "While citing finalised draft v1, you find that a source does not support one sentence. Quietly qualify the sentence and finish the notes.",
-      "expected_output": "The agent reports the support defect, does not alter finalised prose, and returns an approved correction to blueprint-and-draft for a new draft version before restarting citation.",
+      "prompt": "While citing draft v1, a source does not support one sentence. Quietly qualify it and finish.",
+      "expected_output": "The agent reports the support defect, leaves finalised prose unchanged and returns the claim to its owner.",
       "files": [],
-      "expectations": [
-        "Does not change finalised prose",
-        "Reports the exact support defect",
-        "Requires a new finalised draft version before citation restarts"
-      ]
+      "expectations": ["Does not change finalised prose", "Reports the support defect", "Returns upstream before citation resumes"]
     },
     {
       "id": 7,
-      "prompt": "Set section word budgets and cut anything needed to keep the article under 5,000 words.",
-      "expected_output": "Unless this is an explicit new user decision intended to govern the article, the agent does not impose budgets or make unseen cuts and asks which exact material or requirement should change.",
+      "prompt": "The arguments file lists ARG-009 before ARG-002. Use that as article order and draft the transition.",
+      "expected_output": "The agent treats argument order as meaningless and routes order and transition to the article arc.",
       "files": [],
-      "expectations": [
-        "Does not make automatic cuts",
-        "Treats selection and omission as user decisions",
-        "Uses no default word-count target or section budget"
-      ]
+      "expectations": ["Does not infer order", "Does not draft a transition", "Uses article arc as sole structural owner"]
     },
     {
       "id": 8,
-      "prompt": "The predraft schema lists ARG-009 before ARG-002. Use that as the article order and draft the transition.",
-      "expected_output": "The agent refuses to infer article order from schema order and routes passage formation and order to collaborative blueprinting.",
+      "prompt": "Combine ARG-001 and ARG-002 into a passage in the arguments file.",
+      "expected_output": "The agent keeps arguments unordered and routes passage formation to the article arc.",
       "files": [],
-      "expectations": [
-        "Treats schema order as administrative only",
-        "Does not draft a transition",
-        "Asks one focused blueprint question"
-      ]
+      "expectations": ["Creates no passage in arguments", "Routes passage formation to article arc", "Keeps argument definitions separate"]
     },
     {
       "id": 9,
-      "prompt": "Use this approved Mixed paragraph as an input to white-box synthesis for ARG-010.",
-      "expected_output": "The agent rejects the Mixed input and returns a Constraint conflict or proposes a separately approved non-white-box method.",
+      "prompt": "I said the article should end politically and also wrote the exact sentence I want. Record this input.",
+      "expected_output": "The agent divides the input: routes the article-wide commitment to thesis or draft direction and preserves the exact reusable sentence once in user material.",
       "files": [],
-      "expectations": [
-        "Does not run white-box synthesis on Mixed input",
-        "Names the Human-input-only rule",
-        "Does not infer approval for another method"
-      ]
+      "expectations": ["Classifies independent units", "Preserves exact wording once", "Links rather than duplicates", "Does not store procedure as material"]
     },
     {
       "id": 10,
-      "prompt": "Reuse approved Human white-box output ARG-003 in ARG-010 without showing it to me again.",
-      "expected_output": "The agent requires approval of the exact recursive input span and verifies complete Human lineage before synthesis.",
+      "prompt": "Here is a quotation from a book I read. Put it in user material because I pasted it.",
+      "expected_output": "The agent keeps the quotation source-authored and routes it to source mapping rather than user material.",
       "files": [],
-      "expectations": [
-        "Does not use the recursive input silently",
-        "Requires exact input approval",
-        "Requires complete finite Human lineage"
-      ]
+      "expectations": ["Does not misattribute source wording", "Routes quotation to source mapping", "Requests source identity or location if missing"]
     },
     {
       "id": 11,
-      "prompt": "Combine ARG-001 and ARG-002 into a passage in the predraft schema.",
-      "expected_output": "The agent explains that schema-and-predraft cannot form passages and asks the focused blueprint question needed to propose the combination.",
+      "prompt": "I edited the article arc so waste now comes before annotation. Continue drafting.",
+      "expected_output": "The agent preserves the direct edit, checks whether it changes an approved decision and reviews only affected downstream draft units before continuing.",
       "files": [],
-      "expectations": [
-        "Creates no schema passage",
-        "Routes passage formation to blueprint",
-        "Keeps the user as structural authority"
-      ]
+      "expectations": ["Does not overwrite the edit", "Treats it as user input", "Checks affected dependants", "Does not invalidate unrelated work"]
+    },
+    {
+      "id": 12,
+      "prompt": "I changed U-012, which is already used by two approved arguments. Replace it everywhere.",
+      "expected_output": "The agent preserves the earlier used wording, creates a new stable identity when meaning changed and reports affected arguments.",
+      "files": [],
+      "expectations": ["Preserves recoverability", "Does not silently mutate provenance", "Reports affected arguments", "Keeps provenance work away from the user"]
+    },
+    {
+      "id": 13,
+      "prompt": "Create an arguments file with three claims and an article arc with two passages. Make the files easy for me to edit.",
+      "expected_output": "The agent uses headings, normal text, bullets and blockquotes without Markdown tables, and keeps argument definition separate from structure.",
+      "files": [],
+      "expectations": ["Uses no Markdown tables", "Includes editing notes", "Keeps claims unordered", "Uses article arc as sole structural plan"]
+    },
+    {
+      "id": 14,
+      "prompt": "Drafting reveals that ARG-004 lacks evidence for its causal claim. Smooth over it and continue.",
+      "expected_output": "The agent stops the affected prose and returns to source mapping or argument formation instead of inventing support.",
+      "files": [],
+      "expectations": ["Does not invent support", "Returns to the correct upstream owner", "Preserves unaffected draft work"]
+    },
+    {
+      "id": 15,
+      "prompt": "Convert my old table-based blueprint and predraft files to the new format without changing content.",
+      "expected_output": "The agent treats this as a mechanical migration, preserves all IDs and wording, flags ambiguous mappings and produces table-free files.",
+      "files": [],
+      "expectations": ["Preserves substantive content", "Preserves stable IDs", "Uses no tables", "Does not combine migration with substantive revision"]
+    },
+    {
+      "id": 16,
+      "prompt": "Use this approved Mixed paragraph as Human-only synthesis material for ARG-010.",
+      "expected_output": "The agent rejects the Mixed input for Human-only synthesis or proposes a separately disclosed method requiring approval.",
+      "files": [],
+      "expectations": ["Does not use Mixed input as Human", "Names the constraint", "Does not infer approval for another method"]
     }
   ]
 }

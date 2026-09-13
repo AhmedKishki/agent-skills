@@ -1,40 +1,5 @@
-# Consent and state
+# Legacy consent pointer
 
-## Purpose
+This filename is retained only for projects created before draft-writing 15.0.0.
 
-Apply only the user's explicit decision to the exact object presented.
-
-## Approval
-
-Approval must unambiguously identify the exact proposal or revision. Silence, partial approval, lack of objection, “continue” and “next” do not approve. A changed object requires a new revision and approval.
-
-## Argument states
-
-Use exactly: `Unstarted`, `Inputs awaiting approval`, `Blocked by gap`, `Candidate awaiting decision`, `Revision requested`, `Rejected`, `Approved and saved`, `Invalidated`.
-
-| Current | Event | Next | Action |
-|---|---|---|---|
-| Unstarted or Invalidated | Exact input set presented | Inputs awaiting approval | Wait. |
-| Inputs awaiting approval | Exact inputs approved; candidate produced | Candidate awaiting decision | Save in predraft-working; present full record. |
-| Inputs awaiting approval | Exact inputs approved; gap returned | Blocked by gap | Present gap; wait. |
-| Inputs awaiting approval | Inputs changed | Inputs awaiting approval | Revise; present again. |
-| Candidate awaiting decision | Exact candidate approved | Approved and saved | Copy to predraft; delete working file. |
-| Candidate awaiting decision | Change requested | Revision requested | Route and revise. |
-| Candidate awaiting decision | Candidate rejected | Rejected | Retire revision; keep argument active. |
-| Revision requested | Revised inputs presented | Inputs awaiting approval | Wait. |
-| Revision requested | Revised candidate from unchanged inputs presented | Candidate awaiting decision | Wait. |
-| Approved and saved | Approved basis changes | Invalidated | Identify impact; reopen argument. |
-
-## Procedure
-
-1. Classify the response: approve, reject, revise prose, change inputs, change schema, change blueprint, change direction, resolve source–user conflict, confirm contradiction, make operative, supply wording, supply source or request explanation.
-2. Route each class to its owner.
-3. Resolve direction contradictions and source–user conflicts through [ownership and routing](ownership-and-routing.md) before applying a transition.
-4. Apply only the matching state transition.
-5. Record the state and exact next action.
-
-A rejected candidate does not remove its schema argument. Removal requires explicit schema approval. A request for explanation changes no state.
-
-## Blocking
-
-If one response could authorise incompatible actions, ask one focused question and wait.
+Use [Consent](consent.md) for approval and state transitions. Preserve pending objects and do not infer approval during migration.

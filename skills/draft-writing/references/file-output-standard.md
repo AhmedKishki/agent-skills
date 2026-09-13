@@ -1,55 +1,70 @@
-# Shared file standard
+# File names
 
 ## Purpose
 
-Define shared filenames, headings, status placement, links and field order for draft-writing files.
+Give each article-making function one predictable file or file family.
 
-## Inputs
+## Canonical files
 
-The project name and the output schema in the active task module.
+### Thesis
 
-## Procedure
+`{project}-thesis.md`
 
-1. Prefix canonical files with stable `{project}-` filenames and edit them in place.
-2. Put a mutable state or immutable version after the base name: `{base}-working.md` or `{base}-vN.md`.
-3. Follow the task module's exact heading levels and field order.
-4. Use relative Markdown links. Link to exact argument, passage or section headings.
-5. Form anchors from the exact heading text under standard Markdown rules.
-6. Create a file only when its module has content to store. Do not create an empty working file.
-7. In thesis-and-vision and user-wording, place an approved `**Status: Outdated** — <scope and approved replacement>` immediately after the exact superseded aspect. Preserve the original text; unmarked content remains operational.
+### Draft direction
 
-| Content | Filename after the prefix |
-|---|---|
-| Governing direction | `thesis-and-vision.md` |
-| Exact user language | `user-wording.md` |
-| One source's excerpts | `source-map-{code}-{author-full-source-title}.md` |
-| Argument schema | `predraft-schema.md` |
-| Current unapproved argument | `predraft-working.md` |
-| Approved raw arguments | `predraft.md` |
-| Current blueprint | `blueprint-working.md` |
-| Approved blueprint snapshot | `blueprint-vN.md` |
-| Current draft | `draft-working.md` |
-| Finalised uncited draft | `draft-vN.md` |
-| Current citation work | `citation-working.md` |
-| Approved cited draft | `cited-draft-vN.md` |
-| Resumption cursor and inventory | `activity-tracker.md` |
+`{project}-draft-direction.md`
 
-Thesis and predraft schema place `Status: Working | Needs review | Approved` below the H1. Blueprint-working and draft-working use their module states. Versioned blueprints use `Approved`; uncited draft versions use `Finalised`; cited draft versions use `Approved` or `Complete`. Use `Complete` only when the user declares the article finished.
+### Exact user material
 
-Use the listed names exactly. Do not write `working-blueprint.md`, `working-draft.md`, `working-predraft.md` or `working-citation.md`.
+`{project}-user-material.md`
 
-## Output
+### Source maps
 
-A file conforming exactly to the active module's schema and these shared conventions.
+`sources/source-maps/{project}-source-map-{code}-{author-full-source-title}.md`
 
-## Completion condition
+### Unordered arguments
 
-All required fields occur once in the prescribed order, every relative link and heading anchor resolves, and each `Outdated` marker is adjacent to preserved superseded content and identifies its operative replacement.
+`{project}-arguments.md`
 
-## Blocking condition
+### Inputs selected for synthesis
 
-Stop and ask one focused question when the project name, required schema or intended link target is ambiguous.
+`{project}-synthesis-material.md`
 
-## Next owner
+### Approved raw argument prose
 
-Return the conforming file to the module that requested it.
+`{project}-argument-drafts.md`
+
+### Sole structural plan
+
+Live file: `{project}-article-arc.md`
+
+Approved snapshot: `{project}-article-arc-vN.md`
+
+### Article prose
+
+Live file: `{project}-draft.md`
+
+Finalised snapshot: `{project}-draft-vN.md`
+
+### Citation work
+
+`{project}-citations.md`
+
+Approved cited draft: `{project}-cited-draft-vN.md`
+
+### Current workflow state
+
+`{project}-progress.md`
+
+## Rules
+
+- Prefix every canonical project file with the resolved project name.
+- Keep immutable approved snapshots unchanged. Make revisions in the live file.
+- Use relative Markdown links and stable IDs in headings.
+- Create a file only when it has material to store.
+- Use no Markdown tables in active project files.
+- Follow [Human-editable files](human-editable-files.md).
+
+## Completion
+
+Every file has one owner, every link resolves and no two live files claim the same function.

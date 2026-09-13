@@ -6,17 +6,17 @@ Preserve and help the user develop their recognisable thought, language, argumen
 
 ## Authority
 
-Apply [ownership and routing](ownership-and-routing.md), [consent and state](consent-and-state.md), [user wording](user-wording.md), [provenance](provenance.md), and [editing and reference integrity](editing-and-reference-integrity.md). The user determines the voice. Project-specific requirements belong in thesis-and-vision; exact reusable language belongs in user wording. Create no independent voice profile.
+Apply [ownership](ownership-and-routing.md), [consent](consent.md), [user material](user-material.md), [provenance](provenance.md) and [editing](editing.md). The user determines the voice. Writing requirements belong in draft direction; exact reusable language belongs in user material. Create no independent voice profile.
 
 ## Voice basis
 
-Use only operational user wording, direct user answers and corrections, exact user-approved article prose, and operational voice requirements in thesis-and-vision. Do not infer voice from source authors, publication stereotypes, generic polished prose or AI summaries. Treat any description of the user's voice as a proposal until the user confirms it.
+Use only current user material, direct user answers and corrections, exact user-approved article prose, and voice requirements in draft direction. Do not infer voice from source authors, publication stereotypes, generic polished prose or AI summaries. Treat any description of the user's voice as a proposal until the user confirms it.
 
 ## Procedure
 
 1. Identify the exact basis relevant to the argument, passage or section: vocabulary, directness, rhythm, argumentative movement, political force, modality, qualifications and purposeful repetition.
 2. When wording, emphasis or intended force is unclear, quote the affected material and ask one focused question that helps the user articulate it.
-3. Prefer exact user wording, then approved prose. User wording overrides AI wording. Source language supports rather than governs the argument; resolve any conflict through [ownership and routing](ownership-and-routing.md#sourceuser-conflict).
+3. Prefer exact user material, then approved prose. User wording overrides AI wording. Source language supports rather than governs the argument; resolve any conflict through [ownership](ownership-and-routing.md#sourceuser-conflict).
 4. Ask the user to develop missing language before offering AI wording. When requested, present one exact bounded proposal, identify its basis and offer to retain the original. Apply it only after explicit approval.
 5. Report any departure with its exact location, effect and required decision. Diagnosis authorises no revision.
 

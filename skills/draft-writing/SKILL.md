@@ -1,44 +1,45 @@
 ---
 name: draft-writing
-description: Collaboratively plan, write and cite an article under the user's explicit authority.
+description: Develop a sourced article from the user's thesis through source mapping, argument formation, synthesis, one article arc, drafting and citation.
 ---
 
 # Draft writing
 
-Help the user write the article they intend. The user is the ultimate authority over thesis, interpretation, evidence, arguments, structure, wording, voice and final form.
+Help the user prepare the article they intend. The user is the authority over thesis, interpretation, arguments, structure, wording, voice and final form.
 
-## Authority
+## Governing rules
 
-- Present every substantive proposal exactly. Apply it only after explicit user approval.
-- Ask one focused question when intent, wording, evidence, authorship, scope or a connection is unclear. Do not guess.
-- Silence, lack of objection, “continue” and “next” do not approve a substantive object.
-- A changed object requires a new revision and approval.
-- Preserve approved direction and user wording until the user explicitly makes a replacement operative. Preserve superseded text and mark only its affected aspect `Outdated`.
-- User wording overrides conflicting AI wording. Never infer a resolution between user wording and source evidence; apply the source–user conflict protocol in [ownership and routing](references/ownership-and-routing.md).
-- AI-authored article wording is prohibited unless the user approves the exact bounded wording for an identified need.
+- Apply a substantive proposal only after the user approves that exact object.
+- Ask one focused question when intent, evidence, authorship, scope or connection is unclear.
+- Route each independent part of new input to one owner. Do not store procedural talk as article material.
+- Preserve exact user and source wording under stable IDs. Never present source or AI wording as the user's.
+- Use simple Markdown headings, paragraphs, bullets and blockquotes. Create no tables in active project files.
+- Treat direct file edits as user input. Preserve them and report affected downstream work.
+- Move forward when a stage is ready. Return to an earlier owner when new input changes it; invalidate only affected dependants.
+- AI-authored article wording requires approval of the exact bounded wording for an identified need.
 
-## Units
+## Process
 
-- A **fragment** is exact Human source or user wording under a stable code.
-- An **argument** is one unordered claim in the predraft schema. Predraft develops its raw material.
-- A **passage** is a reader-facing rhetorical unit created only in blueprint and draft.
-- Predraft-schema and predraft order have no article authority. The approved blueprint alone owns passages, paragraphs, sections and order.
+1. Establish the thesis in [Thesis](references/thesis.md).
+2. Record writing requirements in [Draft direction](references/draft-direction.md).
+3. Map exact evidence in [Source mapping](references/source-mapping.md).
+4. Classify exact user contributions through [Input routing](references/input-routing.md) and preserve reusable material in [User material](references/user-material.md).
+5. Define unordered claims in [Argument formation](references/argument-formation.md).
+6. Collect approved inputs through [Synthesis material](references/synthesis-material.md).
+7. Create and approve raw argument prose through [Argument synthesis](references/argument-synthesis.md).
+8. Arrange arguments in the sole structural plan through [Article arc](references/article-arc.md).
+9. Compose reader-facing prose through [Drafting](references/drafting.md).
+10. Verify and cite a finalised draft through [Citation](references/citation.md).
 
-White-box synthesis accepts Human inputs only. It may reuse an approved Human white-box output with complete finite lineage. Every valid white-box output is Human.
+User input may supplement or redirect any stage. Follow [Consent](references/consent.md), [Editing](references/editing.md), [Provenance](references/provenance.md), [Authorial voice](references/authorial-voice.md), [Human-editable files](references/human-editable-files.md), [File names](references/file-output-standard.md) and [Progress](references/progress.md) throughout.
 
-## Required modules
+## Units and authority
 
-Read the shared [file standard](references/file-output-standard.md), [ownership rules](references/ownership-and-routing.md), [consent rules](references/consent-and-state.md), [provenance contract](references/provenance.md), [authorial-voice contract](references/authorial-voice.md), [editing rules](references/editing-and-reference-integrity.md), tracker and every affected task module before acting.
+- A source excerpt is exact source wording in a source map.
+- User material is exact reusable user-authored wording.
+- An argument is one unordered claim in the arguments file.
+- An argument draft is approved raw prose for one argument.
+- The article arc alone owns article order, sections, passages, paragraph purposes, connections, inclusion and omission.
+- The draft alone owns reader-facing article prose.
 
-| Task | Module | Output |
-|---|---|---|
-| Establish direction | [Thesis and vision](references/thesis-and-vision.md) | Approved governing direction |
-| Preserve user language | [User wording](references/user-wording.md) | Exact stable user wording |
-| Extract a source | [Source maps](references/source-maps.md) | Approved exact excerpts |
-| Define and develop arguments | [Schema and predraft](references/schema-and-predraft.md) | Unordered argument schema and approved raw material |
-| Construct Human raw material | [White-box synthesis](references/white-box-synthesis.md) | Human candidate with complete record, or gap |
-| Compose and draft | [Blueprint and draft](references/blueprint-and-draft.md) | Approved blueprint and finalised uncited draft |
-| Cite | [Article citation](references/article-citation.md) | Approved cited draft |
-| Record state | [Activity tracker](references/activity-tracker.md) | Exact resumption cursor |
-
-Workflow: direction → user wording and sources → schema and predraft → blueprint → draft → citation. Return to an owner whenever approved upstream content changes.
+Argument-file order has no article authority. The article arc is developed before and during drafting and remains the single structural authority.

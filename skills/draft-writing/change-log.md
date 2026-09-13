@@ -2,6 +2,16 @@
 
 This file is historical and non-normative. Current behaviour is governed by `SKILL.md` and the active reference modules.
 
+## 15.0.0
+
+- Recast draft-writing as a staged but recursive process: thesis, draft direction, source mapping, user-material routing, argument formation, synthesis-material approval, argument synthesis, one article arc, drafting and citation.
+- Make `article-arc.md` the sole structural authority and retire separate blueprint and architectural-decision artifacts for new projects.
+- Split argument definition, input collection and raw-prose synthesis into single-purpose modules and files.
+- Classify incoming user material by function; preserve exact reusable user wording once and keep supplied source quotations source-authored.
+- Replace active project-file tables with readable headings, normal text, bullets and blockquotes.
+- Add a human-editability contract, direct-edit routing and minimal progress tracking.
+- Retain old combined module filenames only as migration pointers for projects created before 15.0.0.
+
 ## 14.1.0
 
 - Make user wording authoritative over AI wording.

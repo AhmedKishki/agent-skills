@@ -1,60 +1,67 @@
-# Ownership and routing
+# Ownership
 
 ## Purpose
 
-Route every contribution and decision to one authoritative owner.
+Define one authoritative home for each kind of article-making material.
 
-## Inputs
+## Owners
 
-A user message, agent finding or accepted change that may affect project files.
+### Thesis
 
-## Procedure
+Owns what the article argues, investigates and seeks to show.
 
-1. Divide the input into independent content units.
-2. Classify every unit with the table below.
-3. Route each unit to exactly one authoritative owner; dependent files link to that owner instead of duplicating the decision.
-4. Execute procedural commands without recording them as article language.
-5. If classification, intent or authorship is ambiguous, ask one focused question before saving that unit.
+### Draft direction
 
-| Content | Authoritative owner |
-|---|---|
-| Direction, purpose, questions, constraints and metatheory | Thesis and vision |
-| Exact reusable user-authored article language | User wording |
-| Source identity, exact excerpts and locations | Source maps |
-| Argument claims, qualifications, dependencies and broad Human input inventories | Predraft schema |
-| Limited Human input selections and approved raw argument material | Schema and predraft |
-| Current unapproved argument and full construction record | Predraft-working |
-| Passages, paragraphs, sections, headings, selection, omission, treatment, recurrence, placement, boundaries, relations and order | Blueprint |
-| Section candidates, connectors, assembled prose and uncited draft versions | Draft |
-| Claim support, footnote wording and marker placement in a finalised draft | Article citation |
-| Cursor, states, counters, inventory and pending action | Activity tracker |
+Owns how the article should be written.
 
-Approved thesis-and-vision and user wording remain operational until the affected aspect is marked `Outdated`. For a possible contradiction, present the exact current and proposed commitments, affected objects and consequences. Ask whether the contradiction is intended and whether the new commitment shall become operative. Wait for both confirmations. Then preserve the earlier text, place the approved `Outdated` marker beside the affected aspect, update its owner, and invalidate affected raw arguments, blueprint uses and draft sections under [consent and state](consent-and-state.md). Do not invalidate unaffected content.
+### User material
+
+Owns exact reusable user-authored wording.
+
+### Source maps
+
+Own exact source wording and locations.
+
+### Arguments
+
+Own unordered claims, qualifications and dependencies.
+
+### Synthesis material
+
+Owns the exact input set approved for one argument and its construction record.
+
+### Argument drafts
+
+Own approved raw prose for unordered arguments.
+
+### Article arc
+
+Alone owns order, sections, passages, paragraph purposes, connections, placement, recurrence, inclusion and omission.
+
+### Draft
+
+Owns reader-facing article prose.
+
+### Citations
+
+Own source verification, notes and marker placement for a finalised draft.
+
+### Progress
+
+Owns current workflow state and counters.
 
 ## Source–user conflict
 
-A conflict exists when source evidence and user wording cannot both support the same claim because their fact, scope, modality, causation or interpretation is incompatible. On a possible conflict:
+A conflict exists when source evidence and user material cannot support the same claim because their fact, scope, modality, causation or interpretation is incompatible.
 
-1. Stop the affected work; change no claim, wording or source use.
-2. Quote both exact spans and state the incompatibility and consequences.
-3. If useful, give one explicitly labelled recommendation.
-4. Ask the user to choose: revise or qualify their claim; keep it without that source as support; reject that source use; separate the scopes; or supply further evidence.
-5. Apply only the explicit choice. Never cite a source as support for a claim it contradicts.
+1. Stop the affected work.
+2. Quote both exact spans.
+3. State the incompatibility and its consequence.
+4. Ask the user whether to revise or qualify the claim, keep it without that source, reject the source use, separate the scopes or supply more evidence.
+5. Apply only the explicit decision.
 
-User wording governs conflicting AI wording without mediation. Source wording remains evidence; the user alone decides the article's interpretation and use of it.
+User interpretation governs the article. Source wording remains evidence and must never be cited as support for a claim it contradicts.
 
-## Output
+## Completion
 
-An explicit owner for every content unit, plus one focused question for any unit that cannot be classified. Authorial voice is a shared contract, not a content owner.
-
-## Completion condition
-
-Every unit has exactly one owner and every dependent use points to that owner.
-
-## Blocking condition
-
-Ambiguous intent, authorship or ownership, or an unresolved direction or source–user conflict, blocks saving only the affected unit and work that depends on it.
-
-## Next owner
-
-The module named in the ownership table.
+Every substantive unit has one owner and dependent files refer to that owner instead of duplicating it.

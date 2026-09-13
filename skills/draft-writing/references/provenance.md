@@ -2,58 +2,47 @@
 
 ## Purpose
 
-Declare authorship, method and basis without confusing authorship with approval.
+Preserve authorship and evidence lineage without burdening the user with process metadata.
 
-## Compact declaration
+## Principles
 
-Use exactly:
+- Keep authorship, evidence, interpretation and approval distinct.
+- Source wording remains source-authored.
+- User material remains user-authored.
+- Approval changes neither authorship nor evidentiary scope.
+- Argument synthesis using only verified Human inputs produces Human prose when every output span is reconstructable.
+- Mixed, AI or unverified material cannot enter Human-only synthesis.
+
+## Display
+
+Use the smallest basis record sufficient to recover the argument draft:
 
 ```markdown
-**Provenance:** Human · **Method:** white-box synthesis · **Basis:** A4, user-21
+### Basis
+
+- U-003
+- A4
+- ARG-002
 ```
 
-Allowed provenance values:
+Keep detailed construction steps in synthesis material only while they are needed for approval or later reconstruction. Do not repeat them in thesis, article arc or draft.
 
-- `Human`: wording comes only from verified Human inputs.
-- `Mixed`: retained wording contains Human and AI authorship.
-- `AI`: wording is assistant-authored.
-- `Unverified`: authorship or construction cannot be recovered.
+For historical prose whose construction cannot be recovered, state:
 
-Allowed methods: `white-box synthesis`, `verbatim user wording`, `verbatim source excerpt`, `AI drafting` or `unknown`.
+```markdown
+### Basis
 
-White-box synthesis accepts Human inputs only and always returns Human output. `Mixed`, `AI` and `Unverified` material cannot be a white-box input.
+- Unverified
+```
 
-## Recursive lineage
+## Recursive use
 
-An approved Human white-box output may be a later input as `arg:ARG-001`. The full record must identify that intermediate output and every operation. Compact `Basis` lists the ultimate source and user codes actually retained, once each in first-use order. A missing intermediate record, unresolved input or infinite/circular dependency blocks synthesis.
+An approved Human argument draft may be used in another argument only after the user approves the exact span. Resolve it through a finite chain to its source and user-material bases.
 
-## Reconstruction test
+## Reconstruction
 
-Every meaning-bearing output span must map through a finite recorded operation chain to exact Human source or user wording. No unrecorded word, substitution, inference, scope change or deleted qualification is allowed.
-
-Keep distinct:
-
-- authorship: who supplied wording;
-- evidence: what a source establishes;
-- interpretation: the user's claim;
-- selection: what the user approved.
-
-Approval changes none of these.
-
-## Procedure
-
-1. Map every output span to exact inputs and locations.
-2. Record every operation in order.
-3. Resolve recursive inputs to ultimate Human bases.
-4. Check source scope, modality and qualifications.
-5. Derive the compact declaration.
-
-For retained historical prose with unresolved construction, use `**Provenance:** Unverified · **Method:** unknown · **Basis:** <known codes or Unverified>`.
+Every meaning-bearing synthesized span must map through recorded operations to approved Human wording. Missing lineage, source location or operation blocks Human-only synthesis.
 
 ## Completion
 
-Every basis and intermediate input resolves; every output span passes reconstruction; evidence and interpretation remain distinct.
-
-## Blocking
-
-Missing Human provenance, lineage, location or operation blocks white-box synthesis.
+The basis is recoverable, authorship is accurate and project-facing files contain no unnecessary provenance commentary.
