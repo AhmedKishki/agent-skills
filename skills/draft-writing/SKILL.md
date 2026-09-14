@@ -25,12 +25,11 @@ Help the user prepare the article they intend. The user is the authority over th
 2. Record writing requirements in [Draft direction](references/draft-direction.md).
 3. Map exact evidence in [Source mapping](references/source-mapping.md).
 4. Classify exact user contributions through [Input routing](references/input-routing.md) and preserve reusable material in [User material](references/user-material.md).
-5. Define unordered claims in [Argument formation](references/argument-formation.md).
-6. Collect approved inputs through [Synthesis material](references/synthesis-material.md).
-7. Create and approve raw argument prose through [Argument synthesis](references/argument-synthesis.md).
-8. Arrange arguments in the sole structural plan through [Article arc](references/article-arc.md).
-9. Compose reader-facing prose through [Drafting](references/drafting.md).
-10. Verify and cite a finalised draft through [Citation](references/citation.md).
+5. Propose each unordered claim together with its complete limited basis through [Argument formation](references/argument-formation.md) and [Synthesis material](references/synthesis-material.md); approve the package once and save each part to its owner.
+6. Create and approve raw argument prose through [Argument synthesis](references/argument-synthesis.md).
+7. Arrange arguments in the sole structural plan through [Article arc](references/article-arc.md).
+8. Compose reader-facing prose through [Drafting](references/drafting.md).
+9. Verify and cite a finalised draft through [Citation](references/citation.md).
 
 User input may supplement or redirect any stage. Follow [Consent](references/consent.md), [Editing](references/editing.md), [Provenance](references/provenance.md), [Authorial voice](references/authorial-voice.md), [Human-editable files](references/human-editable-files.md), [File names](references/file-output-standard.md) and [Progress](references/progress.md) throughout.
 

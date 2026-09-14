@@ -2,16 +2,17 @@
 
 ## Purpose
 
-Collect the exact user and source material approved for synthesizing arguments in `{project}-synthesis-material.md`.
+Select and store the exact user and source material proposed with an argument definition and approved as part of the same package.
 
 ## Procedure
 
-1. Select one approved argument.
-2. Propose a limited set of exact user-material IDs, source-excerpt IDs and approved Human argument-draft spans.
+1. Select one proposed argument definition.
+2. Propose a limited set of exact user-material IDs, source-excerpt IDs and approved Human argument-draft spans with it.
 3. For each item, show or link the exact span and state its contribution and limits in plain language.
 4. Resolve source–user conflicts before approval.
-5. Ask whether the user approves this complete input set.
-6. Record only the approved set. A changed set requires approval again.
+5. Present the complete input set in the same proposal as the argument definition.
+6. Ask once whether the user approves the complete argument-and-basis package.
+7. After approval, record the set here and the definition in the arguments file. A change to either part requires approval of the complete revised package.
 
 Do not treat an argument's broad research possibilities as an approved synthesis set. Do not synthesize prose in this file.
 
@@ -54,4 +55,4 @@ Approved for synthesis is the default status. Exceptions are stated locally.
 
 ## Completion
 
-The complete limited input set is explicit, Human, conflict-free and approved for one argument.
+The complete limited input set is explicit, Human and conflict-free, and was approved in the same package as its argument definition.

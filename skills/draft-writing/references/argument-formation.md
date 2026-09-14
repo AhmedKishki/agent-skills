@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define the unordered claims the article may need to establish in `{project}-arguments.md`.
+Define the unordered claims the article may need to establish and propose each definition together with its complete limited synthesis basis.
 
 ## Argument contents
 
@@ -23,10 +23,11 @@ Keep only claim-specific qualifications with an argument. Put article-wide writi
 
 1. Form one claim from the approved thesis, user interpretation or a gap exposed by later work.
 2. Separate claims that require different evidence or could be accepted independently.
-3. Present the exact ID and claim, adding qualifications, dependencies or exceptional status only when they convey information.
-4. Ask whether the user approves that argument or what should change.
-5. Save only the approved definition.
-6. If a changed argument affects an argument draft or article-arc use, mark those dependants for review.
+3. Select the complete limited basis under [Synthesis material](synthesis-material.md).
+4. Present one package containing the exact ID and claim, any meaningful qualifications or dependencies, and every proposed synthesis input with its contribution and limit.
+5. Ask whether the user approves the complete argument-and-basis package or what should change.
+6. After approval, save the definition in `{project}-arguments.md` and its basis in `{project}-synthesis-material.md`. Do not ask for a second basis approval.
+7. If a changed argument or basis affects an argument draft or article-arc use, mark those dependants for review.
 
 ## Format
 
@@ -46,4 +47,4 @@ Approved is the default status. Exceptions are stated locally.
 
 ## Completion
 
-The claim, any claim-specific qualifications and any actual dependencies are explicit and approved. Empty and default fields are absent. Prose synthesis is a separate stage.
+The definition and complete limited basis were presented and approved as one package, then saved to their separate owners. Empty and default fields are absent. Prose synthesis is a separate approval stage.

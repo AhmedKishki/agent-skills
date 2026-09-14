@@ -32,7 +32,7 @@ Every output word, including joins, must occur in an approved Human input in the
 
 ## Procedure
 
-1. Verify the argument definition and approved synthesis material.
+1. Verify that the argument definition and synthesis material were approved together as one package.
 2. Resolve recursive argument inputs to finite Human lineage.
 3. Construct one candidate using only permitted operations.
 4. Record construction steps outside the candidate in `{project}-synthesis-material.md` under that argument's `### Construction record`.

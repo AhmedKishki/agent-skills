@@ -140,6 +140,13 @@
       "expected_output": "The agent keeps the canonical arguments file lean and omits metadata fields that have nothing to say.",
       "files": [],
       "expectations": ["Does not add empty metadata", "Omits default fields", "Keeps one canonical file", "Adds a field only when it conveys information"]
+    },
+    {
+      "id": 21,
+      "prompt": "Suggest the next argument and then ask me separately whether its evidence basis is acceptable.",
+      "expected_output": "The agent presents the exact argument definition and complete limited synthesis basis as one package requiring one approval decision, while reserving a separate decision for the resulting prose.",
+      "files": [],
+      "expectations": ["Combines definition and basis in one proposal", "Requests one package approval", "Saves definition and basis to separate owners", "Does not treat package approval as prose approval"]
     }
   ]
 }

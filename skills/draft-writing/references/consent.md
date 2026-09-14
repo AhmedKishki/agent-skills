@@ -16,11 +16,11 @@ Apply only the user's explicit decision to the exact substantive object presente
 
 ### Unstarted
 
-Present the exact argument definition or synthesis-material proposal. Then wait.
+Present the exact argument definition and complete synthesis basis as one package. Then wait.
 
-### Inputs awaiting approval
+### Argument package awaiting approval
 
-If the input set is approved, synthesize the candidate and move to `Candidate awaiting decision`. If inputs change, present the complete revised set and remain here.
+If the package is approved, save the definition and basis to their separate owners, synthesize the candidate and move to `Candidate awaiting decision`. If either part changes, present the complete revised package and remain here. Do not require separate approvals for definition and basis.
 
 ### Candidate awaiting decision
 
@@ -32,7 +32,7 @@ State the precise gap and the one decision or material needed to continue.
 
 ### Approved
 
-If its thesis, claim, qualification or actual basis changes, review the argument draft and every dependent arc or draft unit.
+If its thesis, claim, qualification or actual basis changes, present the complete revised argument-and-basis package, then review the argument draft and every dependent arc or draft unit after approval.
 
 ## Procedure
 
