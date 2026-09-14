@@ -16,7 +16,8 @@ Apply approved changes and direct user edits without losing wording, evidence, I
 8. An arc change does not alter unordered arguments. It triggers review only of dependent draft prose.
 9. Preserve immutable arc, draft and cited-draft versions.
 10. Validate wording, evidence, provenance, IDs, links, states and filenames.
-11. Update progress.
+11. Check that no active file has accumulated broad inventories, duplicated records, migration history or unrelated units; split a growing collection through its canonical file family.
+12. Update progress.
 
 ## Supersession
 

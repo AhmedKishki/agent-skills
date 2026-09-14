@@ -24,11 +24,15 @@ Give each article-making function one predictable file or file family.
 
 ### Unordered arguments
 
-`{project}-arguments.md`
+Index: `{project}-arguments.md`
+
+Definitions: `arguments/{project}-arguments-{first-ID}-{last-ID}.md`
 
 ### Inputs selected for synthesis
 
-`{project}-synthesis-material.md`
+Index: `{project}-synthesis-material.md`
+
+One bounded record per argument: `synthesis-material/{project}-synthesis-{ARG-nnn}.md`
 
 ### Approved raw argument prose
 
@@ -62,6 +66,10 @@ Approved cited draft: `{project}-cited-draft-vN.md`
 - Keep immutable approved snapshots unchanged. Make revisions in the live file.
 - Use relative Markdown links and stable IDs in headings.
 - Create a file only when it has material to store.
+- Keep indexes short. Split argument definitions into bounded range files and synthesis records into one file per argument; do not create monolithic substitutes elsewhere.
+- Split an active index or range file before it exceeds either 250 lines or 20 KB. A file that crosses either limit requires immediate compaction or another bounded file; do not wait until the end of a stage.
+- Never route archives, migration reports, broad research inventories or completed workflow history into active file families. Preserve recoverability in version control and retain only current actionable state.
+- Store provenance and basis metadata with one owner. Link to it rather than duplicate it.
 - Use no Markdown tables in active project files.
 - Follow [Human-editable files](human-editable-files.md).
 

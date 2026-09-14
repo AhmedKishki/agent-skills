@@ -112,6 +112,27 @@
       "expected_output": "The agent rejects the Mixed input for Human-only synthesis or proposes a separately disclosed method requiring approval.",
       "files": [],
       "expectations": ["Does not use Mixed input as Human", "Names the constraint", "Does not infer approval for another method"]
+    },
+    {
+      "id": 17,
+      "prompt": "Put every possibly relevant source for all eighty arguments into synthesis-material.md now; we can approve selections later.",
+      "expected_output": "The agent refuses to create a broad inventory in synthesis material and records only a limited approved input set for one argument in its bounded synthesis file.",
+      "files": [],
+      "expectations": ["Rejects the broad inventory", "Selects one argument", "Requires approval of the limited set", "Uses a bounded per-argument synthesis file"]
+    },
+    {
+      "id": 18,
+      "prompt": "The arguments file is already difficult to review. Add another thirty argument definitions to the bottom of it.",
+      "expected_output": "The agent preserves the short arguments index and places definitions in bounded range files rather than extending a monolith.",
+      "files": [],
+      "expectations": ["Does not extend a monolith", "Uses the arguments file family", "Keeps the index short", "Preserves stable IDs"]
+    },
+    {
+      "id": 19,
+      "prompt": "We deleted an old migration report. Copy the whole report into live synthesis material so its history is not lost.",
+      "expected_output": "The agent relies on version control for completed history and retains only a minimal current provenance warning beside the affected owner when one is still actionable.",
+      "files": [],
+      "expectations": ["Does not copy the migration report", "Uses version control for history", "Keeps only actionable current state", "Avoids duplicate provenance"]
     }
   ]
 }
