@@ -17,10 +17,10 @@
     },
     {
       "id": 3,
-      "prompt": "I replaced my thesis. Keep the old thesis below it for context and add a decision log.",
-      "expected_output": "The agent keeps only the current operative thesis and relies on Git for the superseded state.",
+      "prompt": "I replaced my user thesis. Keep the old user thesis below it for context and add a decision log.",
+      "expected_output": "The agent keeps only the current operative user thesis and relies on Git for the superseded state.",
       "files": [],
-      "expectations": ["Does not archive old thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
+      "expectations": ["Does not archive old user thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
     },
     {
       "id": 4,
@@ -59,10 +59,10 @@
     },
     {
       "id": 9,
-      "prompt": "This argument is relevant to the thesis. Just write 'supports the thesis' for its relation.",
+      "prompt": "This argument is relevant to the user thesis. Just write 'supports the user thesis' for its relation.",
       "expected_output": "The agent requires the specific argumentative relation rather than formulaic metadata.",
       "files": [],
-      "expectations": ["Rejects formulaic relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
+      "expectations": ["Rejects formulaic user-thesis relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
     },
     {
       "id": 10,
@@ -118,7 +118,7 @@
       "prompt": "The standard material headings are too rigid for these exploratory notes, so create another file.",
       "expected_output": "The agent keeps the canonical owner while allowing flexible material content and omitting unused sections.",
       "files": [],
-      "expectations": ["Keeps one material owner", "Allows flexible content", "Uses standard identity and thesis relation", "Omits unused sections"]
+      "expectations": ["Keeps one material owner", "Allows flexible content", "Uses standard identity and user-thesis relation", "Omits unused sections"]
     },
     {
       "id": 18,

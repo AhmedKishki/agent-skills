@@ -1,4 +1,4 @@
-# Thesis
+# User thesis
 
 ## Accepts
 
@@ -8,12 +8,12 @@ Do not accept source excerpts, component arguments, article order, draft prose o
 
 ## Owns
 
-`{project}-thesis.md` owns the current goal and orientation against which claims, arguments, the plan and prose are assessed.
+`{project}-user-thesis.md` owns the current goal and orientation against which claims, arguments, the plan and prose are assessed.
 
 ## Standard structure
 
 ```markdown
-# Thesis
+# User thesis
 
 ## Central object and aim
 

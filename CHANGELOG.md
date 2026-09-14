@@ -7,11 +7,11 @@ This file records user-visible changes to the skills in this repository. Git ret
 ### draft-writing 20.0.0
 
 - Replaced the linear thesis-to-arc workflow with a recursive process in which drafting can revise any affected upstream owner.
-- Consolidated active project outputs into thesis, user material, source maps, material, plan, draft, and progress.
+- Consolidated active project outputs into user thesis, user material, source maps, material, plan, draft, and progress.
 - Combined argument definitions, selected synthesis inputs, construction records, and developing argument prose in one flexible material owner.
 - Generalized `white-box-synthesis` as authorised inputs `A, B, C, …` producing output `Z` through `COPY`, `INFLECT`, `NORMALISE`, `ORDER`, and `DELETE`.
 - Required relevant user material in synthesis when present; exclusion now requires explicit user authorisation.
-- Required every claim and argument to state its substantive relation to the thesis and required contradictions to be exposed for user resolution.
+- Required every claim and argument to state its substantive relation to the user thesis and required contradictions to be exposed for user resolution.
 - Restricted AI-authored wording and connections to exact, bounded, disclosed proposals with explicit approval.
 - Standardized every canonical output while allowing its substantive content and internal development to remain flexible.
 - Removed repeated editing notes, default metadata, immutable working snapshots, superseded-decision archives, and overlapping handoff records from the workflow.
@@ -20,7 +20,7 @@ This file records user-visible changes to the skills in this repository. Git ret
 
 #### Breaking migration
 
-- `{project}-thesis.md` absorbs `{project}-draft-direction.md`.
+- `{project}-user-thesis.md` absorbs `{project}-thesis.md` and `{project}-draft-direction.md`.
 - `{project}-arguments.md`, `{project}-synthesis-material.md`, and `{project}-argument-drafts.md` become `{project}-material.md`.
 - `{project}-article-arc.md` becomes `{project}-plan.md`.
 - `{project}-progress.md` absorbs separate handoff/current-focus records.

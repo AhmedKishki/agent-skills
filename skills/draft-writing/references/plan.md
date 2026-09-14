@@ -21,7 +21,7 @@ Do not accept component claims as established merely by placing them, draft pros
 
 ## Section 1 — <Working heading>
 
-**Purpose:** <Its contribution to the thesis and article movement.>
+**Purpose:** <Its contribution to the user thesis and article movement.>
 
 ### Passage 1 — <Working label>
 
@@ -47,7 +47,7 @@ Use only fields needed by each unit. Sections and passages may emerge, merge, di
 
 ## Procedure
 
-Develop consequential structural choices with the user. State alternatives when more than one real movement is possible and apply only the approved choice. Every placed unit needs a purpose that relates it to the thesis or article movement, and every connection must come from authorised material or explicit approval.
+Develop consequential structural choices with the user. State alternatives when more than one real movement is possible and apply only the approved choice. Every placed unit needs a purpose that relates it to the user thesis or article movement, and every connection must come from authorised material or explicit approval.
 
 When a decision changes, replace the affected live plan and review dependent prose. Do not retain the old plan, a decision ledger or immutable snapshots in active files; Git preserves them.
 

@@ -17,7 +17,7 @@ Do not accept article order as authority, broad source inventories, reader-facin
 
 ## ARG-001 — <Current claim or argument>
 
-**Relation to thesis:** <The specific support, premise, development, qualification, complication or challenge.>
+**Relation to user thesis:** <The specific support, premise, development, qualification, complication or challenge.>
 
 ### Inputs
 
@@ -37,15 +37,15 @@ Do not accept article order as authority, broad source inventories, reader-facin
 <Only while a real unresolved conflict blocks or qualifies use.>
 ```
 
-Each argument has an ID, a current claim and a real relation to the thesis. Include only other sections that carry information. The content and grouping inside `### Material` remain flexible. File order does not establish article order.
+Each argument has an ID, a current claim and a real relation to the user thesis. Include only other sections that carry information. The content and grouping inside `### Material` remain flexible. File order does not establish article order.
 
 ## Procedure
 
-1. Form or revise one independently assessable claim from authorised material or an identified need in the thesis, plan or draft.
-2. State how it actually relates to the current thesis.
+1. Form or revise one independently assessable claim from authorised material or an identified need in the user thesis, plan or draft.
+2. State how it actually relates to the current user thesis.
 3. Identify a limited input set. Relevant user material is included when present; exclusion requires explicit user authorisation.
 4. Resolve source–user and argument–thesis contradictions before synthesis, or record the live blocker locally.
-5. Present the claim, thesis relation and inputs as one exact proposal for approval.
+5. Present the claim, user-thesis relation and inputs as one exact proposal for approval.
 6. Develop material through white-box-synthesis. Approval of inputs does not approve a later output unless both were presented as one bounded object.
 7. Update affected plan and prose when the argument changes. Remove obsolete live material rather than retaining revisions or rejected candidates.
 

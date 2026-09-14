@@ -2,7 +2,7 @@
 
 ## Accepts
 
-The current thesis, an approved unit of the plan, its assigned material, relevant user material and source maps, and direct user prose or revisions.
+The current user thesis, an approved unit of the plan, its assigned material, relevant user material and source maps, and direct user prose or revisions.
 
 Do not accept unsupported claims, unapproved structural invention, undisclosed AI wording, superseded plans or unresolved contradictions affecting the unit.
 
@@ -33,8 +33,8 @@ The draft contains only reader-facing prose. Keep current working questions in p
 
 ## Citation verification
 
-Identify each support-dependent claim and reopen its source. Check identity, locator, date, scope, modality and qualification. Propose footnotes or other citations in the style set by the thesis. If support fails, report the defect and return to material; do not silently qualify prose. Create a separate citation work file only when the user requests it or the scale of unresolved citation work gives it a distinct current purpose.
+Identify each support-dependent claim and reopen its source. Check identity, locator, date, scope, modality and qualification. Propose footnotes or other citations in the style set by the user thesis. If support fails, report the defect and return to material; do not silently qualify prose. Create a separate citation work file only when the user requests it or the scale of unresolved citation work gives it a distinct current purpose.
 
 ## Completion
 
-Every unit is approved, the prose conforms to the current thesis and plan, support-dependent claims are verified, no prose was added during assembly, and the user approves the current complete article.
+Every unit is approved, the prose conforms to the current user thesis and plan, support-dependent claims are verified, no prose was added during assembly, and the user approves the current complete article.
