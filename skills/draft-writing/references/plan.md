@@ -1,19 +1,19 @@
-# Draft plan
+# Plan
 
 ## Accepts
 
-User decisions about article movement, order, sections, passages, paragraph purposes, placement, connections, transitions, recurrence, inclusion, omission and condensation; current draft-material IDs; and structural problems exposed during drafting.
+User decisions about article movement, order, sections, passages, paragraph purposes, placement, connections, transitions, recurrence, inclusion, omission and condensation; current material IDs; and structural problems exposed during drafting.
 
 Do not accept component claims as established merely by placing them, draft prose, parallel blueprints, architectural-decision logs or superseded plans.
 
 ## Owns
 
-`{project}-draft-plan.md` is the sole current authority for article structure. Draft-material order has no structural authority.
+`{project}-plan.md` is the sole current authority for article structure. Material-file order has no structural authority.
 
 ## Standard structure
 
 ```markdown
-# Draft plan
+# Plan
 
 ## Article movement
 
@@ -27,7 +27,7 @@ Do not accept component claims as established merely by placing them, draft pros
 
 **Purpose:** <One current function.>
 
-**Draft material:** ARG-001, ARG-004
+**Material:** ARG-001, ARG-004
 
 **Movement:**
 

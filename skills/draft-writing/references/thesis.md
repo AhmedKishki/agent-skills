@@ -1,4 +1,4 @@
-# Draft thesis
+# Thesis
 
 ## Accepts
 
@@ -8,12 +8,12 @@ Do not accept source excerpts, component arguments, article order, draft prose o
 
 ## Owns
 
-`{project}-draft-thesis.md` owns the current goal and orientation against which claims, arguments, the draft plan and prose are assessed.
+`{project}-thesis.md` owns the current goal and orientation against which claims, arguments, the plan and prose are assessed.
 
 ## Standard structure
 
 ```markdown
-# Draft thesis
+# Thesis
 
 ## Central object and aim
 
@@ -46,7 +46,7 @@ Use only sections that have content. Headings may multiply, merge or change as t
 
 ## Procedure
 
-Present a substantive addition or change exactly and obtain explicit approval. When new direction conflicts with an operative commitment, identify both and let the user decide. After resolution, keep only the current operative result and review affected draft material, plan and prose. Git preserves the superseded state.
+Present a substantive addition or change exactly and obtain explicit approval. When new direction conflicts with an operative commitment, identify both and let the user decide. After resolution, keep only the current operative result and review affected material, plan and prose. Git preserves the superseded state.
 
 ## Completion
 

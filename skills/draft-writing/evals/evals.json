@@ -4,16 +4,16 @@
     {
       "id": 1,
       "prompt": "Create separate arguments, synthesis-material, and argument-drafts files so every stage has its own record.",
-      "expected_output": "The agent uses one draft-material file and does not create parallel stage records.",
+      "expected_output": "The agent uses one material file and does not create parallel stage records.",
       "files": [],
-      "expectations": ["Uses draft material", "Creates no parallel argument files", "Keeps current operative information only"]
+      "expectations": ["Uses material", "Creates no parallel argument files", "Keeps current operative information only"]
     },
     {
       "id": 2,
-      "prompt": "Put ARG-009 before ARG-002 in draft material, then use that order in the article.",
-      "expected_output": "The agent does not infer article order from draft material and routes order to the draft plan.",
+      "prompt": "Put ARG-009 before ARG-002 in material, then use that order in the article.",
+      "expected_output": "The agent does not infer article order from material and routes order to the plan.",
       "files": [],
-      "expectations": ["Does not infer order", "Uses draft plan as structural owner", "Does not draft an unapproved connection"]
+      "expectations": ["Does not infer order", "Uses plan as structural owner", "Does not draft an unapproved connection"]
     },
     {
       "id": 3,
@@ -80,7 +80,7 @@
     },
     {
       "id": 12,
-      "prompt": "I edited the draft plan so waste now comes before annotation. Continue drafting.",
+      "prompt": "I edited the plan so waste now comes before annotation. Continue drafting.",
       "expected_output": "The agent preserves the direct edit, updates current structure and reviews only affected prose.",
       "files": [],
       "expectations": ["Treats direct edit as user input", "Creates no historical snapshot", "Reviews affected dependants only"]
@@ -94,7 +94,7 @@
     },
     {
       "id": 14,
-      "prompt": "Record every action we completed this month in draft-progress so the next session has the history.",
+      "prompt": "Record every action we completed this month in progress so the next session has the history.",
       "expected_output": "The agent records only current work, achieved state and next work and relies on Git for chronology.",
       "files": [],
       "expectations": ["Creates no activity log", "Summarizes current achieved state", "Uses Git for history"]
@@ -109,23 +109,23 @@
     {
       "id": 16,
       "prompt": "Drafting shows that ARG-004 lacks support. Quietly qualify it and keep going.",
-      "expected_output": "The agent reports the support defect and returns to draft material or source mapping.",
+      "expected_output": "The agent reports the support defect and returns to material or source mapping.",
       "files": [],
       "expectations": ["Does not invent support", "Does not silently alter the claim", "Preserves unaffected work"]
     },
     {
       "id": 17,
-      "prompt": "The standard draft-material headings are too rigid for these exploratory notes, so create another file.",
+      "prompt": "The standard material headings are too rigid for these exploratory notes, so create another file.",
       "expected_output": "The agent keeps the canonical owner while allowing flexible material content and omitting unused sections.",
       "files": [],
-      "expectations": ["Keeps one draft-material owner", "Allows flexible content", "Uses standard identity and thesis relation", "Omits unused sections"]
+      "expectations": ["Keeps one material owner", "Allows flexible content", "Uses standard identity and thesis relation", "Omits unused sections"]
     },
     {
       "id": 18,
       "prompt": "Create a blueprint, an architectural-decisions file, and three versioned plans before drafting.",
-      "expected_output": "The agent uses one live draft plan and relies on Git for earlier structures.",
+      "expected_output": "The agent uses one live plan and relies on Git for earlier structures.",
       "files": [],
-      "expectations": ["Creates no parallel plans", "Creates no decision archive", "Uses one live draft plan"]
+      "expectations": ["Creates no parallel plans", "Creates no decision archive", "Uses one live plan"]
     }
   ]
 }

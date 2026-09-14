@@ -18,7 +18,7 @@ One source map per source owns exact relevant source wording and its location.
 4. Include enough context to preserve subject, scope, modality and qualification.
 5. Present one exact excerpt batch for approval.
 6. Save only approved excerpts in source order under stable codes.
-7. Record checked coverage and the next excerpt code in draft progress, not in the map.
+7. Record checked coverage and the next excerpt code in progress, not in the map.
 
 ## Standard structure
 

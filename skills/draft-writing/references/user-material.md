@@ -13,7 +13,7 @@ Do not accept procedural commands, approvals, source quotations, AI proposals or
 ## Procedure
 
 1. Separate reusable wording from procedure and source-authored text.
-2. Allocate a stable `U-nnn` ID from draft progress when identity is needed.
+2. Allocate a stable `U-nnn` ID from progress when identity is needed.
 3. Preserve exact spelling, punctuation and paragraph breaks in a blockquote.
 4. Link the ID from its current use rather than duplicating its wording.
 5. When relevant user material exists for synthesis, include it. Excluding it requires explicit user authorisation.

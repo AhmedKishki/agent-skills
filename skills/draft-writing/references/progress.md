@@ -1,4 +1,4 @@
-# Draft progress
+# Progress
 
 ## Accepts
 
@@ -8,12 +8,12 @@ Do not accept a chronological activity log, superseded decisions, rejected propo
 
 ## Owns
 
-`{project}-draft-progress.md` is the sole resumption file. It replaces separate handoff files and overlapping current-focus records.
+`{project}-progress.md` is the sole resumption file. It replaces separate handoff files and overlapping current-focus records.
 
 ## Standard structure
 
 ```markdown
-# Draft progress
+# Progress
 
 ## Current work
 
