@@ -17,7 +17,7 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 - Routed independent parts of user prompts to thesis, user material or arguments, while keeping source quotations source-authored in source maps.
 - Generalised `white-box-synthesis` as authorised inputs `A, B, C, …` producing output `Z` through `COPY`, `INFLECT`, `NORMALISE`, `ORDER`, and `DELETE`.
 - Required relevant user material in synthesis when present; exclusion requires explicit user authorisation.
-- Required every claim and argument to state its substantive relation to the user thesis and required contradictions to be exposed for user resolution.
+- Required every argument to state its substantive relation to the thesis and required contradictions to be exposed for user resolution.
 - Restricted AI-authored wording and connections to exact, bounded, disclosed proposals with explicit approval.
 - Standardised every canonical output while allowing its substantive content and internal development to remain flexible.
 - Added minimal `name` and `description` YAML frontmatter to every module and canonical output structure.
