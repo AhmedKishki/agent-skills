@@ -7,13 +7,13 @@ description: Defines reconstructable synthesis from authorised Human inputs.
 
 ## Accepts
 
-A finite set of exact, user-authorised Human inputs `A, B, C, …`: user-material spans, source-map excerpts, or earlier outputs whose lineage resolves completely to such spans.
+A finite set of exact, user-authorised Human inputs identified directly by their stable labels, such as `U-012`, `F3` or `MAT-002`: user-material spans, source-map excerpts, or earlier outputs whose lineage resolves completely to such spans.
 
 Relevant user material must be among the inputs when it exists. Excluding it requires explicit user authorisation. Source wording remains source-authored, and approval changes neither authorship nor evidentiary scope. Mixed, AI or unverified material is not a Human input.
 
 ## Produces
 
-An output `Z` whose meaning-bearing wording and relations are reconstructable from the authorised inputs through disclosed human-preserving operations. `Z` may be a claim, argument, connection, plan unit or prose passage and belongs in that output's canonical owner.
+An output identified directly by its exact proposed label, such as `ARG-004` or `MAT-005`, whose meaning-bearing wording and relations are reconstructable from the authorised inputs through disclosed human-preserving operations. The output may be a claim, argument, connection, plan unit or prose passage and belongs in that output's canonical owner.
 
 ## Human-preserving operations
 
@@ -43,16 +43,16 @@ No operation may invent a join, causal relation, comparison, abstraction, conclu
 
 ### Authorised inputs
 
-- A — <exact span or stable reference>
-- B — <exact span or stable reference>
+- `U-012` — <exact span or stable reference>
+- `F3` — <exact span or stable reference>
 
 ### Operations
 
-1. COPY A: <span>
-2. DELETE B: <material removed and why meaning is unchanged>
-3. ORDER A before B: <authorised relation>
+1. COPY `U-012`: <span>
+2. DELETE from `F3`: <material removed and why meaning is unchanged>
+3. ORDER `U-012` before `F3`: <authorised relation>
 
-### Output Z
+### Proposed output `<exact output label>`
 
 <Complete proposed output.>
 ```
@@ -61,8 +61,8 @@ The construction record is required in the approval proposal. In active project 
 
 ## Gaps and AI proposals
 
-If any word or relation in `Z` cannot be reconstructed, stop and name the exact missing wording, evidence, relation or authorisation. Ask the user to supply it first. If the user requests AI help, present one exact bounded AI proposal, identify its AI authorship and obtain explicit approval. AI-authored material never becomes white-box synthesis or user material.
+If any word or relation in the proposed output cannot be reconstructed, stop and name the exact missing wording, evidence, relation or authorisation. Ask the user to supply it first. If the user requests AI help, present one exact bounded AI proposal, identify its AI authorship and obtain explicit approval. AI-authored material never becomes white-box synthesis or user material.
 
 ## Completion
 
-Every meaning-bearing word and relation in `Z` has finite Human lineage, relevant user material was included or explicitly excluded, and the exact output was approved.
+Every meaning-bearing word and relation in the proposed output has finite Human lineage, relevant user material was included or explicitly excluded, and the exact output was approved.

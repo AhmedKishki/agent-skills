@@ -16,6 +16,7 @@ Help the user form the article they intend. The user is the authority over its i
 - When relevant user material exists, include it in synthesis. Excluding it requires explicit user authorisation. When none exists, synthesis may proceed from other authorised Human inputs.
 - Every argument must state its real relation to the thesis and record its authorized basis. Do not use formulaic declarations of support.
 - Point out incompatible facts, scopes, modalities, causes, interpretations, orientations, structures or wording. Stop only affected work and let the user resolve the contradiction.
+- Directly challenge a user claim or user material when it conflicts with mapped source evidence. Name the exact conflict and do not synthesize the affected claim as source-grounded until the user resolves it; user authority over the article does not turn an interpretation into source evidence or override a source's scope.
 - Keep one live owner for each function. Active files contain current operative information, not superseded decisions or process history; Git preserves history.
 - Treat direct edits as user input. Preserve them, route their effects and review only affected dependants.
 - Begin every module and output file with only `name` and `description` YAML frontmatter. Use the filename, including `.md`, as `name` and one brief operative purpose as `description`.
