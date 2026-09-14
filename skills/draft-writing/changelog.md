@@ -183,10 +183,10 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 - Validate export resume fields, roles, table boundaries, delivery exclusions, and input aliases. Add verified replacement of a known prior delivery with failure preservation, plus exporter regression tests.
 
 ## 7.8.2
-- The project-memory module is removed: the skill no longer defines or references a `{project}-memory.md` record — memory is external tooling (Basic Memory where adopted), never a skill module.
+- The project-memory module is removed: the skill no longer defines or references a `{project}-memory.md` record; memory is external tooling, never a skill module.
 
 ## 7.8.1
-- The memory module's reference no longer mentions MCP tooling: a project's recall layer is external tooling that indexes the project's markdown in place as notes (Basic Memory where adopted); the skill maintains only the markdown record and never reads from or writes to a memory server on its behalf.
+- The memory module's reference no longer mentions MCP tooling: a project's recall layer is external tooling that may index project Markdown in place; the skill maintains only the Markdown record and never reads from or writes to a memory server on its behalf.
 
 ## 7.8.0
 - The memory module becomes the project's context-preservation record: `{project}-memory.md` stores everything a different AI, in a new chat, needs to resume the project seamlessly — what the project is, where things stand, the plan, what is expected, and where everything lives — brought current at every session end. Decisions, Questions and Rejected keep their forms.

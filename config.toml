@@ -5,7 +5,3 @@ args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
 [mcp_servers.desktop-commander]
 command = "npx"
 args = ["-y", "@wonderwhy-er/desktop-commander@latest"]
-
-[mcp_servers.basic-memory]
-command = "uvx"
-args = ["--prerelease=allow", "basic-memory", "mcp"]
