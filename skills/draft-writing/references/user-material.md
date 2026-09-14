@@ -1,3 +1,8 @@
+---
+name: user-material.md
+description: Preserves exact reusable user-authored wording.
+---
+
 # User material
 
 ## Accepts
@@ -18,10 +23,16 @@ Do not accept procedural commands, approvals, source quotations, AI proposals or
 4. Link the ID from its current use rather than duplicating its wording.
 5. When relevant user material exists for synthesis, include it. Excluding it requires explicit user authorisation.
 6. If the user changes an entry that current work uses, keep the ID when its meaning remains; otherwise allocate a new ID, update current uses and rely on Git for the earlier text.
+7. Never reuse a removed or retired user-material ID; allocate the next historical value from progress.
 
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-user-material.md"
+description: Preserves exact reusable user-authored wording.
+---
+
 # User material
 
 ## U-001 — Short description

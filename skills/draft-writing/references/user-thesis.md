@@ -1,3 +1,8 @@
+---
+name: user-thesis.md
+description: Defines the current goal, thesis, orientation and article-wide requirements.
+---
+
 # User thesis
 
 ## Accepts
@@ -13,6 +18,11 @@ Do not accept source excerpts, component arguments, article order, draft prose o
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-user-thesis.md"
+description: Defines the current goal, thesis, orientation and article-wide requirements.
+---
+
 # User thesis
 
 ## Central object and aim

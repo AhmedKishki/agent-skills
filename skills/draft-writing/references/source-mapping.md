@@ -1,3 +1,8 @@
+---
+name: source-mapping.md
+description: Defines how exact relevant source wording and locations are preserved.
+---
+
 # Source mapping
 
 ## Accepts
@@ -23,6 +28,11 @@ One source map per source owns exact relevant source wording and its location.
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-source-map-{code}-{author-full-source-title}.md"
+description: Preserves exact relevant excerpts and locations from one source.
+---
+
 # Author, Full Source Title
 
 ## A1 — Short topic
@@ -38,7 +48,7 @@ Use one H1, then one H2 per excerpt. Add no interpretation, role, intended use, 
 
 ## Corrections
 
-A verified transcription or locator correction retains its ID. Different wording, a split or a merge receives a new ID. Reopen the original when intended use changes or context is insufficient.
+A verified transcription or locator correction retains its ID. Different wording, a split or a merge receives a new ID. Never reuse a removed or retired source or excerpt code; advance the counter in progress. Reopen the original when intended use changes or context is insufficient.
 
 ## Completion
 

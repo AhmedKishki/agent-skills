@@ -18,7 +18,10 @@ Help the user form the article they intend. The user is the authority over its i
 - Point out incompatible facts, scopes, modalities, causes, interpretations, orientations, structures or wording. Stop only affected work and let the user resolve the contradiction.
 - Keep one live owner for each function. Active files contain current operative information, not superseded decisions or process history; Git preserves history.
 - Treat direct edits as user input. Preserve them, route their effects and review only affected dependants.
-- Use simple Markdown with one H1, descriptive headings, paragraphs, bullets and blockquotes. Use no tables, repeated editing notes, empty fields or default-status announcements.
+- Begin every module and output file with only `name` and `description` YAML frontmatter. Use the filename, including `.md`, as `name` and one brief operative purpose as `description`.
+- Keep metadata minimal. Outside the required frontmatter, retain only what current work needs for identity, direction, evidence location, provenance or a live blocker. Use no repeated editing notes, empty fields or default-status announcements.
+- Never reuse an allocated ID or code. If `AX`, `U-012`, `ARG-004` or `C-003` is removed, retired or replaced, later work continues after it rather than filling the gap.
+- Use simple Markdown with one H1, descriptive headings, paragraphs, bullets and blockquotes. Use no tables.
 
 ## Dynamic process
 
@@ -42,4 +45,4 @@ The process is recursive rather than staged. New material or drafting may change
 - `{project}-draft.md` — reader-facing article prose.
 - `{project}-progress.md` — current work, achieved state, next work, blockers and counters.
 
-Create an output only when it has content. Prefix project files with the resolved project name. Keep stable IDs where references or provenance require identity. If a file becomes difficult to review, remove duplication, metadata and misplaced history before proposing a split.
+Create an output only when it has content. Prefix project files with the resolved project name. Allocate IDs monotonically from progress and check current files and Git history when the next value is uncertain. Counters never decrease. If a file becomes difficult to review, remove duplication, non-operative metadata and misplaced history before proposing a split.

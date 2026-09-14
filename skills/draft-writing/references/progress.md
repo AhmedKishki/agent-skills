@@ -1,3 +1,8 @@
+---
+name: progress.md
+description: Defines the sole current resumption state and monotonic ID counters.
+---
+
 # Progress
 
 ## Accepts
@@ -13,6 +18,11 @@ Do not accept a chronological activity log, superseded decisions, rejected propo
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-progress.md"
+description: Holds current work, achieved state, next work, blockers and counters.
+---
+
 # Progress
 
 ## Current work
@@ -39,6 +49,7 @@ Do not accept a chronological activity log, superseded decisions, rejected propo
 - Next source code: B
 - Next user-material ID: U-023
 - Next argument ID: ARG-023
+- Next contradiction ID: C-004
 
 ## Source work in progress
 
@@ -53,9 +64,11 @@ Do not accept a chronological activity log, superseded decisions, rejected propo
 
 Use only sections with current content. `Completed state` summarizes what is operative now; it does not narrate how it was reached.
 
+Include only counters for namespaces the project uses. A counter records the next never-used value, not the lowest available gap. It advances beyond every ID allocated in current files or Git history and never decreases when an item is removed, retired, merged or replaced.
+
 ## Procedure
 
-Update after a proposal, decision, gap, save, invalidation or focus change. Remove resolved blockers and obsolete next actions. Verify named files before resuming, and re-present an exact pending proposal before interpreting a later response as approval.
+Update after a proposal, decision, gap, save, invalidation or focus change. Advance the relevant counter whenever an ID is allocated. Remove resolved blockers and obsolete next actions without reducing counters. Verify named files before resuming, and re-present an exact pending proposal before interpreting a later response as approval.
 
 ## Completion
 

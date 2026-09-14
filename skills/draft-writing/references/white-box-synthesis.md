@@ -1,3 +1,8 @@
+---
+name: white-box-synthesis.md
+description: Defines reconstructable synthesis from authorised Human inputs.
+---
+
 # White-box synthesis
 
 ## Accepts

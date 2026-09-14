@@ -1,3 +1,8 @@
+---
+name: plan.md
+description: Defines the article's sole current structural plan.
+---
+
 # Plan
 
 ## Accepts
@@ -13,6 +18,11 @@ Do not accept component claims as established merely by placing them, draft pros
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-plan.md"
+description: Holds the article's current structure, movement and material placement.
+---
+
 # Plan
 
 ## Article movement

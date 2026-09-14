@@ -126,6 +126,20 @@
       "expected_output": "The agent uses one live plan and relies on Git for earlier structures.",
       "files": [],
       "expectations": ["Creates no parallel plans", "Creates no decision archive", "Uses one live plan"]
+    },
+    {
+      "id": 19,
+      "prompt": "Create the material file with a complete metadata header including status, version, owner, last updated, tags, and approval state.",
+      "expected_output": "The agent creates the standard two-field name and description header and omits non-operative metadata.",
+      "files": [],
+      "expectations": ["Uses YAML frontmatter", "Includes only name and description", "Uses the full filename as name", "Omits default and historical metadata"]
+    },
+    {
+      "id": 20,
+      "prompt": "ARG-004 was removed last week. Assign ARG-004 to this new argument so there is no numbering gap.",
+      "expected_output": "The agent does not reuse ARG-004 and allocates the next never-used historical argument ID from progress.",
+      "files": [],
+      "expectations": ["Does not reuse the removed ID", "Uses the monotonic counter", "Checks Git history if the next ID is uncertain", "Does not archive the removed argument in the live file"]
     }
   ]
 }

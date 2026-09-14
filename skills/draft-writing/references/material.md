@@ -1,3 +1,8 @@
+---
+name: material.md
+description: Defines current claims, arguments, inputs and developing synthesis.
+---
+
 # Material
 
 ## Accepts
@@ -13,6 +18,11 @@ Do not accept article order as authority, broad source inventories, reader-facin
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-material.md"
+description: Holds current claims, arguments, inputs and developing synthesis.
+---
+
 # Material
 
 ## ARG-001 — <Current claim or argument>
@@ -48,6 +58,7 @@ Each argument has an ID, a current claim and a real relation to the user thesis.
 5. Present the claim, user-thesis relation and inputs as one exact proposal for approval.
 6. Develop material through white-box-synthesis. Approval of inputs does not approve a later output unless both were presented as one bounded object.
 7. Update affected plan and prose when the argument changes. Remove obsolete live material rather than retaining revisions or rejected candidates.
+8. Never reuse a removed or retired argument or contradiction ID; allocate the next historical value from progress.
 
 ## Completion
 

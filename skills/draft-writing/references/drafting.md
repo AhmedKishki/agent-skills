@@ -1,3 +1,8 @@
+---
+name: drafting.md
+description: Defines composition and verification of reader-facing article prose.
+---
+
 # Drafting
 
 ## Accepts
@@ -24,6 +29,11 @@ Do not accept unsupported claims, unapproved structural invention, undisclosed A
 ## Standard structure
 
 ```markdown
+---
+name: "{project}-draft.md"
+description: Holds the current reader-facing article prose.
+---
+
 # <Article title or working title>
 
 <Reader-facing article prose in the current plan order.>

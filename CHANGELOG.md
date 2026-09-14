@@ -14,6 +14,9 @@ This file records user-visible changes to the skills in this repository. Git ret
 - Required every claim and argument to state its substantive relation to the user thesis and required contradictions to be exposed for user resolution.
 - Restricted AI-authored wording and connections to exact, bounded, disclosed proposals with explicit approval.
 - Standardized every canonical output while allowing its substantive content and internal development to remain flexible.
+- Added minimal `name` and `description` YAML frontmatter to every module and canonical output structure.
+- Limited metadata to current operative direction, identity, evidence location, provenance and live blockers.
+- Made every ID namespace monotonic: removed, retired, merged or replaced IDs remain historically allocated and are never reused.
 - Removed repeated editing notes, default metadata, immutable working snapshots, superseded-decision archives, and overlapping handoff records from the workflow.
 - Made progress the sole resumption owner for current work, achieved state, next work, blockers, and counters.
 - Consolidated citation verification into drafting and made a separate citation work file optional.
