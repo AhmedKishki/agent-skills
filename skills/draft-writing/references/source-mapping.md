@@ -1,8 +1,14 @@
 # Source mapping
 
-## Purpose
+## Accepts
 
-Preserve exact relevant source wording and its location. Create one source map per source.
+An identified source, an accessible original, a defined reading scope and exact contiguous passages relevant to current work. A user-supplied quotation is accepted here as source-authored material when its identity and location can be established.
+
+Do not accept user interpretation, argument assignments, intended uses, synthesized wording, approval history or broad inventories.
+
+## Owns
+
+One source map per source owns exact relevant source wording and its location.
 
 ## Procedure
 
@@ -12,9 +18,9 @@ Preserve exact relevant source wording and its location. Create one source map p
 4. Include enough context to preserve subject, scope, modality and qualification.
 5. Present one exact excerpt batch for approval.
 6. Save only approved excerpts in source order under stable codes.
-7. Record checked coverage and the next excerpt code in progress, not in the map.
+7. Record checked coverage and the next excerpt code in draft progress, not in the map.
 
-## Format
+## Standard structure
 
 ```markdown
 # Author, Full Source Title

@@ -6,7 +6,7 @@ A collection of source-controlled skills for Codex and Claude. Each top-level di
 
 | Skill | Purpose |
 |---|---|
-| [`draft-writing`](skills/draft-writing/) | User-led, source-grounded research and drafting through user-directed modules and a canonical thesis-to-draft path. |
+| [`draft-writing`](skills/draft-writing/) | User-led, source-grounded article development through dynamic draft materials and white-box synthesis. |
 
 ## Install
 
@@ -76,12 +76,12 @@ The portable workflow follows the open [Agent Skills specification](https://agen
 
 ## Versions and releases
 
-Each skill directory may carry a `version` file (for example `skills/draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Do not add a hand-maintained changelog.
+Each skill directory may carry a `version` file (for example `skills/draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Record user-visible changes in [`CHANGELOG.md`](CHANGELOG.md).
 
 - Commits on `main` are unreleased development state.
 - Published skill versions use immutable annotated tags named `<skill-name>-vMAJOR.MINOR.PATCH` and a matching GitHub Release.
 - The Claude marketplace entry omits a plugin `version` deliberately: Git-backed installs use the resolved commit, while a release-tag pin supplies the immutable version.
-- Release notes are the changelog. They identify affected skills, user-visible changes, migrations or breaking changes, and Codex/Claude compatibility results.
+- Release notes summarize the corresponding changelog entry and add publication assets and compatibility results.
 - Each release attaches a ZIP for every released skill, with exactly one top-level skill directory.
 - `PATCH` fixes compatible behavior, `MINOR` adds compatible behavior, and `MAJOR` changes a workflow or persisted format incompatibly.
 

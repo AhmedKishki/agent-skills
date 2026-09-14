@@ -1,40 +1,38 @@
 # User material
 
-## Purpose
+## Accepts
 
-Preserve exact reusable user-authored material for thesis, argument synthesis, the article arc or draft prose in `{project}-user-material.md`.
+Exact user-authored definitions, claims, interpretations, connections, qualifications, analogies, examples and candidate article wording that may orient or enter the article.
 
-## Eligibility
+Do not accept procedural commands, approvals, source quotations, AI proposals or workflow commentary. A quotation remains source-authored even when the user supplies it.
 
-Preserve definitions, claims, interpretations, connections, analogies, examples and candidate article language. Do not preserve procedural commands, approvals, source quotations or workflow commentary as user material.
+## Owns
+
+`{project}-user-material.md` owns exact reusable user wording so the user's thought, voice, style and tone are not distilled through synthesis.
 
 ## Procedure
 
-1. Classify the contribution through [Input routing](input-routing.md).
-2. Allocate a stable `U-nnn` ID from progress.
+1. Separate reusable wording from procedure and source-authored text.
+2. Allocate a stable `U-nnn` ID from draft progress when identity is needed.
 3. Preserve exact spelling, punctuation and paragraph breaks in a blockquote.
-4. Name its intended route with one short `For` field. This classifies the material but does not approve its use.
-5. Link the ID from thesis, an argument, synthesis material, the article arc or draft when used.
-6. If a used entry changes meaning, preserve it and create a new ID. Record the replacement plainly.
+4. Link the ID from its current use rather than duplicating its wording.
+5. When relevant user material exists for synthesis, include it. Excluding it requires explicit user authorisation.
+6. If the user changes an entry that current work uses, keep the ID when its meaning remains; otherwise allocate a new ID, update current uses and rely on Git for the earlier text.
 
-## Format
+## Standard structure
 
 ```markdown
 # User material
 
-> **Editing note:** You may add or edit material directly. Keep stable IDs where possible. Source quotations belong in source maps.
-
 ## U-001 — Short description
-
-**For:** Thesis | Argument synthesis | Article arc | Draft prose
 
 > Exact user wording.
 >
 > Its next paragraph.
-
-**Replaced by:** None
 ```
+
+The description may state a present role when needed, but no routing or status field is required. Entries may be regrouped as the work develops while stable IDs remain intact.
 
 ## Completion
 
-Every eligible contribution is preserved exactly once, its route is visible and any replaced wording remains recoverable.
+Every eligible contribution is preserved exactly once and remains available to current synthesis without source or AI wording being misattributed to the user.

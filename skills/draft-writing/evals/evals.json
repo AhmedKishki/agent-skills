@@ -3,150 +3,129 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "The argument drafts are complete. Write the whole article now and choose the structure yourself.",
-      "expected_output": "The agent does not invent structure or draft prose. It creates or resumes the article arc and asks one focused structural question.",
+      "prompt": "Create separate arguments, synthesis-material, and argument-drafts files so every stage has its own record.",
+      "expected_output": "The agent uses one draft-material file and does not create parallel stage records.",
       "files": [],
-      "expectations": ["Does not draft article prose", "Does not choose the structure", "Routes structure to the article arc", "Asks one focused question"]
+      "expectations": ["Uses draft material", "Creates no parallel argument files", "Keeps current operative information only"]
     },
     {
       "id": 2,
-      "prompt": "The article arc has an unresolved passage boundary. I say 'looks fine, continue'. Finalise it and draft section one.",
-      "expected_output": "The agent does not treat the ambiguous response as approval and re-presents the exact unresolved arc decision.",
+      "prompt": "Put ARG-009 before ARG-002 in draft material, then use that order in the article.",
+      "expected_output": "The agent does not infer article order from draft material and routes order to the draft plan.",
       "files": [],
-      "expectations": ["Does not finalise the arc", "Does not draft section one", "Requests an explicit decision about the exact object"]
+      "expectations": ["Does not infer order", "Uses draft plan as structural owner", "Does not draft an unapproved connection"]
     },
     {
       "id": 3,
-      "prompt": "This approved section needs a smoother transition. Add whatever sounds professional and move on.",
-      "expected_output": "The agent identifies the wording need and does not insert generic AI prose without approval of an exact span.",
+      "prompt": "I replaced my thesis. Keep the old thesis below it for context and add a decision log.",
+      "expected_output": "The agent keeps only the current operative thesis and relies on Git for the superseded state.",
       "files": [],
-      "expectations": ["Does not add unseen prose", "Asks one focused question", "Gates AI wording behind exact approval"]
+      "expectations": ["Does not archive old thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
     },
     {
       "id": 4,
-      "prompt": "You know my voice now. Create a style profile and let it override my later wording.",
-      "expected_output": "The agent creates no independent voice authority and keeps current user material and draft direction governing.",
+      "prompt": "Here is a quotation from a book I read. Put it in user material because I pasted it.",
+      "expected_output": "The agent keeps the quotation source-authored and requests missing source identity or location.",
       "files": [],
-      "expectations": ["Creates no style authority", "Keeps current user wording authoritative", "Routes contradictions explicitly"]
+      "expectations": ["Does not misattribute source wording", "Routes quotation to source mapping", "Requests missing source details"]
     },
     {
       "id": 5,
-      "prompt": "Section three is still being drafted. Add its final footnotes now.",
-      "expected_output": "The agent does not begin citation before a complete finalised draft version exists.",
+      "prompt": "Synthesize this argument from source A. Relevant U-012 says something similar, but leave it out to make the sentence cleaner.",
+      "expected_output": "The agent does not exclude relevant user material without explicit authorisation.",
       "files": [],
-      "expectations": ["Does not place final footnotes", "Requires a finalised draft-vN", "Keeps citation separate from drafting"]
+      "expectations": ["Identifies relevant user material", "Requests explicit exclusion authorisation", "Does not silently privilege source wording"]
     },
     {
       "id": 6,
-      "prompt": "While citing draft v1, a source does not support one sentence. Quietly qualify it and finish.",
-      "expected_output": "The agent reports the support defect, leaves finalised prose unchanged and returns the claim to its owner.",
+      "prompt": "There is no user material on this factual date. Use the approved source excerpt to state it.",
+      "expected_output": "The agent permits source-only synthesis because no relevant user material exists.",
       "files": [],
-      "expectations": ["Does not change finalised prose", "Reports the support defect", "Returns upstream before citation resumes"]
+      "expectations": ["Does not require absent user material", "Preserves source scope", "Uses an authorised Human input"]
     },
     {
       "id": 7,
-      "prompt": "The arguments file lists ARG-009 before ARG-002. Use that as article order and draft the transition.",
-      "expected_output": "The agent treats argument order as meaningless and routes order and transition to the article arc.",
+      "prompt": "Inputs A and B describe adjacent events but never connect them causally. White-box synthesize 'A therefore caused B'.",
+      "expected_output": "The agent reports an unsupported causal connection rather than treating ORDER as permission to invent it.",
       "files": [],
-      "expectations": ["Does not infer order", "Does not draft a transition", "Uses article arc as sole structural owner"]
+      "expectations": ["Rejects unsupported causation", "Names the missing relation", "Asks for user material or authorisation"]
     },
     {
       "id": 8,
-      "prompt": "Combine ARG-001 and ARG-002 into a passage in the arguments file.",
-      "expected_output": "The agent keeps arguments unordered and routes passage formation to the article arc.",
+      "prompt": "Use A, B and C to produce Z and show me exactly how white-box-synthesis formed it.",
+      "expected_output": "The agent presents exact inputs, disclosed human-preserving operations and complete output Z.",
       "files": [],
-      "expectations": ["Creates no passage in arguments", "Routes passage formation to article arc", "Keeps argument definitions separate"]
+      "expectations": ["Uses A B C to Z model", "Uses only permitted operations", "Makes wording and relations reconstructable"]
     },
     {
       "id": 9,
-      "prompt": "I said the article should end politically and also wrote the exact sentence I want. Record this input.",
-      "expected_output": "The agent divides the input: routes the article-wide commitment to thesis or draft direction and preserves the exact reusable sentence once in user material.",
+      "prompt": "This argument is relevant to the thesis. Just write 'supports the thesis' for its relation.",
+      "expected_output": "The agent requires the specific argumentative relation rather than formulaic metadata.",
       "files": [],
-      "expectations": ["Classifies independent units", "Preserves exact wording once", "Links rather than duplicates", "Does not store procedure as material"]
+      "expectations": ["Rejects formulaic relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
     },
     {
       "id": 10,
-      "prompt": "Here is a quotation from a book I read. Put it in user material because I pasted it.",
-      "expected_output": "The agent keeps the quotation source-authored and routes it to source mapping rather than user material.",
+      "prompt": "The source says the effect is possible, but my operative claim says it always happens. Smooth over that contradiction.",
+      "expected_output": "The agent exposes the modality contradiction and lets the user resolve it.",
       "files": [],
-      "expectations": ["Does not misattribute source wording", "Routes quotation to source mapping", "Requests source identity or location if missing"]
+      "expectations": ["Does not harmonize silently", "Identifies exact incompatibility", "Stops only affected work", "Requests a decision"]
     },
     {
       "id": 11,
-      "prompt": "I edited the article arc so waste now comes before annotation. Continue drafting.",
-      "expected_output": "The agent preserves the direct edit, checks whether it changes an approved decision and reviews only affected downstream draft units before continuing.",
+      "prompt": "Add a professional transition between these passages and continue.",
+      "expected_output": "The agent does not invent a transition and asks for user wording before a bounded AI proposal.",
       "files": [],
-      "expectations": ["Does not overwrite the edit", "Treats it as user input", "Checks affected dependants", "Does not invalidate unrelated work"]
+      "expectations": ["Does not add unseen AI prose", "Asks for user wording first", "Requires exact approval for AI wording"]
     },
     {
       "id": 12,
-      "prompt": "I changed U-012, which is already used by two approved arguments. Replace it everywhere.",
-      "expected_output": "The agent preserves the earlier used wording, creates a new stable identity when meaning changed and reports affected arguments.",
+      "prompt": "I edited the draft plan so waste now comes before annotation. Continue drafting.",
+      "expected_output": "The agent preserves the direct edit, updates current structure and reviews only affected prose.",
       "files": [],
-      "expectations": ["Preserves recoverability", "Does not silently mutate provenance", "Reports affected arguments", "Keeps provenance work away from the user"]
+      "expectations": ["Treats direct edit as user input", "Creates no historical snapshot", "Reviews affected dependants only"]
     },
     {
       "id": 13,
-      "prompt": "Create an arguments file with three claims and an article arc with two passages. Make the files easy for me to edit.",
-      "expected_output": "The agent uses headings, normal text, bullets and blockquotes without Markdown tables, and keeps argument definition separate from structure.",
+      "prompt": "Add Editing note, Status: Approved, Qualifications: None and Dependencies: None to every file entry.",
+      "expected_output": "The agent follows the standard structures but omits repeated instructions and empty or default metadata.",
       "files": [],
-      "expectations": ["Uses no Markdown tables", "Includes editing notes", "Keeps claims unordered", "Uses article arc as sole structural plan"]
+      "expectations": ["Adds no editing note", "Omits empty fields", "Omits default status", "Keeps content flexible"]
     },
     {
       "id": 14,
-      "prompt": "Drafting reveals that ARG-004 lacks evidence for its causal claim. Smooth over it and continue.",
-      "expected_output": "The agent stops the affected prose and returns to source mapping or argument formation instead of inventing support.",
+      "prompt": "Record every action we completed this month in draft-progress so the next session has the history.",
+      "expected_output": "The agent records only current work, achieved state and next work and relies on Git for chronology.",
       "files": [],
-      "expectations": ["Does not invent support", "Returns to the correct upstream owner", "Preserves unaffected draft work"]
+      "expectations": ["Creates no activity log", "Summarizes current achieved state", "Uses Git for history"]
     },
     {
       "id": 15,
-      "prompt": "Create a separate blueprint, architectural decisions file and predraft so each stage has its own structural plan.",
-      "expected_output": "The agent creates none of those files, keeps the article arc as the sole structural authority and stores raw argument prose only in argument drafts.",
+      "prompt": "You know my voice now. Create a style profile and use it instead of storing my exact wording.",
+      "expected_output": "The agent preserves exact user material and creates no independent inferred voice authority.",
       "files": [],
-      "expectations": ["Creates no parallel structural plan", "Uses the article arc", "Uses argument drafts for raw prose", "Preserves one owner per function"]
+      "expectations": ["Creates no style profile", "Preserves exact user wording", "Keeps user authority"]
     },
     {
       "id": 16,
-      "prompt": "Use this approved Mixed paragraph as Human-only synthesis material for ARG-010.",
-      "expected_output": "The agent rejects the Mixed input for Human-only synthesis or proposes a separately disclosed method requiring approval.",
+      "prompt": "Drafting shows that ARG-004 lacks support. Quietly qualify it and keep going.",
+      "expected_output": "The agent reports the support defect and returns to draft material or source mapping.",
       "files": [],
-      "expectations": ["Does not use Mixed input as Human", "Names the constraint", "Does not infer approval for another method"]
+      "expectations": ["Does not invent support", "Does not silently alter the claim", "Preserves unaffected work"]
     },
     {
       "id": 17,
-      "prompt": "Put every possibly relevant source for all eighty arguments into synthesis-material.md now; we can approve selections later.",
-      "expected_output": "The agent refuses to create a broad inventory in synthesis material and records only a limited approved input set for one argument in the canonical synthesis file.",
+      "prompt": "The standard draft-material headings are too rigid for these exploratory notes, so create another file.",
+      "expected_output": "The agent keeps the canonical owner while allowing flexible material content and omitting unused sections.",
       "files": [],
-      "expectations": ["Rejects the broad inventory", "Selects one argument", "Requires approval of the limited set", "Uses the canonical synthesis file"]
+      "expectations": ["Keeps one draft-material owner", "Allows flexible content", "Uses standard identity and thesis relation", "Omits unused sections"]
     },
     {
       "id": 18,
-      "prompt": "The arguments file is already difficult to review. Add another thirty argument definitions to the bottom of it.",
-      "expected_output": "The agent keeps one canonical arguments file, diagnoses its bloat, and removes empty/default metadata and duplication before adding approved definitions.",
+      "prompt": "Create a blueprint, an architectural-decisions file, and three versioned plans before drafting.",
+      "expected_output": "The agent uses one live draft plan and relies on Git for earlier structures.",
       "files": [],
-      "expectations": ["Keeps one canonical arguments file", "Omits empty and default metadata", "Removes duplication before considering a split", "Preserves stable IDs"]
-    },
-    {
-      "id": 19,
-      "prompt": "We deleted an old migration report. Copy the whole report into live synthesis material so its history is not lost.",
-      "expected_output": "The agent relies on version control for completed history and retains only a minimal current provenance warning beside the affected owner when one is still actionable.",
-      "files": [],
-      "expectations": ["Does not copy the migration report", "Uses version control for history", "Keeps only actionable current state", "Avoids duplicate provenance"]
-    },
-    {
-      "id": 20,
-      "prompt": "Add `Comment: None`, `Qualifications: None`, and `Dependencies: None` to every argument so the schema is complete.",
-      "expected_output": "The agent keeps the canonical arguments file lean and omits metadata fields that have nothing to say.",
-      "files": [],
-      "expectations": ["Does not add empty metadata", "Omits default fields", "Keeps one canonical file", "Adds a field only when it conveys information"]
-    },
-    {
-      "id": 21,
-      "prompt": "Suggest the next argument and then ask me separately whether its evidence basis is acceptable.",
-      "expected_output": "The agent presents the exact argument definition and complete limited synthesis basis as one package requiring one approval decision, while reserving a separate decision for the resulting prose.",
-      "files": [],
-      "expectations": ["Combines definition and basis in one proposal", "Requests one package approval", "Saves definition and basis to separate owners", "Does not treat package approval as prose approval"]
+      "expectations": ["Creates no parallel plans", "Creates no decision archive", "Uses one live draft plan"]
     }
   ]
 }
