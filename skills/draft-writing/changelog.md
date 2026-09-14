@@ -285,4 +285,3 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 ### Commit-reconstructed development versions
 
 Versions 7.4.1–9.2.0 and 10.1.0–20.0.0 without a corresponding tag were reconstructed from the former changelog and version-labelled commits. The skill was first added on 2026-08-30 before the earliest recoverable changelog entry, 6.25.1.
-
