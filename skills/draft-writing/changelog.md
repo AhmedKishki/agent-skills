@@ -7,7 +7,7 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
-## Unreleased — 20.0.0
+## 20.0.0 — 2026-09-14
 
 - Replaced the linear thesis-to-arc workflow with a recursive process in which drafting can revise any affected upstream owner.
 - Consolidated active project outputs into thesis, user material, source maps, arguments, material, plan, draft, and progress.
@@ -15,16 +15,18 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 - Made material the record of synthesized passages, each formed from one or more approved arguments.
 - Made argument formation an ongoing part of drafting: candidates may be inferred from source maps, user material, direct user requests, the thesis, existing arguments, the plan and drafting gaps, but require explicit approval.
 - Routed independent parts of user prompts to thesis, user material or arguments, while keeping source quotations source-authored in source maps.
-- Generalised `white-box-synthesis` as authorised inputs `A, B, C, …` producing output `Z` through `COPY`, `INFLECT`, `NORMALISE`, `ORDER`, and `DELETE`.
+- Generalised `white-box-synthesis` as directly labelled authorised inputs producing an exactly labelled output through `COPY`, `INFLECT`, `NORMALISE`, `ORDER`, and `DELETE`.
 - Required relevant user material in synthesis when present; exclusion requires explicit user authorisation.
 - Required every argument to state its substantive relation to the thesis and required contradictions to be exposed for user resolution.
+- Required pedagogical critique of user claims against mapped sources: explain conflicts in evidence, scope or category while preserving the user’s authority to reject the critique without relabelling the disputed claim as source-grounded.
 - Restricted AI-authored wording and connections to exact, bounded, disclosed proposals with explicit approval.
 - Standardised every canonical output while allowing its substantive content and internal development to remain flexible.
 - Added minimal `name` and `description` YAML frontmatter to every module and canonical output structure.
 - Limited metadata to current operative direction, identity, evidence location, provenance and live blockers.
 - Made every ID namespace monotonic: removed, retired, merged or replaced IDs remain historically allocated and are never reused.
 - Removed repeated editing notes, default metadata, immutable working snapshots, superseded-decision archives and overlapping handoff records from the workflow.
-- Made progress the sole resumption owner for current work, achieved state, next work, blockers and counters.
+- Made progress the necessary-and-sufficient next-session handoff for current work, reliable state, live decisions and limits, approval state, next work, blockers, resume files and counters.
+- Removed the Basic Memory integration; canonical project files and Git remain the workflow’s durable state.
 - Consolidated citation verification into drafting and made a separate citation work file optional.
 - Restored one enduring changelog inside `skills/draft-writing` and reconstructed its full available history.
 

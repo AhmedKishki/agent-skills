@@ -45,17 +45,17 @@
     },
     {
       "id": 7,
-      "prompt": "Inputs A and B describe adjacent events but never connect them causally. White-box synthesize 'A therefore caused B'.",
+      "prompt": "Inputs U-012 and F3 describe adjacent events but never connect them causally. White-box synthesize 'U-012 therefore caused F3'.",
       "expected_output": "The agent reports an unsupported causal connection rather than treating ORDER as permission to invent it.",
       "files": [],
       "expectations": ["Rejects unsupported causation", "Names the missing relation", "Asks for user material or authorisation"]
     },
     {
       "id": 8,
-      "prompt": "Use A, B and C to produce Z and show me exactly how white-box-synthesis formed it.",
-      "expected_output": "The agent presents exact inputs, disclosed human-preserving operations and complete output Z.",
+      "prompt": "Use U-012, F3 and MAT-002 to produce MAT-005 and show me exactly how white-box-synthesis formed it.",
+      "expected_output": "The agent presents the exact directly labelled inputs, disclosed human-preserving operations and complete proposed output MAT-005.",
       "files": [],
-      "expectations": ["Uses A B C to Z model", "Uses only permitted operations", "Makes wording and relations reconstructable"]
+      "expectations": ["Uses direct stable input and output labels without aliases", "Uses only permitted operations", "Makes wording and relations reconstructable"]
     },
     {
       "id": 9,
