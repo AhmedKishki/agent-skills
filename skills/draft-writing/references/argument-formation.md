@@ -2,20 +2,20 @@
 
 ## Purpose
 
-Define the unordered claims the article may need to establish in the arguments file family.
+Define the unordered claims the article may need to establish in `{project}-arguments.md`.
 
 ## Argument contents
 
-Each `ARG-nnn` contains only:
+Each `ARG-nnn` contains:
 
 - one claim;
-- essential qualifications;
-- dependencies on other arguments;
-- status.
+- essential qualifications only when the claim has them;
+- actual dependencies only when the claim has them;
+- a status only when it differs from the file's stated default.
 
 Do not store source excerpts, user quotations, synthesized prose or article placement here. File order has no article meaning.
 
-Use one short index at `{project}-arguments.md` and bounded range files under `arguments/`, such as `arguments/{project}-arguments-001-025.md`. Add a new range before an existing range becomes difficult to review. Do not copy a claim into both its heading and body: use a short heading and state the claim once.
+Keep all argument definitions in the canonical file. State each claim once; a concise claim may appear directly in its `ARG-nnn` heading. Do not create indexes and range files merely because repeated boilerplate made the canonical file large.
 
 Keep only claim-specific qualifications with an argument. Put article-wide writing rules in draft direction and structural or passage-level constraints in the article arc. Link to a shared governing rule instead of repeating it across arguments.
 
@@ -23,31 +23,27 @@ Keep only claim-specific qualifications with an argument. Put article-wide writi
 
 1. Form one claim from the approved thesis, user interpretation or a gap exposed by later work.
 2. Separate claims that require different evidence or could be accepted independently.
-3. Present the exact ID, claim, qualifications and dependencies.
+3. Present the exact ID and claim, adding qualifications, dependencies or exceptional status only when they convey information.
 4. Ask whether the user approves that argument or what should change.
-5. Save only the approved definition in its range file and add its ID and short name to the index.
+5. Save only the approved definition.
 6. If a changed argument affects an argument draft or article-arc use, mark those dependants for review.
 
 ## Format
 
 ```markdown
-# Arguments 001–025
+# Arguments
 
 > **Editing note:** You may edit this file directly. Arguments are unordered; moving them does not change article order.
 
-## ARG-001
+Approved is the default status. Exceptions are stated locally.
 
-**Status:** Approved
-
-### Claim
-
-<One claim.>
+## ARG-001 — <One claim.>
 
 **Qualifications:** <Essential claim-specific limit. Omit when none.>
 
-**Depends on:** ARG-002 <Omit when none.>
+**Depends on:** ARG-002
 ```
 
 ## Completion
 
-The claim, claim-specific qualifications and actual dependencies are explicit and approved. The index resolves the ID to one range file. Prose synthesis is a separate stage.
+The claim, any claim-specific qualifications and any actual dependencies are explicit and approved. Empty and default fields are absent. Prose synthesis is a separate stage.

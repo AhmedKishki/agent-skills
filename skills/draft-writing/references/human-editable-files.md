@@ -11,9 +11,9 @@ Make every active project file easy for the user to read and edit directly.
 - Use no Markdown tables.
 - Put one argument, decision, source excerpt or draft unit under one heading.
 - Keep stable IDs in headings where identity matters.
-- State `None` rather than leaving a required field ambiguous.
+- Omit optional metadata when it has nothing to say. State `None` only when absence itself is necessary to resolve a real ambiguity.
 - Keep process explanation out of article-making material.
-- Keep each file small enough to review as one coherent unit. Split an active index or range file before it exceeds 250 lines or 20 KB. When unrelated units make a file cumbersome sooner, use its canonical index-plus-file family rather than adding another section to a monolith.
+- Keep each file small enough to review as one coherent unit by removing boilerplate, defaults, duplication and misplaced history. Do not fragment a coherent file merely to satisfy an arbitrary size threshold.
 
 Working files begin with this note or a shorter equivalent:
 

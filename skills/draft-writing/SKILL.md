@@ -14,7 +14,7 @@ Help the user prepare the article they intend. The user is the authority over th
 - Route each independent part of new input to one owner. Do not store procedural talk as article material.
 - Preserve exact user and source wording under stable IDs. Never present source or AI wording as the user's.
 - Use simple Markdown headings, paragraphs, bullets and blockquotes. Create no tables in active project files.
-- Keep working files bounded and navigable. Use the canonical index-plus-file families for arguments and synthesis material; never solve growth by accumulating a monolith.
+- Keep working files lean and navigable. Omit empty and default metadata, route each item to one owner and remove completed process history before considering any split.
 - Treat direct file edits as user input. Preserve them and report affected downstream work.
 - Move forward when a stage is ready. Return to an earlier owner when new input changes it; invalidate only affected dependants.
 - AI-authored article wording requires approval of the exact bounded wording for an identified need.
@@ -38,7 +38,7 @@ User input may supplement or redirect any stage. Follow [Consent](references/con
 
 - A source excerpt is exact source wording in a source map.
 - User material is exact reusable user-authored wording.
-- An argument is one unordered claim in the arguments file family.
+- An argument is one unordered claim in the arguments file.
 - An argument draft is approved raw prose for one argument.
 - The article arc alone owns article order, sections, passages, paragraph purposes, connections, inclusion and omission.
 - The draft alone owns reader-facing article prose.

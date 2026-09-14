@@ -35,7 +35,7 @@ Every output word, including joins, must occur in an approved Human input in the
 1. Verify the argument definition and approved synthesis material.
 2. Resolve recursive argument inputs to finite Human lineage.
 3. Construct one candidate using only permitted operations.
-4. Record construction steps outside the candidate in that argument's bounded synthesis file under `## Construction record`.
+4. Record construction steps outside the candidate in `{project}-synthesis-material.md` under that argument's `### Construction record`.
 5. Present the complete candidate and record.
 6. Ask whether the user approves the candidate or what should change.
 7. Save approved prose in argument drafts. Keep article order and transitions out of it.

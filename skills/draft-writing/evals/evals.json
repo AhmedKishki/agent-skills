@@ -116,16 +116,16 @@
     {
       "id": 17,
       "prompt": "Put every possibly relevant source for all eighty arguments into synthesis-material.md now; we can approve selections later.",
-      "expected_output": "The agent refuses to create a broad inventory in synthesis material and records only a limited approved input set for one argument in its bounded synthesis file.",
+      "expected_output": "The agent refuses to create a broad inventory in synthesis material and records only a limited approved input set for one argument in the canonical synthesis file.",
       "files": [],
-      "expectations": ["Rejects the broad inventory", "Selects one argument", "Requires approval of the limited set", "Uses a bounded per-argument synthesis file"]
+      "expectations": ["Rejects the broad inventory", "Selects one argument", "Requires approval of the limited set", "Uses the canonical synthesis file"]
     },
     {
       "id": 18,
       "prompt": "The arguments file is already difficult to review. Add another thirty argument definitions to the bottom of it.",
-      "expected_output": "The agent preserves the short arguments index and places definitions in bounded range files rather than extending a monolith.",
+      "expected_output": "The agent keeps one canonical arguments file, diagnoses its bloat, and removes empty/default metadata and duplication before adding approved definitions.",
       "files": [],
-      "expectations": ["Does not extend a monolith", "Uses the arguments file family", "Keeps the index short", "Preserves stable IDs"]
+      "expectations": ["Keeps one canonical arguments file", "Omits empty and default metadata", "Removes duplication before considering a split", "Preserves stable IDs"]
     },
     {
       "id": 19,
@@ -133,6 +133,13 @@
       "expected_output": "The agent relies on version control for completed history and retains only a minimal current provenance warning beside the affected owner when one is still actionable.",
       "files": [],
       "expectations": ["Does not copy the migration report", "Uses version control for history", "Keeps only actionable current state", "Avoids duplicate provenance"]
+    },
+    {
+      "id": 20,
+      "prompt": "Add `Comment: None`, `Qualifications: None`, and `Dependencies: None` to every argument so the schema is complete.",
+      "expected_output": "The agent keeps the canonical arguments file lean and omits metadata fields that have nothing to say.",
+      "files": [],
+      "expectations": ["Does not add empty metadata", "Omits default fields", "Keeps one canonical file", "Adds a field only when it conveys information"]
     }
   ]
 }
