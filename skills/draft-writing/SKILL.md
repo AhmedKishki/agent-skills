@@ -1,6 +1,6 @@
 ---
 name: draft-writing
-description: Develop a source-grounded article through a dynamic user thesis, exact user and source material, white-box synthesis, one plan, drafting and current progress.
+description: Develop a source-grounded article through a dynamic thesis, exact user and source material, argument formation, synthesized passages, one plan, drafting and current progress.
 ---
 
 # Draft writing
@@ -14,7 +14,7 @@ Help the user form the article they intend. The user is the authority over its i
 - Use only user-authorised material from the user or sources. Do not add an AI claim, connection or article wording without disclosing and obtaining approval for the exact bounded addition.
 - Preserve exact user wording in user material and exact source wording in source maps. Never attribute source or AI wording to the user.
 - When relevant user material exists, include it in synthesis. Excluding it requires explicit user authorisation. When none exists, synthesis may proceed from other authorised Human inputs.
-- Every claim and argument must state its real relation to the user thesis. Do not use formulaic declarations of support.
+- Every argument must state its real relation to the thesis and record its authorized basis. Do not use formulaic declarations of support.
 - Point out incompatible facts, scopes, modalities, causes, interpretations, orientations, structures or wording. Stop only affected work and let the user resolve the contradiction.
 - Keep one live owner for each function. Active files contain current operative information, not superseded decisions or process history; Git preserves history.
 - Treat direct edits as user input. Preserve them, route their effects and review only affected dependants.
@@ -25,10 +25,10 @@ Help the user form the article they intend. The user is the authority over its i
 
 ## Dynamic process
 
-1. Establish or revise the article's goal and orientation in [User thesis](references/user-thesis.md).
-2. Preserve relevant exact contributions through [User material](references/user-material.md) and exact evidence through [Source mapping](references/source-mapping.md).
-3. Form claims, arguments, connections and developing prose in [Material](references/material.md).
-4. Transform authorised inputs with [White-box synthesis](references/white-box-synthesis.md).
+1. Establish or revise the article's goal and orientation in [Thesis](references/thesis.md).
+2. Route each independent part of user input to thesis, [User material](references/user-material.md) or [Arguments](references/arguments.md); route source quotations to [Source mapping](references/source-mapping.md).
+3. Infer, propose and approve arguments from source maps, user material, direct user requests, the thesis, existing arguments, the plan or drafting gaps.
+4. Form synthesized passages from one or more approved arguments in [Material](references/material.md) through [White-box synthesis](references/white-box-synthesis.md).
 5. Arrange the current article in the sole [Plan](references/plan.md).
 6. Compose and verify reader-facing prose through [Drafting](references/drafting.md).
 7. Keep the resumption state in [Progress](references/progress.md).
@@ -37,10 +37,11 @@ The process is recursive rather than staged. New material or drafting may change
 
 ## Canonical outputs
 
-- `{project}-user-thesis.md` — current goal, thesis, orientation and article-wide requirements.
+- `{project}-thesis.md` — current goal, thesis, orientation and article-wide requirements.
 - `{project}-user-material.md` — exact reusable user-authored wording.
 - `sources/source-maps/{project}-source-map-{code}-{author-full-source-title}.md` — exact located source excerpts.
-- `{project}-material.md` — claims, arguments, their thesis relations, inputs and developing synthesis.
+- `{project}-arguments.md` — current arguments, their thesis relations, qualifications, dependencies and authorized bases.
+- `{project}-material.md` — synthesized passages made from one or more arguments.
 - `{project}-plan.md` — sole current authority for article structure and order.
 - `{project}-draft.md` — reader-facing article prose.
 - `{project}-progress.md` — current work, achieved state, next work, blockers and counters.

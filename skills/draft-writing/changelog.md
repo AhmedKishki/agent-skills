@@ -10,8 +10,11 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 ## Unreleased — 20.0.0
 
 - Replaced the linear thesis-to-arc workflow with a recursive process in which drafting can revise any affected upstream owner.
-- Consolidated active project outputs into user thesis, user material, source maps, material, plan, draft, and progress.
-- Combined argument definitions, selected synthesis inputs, construction records, and developing argument prose in one flexible material owner.
+- Consolidated active project outputs into thesis, user material, source maps, arguments, material, plan, draft, and progress.
+- Made arguments the record of every current argument, its thesis relation, qualifications, dependencies and authorized basis.
+- Made material the record of synthesized passages, each formed from one or more approved arguments.
+- Made argument formation an ongoing part of drafting: candidates may be inferred from source maps, user material, direct user requests, the thesis, existing arguments, the plan and drafting gaps, but require explicit approval.
+- Routed independent parts of user prompts to thesis, user material or arguments, while keeping source quotations source-authored in source maps.
 - Generalised `white-box-synthesis` as authorised inputs `A, B, C, …` producing output `Z` through `COPY`, `INFLECT`, `NORMALISE`, `ORDER`, and `DELETE`.
 - Required relevant user material in synthesis when present; exclusion requires explicit user authorisation.
 - Required every claim and argument to state its substantive relation to the user thesis and required contradictions to be exposed for user resolution.
@@ -27,8 +30,8 @@ This is the single enduring changelog for `draft-writing`. Current behaviour is 
 
 ### Breaking migration
 
-- `{project}-user-thesis.md` absorbs `{project}-thesis.md` and `{project}-draft-direction.md`.
-- `{project}-arguments.md`, `{project}-synthesis-material.md` and `{project}-argument-drafts.md` become `{project}-material.md`.
+- `{project}-thesis.md` absorbs `{project}-user-thesis.md` and the former `{project}-draft-direction.md`.
+- `{project}-arguments.md` owns arguments and their bases; `{project}-material.md` owns synthesized passages formerly distributed across synthesis and argument-draft records.
 - `{project}-article-arc.md` becomes `{project}-plan.md`.
 - `{project}-progress.md` absorbs separate handoff and current-focus records.
 - `{project}-draft.md` remains the only canonical output with the `draft-` prefix.

@@ -4,23 +4,23 @@
     {
       "id": 1,
       "prompt": "Create separate arguments, synthesis-material, and argument-drafts files so every stage has its own record.",
-      "expected_output": "The agent uses one material file and does not create parallel stage records.",
+      "expected_output": "The agent uses arguments for claims and bases and material for synthesized passages, without recreating synthesis-material or argument-drafts files.",
       "files": [],
-      "expectations": ["Uses material", "Creates no parallel argument files", "Keeps current operative information only"]
+      "expectations": ["Uses arguments for claims and bases", "Uses material for passages", "Creates no synthesis-material or argument-drafts files", "Keeps current operative information only"]
     },
     {
       "id": 2,
-      "prompt": "Put ARG-009 before ARG-002 in material, then use that order in the article.",
-      "expected_output": "The agent does not infer article order from material and routes order to the plan.",
+      "prompt": "Put ARG-009 before ARG-002 in arguments, then use that order in the article.",
+      "expected_output": "The agent does not infer article order from arguments and routes order to the plan.",
       "files": [],
       "expectations": ["Does not infer order", "Uses plan as structural owner", "Does not draft an unapproved connection"]
     },
     {
       "id": 3,
-      "prompt": "I replaced my user thesis. Keep the old user thesis below it for context and add a decision log.",
-      "expected_output": "The agent keeps only the current operative user thesis and relies on Git for the superseded state.",
+      "prompt": "I replaced my thesis. Keep the old thesis below it for context and add a decision log.",
+      "expected_output": "The agent keeps only the current operative thesis and relies on Git for the superseded state.",
       "files": [],
-      "expectations": ["Does not archive old user thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
+      "expectations": ["Does not archive old thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
     },
     {
       "id": 4,
@@ -59,10 +59,10 @@
     },
     {
       "id": 9,
-      "prompt": "This argument is relevant to the user thesis. Just write 'supports the user thesis' for its relation.",
+      "prompt": "This argument is relevant to the thesis. Just write 'supports the thesis' for its relation.",
       "expected_output": "The agent requires the specific argumentative relation rather than formulaic metadata.",
       "files": [],
-      "expectations": ["Rejects formulaic user-thesis relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
+      "expectations": ["Rejects formulaic thesis relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
     },
     {
       "id": 10,
@@ -109,16 +109,16 @@
     {
       "id": 16,
       "prompt": "Drafting shows that ARG-004 lacks support. Quietly qualify it and keep going.",
-      "expected_output": "The agent reports the support defect and returns to material or source mapping.",
+      "expected_output": "The agent reports the support defect and returns to arguments or source mapping.",
       "files": [],
       "expectations": ["Does not invent support", "Does not silently alter the claim", "Preserves unaffected work"]
     },
     {
       "id": 17,
-      "prompt": "The standard material headings are too rigid for these exploratory notes, so create another file.",
-      "expected_output": "The agent keeps the canonical owner while allowing flexible material content and omitting unused sections.",
+      "prompt": "The standard arguments headings are too rigid for these exploratory claims, so put the claims in material instead.",
+      "expected_output": "The agent keeps claims and bases in arguments while allowing flexible optional sections and omitting unused metadata.",
       "files": [],
-      "expectations": ["Keeps one material owner", "Allows flexible content", "Uses standard identity and user-thesis relation", "Omits unused sections"]
+      "expectations": ["Keeps arguments as owner", "Does not put independent claims in material", "Uses argument identity and thesis relation", "Omits unused sections"]
     },
     {
       "id": 18,
@@ -140,6 +140,27 @@
       "expected_output": "The agent does not reuse ARG-004 and allocates the next never-used historical argument ID from progress.",
       "files": [],
       "expectations": ["Does not reuse the removed ID", "Uses the monotonic counter", "Checks Git history if the next ID is uncertain", "Does not archive the removed argument in the live file"]
+    },
+    {
+      "id": 21,
+      "prompt": "My prompt says the article should investigate ownership, gives the exact sentence 'ownership disappears behind the model', and claims this concealment is politically useful. Record it.",
+      "expected_output": "The agent routes the inquiry to thesis, preserves the exact sentence in user material, and proposes the claim in arguments without treating inference as approval.",
+      "files": [],
+      "expectations": ["Routes independent prompt parts", "Uses thesis user material and arguments", "Preserves exact wording once", "Requires argument approval"]
+    },
+    {
+      "id": 22,
+      "prompt": "These source excerpts imply a new argument. Add your inferred argument directly to the article and continue.",
+      "expected_output": "The agent presents the inferred argument, thesis relation, and limited basis as a candidate requiring approval before material, plan, or draft use.",
+      "files": [],
+      "expectations": ["Treats inference as a candidate", "Records basis with the argument", "Requires explicit approval", "Does not draft from an unapproved argument"]
+    },
+    {
+      "id": 23,
+      "prompt": "Combine ARG-003 and ARG-009 into a synthesized passage and store the prose with the argument definitions.",
+      "expected_output": "The agent keeps argument definitions and bases in arguments and stores an approved multi-argument synthesized passage in material.",
+      "files": [],
+      "expectations": ["Keeps arguments separate from passages", "Uses both argument IDs in material", "Checks the authorized join", "Uses a monotonic material ID"]
     }
   ]
 }

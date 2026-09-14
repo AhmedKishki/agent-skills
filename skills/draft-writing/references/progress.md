@@ -49,6 +49,7 @@ description: Holds current work, achieved state, next work, blockers and counter
 - Next source code: B
 - Next user-material ID: U-023
 - Next argument ID: ARG-023
+- Next material ID: MAT-014
 - Next contradiction ID: C-004
 
 ## Source work in progress
