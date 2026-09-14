@@ -32,7 +32,7 @@ Help the user form the article they intend. The user is the authority over its i
 4. Form synthesized passages from one or more approved arguments in [Material](references/material.md) through [White-box synthesis](references/white-box-synthesis.md).
 5. Arrange the current article in the sole [Plan](references/plan.md).
 6. Compose and verify reader-facing prose through [Drafting](references/drafting.md).
-7. Keep the resumption state in [Progress](references/progress.md).
+7. Keep the necessary-and-sufficient next-session handoff in [Progress](references/progress.md).
 
 The process is recursive rather than staged. New material or drafting may change any earlier owner after the user's decision; update the live state and affected dependants instead of preserving obsolete versions in active files.
 
@@ -45,6 +45,6 @@ The process is recursive rather than staged. New material or drafting may change
 - `{project}-material.md` — synthesized passages made from one or more arguments.
 - `{project}-plan.md` — sole current authority for article structure and order.
 - `{project}-draft.md` — reader-facing article prose.
-- `{project}-progress.md` — current work, achieved state, next work, blockers and counters.
+- `{project}-progress.md` — necessary-and-sufficient handoff containing current work, reliable state, live decisions and limits, exact next work, blockers, relevant files and counters.
 
 Create an output only when it has content. Prefix project files with the resolved project name. Allocate IDs monotonically from progress and check current files and Git history when the next value is uncertain. Counters never decrease. If a file becomes difficult to review, remove duplication, non-operative metadata and misplaced history before proposing a split.
