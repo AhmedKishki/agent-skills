@@ -76,7 +76,7 @@ The portable workflow follows the open [Agent Skills specification](https://agen
 
 ## Versions and releases
 
-Each skill directory may carry a `version` file (for example `skills/draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Record user-visible changes in [`CHANGELOG.md`](CHANGELOG.md).
+Each skill directory may carry a `version` file (for example `skills/draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `<skill-name>-vMAJOR.MINOR.PATCH` remains the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Record user-visible changes in [`skills/draft-writing/changelog.md`](skills/draft-writing/changelog.md).
 
 - Commits on `main` are unreleased development state.
 - Published skill versions use immutable annotated tags named `<skill-name>-vMAJOR.MINOR.PATCH` and a matching GitHub Release.
@@ -98,7 +98,7 @@ Workflow-schema labels such as `v6 → v7` inside migration instructions describ
 1. Make a focused change and keep each skill self-contained.
 2. Validate its structure, linked resources, observable behavior, and Claude marketplace metadata with `claude plugin validate . --strict`.
 3. Test the changed workflow in Codex and Claude.
-4. Document any migration or breaking change in the release notes.
+4. Update the skill’s enduring changelog with user-visible changes and any migration or breaking change; derive release notes from that entry.
 5. Merge the reviewed change to `main`.
 6. Create and push an annotated skill-scoped tag, build the per-skill ZIP, and publish the matching GitHub Release.
 
