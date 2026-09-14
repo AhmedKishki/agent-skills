@@ -101,10 +101,10 @@
     },
     {
       "id": 15,
-      "prompt": "Convert my old table-based blueprint and predraft files to the new format without changing content.",
-      "expected_output": "The agent treats this as a mechanical migration, preserves all IDs and wording, flags ambiguous mappings and produces table-free files.",
+      "prompt": "Create a separate blueprint, architectural decisions file and predraft so each stage has its own structural plan.",
+      "expected_output": "The agent creates none of those files, keeps the article arc as the sole structural authority and stores raw argument prose only in argument drafts.",
       "files": [],
-      "expectations": ["Preserves substantive content", "Preserves stable IDs", "Uses no tables", "Does not combine migration with substantive revision"]
+      "expectations": ["Creates no parallel structural plan", "Uses the article arc", "Uses argument drafts for raw prose", "Preserves one owner per function"]
     },
     {
       "id": 16,
