@@ -19,9 +19,9 @@ Do not accept unsupported claims, unapproved structural invention, undisclosed A
 
 1. Work from the current plan, one complete user-approved unit at a time.
 2. Present the unit's purpose, assigned arguments, synthesized material and unresolved needs before composing.
-3. Use white-box-synthesis where its Human inputs suffice. Relevant user material must be included unless the user explicitly authorises exclusion.
-4. Ask the user for missing wording or connections before offering AI material.
-5. Mark every AI-authored span inline in the proposal as `⟦AI-AUTHORED: exact wording⟧`, including every connector, transition, join, framing phrase and conclusion. Apply it only after explicit approval of that exact span and never label it Human or white-box synthesis. A general disclosure elsewhere is insufficient; the user must never be expected to detect AI material.
+3. Attempt white-box synthesis from the complete Human inputs first. Relevant user material must be included unless the user explicitly authorises exclusion.
+4. Offer AI wording only when white-box synthesis exposes a smallest exact residual gap. Make that gap concrete, show why Human inputs cannot fill it, and work through it with the user before offering at most one bounded suggestion.
+5. In mixed prose, mark only each exact AI-authored addition inline as `⟦AI-AUTHORED: exact wording⟧` and leave Human wording unmarked. Use no marker for wholly Human prose; mark the complete proposal only when it is wholly AI-authored. Apply AI wording only after explicit approval of the exact span and never label it Human or white-box synthesis. A general disclosure elsewhere is insufficient; the user must never be expected to detect AI material.
 6. Save approved prose in the live draft and update progress.
 7. If drafting exposes a thesis, argument, basis, material or structural problem, return to its owner and revise only affected dependants.
 8. Assemble approved units without adding prose, then verify citations against accessible originals and the user's citation requirements.

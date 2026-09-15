@@ -36,7 +36,7 @@ No operation may invent a join, causal relation, comparison, abstraction, conclu
 7. Present the inputs, operations and output together for explicit approval.
 8. Save an approved output to its canonical owner with only the input record currently needed for verification or revision.
 
-Before presentation, compare every word and relation in the proposed output with its Human inputs. If any span is AI-authored, the output is not wholly white-box synthesis. Mark every such span inline as `⟦AI-AUTHORED: exact wording⟧` and request explicit approval of each exact span. This includes apparently minor connectors, transitions, joins, framing phrases and conclusions. A general statement that AI helped, a provenance label, an input list or an operation record does not disclose an unmarked span. The user must not have to infer or discover AI authorship.
+Before presentation, compare every word and relation in the proposed output with its Human inputs. In mixed output, mark only each exact AI-authored addition inline as `⟦AI-AUTHORED: exact wording⟧` and leave Human wording unmarked. Use no marker when the output is wholly Human; mark the complete output only when it is wholly AI-authored. This includes apparently minor connectors, transitions, joins, framing phrases and conclusions. A general statement that AI helped, a provenance label, an input list or an operation record does not disclose an unmarked span. The user must not have to infer or discover AI authorship.
 
 ## Standard proposal
 
@@ -56,14 +56,23 @@ Before presentation, compare every word and relation in the proposed output with
 
 ### Proposed output `<exact output label>`
 
-<Complete proposed output, with every AI-authored span marked inline as `⟦AI-AUTHORED: exact wording⟧`.>
+<Complete proposed output; leave Human wording unmarked and mark only exact AI additions, or the whole output when wholly AI-authored.>
 ```
 
 The construction record is required in the approval proposal. In active project files, retain only the smallest input record needed to verify or revise current material; do not preserve completed operation logs by default.
 
 ## Gaps and AI proposals
 
-If any word or relation in the proposed output cannot be reconstructed, stop and name the exact missing wording, evidence, relation or authorisation. Ask the user to supply it first. If the user requests AI help, present one exact bounded AI proposal, mark the exact span inline as `⟦AI-AUTHORED: exact wording⟧`, and obtain explicit approval of that span. Do not hide AI wording inside otherwise Human prose or leave the user to identify it. AI-authored material never becomes white-box synthesis or user material.
+AI suggestions are permitted only when the Human inputs and human-preserving operations cannot complete the required output.
+
+1. Stop at the smallest unreconstructable span or relation and classify the gap as missing wording, evidence, relation or authorisation.
+2. Show the exact Human material available around the gap and explain why `COPY`, `INFLECT`, `NORMALISE`, `ORDER` and `DELETE` cannot fill it.
+3. Ask the user to supply, clarify or resolve the missing content and work through that decision with them.
+4. Offer at most one exact bounded AI suggestion for the demonstrated residual gap. Do not replace surrounding Human wording or broaden the proposal beyond the gap.
+5. In mixed output, mark only the suggested addition inline as `⟦AI-AUTHORED: exact wording⟧`; mark the complete output only if none of it can be reconstructed from Human inputs.
+6. Obtain explicit approval of the exact AI span. The user may revise, replace or reject it; their wording is authoritative.
+
+Never use an AI suggestion to bypass a missing claim, interpretation, connection, qualification, evidence decision or authorisation. Do not hide AI wording inside otherwise Human prose or leave the user to identify it. AI-authored material never becomes white-box synthesis or user material.
 
 ## Completion
 

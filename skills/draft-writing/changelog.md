@@ -7,6 +7,13 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 20.0.2 — 2026-09-15
+
+- Required Human-first white-box reconstruction and restricted AI suggestions to demonstrated residual gaps that prevent completion.
+- Added collaborative gap resolution: expose the smallest exact gap, show why permitted operations cannot fill it, ask the user to resolve it, then offer at most one bounded suggestion.
+- Required mixed proposals to mark only exact AI additions, wholly Human proposals to use no marker, and wholly AI proposals to mark the complete output.
+- Applied the gap-first procedure separately to argument claims, thesis relations, qualifications and dependencies as well as reader-facing drafting.
+
 ## 20.0.1 — 2026-09-15
 
 - Required every AI-authored span, including connectors and transitions, to be marked inline in proposals and approved exactly; general provenance disclosure no longer suffices.

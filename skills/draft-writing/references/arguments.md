@@ -50,13 +50,14 @@ Each argument has one monotonic `ARG-nnn` ID, one independently assessable claim
 
 1. Examine current authorized inputs for a claim the article needs, including relations or gaps exposed by another argument, the plan or drafting.
 2. Distinguish one independently assessable argument from its evidence, wording, qualifications and placement.
-3. State the candidate and how it actually relates to the thesis.
-4. Select a complete limited basis. Relevant user material is included when present; exclusion requires explicit user authorization.
-5. State each input's contribution and limit when either is not evident from the argument.
-6. Resolve contradictions among the candidate, thesis, user material, sources and existing arguments, or record the live blocker.
-7. Present the candidate argument, thesis relation and complete basis together for explicit approval.
-8. Save only the approved current argument. Update affected material, plan and draft uses when it changes.
-9. Never reuse a removed or retired argument or contradiction ID; allocate the next historical value from progress.
+3. Reconstruct the candidate claim, thesis relation, qualifications and dependencies separately from authorised Human inputs through white-box synthesis.
+4. If any part cannot be reconstructed, identify its smallest exact gap and follow the collaborative gap procedure before offering a bounded AI suggestion. Do not draft the rest of an argument record in AI wording merely because one part has a gap.
+5. Select a complete limited basis. Relevant user material is included when present; exclusion requires explicit user authorization.
+6. State each input's contribution and limit when either is not evident from the argument.
+7. Resolve contradictions among the candidate, thesis, user material, sources and existing arguments, or record the live blocker.
+8. Present the candidate argument, thesis relation and complete basis together for explicit approval, marking only exact AI additions under the white-box-synthesis rule.
+9. Save only the approved current argument. Update affected material, plan and draft uses when it changes.
+10. Never reuse a removed or retired argument or contradiction ID; allocate the next historical value from progress.
 
 ## Prompt routing
 

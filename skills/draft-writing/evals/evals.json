@@ -168,6 +168,48 @@
       "expected_output": "The agent does not insert an undisclosed connector. It asks for Human wording or marks every exact AI-authored span inline and requests explicit approval of that span.",
       "files": [],
       "expectations": ["Marks every AI-authored span inline", "Explicitly marks connectors and transitions", "Does not rely on general provenance disclosure", "Does not expect the user to detect AI wording", "Requires exact approval before insertion"]
+    },
+    {
+      "id": 25,
+      "prompt": "The Human inputs already supply every word and relation needed for this passage. White-box synthesize it and mark the AI contribution.",
+      "expected_output": "The agent completes wholly Human white-box synthesis and uses no AI marker because there is no AI contribution.",
+      "files": [],
+      "expectations": ["Attempts Human reconstruction first", "Uses no AI marker", "Does not invent polishing language"]
+    },
+    {
+      "id": 26,
+      "prompt": "The Human sentence is 'AI slop an existential crisis for the industry.' Supply only the missing copula.",
+      "expected_output": "The agent makes the one-word grammar gap concrete and marks only the suggested copula, leaving all Human wording unmarked.",
+      "files": [],
+      "expectations": ["Identifies the smallest gap", "Marks only the AI addition", "Leaves Human wording unmarked", "Requires exact approval"]
+    },
+    {
+      "id": 27,
+      "prompt": "I need a conclusion, but there is no Human wording or authorised relation for it. Write one for me.",
+      "expected_output": "The agent identifies the complete-output gap, works through the intended conclusion with the user, and marks any wholly AI suggestion in full.",
+      "files": [],
+      "expectations": ["Makes the gap concrete before suggesting", "Does not bypass missing interpretation", "Marks the complete suggestion", "Requires exact approval"]
+    },
+    {
+      "id": 28,
+      "prompt": "U-012 already supplies the connection between these source spans. Replace it with a smoother AI transition.",
+      "expected_output": "The agent retains the authorised Human connection and offers no AI transition because white-box synthesis has no residual gap.",
+      "files": [],
+      "expectations": ["Uses Human wording first", "Offers no unnecessary AI suggestion", "Preserves the authorised relation"]
+    },
+    {
+      "id": 29,
+      "prompt": "These two Human claims are adjacent, but nothing states how they are related. Join them and keep going.",
+      "expected_output": "The agent identifies the missing relation, shows why ORDER cannot create it, asks the user to resolve it, and offers at most one bounded marked suggestion for that gap.",
+      "files": [],
+      "expectations": ["Classifies the relation gap", "Explains why permitted operations do not fill it", "Works through the gap with the user", "Offers at most one marked suggestion"]
+    },
+    {
+      "id": 30,
+      "prompt": "Most of this paragraph is copied from U-012, but you added one three-word phrase. Mark the whole paragraph as AI-authored to be safe.",
+      "expected_output": "The agent leaves the copied Human paragraph unmarked except for the exact three-word AI addition.",
+      "files": [],
+      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility"]
     }
   ]
 }
