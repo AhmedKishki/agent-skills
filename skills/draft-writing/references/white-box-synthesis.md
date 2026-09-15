@@ -7,9 +7,9 @@ description: Defines reconstructable synthesis from authorised Human inputs.
 
 ## Accepts
 
-A finite set of exact, user-authorised Human inputs identified directly by their stable labels, such as `U-012`, `F3` or `MAT-002`: user-material spans, source-map excerpts, or earlier outputs whose lineage resolves completely to such spans.
+A finite set of exact, approved Human inputs identified directly by their stable labels, such as `U-012`, `F3` or `MAT-002`: user-material spans, source-map excerpts, or other approved outputs whose lineage resolves completely to Human user-material and source-map spans.
 
-Relevant user material must be among the inputs when it exists. Excluding it requires explicit user authorisation. Source wording remains source-authored, and approval changes neither authorship nor evidentiary scope. Mixed, AI or unverified material is not a Human input.
+Relevant user material must be among the inputs when it exists. Excluding it requires explicit user authorisation. Source wording remains source-authored, and approval changes neither authorship nor evidentiary scope. AI-authored, Mixed and unverified material is permanently ineligible, including after approval.
 
 ## Produces
 
@@ -36,7 +36,7 @@ No operation may invent a join, causal relation, comparison, abstraction, conclu
 7. Present the inputs, operations and output together for explicit approval.
 8. Save an approved output to its canonical owner with only the input record currently needed for verification or revision.
 
-Before presentation, compare every word and relation in the proposed output with its Human inputs. In mixed output, mark only each exact AI-authored addition inline as `⟦AI-AUTHORED: exact wording⟧` and leave Human wording unmarked. Use no marker when the output is wholly Human; mark the complete output only when it is wholly AI-authored. This includes apparently minor connectors, transitions, joins, framing phrases and conclusions. A general statement that AI helped, a provenance label, an input list or an operation record does not disclose an unmarked span. The user must not have to infer or discover AI authorship.
+Before presentation, compare every word and relation in the proposed output with its Human inputs. A white-box output must be wholly Human and use no AI marker. Any AI-authored word, including a connector, transition, join, framing phrase or conclusion, disqualifies the output from white-box synthesis.
 
 ## Standard proposal
 
@@ -56,23 +56,20 @@ Before presentation, compare every word and relation in the proposed output with
 
 ### Proposed output `<exact output label>`
 
-<Complete proposed output; leave Human wording unmarked and mark only exact AI additions, or the whole output when wholly AI-authored.>
+<Complete Human-only proposed output.>
 ```
 
 The construction record is required in the approval proposal. In active project files, retain only the smallest input record needed to verify or revise current material; do not preserve completed operation logs by default.
 
-## Gaps and AI proposals
-
-AI suggestions are permitted only when the Human inputs and human-preserving operations cannot complete the required output.
+## Gaps
 
 1. Stop at the smallest unreconstructable span or relation and classify the gap as missing wording, evidence, relation or authorisation.
 2. Show the exact Human material available around the gap and explain why `COPY`, `INFLECT`, `NORMALISE`, `ORDER` and `DELETE` cannot fill it.
 3. Ask the user to supply, clarify or resolve the missing content and work through that decision with them.
-4. Offer at most one exact bounded AI suggestion for the demonstrated residual gap. Do not replace surrounding Human wording or broaden the proposal beyond the gap.
-5. In mixed output, mark only the suggested addition inline as `⟦AI-AUTHORED: exact wording⟧`; mark the complete output only if none of it can be reconstructed from Human inputs.
-6. Obtain explicit approval of the exact AI span. The user may revise, replace or reject it; their wording is authoritative.
+4. Do not originate or volunteer an AI-authored suggestion. State only that the user may explicitly request one as a separate option.
+5. If the user explicitly requests an AI suggestion, handle it outside white-box synthesis. Mark it exactly, preserve AI provenance permanently, and never use it as synthesis material or a later white-box input.
 
-Never use an AI suggestion to bypass a missing claim, interpretation, connection, qualification, evidence decision or authorisation. Do not hide AI wording inside otherwise Human prose or leave the user to identify it. AI-authored material never becomes white-box synthesis or user material.
+Never use an AI suggestion to bypass a missing claim, interpretation, connection, qualification, evidence decision or authorisation. AI-authored material never becomes white-box synthesis, user material, source material or synthesis material, even after approval.
 
 ## Completion
 

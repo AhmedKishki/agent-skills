@@ -51,11 +51,11 @@ Each argument has one monotonic `ARG-nnn` ID, one independently assessable claim
 1. Examine current authorized inputs for a claim the article needs, including relations or gaps exposed by another argument, the plan or drafting.
 2. Distinguish one independently assessable argument from its evidence, wording, qualifications and placement.
 3. Reconstruct the candidate claim, thesis relation, qualifications and dependencies separately from authorised Human inputs through white-box synthesis.
-4. If any part cannot be reconstructed, identify its smallest exact gap and follow the collaborative gap procedure before offering a bounded AI suggestion. Do not draft the rest of an argument record in AI wording merely because one part has a gap.
+4. If any part cannot be reconstructed, identify its smallest exact gap, show why Human-preserving operations cannot fill it and ask the user to supply or resolve it. Do not originate an AI-authored argument or volunteer AI wording; the user may explicitly request a separate AI suggestion.
 5. Select a complete limited basis. Relevant user material is included when present; exclusion requires explicit user authorization.
 6. State each input's contribution and limit when either is not evident from the argument.
 7. Resolve contradictions among the candidate, thesis, user material, sources and existing arguments, or record the live blocker.
-8. Present the candidate argument, thesis relation and complete basis together for explicit approval, marking only exact AI additions under the white-box-synthesis rule.
+8. Present the Human-only candidate argument, thesis relation and complete basis together for explicit approval.
 9. Save only the approved current argument. Update affected material, plan and draft uses when it changes.
 10. Never reuse a removed or retired argument or contradiction ID; allocate the next historical value from progress.
 

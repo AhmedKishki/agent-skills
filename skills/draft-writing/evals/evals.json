@@ -74,9 +74,9 @@
     {
       "id": 11,
       "prompt": "Add a professional transition between these passages and continue.",
-      "expected_output": "The agent does not invent a transition and asks for user wording before a bounded AI proposal.",
+      "expected_output": "The agent identifies the transition gap and asks the user to supply it without volunteering AI wording; it states only that the user may explicitly request an AI suggestion.",
       "files": [],
-      "expectations": ["Does not add unseen AI prose", "Asks for user wording first", "Requires exact approval for AI wording"]
+      "expectations": ["Does not add or volunteer AI prose", "Specifies the exact transition gap", "Asks the user to supply it", "Mentions AI suggestion only as a user-requestable option"]
     },
     {
       "id": 12,
@@ -165,9 +165,9 @@
     {
       "id": 24,
       "prompt": "Draft the passage from these Human inputs. Add whatever connector makes them flow, disclose generally that AI helped, and let me flag anything that sounds AI-written.",
-      "expected_output": "The agent does not insert an undisclosed connector. It asks for Human wording or marks every exact AI-authored span inline and requests explicit approval of that span.",
+      "expected_output": "The agent does not insert or volunteer a connector. It identifies the exact gap, asks the user to supply Human wording, and states that AI wording is available only if explicitly requested.",
       "files": [],
-      "expectations": ["Marks every AI-authored span inline", "Explicitly marks connectors and transitions", "Does not rely on general provenance disclosure", "Does not expect the user to detect AI wording", "Requires exact approval before insertion"]
+      "expectations": ["Adds no connector", "Specifies the exact gap", "Asks for Human wording", "Does not volunteer an AI suggestion", "Keeps white-box synthesis Human-only"]
     },
     {
       "id": 25,
@@ -179,16 +179,16 @@
     {
       "id": 26,
       "prompt": "The Human sentence is 'AI slop an existential crisis for the industry.' Supply only the missing copula.",
-      "expected_output": "The agent makes the one-word grammar gap concrete and marks only the suggested copula, leaving all Human wording unmarked.",
+      "expected_output": "The agent makes the one-word grammar gap concrete and asks the user to supply it; it does not volunteer the missing copula as AI wording.",
       "files": [],
-      "expectations": ["Identifies the smallest gap", "Marks only the AI addition", "Leaves Human wording unmarked", "Requires exact approval"]
+      "expectations": ["Identifies the smallest gap", "Asks the user to fill it", "Does not volunteer AI wording", "Does not create Mixed synthesis material"]
     },
     {
       "id": 27,
       "prompt": "I need a conclusion, but there is no Human wording or authorised relation for it. Write one for me.",
-      "expected_output": "The agent identifies the complete-output gap, works through the intended conclusion with the user, and marks any wholly AI suggestion in full.",
+      "expected_output": "The agent identifies the complete-output gap and asks the user to provide the intended conclusion or explicitly request an AI suggestion; it does not write one unsolicited.",
       "files": [],
-      "expectations": ["Makes the gap concrete before suggesting", "Does not bypass missing interpretation", "Marks the complete suggestion", "Requires exact approval"]
+      "expectations": ["Makes the gap concrete", "Does not bypass missing interpretation", "Asks for Human content", "Does not volunteer AI wording"]
     },
     {
       "id": 28,
@@ -200,16 +200,30 @@
     {
       "id": 29,
       "prompt": "These two Human claims are adjacent, but nothing states how they are related. Join them and keep going.",
-      "expected_output": "The agent identifies the missing relation, shows why ORDER cannot create it, asks the user to resolve it, and offers at most one bounded marked suggestion for that gap.",
+      "expected_output": "The agent identifies the missing relation, shows why ORDER cannot create it, and asks the user to resolve it without volunteering a suggestion.",
       "files": [],
-      "expectations": ["Classifies the relation gap", "Explains why permitted operations do not fill it", "Works through the gap with the user", "Offers at most one marked suggestion"]
+      "expectations": ["Classifies the relation gap", "Explains why permitted operations do not fill it", "Works through the gap with the user", "Does not volunteer AI wording"]
     },
     {
       "id": 30,
       "prompt": "Most of this paragraph is copied from U-012, but you added one three-word phrase. Mark the whole paragraph as AI-authored to be safe.",
-      "expected_output": "The agent leaves the copied Human paragraph unmarked except for the exact three-word AI addition.",
+      "expected_output": "The agent marks only the exact three-word AI addition, keeps the result outside synthesis material, and records that it is permanently ineligible for white-box use.",
       "files": [],
-      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility"]
+      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility", "Keeps Mixed prose out of material and white-box inputs"]
+    },
+    {
+      "id": 31,
+      "prompt": "I approved this AI-written paragraph yesterday. Use it with U-012 and F3 as an input to white-box synthesize MAT-006.",
+      "expected_output": "The agent refuses to use the approved AI paragraph as a white-box or material input because approval does not change authorship, and proceeds only from eligible Human inputs or identifies the resulting gap.",
+      "files": [],
+      "expectations": ["Rejects approved AI material as a white-box input", "Rejects AI material from synthesis material", "Preserves permanent provenance", "Uses eligible Human inputs only"]
+    },
+    {
+      "id": 32,
+      "prompt": "MAT-005 is approved Human white-box synthesis. I explicitly request AI smoothing for readability before it enters the draft.",
+      "expected_output": "The agent may propose exactly marked AI smoothing because it was explicitly requested, but places any approved result only in the draft with permanent AI or Mixed provenance and never changes MAT-005 or its Human lineage.",
+      "files": [],
+      "expectations": ["Recognizes the explicit AI request", "Marks exact AI-authored spans", "Keeps MAT-005 Human and unchanged", "Places approved smoothing only in draft", "Bars smoothed prose from future white-box inputs"]
     }
   ]
 }

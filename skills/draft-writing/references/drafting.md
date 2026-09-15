@@ -7,9 +7,9 @@ description: Defines composition and verification of reader-facing article prose
 
 ## Accepts
 
-The current thesis, an approved unit of the plan, its assigned arguments and material, relevant user material and source maps, and direct user prose or revisions.
+The current thesis, an approved unit of the plan, its assigned Human-only arguments and material, relevant user material and source maps, direct user prose or revisions, and any separately approved user-requested AI smoothing for this draft unit.
 
-Do not accept unsupported claims, unapproved structural invention, undisclosed AI wording, superseded plans or unresolved contradictions affecting the unit.
+Do not accept unsupported claims, unapproved structural invention, unsolicited or undisclosed AI wording, AI or Mixed material presented as synthesis, superseded plans or unresolved contradictions affecting the unit.
 
 ## Owns
 
@@ -18,11 +18,11 @@ Do not accept unsupported claims, unapproved structural invention, undisclosed A
 ## Procedure
 
 1. Work from the current plan, one complete user-approved unit at a time.
-2. Present the unit's purpose, assigned arguments, synthesized material and unresolved needs before composing.
-3. Attempt white-box synthesis from the complete Human inputs first. Relevant user material must be included unless the user explicitly authorises exclusion.
-4. Offer AI wording only when white-box synthesis exposes a smallest exact residual gap. Make that gap concrete, show why Human inputs cannot fill it, and work through it with the user before offering at most one bounded suggestion.
-5. In mixed prose, mark only each exact AI-authored addition inline as `⟦AI-AUTHORED: exact wording⟧` and leave Human wording unmarked. Use no marker for wholly Human prose; mark the complete proposal only when it is wholly AI-authored. Apply AI wording only after explicit approval of the exact span and never label it Human or white-box synthesis. A general disclosure elsewhere is insufficient; the user must never be expected to detect AI material.
-6. Save approved prose in the live draft and update progress.
+2. Present the unit's purpose, assigned arguments, Human-only synthesized material and unresolved needs before composing.
+3. Assemble or revise Human prose through white-box synthesis first. Relevant user material must be included unless the user explicitly authorises exclusion.
+4. Apply the post-synthesis smoothing procedure. Do not originate or volunteer AI wording; when Human-preserving operations cannot fill a gap, specify it and ask the user to supply it.
+5. Produce AI smoothing only after the user explicitly requests it. Mark every exact AI-authored span inline as `⟦AI-AUTHORED: exact wording⟧`, obtain exact approval and keep its provenance permanently AI or Mixed. Never move it into material or use it in white-box synthesis.
+6. Save approved prose in the live draft and update progress with any AI-smoothed span whose provenance must remain recoverable.
 7. If drafting exposes a thesis, argument, basis, material or structural problem, return to its owner and revise only affected dependants.
 8. Assemble approved units without adding prose, then verify citations against accessible originals and the user's citation requirements.
 

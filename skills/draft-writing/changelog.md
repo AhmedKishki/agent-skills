@@ -7,6 +7,14 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 21.0.0 — 2026-09-15
+
+- Made white-box synthesis and synthesis material strictly Human-only: approved user material, source-map excerpts and other approved outputs are eligible only when their complete lineage is Human.
+- Made AI-authored, Mixed and unverified material permanently ineligible for white-box synthesis and material, regardless of later approval.
+- Replaced unsolicited bounded AI suggestions with user-led gap resolution: identify the smallest exact gap, explain why Human-preserving operations cannot fill it and ask the user to supply or resolve it.
+- Permitted an AI suggestion only after an explicit user request, with exact marking, permanent provenance and no later use as synthesis input.
+- Added post-synthesis smoothing. Human-only smoothing may revise material through white-box operations; explicitly requested AI smoothing may enter only the draft and never alters Human synthesis lineage.
+
 ## 20.0.2 — 2026-09-15
 
 - Required Human-first white-box reconstruction and restricted AI suggestions to demonstrated residual gaps that prevent completion.
