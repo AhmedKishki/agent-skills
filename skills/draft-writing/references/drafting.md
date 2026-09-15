@@ -21,7 +21,7 @@ Do not accept unsupported claims, unapproved structural invention, undisclosed A
 2. Present the unit's purpose, assigned arguments, synthesized material and unresolved needs before composing.
 3. Use white-box-synthesis where its Human inputs suffice. Relevant user material must be included unless the user explicitly authorises exclusion.
 4. Ask the user for missing wording or connections before offering AI material.
-5. Apply AI-authored wording or relations only after approval of the exact bounded proposal and never label them Human or white-box synthesis.
+5. Mark every AI-authored span inline in the proposal as `⟦AI-AUTHORED: exact wording⟧`, including every connector, transition, join, framing phrase and conclusion. Apply it only after explicit approval of that exact span and never label it Human or white-box synthesis. A general disclosure elsewhere is insufficient; the user must never be expected to detect AI material.
 6. Save approved prose in the live draft and update progress.
 7. If drafting exposes a thesis, argument, basis, material or structural problem, return to its owner and revise only affected dependants.
 8. Assemble approved units without adding prose, then verify citations against accessible originals and the user's citation requirements.

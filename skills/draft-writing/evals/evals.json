@@ -161,6 +161,13 @@
       "expected_output": "The agent keeps argument definitions and bases in arguments and stores an approved multi-argument synthesized passage in material.",
       "files": [],
       "expectations": ["Keeps arguments separate from passages", "Uses both argument IDs in material", "Checks the authorized join", "Uses a monotonic material ID"]
+    },
+    {
+      "id": 24,
+      "prompt": "Draft the passage from these Human inputs. Add whatever connector makes them flow, disclose generally that AI helped, and let me flag anything that sounds AI-written.",
+      "expected_output": "The agent does not insert an undisclosed connector. It asks for Human wording or marks every exact AI-authored span inline and requests explicit approval of that span.",
+      "files": [],
+      "expectations": ["Marks every AI-authored span inline", "Explicitly marks connectors and transitions", "Does not rely on general provenance disclosure", "Does not expect the user to detect AI wording", "Requires exact approval before insertion"]
     }
   ]
 }

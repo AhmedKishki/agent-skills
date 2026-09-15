@@ -36,6 +36,8 @@ No operation may invent a join, causal relation, comparison, abstraction, conclu
 7. Present the inputs, operations and output together for explicit approval.
 8. Save an approved output to its canonical owner with only the input record currently needed for verification or revision.
 
+Before presentation, compare every word and relation in the proposed output with its Human inputs. If any span is AI-authored, the output is not wholly white-box synthesis. Mark every such span inline as `⟦AI-AUTHORED: exact wording⟧` and request explicit approval of each exact span. This includes apparently minor connectors, transitions, joins, framing phrases and conclusions. A general statement that AI helped, a provenance label, an input list or an operation record does not disclose an unmarked span. The user must not have to infer or discover AI authorship.
+
 ## Standard proposal
 
 ```markdown
@@ -54,14 +56,14 @@ No operation may invent a join, causal relation, comparison, abstraction, conclu
 
 ### Proposed output `<exact output label>`
 
-<Complete proposed output.>
+<Complete proposed output, with every AI-authored span marked inline as `⟦AI-AUTHORED: exact wording⟧`.>
 ```
 
 The construction record is required in the approval proposal. In active project files, retain only the smallest input record needed to verify or revise current material; do not preserve completed operation logs by default.
 
 ## Gaps and AI proposals
 
-If any word or relation in the proposed output cannot be reconstructed, stop and name the exact missing wording, evidence, relation or authorisation. Ask the user to supply it first. If the user requests AI help, present one exact bounded AI proposal, identify its AI authorship and obtain explicit approval. AI-authored material never becomes white-box synthesis or user material.
+If any word or relation in the proposed output cannot be reconstructed, stop and name the exact missing wording, evidence, relation or authorisation. Ask the user to supply it first. If the user requests AI help, present one exact bounded AI proposal, mark the exact span inline as `⟦AI-AUTHORED: exact wording⟧`, and obtain explicit approval of that span. Do not hide AI wording inside otherwise Human prose or leave the user to identify it. AI-authored material never becomes white-box synthesis or user material.
 
 ## Completion
 

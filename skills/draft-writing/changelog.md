@@ -7,6 +7,11 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 20.0.1 — 2026-09-15
+
+- Required every AI-authored span, including connectors and transitions, to be marked inline in proposals and approved exactly; general provenance disclosure no longer suffices.
+- Made explicit that the user must never be expected to detect undisclosed AI wording.
+
 ## 20.0.0 — 2026-09-14
 
 - Replaced the linear thesis-to-arc workflow with a recursive process in which drafting can revise any affected upstream owner.
