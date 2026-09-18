@@ -20,6 +20,17 @@
           "@wonderwhy-er/desktop-commander@latest"
         ]
       }
+    },
+    "research-ultra-rag-ai-and-fetishism": {
+      "command": "/home/ahmed/Documents/research-ultra-rag-mcp-server/.venv/bin/research-ultra-rag-mcp",
+      "args": [
+        "--project-root",
+        "/home/ahmed/Documents/projects/ai-and-fetishism"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": [],
+      "timeout": 1800
     }
   }
 }
