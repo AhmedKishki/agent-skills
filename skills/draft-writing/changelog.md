@@ -7,6 +7,13 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 22.0.0 — 2026-09-18
+
+- Made approved Mixed items eligible for material and white-box synthesis unless the user excludes them, while requiring any output that uses them to remain Mixed.
+- Restricted permanent synthesis ineligibility to explicitly AI-authored or AI-marked spans rather than Mixed items as a class; unverified material remains unavailable only until verified and approved.
+- Generalised Human-only lineage and smoothing language to provenance-preserving Human-or-Mixed workflows.
+- Added evaluations for approved Mixed inputs, user exclusion of Mixed inputs and Mixed items containing explicitly AI-marked spans.
+
 ## 21.0.0 — 2026-09-15
 
 - Made white-box synthesis and synthesis material strictly Human-only: approved user material, source-map excerpts and other approved outputs are eligible only when their complete lineage is Human.

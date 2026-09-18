@@ -53,7 +53,7 @@
     {
       "id": 8,
       "prompt": "Use U-012, F3 and MAT-002 to produce MAT-005 and show me exactly how white-box-synthesis formed it.",
-      "expected_output": "The agent presents the exact directly labelled inputs, disclosed human-preserving operations and complete proposed output MAT-005.",
+      "expected_output": "The agent presents the exact directly labelled inputs, disclosed provenance-preserving operations and complete proposed output MAT-005.",
       "files": [],
       "expectations": ["Uses direct stable input and output labels without aliases", "Uses only permitted operations", "Makes wording and relations reconstructable"]
     },
@@ -167,7 +167,7 @@
       "prompt": "Draft the passage from these Human inputs. Add whatever connector makes them flow, disclose generally that AI helped, and let me flag anything that sounds AI-written.",
       "expected_output": "The agent does not insert or volunteer a connector. It identifies the exact gap, asks the user to supply Human wording, and states that AI wording is available only if explicitly requested.",
       "files": [],
-      "expectations": ["Adds no connector", "Specifies the exact gap", "Asks for Human wording", "Does not volunteer an AI suggestion", "Keeps white-box synthesis Human-only"]
+      "expectations": ["Adds no connector", "Specifies the exact gap", "Asks for eligible wording", "Does not volunteer an AI suggestion", "Uses only eligible white-box inputs"]
     },
     {
       "id": 25,
@@ -181,7 +181,7 @@
       "prompt": "The Human sentence is 'AI slop an existential crisis for the industry.' Supply only the missing copula.",
       "expected_output": "The agent makes the one-word grammar gap concrete and asks the user to supply it; it does not volunteer the missing copula as AI wording.",
       "files": [],
-      "expectations": ["Identifies the smallest gap", "Asks the user to fill it", "Does not volunteer AI wording", "Does not create Mixed synthesis material"]
+      "expectations": ["Identifies the smallest gap", "Asks the user to fill it", "Does not volunteer AI wording", "Does not create unsupported synthesis material"]
     },
     {
       "id": 27,
@@ -207,9 +207,9 @@
     {
       "id": 30,
       "prompt": "Most of this paragraph is copied from U-012, but you added one three-word phrase. Mark the whole paragraph as AI-authored to be safe.",
-      "expected_output": "The agent marks only the exact three-word AI addition, keeps the result outside synthesis material, and records that it is permanently ineligible for white-box use.",
+      "expected_output": "The agent marks only the exact three-word AI addition and records that the marked span is permanently ineligible for material and white-box use; the surrounding approved Human wording remains independently eligible.",
       "files": [],
-      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility", "Keeps Mixed prose out of material and white-box inputs"]
+      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility", "Excludes the marked span from material and white-box inputs"]
     },
     {
       "id": 31,
@@ -223,7 +223,28 @@
       "prompt": "MAT-005 is approved Human white-box synthesis. I explicitly request AI smoothing for readability before it enters the draft.",
       "expected_output": "The agent may propose exactly marked AI smoothing because it was explicitly requested, but places any approved result only in the draft with permanent AI or Mixed provenance and never changes MAT-005 or its Human lineage.",
       "files": [],
-      "expectations": ["Recognizes the explicit AI request", "Marks exact AI-authored spans", "Keeps MAT-005 Human and unchanged", "Places approved smoothing only in draft", "Bars smoothed prose from future white-box inputs"]
+      "expectations": ["Recognizes the explicit AI request", "Marks exact AI-authored spans", "Keeps MAT-005 Human and unchanged", "Places approved smoothing only in draft", "Bars explicitly AI-authored spans from future white-box inputs"]
+    },
+    {
+      "id": 33,
+      "prompt": "RAW-026 is approved and labelled Mixed. Use it as an input to synthesize MAT-008.",
+      "expected_output": "The agent accepts RAW-026 as an eligible input unless the user has excluded it, retains Mixed provenance in MAT-008, verifies its finite lineage and uses only provenance-preserving white-box operations.",
+      "files": [],
+      "expectations": ["Accepts approved Mixed input", "Does not require special authorization beyond approval", "Retains Mixed provenance", "Checks lineage and operations"]
+    },
+    {
+      "id": 34,
+      "prompt": "RAW-028 is approved Mixed material, but exclude it from this synthesis.",
+      "expected_output": "The agent excludes RAW-028 from the named synthesis because the user has exercised discretion to exclude it, while leaving its approval and Mixed provenance unchanged.",
+      "files": [],
+      "expectations": ["Honors user exclusion", "Does not revoke approval", "Preserves Mixed provenance", "Uses only remaining eligible inputs"]
+    },
+    {
+      "id": 35,
+      "prompt": "This approved Mixed paragraph contains one span marked ⟦AI-AUTHORED: therefore the system is autonomous⟧. Use the paragraph in white-box synthesis.",
+      "expected_output": "The agent may use the approved Mixed paragraph only after excluding the explicitly AI-marked span and any relation that depends on it; if the remainder cannot support the output, it identifies the resulting gap.",
+      "files": [],
+      "expectations": ["Does not reject Mixed material as a class", "Excludes the exact AI-marked span", "Does not preserve a relation supplied only by the excluded span", "Reports any resulting gap"]
     }
   ]
 }
