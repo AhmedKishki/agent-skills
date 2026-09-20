@@ -1,7 +1,0 @@
-[mcp_servers.sequential-thinking]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
-
-[mcp_servers.desktop-commander]
-command = "npx"
-args = ["-y", "@wonderwhy-er/desktop-commander@latest"]
