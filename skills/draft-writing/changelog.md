@@ -7,6 +7,14 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 23.0.0 — 2026-09-22
+
+- Added per-section drafting: prose is composed into `draft-section-n.md`, one section at a time, each gated by the user’s approval before the next section is drafted, with review possible at any later point and each section carrying its own review content.
+- Made the combined draft an assembly of the approved section files, produced only on the user’s request and without adding prose.
+- Added per-section material working sets: `material-section-n.md` holds the material a section draws on, while `{project}-material.md` remains authoritative for every passage’s text and keeps unassigned material, with a passage serving several sections copied into each.
+- Recorded that a material entry keeps only its arguments line, passage, one-line provenance and live constraint, and that completed construction and operation records stay in the approval proposal.
+- Made smoothing, consolidation and citation-checking per-section and user-mediated.
+
 ## 22.0.0 — 2026-09-18
 
 - Made approved Mixed items eligible for material and white-box synthesis unless the user excludes them, while requiring any output that uses them to remain Mixed.

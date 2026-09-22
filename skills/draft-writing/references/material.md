@@ -13,7 +13,7 @@ Do not accept unapproved argument candidates, explicitly AI-authored or AI-marke
 
 ## Owns
 
-`{project}-material.md` owns synthesized passages from which the draft will be formed. Each passage is made from one or more eligible arguments; argument definitions and bases remain in arguments, and Human or Mixed provenance remains recoverable.
+`{project}-material.md` owns synthesized passages from which the draft will be formed. Material may be distributed into section working sets: the authoritative file keeps every passage’s text and whatever has no section yet, while `material-section-n.md` holds the material a section draws on, with a passage that serves more than one section copied into each of them. A change lands in the authoritative file first and is recopied into the affected section files. Each passage is made from one or more eligible arguments; argument definitions and bases remain in arguments, and Human or Mixed provenance remains recoverable.
 
 ## Standard structure
 
@@ -38,6 +38,8 @@ description: Holds synthesized passages formed from one or more arguments.
 <Only when the passage has a live qualification, unresolved join or use limit.>
 
 ```
+
+An entry keeps only its arguments line, its passage, the one-line provenance naming its inputs, and a constraint where a live limit stands. Construction and operation records belong in the approval proposal rather than in the file.
 
 Each passage has a monotonic `MAT-nnn` ID and names every argument it uses. Its exact internal form remains flexible. File order does not establish article order.
 

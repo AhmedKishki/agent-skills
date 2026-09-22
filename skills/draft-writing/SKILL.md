@@ -34,7 +34,7 @@ Help the user form the article they intend. The user is the authority over its i
 4. Form synthesized passages from approved eligible arguments and bases in [Material](references/material.md) through [White-box synthesis](references/white-box-synthesis.md).
 5. After synthesis, perform [Smoothing](references/smoothing.md) only through provenance-preserving operations or an explicit user request for AI smoothing; AI-smoothed wording belongs only in the draft.
 6. Arrange the current article in the sole [Plan](references/plan.md).
-7. Compose and verify reader-facing prose through [Drafting](references/drafting.md).
+7. Compose and verify reader-facing prose through [Drafting](references/drafting.md), one section at a time into its own section file, each gated by the user’s approval before the next section is drafted.
 8. Keep the necessary-and-sufficient next-session handoff in [Progress](references/progress.md).
 
 The process is recursive rather than staged. New material or drafting may change any earlier owner after the user's decision; update the live state and affected dependants instead of preserving obsolete versions in active files.
@@ -45,9 +45,11 @@ The process is recursive rather than staged. New material or drafting may change
 - `{project}-user-material.md` — exact reusable user-authored wording.
 - `sources/source-maps/{project}-source-map-{code}-{author-full-source-title}.md` — exact located source excerpts.
 - `{project}-arguments.md` — current arguments, their thesis relations, qualifications, dependencies and authorized bases.
-- `{project}-material.md` — synthesized passages made from one or more arguments.
+- `{project}-material.md` — synthesized passages made from one or more arguments; it remains authoritative for every passage’s text and keeps material that has no section yet.
+- `material-section-n.md` — one section’s working set, holding the material that section draws on, repeated there when a passage serves more than one section. Section files are named by section number without the project prefix, and a change lands in the authoritative material file first and is recopied into the affected section files.
 - `{project}-plan.md` — sole current authority for article structure and order.
-- `{project}-draft.md` — reader-facing article prose.
+- `draft-section-n.md` — one section’s reader-facing prose, composed and approved one section at a time.
+- `{project}-draft.md` — the combined reader-facing article, assembled out of the approved section files on the user’s request; a superseded draft is kept under a frozen name and remains usable as raw material for the sections.
 - `{project}-progress.md` — necessary-and-sufficient handoff containing current work, reliable state, live decisions and limits, exact next work, blockers, relevant files and counters.
 
 Create an output only when it has content. Prefix project files with the resolved project name. Allocate IDs monotonically from progress and check current files and Git history when the next value is uncertain. Counters never decrease. If a file becomes difficult to review, remove duplication, non-operative metadata and misplaced history before proposing a split.
