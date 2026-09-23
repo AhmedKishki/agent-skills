@@ -1,0 +1,6 @@
+interface:
+  display_name: "Write Like Me — Voice Pattern"
+  short_description: "Keep meaning. Learn your evidence-backed voice"
+  default_prompt: "Use $write-like-me to write this email in my voice and keep it paste-ready."
+policy:
+  allow_implicit_invocation: true

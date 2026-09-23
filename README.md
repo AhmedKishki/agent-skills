@@ -1,12 +1,14 @@
 # Agent Skills
 
-A collection of source-controlled skills for Codex and Claude. Each top-level directory is a self-contained skill with a `SKILL.md` entry point and any supporting references, scripts, or assets.
+A collection of source-controlled skills for Codex and Claude. Skills live under `skills/`; each exposes a `SKILL.md` entry point and any supporting references, scripts, or assets.
 
 ## Available skills
 
 | Skill | Purpose |
 |---|---|
 | [`draft-writing`](skills/draft-writing/) | User-led, source-grounded article development through dynamic draft materials and white-box synthesis. |
+| [`humaniser`](skills/humaniser/) | Diagnose and collaboratively revise prose while preserving the user's voice and approval over rewording. |
+| [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me), without repository packaging. |
 
 ## Install
 
@@ -20,6 +22,8 @@ git checkout "draft-writing-vX.Y.Z"
 
 Replace the example tag with a published release tag.
 
+`skills/write-like-me/` includes the upstream skill entry point, its references, runtime scripts, agent metadata, and license. No submodule initialization or upstream installer is required.
+
 ### Codex
 
 Codex discovers personal skills in `~/.agents/skills` and supports symlinked skill directories.
@@ -27,13 +31,14 @@ Codex discovers personal skills in `~/.agents/skills` and supports symlinked ski
 ```sh
 mkdir -p ~/.agents/skills
 ln -s "$PWD/skills/draft-writing" ~/.agents/skills/draft-writing
+ln -s "$PWD/skills/write-like-me" ~/.agents/skills/write-like-me
 ```
 
-Invoke the skill with `$draft-writing`, or describe a task that matches it. See the [official Codex skill documentation](https://developers.openai.com/codex/skills).
+Invoke the skills with `$draft-writing` or `$write-like-me`, or describe a matching task. See the [official Codex skill documentation](https://developers.openai.com/codex/skills).
 
 ### Claude plugin marketplace
 
-This repository is a Claude plugin marketplace named `ahmedkishki-skills`. In Claude, open **Customize → Plugins → Personal plugins**, select **Add marketplace**, add `https://github.com/AhmedKishki/agent-skills`, and install **Draft Writing**. This interface follows the repository's default branch, so use it after released changes have been merged to `main`.
+This repository is a Claude plugin marketplace named `ahmedkishki-skills`. In Claude, open **Customize → Plugins → Personal plugins**, select **Add marketplace**, add `https://github.com/AhmedKishki/agent-skills`, and install **Draft Writing** or **Write Like Me**. This interface follows the repository's default branch, so use it after released changes have been merged to `main`.
 
 For a reproducible Claude Code installation, pin the marketplace checkout to a published tag:
 
@@ -47,9 +52,10 @@ Replace the example tag with a published release tag. To test the current develo
 ```text
 /plugin marketplace add AhmedKishki/agent-skills
 /plugin install draft-writing@ahmedkishki-skills
+/plugin install write-like-me@ahmedkishki-skills
 ```
 
-Claude can invoke the installed skill automatically. In Claude Code, invoke it directly as `/draft-writing:draft-writing`.
+Claude can invoke installed skills automatically. In Claude Code, invoke them directly as `/draft-writing:draft-writing` or `/write-like-me:write-like-me`.
 
 A public repository works for personal marketplaces and Claude Code. Organization-managed GitHub sync requires the marketplace repository to be private or internal. Under this repository's Git-derived version policy, organization owners should trigger **Update** manually for each release; Anthropic's automatic organization sync currently requires an explicit plugin-version bump. See [Anthropic's plugin marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces).
 
@@ -60,9 +66,10 @@ Claude Code also discovers personal skills in `~/.claude/skills`; a project can 
 ```sh
 mkdir -p ~/.claude/skills
 ln -s "$PWD/skills/draft-writing" ~/.claude/skills/draft-writing
+ln -s "$PWD/skills/write-like-me" ~/.claude/skills/write-like-me
 ```
 
-Invoke this standalone installation with `/draft-writing`, or describe a matching task. See the [official Claude Code skill documentation](https://code.claude.com/docs/en/skills).
+Invoke these standalone installations with `/draft-writing` or `/write-like-me`, or describe a matching task. See the [official Claude Code skill documentation](https://code.claude.com/docs/en/skills).
 
 If symlinks are unavailable, copy the complete skill directory. Keep `SKILL.md` and its linked directories together.
 

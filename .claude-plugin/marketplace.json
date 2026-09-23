@@ -17,6 +17,17 @@
         "research",
         "source-mapping"
       ]
+    },
+    {
+      "name": "write-like-me",
+      "displayName": "Write Like Me",
+      "source": "./skills/write-like-me",
+      "description": "Write, rewrite, and audit prose using an evidence-backed personal writing pattern while preserving meaning.",
+      "tags": [
+        "writing",
+        "voice",
+        "editing"
+      ]
     }
   ]
 }
