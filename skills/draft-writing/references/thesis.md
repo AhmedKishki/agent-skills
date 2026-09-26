@@ -1,63 +1,21 @@
 ---
 name: thesis.md
-description: Defines the current goal, thesis, orientation and article-wide requirements.
+description: Keep the article's thesis and requirements clear enough to guide research and writing.
 ---
 
 # Thesis
 
-## Accepts
+`{project}-thesis.md` owns the aim, central claim, orientation, open questions and article-wide requirements. Record the audience, voice, citation style and research settings when specified. Do not put passage order or source excerpts here.
 
-User statements about the article's central object, inquiry, aim, thesis, questions, metatheory, political or interpretive orientation, and article-wide requirements for voice, style, form or citation.
+Before researching or synthesising a passage, identify:
 
-Do not accept source excerpts, component arguments, article order, draft prose or procedural conversation. Preserve reusable exact user wording separately in user material and link it when useful.
+- What it must explain, demonstrate, qualify or challenge.
+- How it contributes to the section and article.
+- What evidence or wording is missing.
+- What could contradict the proposed claim or connection.
 
-## Owns
+Use these needs to select sources. Do not select only confirming evidence or force a source into the thesis.
 
-`{project}-thesis.md` owns the current goal and orientation against which arguments, material, the plan and prose are assessed.
+Propose substantive thesis changes exactly and ask for approval. When evidence conflicts with the thesis, show the conflict and ask the user to resolve it. Keep only the current position and review affected plan entries, material and drafts.
 
-## Standard structure
-
-```markdown
----
-name: "{project}-thesis.md"
-description: Defines the current goal, thesis, orientation and article-wide requirements.
----
-
-# Thesis
-
-## Central object and aim
-
-<Current object of inquiry and objective.>
-
-## Thesis
-
-<Current central thesis.>
-
-## Orientation
-
-### <Descriptive heading>
-
-<Current metatheoretical, political or interpretive commitment.>
-
-## Writing requirements
-
-### <Descriptive heading>
-
-<Current article-wide requirement.>
-
-## Open contradictions
-
-### C-001 — <Conflict>
-
-<Exact incompatible commitments and the decision required.>
-```
-
-Use only sections that have content. Headings may multiply, merge or change as the inquiry develops; the ownership and heading levels remain stable.
-
-## Procedure
-
-Present a substantive addition or change exactly and obtain explicit approval. When new direction conflicts with an operative commitment, identify both and let the user decide. After resolution, keep only the current operative result and review affected arguments, material, plan and prose. Git preserves the superseded state.
-
-## Completion
-
-The goal and orientation are clear enough to guide current work, and no unresolved contradiction is hidden.
+Preserve reusable user wording at its destination passage. If exact wording already has an owner in the thesis, reference that location rather than copying it into another input record. Separate writing instructions from eligible article wording.

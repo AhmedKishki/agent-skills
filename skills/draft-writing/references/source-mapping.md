@@ -1,55 +1,30 @@
 ---
 name: source-mapping.md
-description: Defines how exact relevant source wording and locations are preserved.
+description: Preserve approved source excerpts with exact wording and verifiable locations.
 ---
 
 # Source mapping
 
-## Accepts
+Keep one map per source in `sources/source-maps/`. The map owns source identity, exact excerpts and locators, not interpretations or intended uses.
 
-An identified source, an accessible original, a defined reading scope and exact contiguous passages relevant to current work. A user-supplied quotation is accepted here as source-authored material when its identity and location can be established.
+1. Read the thesis and the passage's purpose. Identify the evidence, context, definition, qualification or counterclaim needed.
+2. For a new question, use available corpus search to discover sources. For a mapped question, start with the maps and search for omissions and counterevidence. Follow project research settings; report unavailable tools without claiming they contributed.
+3. Confirm source identity and read the original. Search results and extracted text are provisional, not approved or quote-safe inputs.
+4. Select contiguous excerpts with enough context to preserve subject, scope, modality and qualification. Verify wording and locators against the original; disclose any meaning-neutral transcription normalisation.
+5. Present the exact excerpt batch for approval, then save approved excerpts in source order under stable codes.
 
-Do not accept user interpretation, argument assignments, intended uses, synthesized wording, approval history or broad inventories.
-
-## Owns
-
-One source map per source owns exact relevant source wording and its location.
-
-## Procedure
-
-1. Confirm source identity and reading scope.
-2. Read the accessible original independently.
-3. Select a contiguous passage only when it supplies evidence, context, a qualification, definition or counterclaim needed by current work.
-4. Include enough context to preserve subject, scope, modality and qualification.
-5. Present one exact excerpt batch for approval.
-6. Save only approved excerpts in source order under stable codes.
-7. Record checked coverage and the next excerpt code in progress, not in the map.
-
-## Standard structure
+Use a source heading and an entry for each excerpt:
 
 ```markdown
----
-name: "{project}-source-map-{code}-{author-full-source-title}.md"
-description: Preserves exact relevant excerpts and locations from one source.
----
-
-# Author, Full Source Title
-
 ## A1 — Short topic
 
-**Location:** Page 4
+**Location:** Printed p. 12; PDF p. 15, section title.
 
 > Exact source wording.
->
-> Its next paragraph.
 ```
 
-Use one H1, then one H2 per excerpt. Add no interpretation, role, intended use, argument, approval history or workflow metadata. A source quotation remains source-authored even when supplied by the user.
+Include author, full title and the bibliographic details needed for citations in the map. A quotation supplied by the user remains source-authored. Ask for missing identity or location; do not invent them.
 
-## Corrections
+Keep source and excerpt codes stable and never reuse them. A verified transcription or locator correction retains its code; a new selection, split or merge gets a new code. Review affected uses after corrections. Record unfinished reading and counters in progress, not approval history in the map.
 
-A verified transcription or locator correction retains its ID. Different wording, a split or a merge receives a new ID. Never reuse a removed or retired source or excerpt code; advance the counter in progress. Reopen the original when intended use changes or context is insufficient.
-
-## Completion
-
-Every excerpt is approved, exact, located and in source order.
+Reopen the original when context is insufficient or the intended claim changes. If verification fails, report the limit and stop the affected synthesis.

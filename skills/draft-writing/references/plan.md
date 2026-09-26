@@ -1,68 +1,23 @@
 ---
 name: plan.md
-description: Defines the article's sole current structural plan.
+description: Divide the article into sections and passages with clear purposes and connections.
 ---
 
 # Plan
 
-## Accepts
+`{project}-plan.md` is the only owner of article structure. Material-file order does not determine draft order.
 
-User decisions about article movement, order, sections, passages, paragraph purposes, placement, connections, transitions, recurrence, inclusion, omission and condensation; current argument and material IDs; and structural problems exposed during drafting.
+For each section, state its driving claim or question and its contribution to the thesis. Divide it into ordered passages. For each passage, record only:
 
-Do not accept component claims as established merely by placing them, draft prose, parallel blueprints, architectural-decision logs or superseded plans.
+- Its purpose or claim and specific contribution to the section.
+- Its section-material reference, when available.
+- A necessary connection to another passage.
+- An unresolved evidence or placement question, when present.
 
-## Owns
+Do not copy passage prose, exact inputs or full evidence records into the plan. Keep those in section material and source maps.
 
-`{project}-plan.md` is the sole current authority for article structure. Arguments-file and material-file order have no structural authority.
+Plan enough of the article to give current work a destination. Provisional passages may identify questions without asserting answers. Placement does not approve a claim, evidence or connection.
 
-## Standard structure
+Develop consequential choices with the user. Explain real alternatives and obtain approval before changing structure. A connection needs an authorised basis; order alone cannot establish causation or comparison.
 
-```markdown
----
-name: "{project}-plan.md"
-description: Holds the article's current structure, movement and material placement.
----
-
-# Plan
-
-## Article movement
-
-<Current movement through the inquiry.>
-
-## Section 1 — <Working heading>
-
-**Purpose:** <Its contribution to the thesis and article movement.>
-
-### Passage 1 — <Working label>
-
-**Purpose:** <One current function.>
-
-**Arguments:** ARG-001, ARG-004
-
-**Material:** MAT-002
-
-**Movement:**
-
-1. <Current step.>
-2. <Current step.>
-
-**Connection:** <Why the following unit follows, when needed.>
-
-**Blocking question:** <Only when unresolved.>
-
-## Unplaced material
-
-- ARG-010 — <Current reason or question.>
-```
-
-Use only fields needed by each unit. Sections and passages may emerge, merge, divide, move or disappear as writing develops.
-
-## Procedure
-
-Develop consequential structural choices with the user. State alternatives when more than one real movement is possible and apply only the approved choice. Every placed unit needs a purpose that relates it to the thesis or article movement, and every connection must come from authorized arguments, material or explicit approval.
-
-When a decision changes, replace the affected live plan and review dependent prose. Do not retain the old plan, a decision ledger or immutable snapshots in active files; Git preserves them.
-
-## Completion
-
-The current plan is sufficient for the next drafting unit, its material and connections are explicit, and blocking structural questions are visible.
+If an input has no clear destination, ask one placement question. Do not create a miscellaneous material store. Sections and passages may move, merge or split after approval; update references and review affected drafts.

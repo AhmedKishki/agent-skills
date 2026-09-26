@@ -1,6 +1,6 @@
 interface:
   display_name: "Draft Writing"
-  short_description: "Develop a sourced article through dynamic materials and plans"
+  short_description: "Plan and draft sourced articles through white-box synthesis"
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon.svg"
 policy:

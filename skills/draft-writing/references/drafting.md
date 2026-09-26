@@ -1,50 +1,54 @@
 ---
 name: drafting.md
-description: Defines composition and verification of reader-facing article prose.
+description: Route inputs, save section material, compose section drafts and manage footnotes.
 ---
 
 # Drafting
 
-## Accepts
+## Route inputs
 
-The current thesis, an approved unit of the plan, its assigned eligible arguments and material, relevant user material and source maps, direct user prose or revisions, and any separately approved user-requested AI smoothing for this draft unit.
+- Article-wide aims and requirements go to the thesis.
+- Section and passage placement goes to the plan.
+- Source quotations go to source maps, even when pasted by the user.
+- Exact reusable user wording goes beside its destination passage in `material-section-n.md`.
+- Procedural instructions are not article material.
 
-Do not accept unsupported claims, unapproved structural invention, unsolicited or undisclosed AI wording, explicitly AI-authored or AI-marked spans presented as synthesis, superseded plans or unresolved contradictions affecting the unit. Approved Mixed synthesis is eligible unless the user excludes it and must retain Mixed provenance.
+Preserve exact user spelling, punctuation and paragraph breaks in a labelled blockquote beside the passage. Do not create a separate user-wording section or file. If an input serves several passages, keep one exact owner and reference it from the others. Ask about unclear placement before saving; do not discard the input or invent a destination.
 
-## Owns
+## Section material
 
-`draft-section-n.md` owns one section’s reader-facing prose and `{project}-draft.md` owns the combined article once the user asks for it. Arguments own claims and bases, material owns synthesized passages, and the plan owns structure.
+`material-section-n.md` owns that section's approved synthesis and local inputs. No separate argument record or general material file is required.
 
-## Procedure
+For each passage, keep:
 
-1. Work from the current plan, one complete user-approved section at a time, composing it into its own `draft-section-n.md`. Each section is gated by the user’s approval before the next is drafted, though the user may instead review sections at any later point, and each section carries its own review content.
-2. Present the unit's purpose, assigned arguments, eligible synthesized material, its provenance and unresolved needs before composing.
-3. Assemble or revise prose through white-box synthesis first. Relevant user material must be included unless the user explicitly authorises exclusion.
-4. Apply the post-synthesis smoothing procedure. Do not originate or volunteer AI wording; when provenance-preserving operations cannot fill a gap, specify it and ask the user to supply it.
-5. Produce AI smoothing only after the user explicitly requests it. Mark every exact AI-authored span inline as `⟦AI-AUTHORED: exact wording⟧`, obtain exact approval and keep its provenance permanently AI or Mixed. Never move the marked span into material or use it in white-box synthesis.
-6. Save approved prose in the live draft and update progress with any AI-smoothed span whose provenance must remain recoverable.
-7. If drafting exposes a thesis, argument, basis, material or structural problem, return to its owner and revise only affected dependants.
-8. Assemble the approved sections into `{project}-draft.md` only on the user’s request, without adding prose, then verify citations against accessible originals and the user’s citation requirements. Smoothing, consolidation and citation-checking are performed per section and are user-mediated.
+- A stable `MAT-nnn` label and descriptive heading, linked from the plan.
+- Exact local inputs where needed, labelled `U-nnn` for user wording.
+- The approved synthesised passage.
+- A **Basis** line naming source excerpts and local inputs, with resolvable file references.
+- **Provenance:** Human or Mixed.
+- **Constraint:** only live evidence limits, qualifications or unresolved dependencies.
 
-## Standard structure
+The plan owns purpose and placement; do not repeat its full outline here. Use direct source and input references, not argument IDs. Preserve input wording separately from its transformed output. Local input retention is not approval to use an unsupported claim.
 
-```markdown
----
-name: "draft-section-n.md"
-description: Holds one section’s reader-facing prose.
----
+Once excerpts and inputs are approved, propose the passage through white-box synthesis without an intermediate argument stage. Save only the approved result. If work is blocked, retain its exact input at the agreed destination and record the smallest gap, not invented prose.
 
-# <Article title or working title>
+## Section drafts
 
-<Reader-facing article prose in the current plan order.>
-```
+1. Read the thesis, approved plan unit and section material.
+2. Compose `draft-section-n.md` from eligible inputs through white-box synthesis. Preserve the author's voice using eligible wording, not instructions or AI spans, as evidence.
+3. Check the section's development, paragraphs, transitions, repetition and scope. Propose each amendment for approval before applying it.
+4. Use white-box operations for smoothing. If they cannot resolve a gap, ask for missing wording or a connection.
+5. Only on explicit request, propose exactly marked AI smoothing under the synthesis module's rules. Save approved AI wording only in the section draft; never overwrite eligible material with it.
+6. Verify citations and ask the user to review the section before drafting the next, unless the user chooses later review.
 
-The draft contains only reader-facing prose. Keep current working questions in progress, claim and basis records in arguments, and synthesized passages in material. The exact section structure and prose remain flexible under the approved plan.
+Keep reader-facing prose and footnotes in the draft; keep working questions beside the material or in progress. Preserve direct edits and review only affected uses. Do not silently change a claim to repair its evidence.
 
-## Citation verification
+## Footnotes
 
-Identify each support-dependent claim and reopen its source. Check identity, locator, date, scope, modality and qualification. Propose footnotes or other citations in the style set by the thesis. If support fails, report the defect and return to arguments; do not silently qualify prose. Create a separate citation work file only when the user requests it or the scale of unresolved citation work gives it a distinct current purpose.
+Use the citation style agreed in the thesis; ask if it is unspecified. Number footnotes from `1` within each section, with full citations at first use and short forms afterwards unless the agreed style requires otherwise.
 
-## Completion
+Keep note markers and definitions in the same section file. Verify author, title, locator, attribution, scope and qualification against source maps and accessible originals. Mark unverified support as a blocker; do not fabricate details or cite unread works.
 
-Every unit is approved, the prose conforms to the current thesis and plan, support-dependent claims are verified, no prose was added during assembly, and the user approves the current complete article.
+After moving or cutting prose, check missing definitions, unused notes, duplicate numbers, first-use citations and claim-to-note alignment. Review changed notes with the user. Do not create a separate citation file by default.
+
+Assemble `{project}-draft.md` only on request from approved sections, without new prose. Combine note numbering and recheck first-use citations in the assembled copy; preserve the section files' local numbering.

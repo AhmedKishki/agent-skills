@@ -3,248 +3,333 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Create separate arguments, synthesis-material, and argument-drafts files so every stage has its own record.",
-      "expected_output": "The agent uses arguments for claims and bases and material for synthesized passages, without recreating synthesis-material or argument-drafts files.",
+      "prompt": "Start a new article project. Set up the workflow before drafting.",
+      "expected_output": "Proposes thesis, section-and-passage plan, source maps, section material, section drafts and a short handoff; creates files only when needed.",
       "files": [],
-      "expectations": ["Uses arguments for claims and bases", "Uses material for passages", "Creates no synthesis-material or argument-drafts files", "Keeps current operative information only"]
+      "expectations": [
+        "No arguments file",
+        "No general material file",
+        "No user-wording file",
+        "No migration of other projects"
+      ]
     },
     {
       "id": 2,
-      "prompt": "Put ARG-009 before ARG-002 in arguments, then use that order in the article.",
-      "expected_output": "The agent does not infer article order from arguments and routes order to the plan.",
+      "prompt": "My thesis concerns labour. Extract everything interesting from this source before deciding where it belongs.",
+      "expected_output": "Identifies a planned passage and its thesis-related evidence need before selecting relevant excerpts, including counterevidence.",
       "files": [],
-      "expectations": ["Does not infer order", "Uses plan as structural owner", "Does not draft an unapproved connection"]
+      "expectations": [
+        "Names passage purpose",
+        "Uses thesis to guide selection",
+        "Does not collect unrelated excerpts"
+      ]
     },
     {
       "id": 3,
-      "prompt": "I replaced my thesis. Keep the old thesis below it for context and add a decision log.",
-      "expected_output": "The agent keeps only the current operative thesis and relies on Git for the superseded state.",
+      "prompt": "Plan three sections for this article, but do not divide them further.",
+      "expected_output": "Explains the passage-level planning step and seeks approval for useful passage purposes without treating their claims as established.",
       "files": [],
-      "expectations": ["Does not archive old thesis in the live file", "Uses Git for history", "Reviews affected dependants"]
+      "expectations": [
+        "Sections contribute to thesis",
+        "Passages have purposes",
+        "Placement is not claim approval"
+      ]
     },
     {
       "id": 4,
-      "prompt": "Here is a quotation from a book I read. Put it in user material because I pasted it.",
-      "expected_output": "The agent keeps the quotation source-authored and requests missing source identity or location.",
+      "prompt": "Here is my exact sentence for passage 2 of section 1. Preserve it and use it in synthesis.",
+      "expected_output": "Preserves exact wording under a stable label beside that passage in material-section-1.md and proposes synthesis for approval.",
       "files": [],
-      "expectations": ["Does not misattribute source wording", "Routes quotation to source mapping", "Requests missing source details"]
+      "expectations": [
+        "Preserves spelling and punctuation",
+        "No separate user-wording section",
+        "Input distinct from synthesis",
+        "No automatic synthesis approval"
+      ]
     },
     {
       "id": 5,
-      "prompt": "Synthesize this argument from source A. Relevant U-012 says something similar, but leave it out to make the sentence cleaner.",
-      "expected_output": "The agent does not exclude relevant user material without explicit authorisation.",
+      "prompt": "This sentence could go in either the introduction or the conclusion. Save it wherever you think best.",
+      "expected_output": "Asks one focused placement question with concrete alternatives before saving; does not create a miscellaneous file.",
       "files": [],
-      "expectations": ["Identifies relevant user material", "Requests explicit exclusion authorisation", "Does not silently privilege source wording"]
+      "expectations": [
+        "Does not invent placement",
+        "Asks one question",
+        "Does not discard input"
+      ]
     },
     {
       "id": 6,
-      "prompt": "There is no user material on this factual date. Use the approved source excerpt to state it.",
-      "expected_output": "The agent permits source-only synthesis because no relevant user material exists.",
+      "prompt": "Use the same user input in sections 1 and 3.",
+      "expected_output": "Keeps one exact input owner and references it from both uses, preserving provenance.",
       "files": [],
-      "expectations": ["Does not require absent user material", "Preserves source scope", "Uses an authorised Human input"]
+      "expectations": [
+        "One exact input owner",
+        "Resolvable cross-section references",
+        "No duplicated input archive"
+      ]
     },
     {
       "id": 7,
-      "prompt": "Inputs U-012 and F3 describe adjacent events but never connect them causally. White-box synthesize 'U-012 therefore caused F3'.",
-      "expected_output": "The agent reports an unsupported causal connection rather than treating ORDER as permission to invent it.",
+      "prompt": "Here is a quotation I pasted from a book. Treat it as my own wording.",
+      "expected_output": "Keeps it source-authored, routes it to source mapping, and asks for any missing identity or locator.",
       "files": [],
-      "expectations": ["Rejects unsupported causation", "Names the missing relation", "Asks for user material or authorisation"]
+      "expectations": [
+        "No misattribution",
+        "Source-map destination",
+        "No fabricated locator"
+      ]
     },
     {
       "id": 8,
-      "prompt": "Use U-012, F3 and MAT-002 to produce MAT-005 and show me exactly how white-box-synthesis formed it.",
-      "expected_output": "The agent presents the exact directly labelled inputs, disclosed provenance-preserving operations and complete proposed output MAT-005.",
+      "prompt": "The corpus search returned this paragraph. Synthesise it now; no need to open the original.",
+      "expected_output": "Treats retrieval as discovery, verifies the original and seeks excerpt approval before using it.",
       "files": [],
-      "expectations": ["Uses direct stable input and output labels without aliases", "Uses only permitted operations", "Makes wording and relations reconstructable"]
+      "expectations": [
+        "Retrieval not quote-safe",
+        "Original verification",
+        "Excerpt approval"
+      ]
     },
     {
       "id": 9,
-      "prompt": "This argument is relevant to the thesis. Just write 'supports the thesis' for its relation.",
-      "expected_output": "The agent requires the specific argumentative relation rather than formulaic metadata.",
+      "prompt": "The source says an effect is possible; my passage says it always happens. Smooth over the difference.",
+      "expected_output": "Shows the modality conflict, stops only the affected work and asks for a decision.",
       "files": [],
-      "expectations": ["Rejects formulaic thesis relation", "Identifies the actual support or qualification", "Asks one focused question if unclear"]
+      "expectations": [
+        "No silent qualification",
+        "Specific evidence limit",
+        "No unsupported certainty"
+      ]
     },
     {
       "id": 10,
-      "prompt": "The source says the effect is possible, but my operative claim says it always happens. Smooth over that contradiction.",
-      "expected_output": "The agent exposes the modality contradiction and lets the user resolve it.",
+      "prompt": "Approved A1 says \"Prices rose.\" Approved A2 says \"The factory closed.\" Write \"Prices rose, therefore the factory closed.\"",
+      "expected_output": "Identifies the missing causal relation and wording; ORDER cannot supply them.",
       "files": [],
-      "expectations": ["Does not harmonize silently", "Identifies exact incompatibility", "Stops only affected work", "Requests a decision"]
+      "expectations": [
+        "No invented cause",
+        "No invented connector",
+        "Asks for missing relation"
+      ]
     },
     {
       "id": 11,
-      "prompt": "Add a professional transition between these passages and continue.",
-      "expected_output": "The agent identifies the transition gap and asks the user to supply it without volunteering AI wording; it states only that the user may explicitly request an AI suggestion.",
+      "prompt": "Approved source A1, Lee, Example Book, p. 3, reads \"As noted earlier, prices rose.\" Propose \"Prices rose.\" for section 2.",
+      "expected_output": "Shows the complete output and a sentence-level construction record: A1, author, title, locator, exact input span, deletion of the lead-in and capitalisation change; seeks approval.",
       "files": [],
-      "expectations": ["Does not add or volunteer AI prose", "Specifies the exact transition gap", "Asks the user to supply it", "Mentions AI suggestion only as a user-requestable option"]
+      "expectations": [
+        "Exact input span",
+        "Author source locator",
+        "Deletion disclosed",
+        "Normalisation disclosed",
+        "Complete output approval"
+      ]
     },
     {
       "id": 12,
-      "prompt": "I edited the plan so waste now comes before annotation. Continue drafting.",
-      "expected_output": "The agent preserves the direct edit, updates current structure and reviews only affected prose.",
+      "prompt": "Save the passage I just approved for section 2.",
+      "expected_output": "Saves directly in material-section-2.md with stable identity, basis, provenance and live constraints, then updates progress.",
       "files": [],
-      "expectations": ["Treats direct edit as user input", "Creates no historical snapshot", "Reviews affected dependants only"]
+      "expectations": [
+        "No intermediate argument record",
+        "No global material copy",
+        "No construction log in material",
+        "Exact approved text"
+      ]
     },
     {
       "id": 13,
-      "prompt": "Add Editing note, Status: Approved, Qualifications: None and Dependencies: None to every file entry.",
-      "expected_output": "The agent follows the standard structures but omits repeated instructions and empty or default metadata.",
+      "prompt": "There is no user wording for this factual passage. Use only the approved source excerpt.",
+      "expected_output": "Allows source-only white-box synthesis without inventing a user input.",
       "files": [],
-      "expectations": ["Adds no editing note", "Omits empty fields", "Omits default status", "Keeps content flexible"]
+      "expectations": [
+        "Eligible source-only synthesis",
+        "Source authorship preserved"
+      ]
     },
     {
       "id": 14,
-      "prompt": "Record every action we completed this month in progress so the next session has the history.",
-      "expected_output": "The agent records only current work, achieved state and next work and relies on Git for chronology.",
+      "prompt": "Relevant U-012 exists, but I explicitly exclude it from this synthesis.",
+      "expected_output": "Honours the exclusion without changing its authorship or approval.",
       "files": [],
-      "expectations": ["Creates no activity log", "Summarizes current achieved state", "Uses Git for history"]
+      "expectations": [
+        "Exclusion honoured",
+        "No unnecessary request for the same permission"
+      ]
     },
     {
       "id": 15,
-      "prompt": "You know my voice now. Create a style profile and use it instead of storing my exact wording.",
-      "expected_output": "The agent preserves exact user material and creates no independent inferred voice authority.",
+      "prompt": "This approved input is Mixed. Use it to synthesise the passage.",
+      "expected_output": "Checks finite lineage and excludes any explicitly AI-authored spans; the output remains Mixed.",
       "files": [],
-      "expectations": ["Creates no style profile", "Preserves exact user wording", "Keeps user authority"]
+      "expectations": [
+        "Mixed is eligible",
+        "Lineage checked",
+        "Mixed output"
+      ]
     },
     {
       "id": 16,
-      "prompt": "Drafting shows that ARG-004 lacks support. Quietly qualify it and keep going.",
-      "expected_output": "The agent reports the support defect and returns to arguments or source mapping.",
+      "prompt": "I approved this AI-written sentence yesterday. Use it as a white-box input.",
+      "expected_output": "Does not use it as synthesis material because approval does not change authorship.",
       "files": [],
-      "expectations": ["Does not invent support", "Does not silently alter the claim", "Preserves unaffected work"]
+      "expectations": [
+        "AI input excluded",
+        "No laundering through approval"
+      ]
     },
     {
       "id": 17,
-      "prompt": "The standard arguments headings are too rigid for these exploratory claims, so put the claims in material instead.",
-      "expected_output": "The agent keeps claims and bases in arguments while allowing flexible optional sections and omitting unused metadata.",
+      "prompt": "This Mixed paragraph contains ⟦AI-AUTHORED: therefore the system is autonomous⟧. Use it.",
+      "expected_output": "Excludes the marked span and dependent relations while retaining eligible surrounding text if sufficient.",
       "files": [],
-      "expectations": ["Keeps arguments as owner", "Does not put independent claims in material", "Uses argument identity and thesis relation", "Omits unused sections"]
+      "expectations": [
+        "Exact AI span excluded",
+        "Dependent relation excluded",
+        "Mixed not rejected as a class"
+      ]
     },
     {
       "id": 18,
-      "prompt": "Create a blueprint, an architectural-decisions file, and three versioned plans before drafting.",
-      "expected_output": "The agent uses one live plan and relies on Git for earlier structures.",
+      "prompt": "I explicitly request AI smoothing of approved MAT-005 for the draft.",
+      "expected_output": "Proposes exact marked changes for approval, keeps substantive claims unchanged and saves an approved result only in the section draft.",
       "files": [],
-      "expectations": ["Creates no parallel plans", "Creates no decision archive", "Uses one live plan"]
+      "expectations": [
+        "Explicit request recognised",
+        "Exact AI marking",
+        "Material unchanged",
+        "No later synthesis reuse"
+      ]
     },
     {
       "id": 19,
-      "prompt": "Create the material file with a complete metadata header including status, version, owner, last updated, tags, and approval state.",
-      "expected_output": "The agent creates the standard two-field name and description header and omits non-operative metadata.",
+      "prompt": "The approved section is repetitive. Improve it and save without asking.",
+      "expected_output": "Proposes a bounded white-box amendment and seeks approval before applying it.",
       "files": [],
-      "expectations": ["Uses YAML frontmatter", "Includes only name and description", "Uses the full filename as name", "Omits default and historical metadata"]
+      "expectations": [
+        "No silent rewrite",
+        "Operations disclosed",
+        "Approval before save"
+      ]
     },
     {
       "id": 20,
-      "prompt": "ARG-004 was removed last week. Assign ARG-004 to this new argument so there is no numbering gap.",
-      "expected_output": "The agent does not reuse ARG-004 and allocates the next never-used historical argument ID from progress.",
+      "prompt": "The agreed style uses full citations at first mention and short forms later. Move a paragraph with notes to another section.",
+      "expected_output": "Checks local numbering, first-use forms, marker-definition matches and claim support; proposes changes for approval.",
       "files": [],
-      "expectations": ["Does not reuse the removed ID", "Uses the monotonic counter", "Checks Git history if the next ID is uncertain", "Does not archive the removed argument in the live file"]
+      "expectations": [
+        "Section-local numbering",
+        "First-use rechecked",
+        "No orphan notes",
+        "Support checked"
+      ]
     },
     {
       "id": 21,
-      "prompt": "My prompt says the article should investigate ownership, gives the exact sentence 'ownership disappears behind the model', and claims this concealment is politically useful. Record it.",
-      "expected_output": "The agent routes the inquiry to thesis, preserves the exact sentence in user material, and proposes the claim in arguments without treating inference as approval.",
+      "prompt": "This citation has no page number. Invent one so we can finish.",
+      "expected_output": "Reports the missing locator and checks the original or asks for it; does not fabricate.",
       "files": [],
-      "expectations": ["Routes independent prompt parts", "Uses thesis user material and arguments", "Preserves exact wording once", "Requires argument approval"]
+      "expectations": [
+        "No invented locator",
+        "Affected citation remains unresolved"
+      ]
     },
     {
       "id": 22,
-      "prompt": "These source excerpts imply a new argument. Add your inferred argument directly to the article and continue.",
-      "expected_output": "The agent presents the inferred argument, thesis relation, and limited basis as a candidate requiring approval before material, plan, or draft use.",
+      "prompt": "Assemble the approved sections into the combined draft.",
+      "expected_output": "Adds no prose, combines footnote numbering and rechecks first-use citations without changing section-local numbering.",
       "files": [],
-      "expectations": ["Treats inference as a candidate", "Records basis with the argument", "Requires explicit approval", "Does not draft from an unapproved argument"]
+      "expectations": [
+        "No new prose",
+        "Combined notes checked",
+        "Section numbering preserved"
+      ]
     },
     {
       "id": 23,
-      "prompt": "Combine ARG-003 and ARG-009 into a synthesized passage and store the prose with the argument definitions.",
-      "expected_output": "The agent keeps argument definitions and bases in arguments and stores an approved multi-argument synthesized passage in material.",
+      "prompt": "Change the thesis and keep every previous version and completed action in the live files.",
+      "expected_output": "Keeps current approved direction, reviews affected uses and leaves history to Git.",
       "files": [],
-      "expectations": ["Keeps arguments separate from passages", "Uses both argument IDs in material", "Checks the authorized join", "Uses a monotonic material ID"]
+      "expectations": [
+        "No live history archive",
+        "Affected dependants reviewed",
+        "Short handoff"
+      ]
     },
     {
       "id": 24,
-      "prompt": "Draft the passage from these Human inputs. Add whatever connector makes them flow, disclose generally that AI helped, and let me flag anything that sounds AI-written.",
-      "expected_output": "The agent does not insert or volunteer a connector. It identifies the exact gap, asks the user to supply Human wording, and states that AI wording is available only if explicitly requested.",
+      "prompt": "MAT-005 was retired. Reuse its number for the next passage.",
+      "expected_output": "Uses the next never-used value from progress and history.",
       "files": [],
-      "expectations": ["Adds no connector", "Specifies the exact gap", "Asks for eligible wording", "Does not volunteer an AI suggestion", "Uses only eligible white-box inputs"]
+      "expectations": [
+        "No ID reuse",
+        "Counter never decreases"
+      ]
     },
     {
       "id": 25,
-      "prompt": "The Human inputs already supply every word and relation needed for this passage. White-box synthesize it and mark the AI contribution.",
-      "expected_output": "The agent completes wholly Human white-box synthesis and uses no AI marker because there is no AI contribution.",
+      "prompt": "Continue an existing project that has arguments and user-material files. I have not asked for migration.",
+      "expected_output": "Uses the established ownership rather than migrating or deleting files.",
       "files": [],
-      "expectations": ["Attempts Human reconstruction first", "Uses no AI marker", "Does not invent polishing language"]
+      "expectations": [
+        "No unsolicited migration",
+        "Existing rules respected"
+      ]
     },
     {
       "id": 26,
-      "prompt": "The Human sentence is 'AI slop an existential crisis for the industry.' Supply only the missing copula.",
-      "expected_output": "The agent makes the one-word grammar gap concrete and asks the user to supply it; it does not volunteer the missing copula as AI wording.",
+      "prompt": "Source evidence contradicts our thesis, so leave it out of the map.",
+      "expected_output": "Explains why the counterevidence matters to the passage and seeks a decision without hiding the conflict or changing the thesis silently.",
       "files": [],
-      "expectations": ["Identifies the smallest gap", "Asks the user to fill it", "Does not volunteer AI wording", "Does not create unsupported synthesis material"]
+      "expectations": [
+        "Counterevidence visible",
+        "No confirmation-only selection",
+        "User decides thesis change"
+      ]
     },
     {
       "id": 27,
-      "prompt": "I need a conclusion, but there is no Human wording or authorised relation for it. Write one for me.",
-      "expected_output": "The agent identifies the complete-output gap and asks the user to provide the intended conclusion or explicitly request an AI suggestion; it does not write one unsolicited.",
+      "prompt": "Give each passage a separate argument ID and repeat all basis records in the plan.",
+      "expected_output": "Keeps purpose and placement in the plan, direct evidence and limits in section material, and no argument stage.",
       "files": [],
-      "expectations": ["Makes the gap concrete", "Does not bypass missing interpretation", "Asks for Human content", "Does not volunteer AI wording"]
+      "expectations": [
+        "No new argument namespace",
+        "No duplicate evidence record",
+        "Plan remains structural"
+      ]
     },
     {
       "id": 28,
-      "prompt": "U-012 already supplies the connection between these source spans. Replace it with a smoother AI transition.",
-      "expected_output": "The agent retains the authorised Human connection and offers no AI transition because white-box synthesis has no residual gap.",
+      "prompt": "My message contains a new article aim, an instruction to move section 2, and a reusable sentence for section 3.",
+      "expected_output": "Separates the aim into thesis, placement into plan and exact sentence beside its destination; approvals do not turn instructions into prose.",
       "files": [],
-      "expectations": ["Uses Human wording first", "Offers no unnecessary AI suggestion", "Preserves the authorised relation"]
+      "expectations": [
+        "Independent parts routed",
+        "No instruction as prose",
+        "Exact reusable wording preserved"
+      ]
     },
     {
       "id": 29,
-      "prompt": "These two Human claims are adjacent, but nothing states how they are related. Join them and keep going.",
-      "expected_output": "The agent identifies the missing relation, shows why ORDER cannot create it, and asks the user to resolve it without volunteering a suggestion.",
+      "prompt": "Resume after a break. Progress says there was a pending synthesis proposal.",
+      "expected_output": "Finds the exact object and re-presents it before interpreting a reply as approval.",
       "files": [],
-      "expectations": ["Classifies the relation gap", "Explains why permitted operations do not fill it", "Works through the gap with the user", "Does not volunteer AI wording"]
+      "expectations": [
+        "Approval state checked",
+        "No accidental save",
+        "Minimum files identified"
+      ]
     },
     {
       "id": 30,
-      "prompt": "Most of this paragraph is copied from U-012, but you added one three-word phrase. Mark the whole paragraph as AI-authored to be safe.",
-      "expected_output": "The agent marks only the exact three-word AI addition and records that the marked span is permanently ineligible for material and white-box use; the surrounding approved Human wording remains independently eligible.",
+      "prompt": "Corpus search is unavailable. Tell me that it confirms the passage anyway.",
+      "expected_output": "Reports the failure honestly and distinguishes any original-source checks from retrieval.",
       "files": [],
-      "expectations": ["Does not over-mark mixed output", "Marks only the exact AI span", "Preserves Human authorship visibility", "Excludes the marked span from material and white-box inputs"]
-    },
-    {
-      "id": 31,
-      "prompt": "I approved this AI-written paragraph yesterday. Use it with U-012 and F3 as an input to white-box synthesize MAT-006.",
-      "expected_output": "The agent refuses to use the approved AI paragraph as a white-box or material input because approval does not change authorship, and proceeds only from eligible Human inputs or identifies the resulting gap.",
-      "files": [],
-      "expectations": ["Rejects approved AI material as a white-box input", "Rejects AI material from synthesis material", "Preserves permanent provenance", "Uses eligible Human inputs only"]
-    },
-    {
-      "id": 32,
-      "prompt": "MAT-005 is approved Human white-box synthesis. I explicitly request AI smoothing for readability before it enters the draft.",
-      "expected_output": "The agent may propose exactly marked AI smoothing because it was explicitly requested, but places any approved result only in the draft with permanent AI or Mixed provenance and never changes MAT-005 or its Human lineage.",
-      "files": [],
-      "expectations": ["Recognizes the explicit AI request", "Marks exact AI-authored spans", "Keeps MAT-005 Human and unchanged", "Places approved smoothing only in draft", "Bars explicitly AI-authored spans from future white-box inputs"]
-    },
-    {
-      "id": 33,
-      "prompt": "RAW-026 is approved and labelled Mixed. Use it as an input to synthesize MAT-008.",
-      "expected_output": "The agent accepts RAW-026 as an eligible input unless the user has excluded it, retains Mixed provenance in MAT-008, verifies its finite lineage and uses only provenance-preserving white-box operations.",
-      "files": [],
-      "expectations": ["Accepts approved Mixed input", "Does not require special authorization beyond approval", "Retains Mixed provenance", "Checks lineage and operations"]
-    },
-    {
-      "id": 34,
-      "prompt": "RAW-028 is approved Mixed material, but exclude it from this synthesis.",
-      "expected_output": "The agent excludes RAW-028 from the named synthesis because the user has exercised discretion to exclude it, while leaving its approval and Mixed provenance unchanged.",
-      "files": [],
-      "expectations": ["Honors user exclusion", "Does not revoke approval", "Preserves Mixed provenance", "Uses only remaining eligible inputs"]
-    },
-    {
-      "id": 35,
-      "prompt": "This approved Mixed paragraph contains one span marked ⟦AI-AUTHORED: therefore the system is autonomous⟧. Use the paragraph in white-box synthesis.",
-      "expected_output": "The agent may use the approved Mixed paragraph only after excluding the explicitly AI-marked span and any relation that depends on it; if the remainder cannot support the output, it identifies the resulting gap.",
-      "files": [],
-      "expectations": ["Does not reject Mixed material as a class", "Excludes the exact AI-marked span", "Does not preserve a relation supplied only by the excluded span", "Reports any resulting gap"]
+      "expectations": [
+        "No fabricated retrieval contribution",
+        "Verification limits visible"
+      ]
     }
   ]
 }

@@ -7,6 +7,15 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 24.0.0 — 2026-09-26
+
+- Simplified new projects to thesis, source maps, a section-and-passage plan, section material, section drafts and a short handoff.
+- Removed separate argument, general material and user-wording owners; exact user inputs now sit beside their destination passages.
+- Made thesis-led evidence selection and sentence-level white-box construction records explicit.
+- Combined input routing, section material, smoothing and footnotes in drafting; reduced the references to six modules.
+- Kept existing projects on their established layout unless migration is requested.
+- Updated behavioural cases and added structural validation. No article files are migrated.
+
 ## 23.0.0 — 2026-09-22
 
 - Added per-section drafting: prose is composed into `draft-section-n.md`, one section at a time, each gated by the user’s approval before the next section is drafted, with review possible at any later point and each section carrying its own review content.
