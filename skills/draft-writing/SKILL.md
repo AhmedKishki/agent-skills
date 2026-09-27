@@ -2,7 +2,6 @@
 name: draft-writing
 description: Develop a source-grounded article through a thesis, section-and-passage plan, source mapping, white-box synthesis, section drafts and footnotes. Use when planning, researching, drafting or revising an article with its author.
 ---
-
 # Draft writing
 
 The user decides the article's claims, structure, wording and final form. Use this layout for new projects. Do not migrate an existing project unless the user requests it; follow its established file ownership meanwhile.
@@ -29,9 +28,9 @@ The user decides the article's claims, structure, wording and final form. Use th
 
 - `{project}-thesis.md`: aim, thesis, orientation and article-wide requirements.
 - `{project}-plan.md`: section and passage purposes, order and connections.
-- `sources/source-maps/{project}-source-map-{code}-{author-title}.md`: approved exact excerpts and locators.
-- `material-section-n.md`: section passages, exact local inputs, basis, provenance and live limits.
-- `draft-section-n.md`: reader-facing section prose and footnotes.
+- `source-maps/{project}-source-map-{code}-{author-title}.md`: approved exact excerpts and locators.
+- `{project}-material-section-n.md`: section passages, exact local inputs, basis, provenance and live limits.
+- `{project}-draft-section-n.md`: reader-facing section prose and footnotes.
 - `{project}-draft.md`: combined sections, assembled only on request without new prose.
 - `{project}-progress.md`: current task, next action, blockers and counters.
 
