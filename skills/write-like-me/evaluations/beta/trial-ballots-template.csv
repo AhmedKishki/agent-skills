@@ -1,0 +1,3 @@
+participant_id,trial_id,sounds_like_me,preserves_meaning,less_editing,overall_preference,edit_burden_a,edit_burden_b,critical_failure_a,critical_failure_b,rejected_reason,notes
+P001,P001-T01,TIE,TIE,TIE,TIE,0,0,NONE,NONE,,
+P001,P001-T02,TIE,TIE,TIE,TIE,0,0,NONE,NONE,,
