@@ -7,6 +7,14 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 25.0.0 — 2026-09-28
+
+- Isolated each section's arc, progress, material and draft in its own directory; split article direction into thesis-and-vision, requirements and a small article plan.
+- Limited shared inputs to source maps and article direction; introduced path-qualified local identifiers and counters instead of a global progress owner.
+- Separated white-box synthesis, smoothing and explicitly requested AI gap filling. Approved, permanently marked AI text may be stored in section material and directly inserted into drafts, but never reused as white-box input.
+- Made prompt routing, author decisions, local handoffs and Git-backed retention explicit. The release changelog stays outside routine drafting context.
+- Updated nested-module validation and behavioural cases. Existing projects retain their owners and restrictions; no article files are migrated.
+
 ## 24.0.0 — 2026-09-26
 
 - Simplified new projects to thesis, source maps, a section-and-passage plan, section material, section drafts and a short handoff.

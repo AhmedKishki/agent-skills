@@ -6,7 +6,7 @@ A collection of source-controlled skills for Codex and Claude. Skills live under
 
 | Skill | Purpose |
 |---|---|
-| [`draft-writing`](skills/draft-writing/) | User-led, source-grounded article development through dynamic draft materials and white-box synthesis. |
+| [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`humaniser`](skills/humaniser/) | Diagnose and collaboratively revise prose while preserving the user's voice and approval over rewording. |
 | [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me), without repository packaging. |
 

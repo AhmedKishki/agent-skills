@@ -11,7 +11,7 @@
       "name": "draft-writing",
       "displayName": "Draft Writing",
       "source": "./skills/draft-writing",
-      "description": "User-led, source-grounded article development through dynamic draft materials and white-box synthesis.",
+      "description": "Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing.",
       "tags": [
         "writing",
         "research",
