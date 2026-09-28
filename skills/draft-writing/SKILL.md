@@ -14,9 +14,10 @@ Resolve the article root; ask if ambiguous. Create files only when needed, not e
 
 ```text
 <article-root>/
-  thesis-and-vision.md
-  requirements.md
-  plan.md
+  organisation/
+    thesis-and-vision.md
+    requirements.md
+    plan.md
   sections/
     section-n/
       arc-section-n.md
@@ -24,8 +25,8 @@ Resolve the article root; ask if ambiguous. Create files only when needed, not e
       material-section-n.md
       draft-section-n.md
   sources/
-    source-maps/
-      <author-title>.md
+  source-maps/
+    <author-title>.md
   draft.md                   # Assembly only on explicit request
 ```
 
@@ -37,22 +38,22 @@ Working Markdown files have only `name` and `description` frontmatter; `name` eq
 
 Read the governing project rules first. Load the relevant modules below, not the full reference library or release changelog.
 
-| Task | Module |
-|---|---|
-| Route a prompt or direct user edit | [User prompts](references/rules/user-prompts.md) |
-| Propose a substantive decision or wording | [Decisions and author authority](references/rules/decisions.md) |
-| Define or revise motivation, theory and thesis | [Thesis and vision](references/article/thesis-and-vision.md) |
-| Set tone, style, citations or research requirements | [Requirements](references/article/requirements.md) |
-| Order article sections or choose drafting sequence | [Article plan](references/article/plan.md) |
-| Develop a section's argument and passage order | [Section arc](references/section/arc.md) |
-| Resume, pause, record a blocker or allocate local IDs | [Section progress](references/section/progress.md) |
-| Research or verify a quotation | [Source maps](references/supplement/source-maps.md) |
-| Preserve local wording or save approved synthesis | [Section material](references/section/material.md) |
-| Construct prose from eligible inputs | [White-box synthesis](references/tools/white-box-synthesis.md) |
-| Combine paragraphs or reduce repetition | [Smoothing](references/tools/smoothing.md) |
-| Resolve a gap with explicitly requested AI wording | [AI-authored gap filling](references/tools/ai-authored.md) |
-| Insert prose, check notes or assemble sections | [Section draft](references/section/draft.md) |
-| Replace content, remove resolved work or end a session | [Retention](references/rules/retention.md) |
+| Task                                                   | Module                                                         |
+| ------------------------------------------------------ | -------------------------------------------------------------- |
+| Route a prompt or direct user edit                     | [User prompts](references/rules/user-prompts.md)                |
+| Propose a substantive decision or wording              | [Decisions and author authority](references/rules/decisions.md) |
+| Define or revise motivation, theory and thesis         | [Thesis and vision](references/article/thesis-and-vision.md)    |
+| Set tone, style, citations or research requirements    | [Requirements](references/article/requirements.md)              |
+| Order article sections or choose drafting sequence     | [Article plan](references/article/plan.md)                      |
+| Develop a section's argument and passage order         | [Section arc](references/section/arc.md)                        |
+| Resume, pause, record a blocker or allocate local IDs  | [Section progress](references/section/progress.md)              |
+| Research or verify a quotation                         | [Source maps](references/supplement/source-maps.md)             |
+| Preserve local wording or save approved synthesis      | [Section material](references/section/material.md)              |
+| Construct prose from eligible inputs                   | [White-box synthesis](references/tools/white-box-synthesis.md)  |
+| Combine paragraphs or reduce repetition                | [Smoothing](references/tools/smoothing.md)                      |
+| Resolve a gap with explicitly requested AI wording     | [AI-authored gap filling](references/tools/ai-authored.md)      |
+| Insert prose, check notes or assemble sections         | [Section draft](references/section/draft.md)                    |
+| Replace content, remove resolved work or end a session | [Retention](references/rules/retention.md)                      |
 
 ## Section Loop
 
