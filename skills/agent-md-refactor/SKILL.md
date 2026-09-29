@@ -1,296 +1,124 @@
 ---
-name: agent-md-refactor
-description: >-
-  Refactor bloated AGENTS.md, CLAUDE.md, or similar agent instruction files to
-  follow progressive disclosure principles. Splits monolithic files into
-  organized, linked documentation.
-metadata:
-  category: development
-  source:
-    repository: 'https://github.com/softaworks/agent-toolkit'
-    path: skills/agent-md-refactor
-    license_path: LICENSE
-    commit: 3027f20f3181758385a1bb8c022d4041dfb4de84
+name: "agent-md-refactor"
+description: Refactor bloated agent-generated markdown of any kind — instruction files, skills, plans, progress logs, reference material, drafts — using progressive disclosure, type-appropriate remedies and a no-content-lost audit. Use when a markdown file that agents read or maintain has grown long, mixes unrelated concerns, duplicates rules, contradicts itself, or repeats superseded state.
 ---
 
-# Agent MD Refactor
+# Agent markdown refactor
 
-Refactor bloated agent instruction files (AGENTS.md, CLAUDE.md, COPILOT.md, etc.) to follow **progressive disclosure principles** - keeping essentials at root and organizing the rest into linked, categorized files.
+Agent-generated markdown accumulates bloat in specific, recognisable ways: rules get restated in two places, reference material crowds out rules, append-only logs never shrink, and skills grow a README that duplicates their own body. Each kind needs a different remedy, so the first step is always to identify what kind of file is being refactored.
 
----
+This skill generalises progressive disclosure beyond instruction files. It applies to any markdown that an agent reads, writes or maintains.
 
-## Triggers
+## When to use
 
-Use this skill when:
-- "refactor my AGENTS.md" / "refactor my CLAUDE.md"
-- "split my agent instructions"
-- "organize my CLAUDE.md file"
-- "my AGENTS.md is too long"
-- "progressive disclosure for my instructions"
-- "clean up my agent config"
+Any markdown an agent reads, writes or maintains that has grown long, mixes unrelated concerns, duplicates rules, contradicts itself, or carries superseded state. Common requests: "refactor my `AGENTS.md`", "my skill file is too long", "this progress log keeps growing", "my README duplicates the skill", "my plan doc is a mess".
 
----
+## Phase 0: Identify the type
 
-## Quick Reference
+Determine the file's type before proposing anything. The type decides the remedy, and applying the wrong one causes damage.
 
-| Phase | Action | Output |
-|-------|--------|--------|
-| 1. Analyze | Find contradictions | List of conflicts to resolve |
-| 2. Extract | Identify essentials | Core instructions for root file |
-| 3. Categorize | Group remaining instructions | Logical categories |
-| 4. Structure | Create file hierarchy | Root + linked files |
-| 5. Prune | Flag for deletion | Redundant/vague instructions |
+| Type | Examples | Bloat symptom | Correct remedy |
+|---|---|---|---|
+| **Instruction / context** | `AGENTS.md`, `CLAUDE.md`, `COPILOT.md`, `.cursorrules` | Loaded on every task; reference material competes with rules | Merge duplicate rules; extract reference material **only if** nothing cites the file by name |
+| **Skill definition** | `SKILL.md` + `references/` | `SKILL.md` carries deep reference that is only read sometimes | Keep the body procedural; move deep reference to linked files; keep the README short |
+| **Plan / spec** | plan, design doc, requirements | Sections sprawl past the document's own scope | Usually leave whole. Split only where a section has independent coherence |
+| **Progress / handoff log** | progress files, session logs, changelogs | Append-only; completed and superseded entries never removed | **Do not split.** Prune to live state; Git preserves the history |
+| **Content / evidence** | drafts, material, source maps, notes | Already section-isolated; duplication is a provenance question, not a structure one | Leave structure alone. Fix duplication at the content level |
+| **Reference / appendix** | `references/*.md`, glossaries | Duplicated across files after copies diverged | Dedupe; keep one owner and link to it |
 
----
+**Splitting is a last resort, not a default.** A single-file consolidation is a valid and often correct outcome.
 
-## Process
+**Check who cites the file.** Before moving or renaming anything, search the repository for references to it by name. If other files, skills, or a governing rules document name it, splitting or renaming breaks those citations, and the user must choose whether to update them.
 
-### Phase 1: Find Contradictions
+## Phase 1: Find contradictions
 
-Identify any instructions that conflict with each other.
+Identify instructions that conflict with each other before restructuring. Examples: contradictory style guidance, incompatible workflow orders, mutually exclusive tool preferences.
 
-**Look for:**
-- Contradictory style guidelines (e.g., "use semicolons" vs "no semicolons")
-- Conflicting workflow instructions
-- Incompatible tool preferences
-- Mutually exclusive patterns
+Report each conflict as a question for the user to resolve. Do not pick a winner. Many apparent conflicts are already reconciled elsewhere in the file — re-read the surrounding sections before raising one.
 
-**For each contradiction found:**
-```markdown
-## Contradiction Found
+## Phase 2: Identify the essentials
 
-**Instruction A:** [quote]
-**Instruction B:** [quote]
+Extract what belongs where, judged by how often a reader needs it.
 
-**Question:** Which should take precedence, or should both be conditional?
-```
+**Keep in the root:**
+- One-sentence purpose
+- Commands, paths, or identifiers that are non-obvious and load-bearing
+- Rules that apply to every task
+- Critical overrides of default behaviour
+- Links to the detail
 
-Ask the user to resolve before proceeding.
+**Move or cut:**
+- Reference material needed only sometimes
+- Language-, framework- or topic-specific conventions
+- Material that already has another canonical owner
+- Completed or superseded state in append-only files
 
----
+## Phase 3: Choose the remedy
 
-### Phase 2: Identify the Essentials
+Pick by type, from the Phase 0 table. State the choice and its trade-off rather than assuming the split. Typical outcomes:
 
-Extract ONLY what belongs in the root agent file. The root should be minimal - information that applies to **every single task**.
+- **Consolidate in place** — merge duplicates, tighten prose, keep one file. The right choice when citations point at the file or when the document is a single governing source.
+- **Split into linked files** — when the root is read on every task but most content is not, and no citation prevents it.
+- **Prune to live state** — for logs. Delete or compress completed entries; do not archive them into new files, because Git already holds them.
+- **Dedupe against an existing owner** — point at the canonical file instead of restating its content.
+- **Leave alone** — a legitimate and frequent answer. Say so rather than manufacturing work.
 
-**Essential content (keep in root):**
-| Category | Example |
-|----------|---------|
-| Project description | One sentence: "A React dashboard for analytics" |
-| Package manager | Only if not npm (e.g., "Uses pnpm") |
-| Non-standard commands | Custom build/test/typecheck commands |
-| Critical overrides | Things that MUST override defaults |
-| Universal rules | Applies to 100% of tasks |
+Aim for 3–8 linked files when splitting. Fewer is better; more is navigation overhead.
 
-**NOT essential (move to linked files):**
-- Language-specific conventions
-- Testing guidelines
-- Code style details
-- Framework patterns
-- Documentation standards
-- Git workflow details
+## Phase 4: Apply
 
----
+- Keep the existing tone, formatting and frontmatter conventions. A refactor changes structure, not voice.
+- Use simple Markdown: short direct sentences, no repeated boilerplate, no completed process logs in a document meant to be read going forward.
+- Give output Markdown files only `name` and `description` frontmatter, with the filename as `name`.
+- Locate every edit by content and assert it before writing.
 
-### Phase 3: Group the Rest
+## Phase 5: Flag for deletion
 
-Organize remaining instructions into logical categories.
+Identify content that should go entirely. Report it; do not delete silently.
 
-**Common categories:**
-| Category | Contents |
-|----------|----------|
-| `typescript.md` | TS conventions, type patterns, strict mode rules |
-| `testing.md` | Test frameworks, coverage, mocking patterns |
-| `code-style.md` | Formatting, naming, comments, structure |
-| `git-workflow.md` | Commits, branches, PRs, reviews |
-| `architecture.md` | Patterns, folder structure, dependencies |
-| `api-design.md` | REST/GraphQL conventions, error handling |
-| `security.md` | Auth patterns, input validation, secrets |
-| `performance.md` | Optimization rules, caching, lazy loading |
-
-**Grouping rules:**
-1. Each file should be self-contained for its topic
-2. Aim for 3-8 files (not too granular, not too broad)
-3. Name files clearly: `{topic}.md`
-4. Include only actionable instructions
-
----
-
-### Phase 4: Create the File Structure
-
-**Output structure:**
-```
-project-root/
-├── CLAUDE.md (or AGENTS.md)     # Minimal root with links
-└── .claude/                      # Or docs/agent-instructions/
-    ├── typescript.md
-    ├── testing.md
-    ├── code-style.md
-    ├── git-workflow.md
-    └── architecture.md
-```
-
-**Root file template:**
-```markdown
-# Project Name
-
-One-sentence description of the project.
-
-## Quick Reference
-
-- **Package Manager:** pnpm
-- **Build:** `pnpm build`
-- **Test:** `pnpm test`
-- **Typecheck:** `pnpm typecheck`
-
-## Detailed Instructions
-
-For specific guidelines, see:
-- [TypeScript Conventions](.claude/typescript.md)
-- [Testing Guidelines](.claude/testing.md)
-- [Code Style](.claude/code-style.md)
-- [Git Workflow](.claude/git-workflow.md)
-- [Architecture Patterns](.claude/architecture.md)
-```
-
-**Each linked file template:**
-```markdown
-# {Topic} Guidelines
-
-## Overview
-Brief context for when these guidelines apply.
-
-## Rules
-
-### Rule Category 1
-- Specific, actionable instruction
-- Another specific instruction
-
-### Rule Category 2
-- Specific, actionable instruction
-
-## Examples
-
-### Good
-\`\`\`typescript
-// Example of correct pattern
-\`\`\`
-
-### Avoid
-\`\`\`typescript
-// Example of what not to do
-\`\`\`
-```
-
----
-
-### Phase 5: Flag for Deletion
-
-Identify instructions that should be removed entirely.
-
-**Delete if:**
-| Criterion | Example | Why Delete |
-|-----------|---------|------------|
-| Redundant | "Use TypeScript" (in a .ts project) | Agent already knows |
+| Criterion | Example | Why cut |
+|---|---|---|
+| Redundant | "Use TypeScript" in a TypeScript project | Agent already knows |
 | Too vague | "Write clean code" | Not actionable |
 | Overly obvious | "Don't introduce bugs" | Wastes context |
-| Default behavior | "Use descriptive variable names" | Standard practice |
-| Outdated | References deprecated APIs | No longer applies |
+| Default behaviour | "Use descriptive names" | Standard practice |
+| Outdated | References a removed command or file | No longer applies |
+| Already owned elsewhere | Restating a rule that has a canonical home | Two copies drift apart |
+| Superseded state | A resolved decision, a finished task | Append-only drift |
 
-**Output format:**
-```markdown
-## Flagged for Deletion
+## Verification: no content lost
 
-| Instruction | Reason |
-|-------------|--------|
-| "Write clean, maintainable code" | Too vague to be actionable |
-| "Use TypeScript" | Redundant - project is already TS |
-| "Don't commit secrets" | Agent already knows this |
-| "Follow best practices" | Meaningless without specifics |
-```
+This is the step that makes a refactor trustworthy, and it is mandatory. Structure changes are easy to eyeball and easy to get subtly wrong.
 
----
+1. **Capture a baseline** before editing — word and line counts, plus the list of sections.
+2. **Enumerate the content units** the file carries, as a checklist: each rule, each owner, each command, each override, each exception.
+3. **After editing, re-check every unit** by searching for a distinctive phrase from it, in the new file.
+4. **Confirm the removals are intended** — that each deleted line is a duplicate, a merge target, or a flagged deletion, and not an accident.
+5. **Verify links and references** resolve, and that citations to the refactored file still point at something real.
+6. **State the result numerically** — lines, words, and percentage change. If a refactor did not measurably reduce size, say so plainly rather than describing it as a cleanup.
 
-## Execution Checklist
+Report honestly: if the reduction is small, say the reason. "Everything here is load-bearing" is a legitimate finding; an inflated claim of success is not.
 
-```
-[ ] Phase 1: All contradictions identified and resolved
-[ ] Phase 2: Root file contains ONLY essentials
-[ ] Phase 3: All remaining instructions categorized
-[ ] Phase 4: File structure created with proper links
-[ ] Phase 5: Redundant/vague instructions removed
-[ ] Verify: Each linked file is self-contained
-[ ] Verify: Root file is under 50 lines
-[ ] Verify: All links work correctly
-```
-
----
-
-## Anti-Patterns
+## Anti-patterns
 
 | Avoid | Why | Instead |
-|-------|-----|---------|
-| Keeping everything in root | Bloated, hard to maintain | Split into linked files |
-| Too many categories | Fragmentation | Consolidate related topics |
-| Vague instructions | Wastes tokens, no value | Be specific or delete |
-| Duplicating defaults | Agent already knows | Only override when needed |
-| Deep nesting | Hard to navigate | Flat structure with links |
+|---|---|---|
+| Defaulting to a split | Breaks citations, fragments a single source of truth | Choose the remedy by file type |
+| Prescribing a line target as a goal | Optimises the metric, not the document | Judge by what a reader needs per task |
+| Restating a skill's body in its README | The README becomes a second copy that drifts | Short README: purpose, usage, license |
+| Keeping a README that duplicates `SKILL.md` | Two copies, two futures | Point to the skill |
+| Growing a log forever | History is Git's job | Prune to live state |
+| Silent deletion | Irreversible, and hides judgement | Flag, then delete on approval |
+| Claiming success without measuring | Unverifiable | Report counts and percentage |
+| Splitting during a subtask | Scope creep | Refactor when asked |
 
----
+## Execution checklist
 
-## Examples
-
-### Before (Bloated Root)
-```markdown
-# CLAUDE.md
-
-This is a React project.
-
-## Code Style
-- Use 2 spaces
-- Use semicolons
-- Prefer const over let
-- Use arrow functions
-... (200 more lines)
-
-## Testing
-- Use Jest
-- Coverage > 80%
-... (100 more lines)
-
-## TypeScript
-- Enable strict mode
-... (150 more lines)
-```
-
-### After (Progressive Disclosure)
-```markdown
-# CLAUDE.md
-
-React dashboard for real-time analytics visualization.
-
-## Commands
-- `pnpm dev` - Start development server
-- `pnpm test` - Run tests with coverage
-- `pnpm build` - Production build
-
-## Guidelines
-- [Code Style](.claude/code-style.md)
-- [Testing](.claude/testing.md)
-- [TypeScript](.claude/typescript.md)
-```
-
----
-
-## Verification
-
-After refactoring, verify:
-
-1. **Root file is minimal** - Under 50 lines, only universal info
-2. **Links work** - All referenced files exist
-3. **No contradictions** - Instructions are consistent
-4. **Actionable content** - Every instruction is specific
-5. **Complete coverage** - No instructions were lost (unless flagged for deletion)
-6. **Self-contained files** - Each linked file stands alone
-
----
+- [ ] Phase 0: type identified; citing references found
+- [ ] Phase 1: contradictions surfaced and resolved by the user
+- [ ] Phase 2: essentials separated from reference material
+- [ ] Phase 3: remedy chosen by type, with trade-offs stated
+- [ ] Phase 4: applied, tone and conventions preserved
+- [ ] Phase 5: deletions flagged, not silent
+- [ ] Verification: every content unit re-checked; counts and percentage reported
+- [ ] Submodule changes committed and pushed before the parent pointer, if the skill lives in one
