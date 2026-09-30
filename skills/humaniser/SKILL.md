@@ -1,67 +1,88 @@
 ---
 name: humaniser
 description: >-
-  Diagnose and collaboratively revise prose while preserving the user's voice.
-  Use for humanising, auditing, tightening, editing, or rewriting. Diagnose
-  first, apply only authorised general changes, then seek explicit approval for
-  every rewording.
+  Cut bloat and slop out of markdown documentation. Use for AGENTS.md, plans,
+  todos, arcs, progress files, supplements, skill files, READMEs and any other
+  human-facing or agent-facing prose that is padded, repetitive, hedged,
+  signposted, inflated or abstract where it should be concrete. Two parts:
+  evaluate with the script, then propose replacements. Not for approved wording,
+  quotations or source excerpts.
 ---
 
 # Humaniser
 
+Documentation is read by people, so every sentence has to carry weight. This skill finds the sentences that do not, then proposes replacements. It judges nothing by itself: the script reports what is in the text, and you apply the standards below.
 
-## Authority
+## Scope
 
-The user is the author. Preserve their meaning, voice, claims, evidence, qualifications, citations, terminology, and deliberate choices. Never invent content or connections.
+In: `AGENTS.md`, plans, todos, arcs, progress files, supplements, skill files, READMEs, and any prose an agent or a person reads.
 
-Without further approval, only correct clear spelling, grammar, tense, and punctuation errors, consolidate genuine repetition, and cut clear filler, tangents, announcements, or empty list items identified in Stage 1. Consolidate by moving or cutting existing wording while preserving distinct support. Anything requiring new wording, interpretation, or restructuring needs explicit consent.
+Out: approved wording, quotations, source excerpts, and the article's own prose. Those carry provenance and approval rules that rewriting them would break. If a document mixes both, say which passages are in scope before starting.
 
-User instructions, comments, answers, and approved wording are authoritative. The user may break these rules. The agent may not. Diagnosis, silence, or “continue” is not consent.
+## Standards
 
-Describe AI-associated tendencies only as concrete writing problems. Never claim AI authorship.
+1. **Every word earns its place.** Delete any word whose removal changes no meaning. Test: cut the phrase, read the sentence, and see whether it still says the same thing.
+2. **Every sentence carries a claim and its support.** A claim on its own goes, or gains the figure, path, example or named source that backs it. The report's `no-support?` flag marks where to look first.
+3. **Short sentences only when they carry a thesis.** Chopping a sentence in half for rhythm reads as machine prose. Test: join it to its neighbour and see whether the point survives.
+4. **Show the concrete case.** A critique without a named file, paragraph or example is an assertion. Test: can the reader check the claim without taking your word for it?
+5. **No contrast nobody asked for.** "Not just X but Y" is for displacing a view the reader actually holds. If X never appears in the document, cut it.
+6. **No repetition at any level** — word, phrase, sentence, paragraph, file. The report's 3-gram list covers the files you passed together, which is how you find a rule stated in three places.
+7. **No promotional or inflated wording.** Words like crucial, robust, landscape and leverage raise the volume without adding content. The report lists the hits.
+8. **No hedging and no signposting.** Delete "it is important to note", "in this section", "we will now". A sentence that announces what it is about to do says nothing.
+9. **No unnecessary modifiers.** Cut the adverb that restates the verb and the adjective that restates the noun.
+10. **Regular structure reads as machine prose.** Do not imitate a human. Vary structure where the meaning varies and leave it alone where it does not.
 
-## Workflow
+Report the writing problems as writing problems. Never claim or imply who wrote a passage.
 
-Keep the stages separate unless the user overrides them. A new or materially changed draft returns to Stage 1.
+## Part 1 — Evaluate
 
-### 1. Diagnose
+The script segments markdown into paragraphs, sentences and phrases, then prints each unit with its neighbours:
 
-Return a report only. Map, in order:
+- a phrase with the phrases, sentences and paragraphs around it
+- a sentence with its phrases and its paragraph
+- a paragraph with the paragraphs beside it
 
-1. the overall narrative arc;
-2. each section's arc;
-3. each paragraph's contribution;
-4. every sentence's function.
+It also prints facts about the text: word counts, repeated 3-grams, hedge and contrast hits, and whether a sentence contains a figure, path, footnote or named source.
 
-Identify repetition at article, section, paragraph, sentence, and phrase levels. Identify filler, tangents, empty list items, announcements, repeated or premature conclusions, vague referents, invalid comparisons, missing logical links, overloaded or empty sentences, and metaphorical, meta, formulaic, inflated, or generic wording.
+```bash
+python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
+python3 scripts/evaluate.py FILE --level sentence --lines 40-90 --out /tmp/evaluate.md
+python3 scripts/evaluate.py AGENTS.md plan.md --out /tmp/evaluate.md   # cross-file repetition
+```
 
-For each issue, quote the passage and state the problem, its effect, the action needed, and whether Stage 2 may apply it automatically. End with a consolidation and removal plan, a collaborative rewriting queue, and a direct next-step question. Ask whenever the thesis, meaning, or voice is unclear.
+| Flag | Effect |
+|---|---|
+| `--level all\|sentence\|phrase\|paragraph` | Which passes to emit. `phrase` is the widest; narrow it with `--lines`. |
+| `--lines 40-60,120-140` | Only blocks starting in these line ranges. Use it to run the phrase pass on the paragraphs the sentence pass flagged. |
+| `--max-chars N` | Truncate every unit and context field. Useful on long files. |
+| `--out PATH` | Report path. Default is stdout. Keep reports outside the repository. |
 
-### 2. Apply general changes
+Work in this order:
 
-Enter after the user asks to proceed. Apply their specified changes. If none are specified, apply only authorised corrections, consolidations, and clear removals. Leave unresolved wording unchanged. Do not add wording, infer connections, change emphasis, or reorder material without approval.
+1. Run the sentence pass over the whole file, or over several files when checking for a rule repeated across them.
+2. Read the report and judge each unit against the standards, in the context the report gives. The facts are cues, and each one has a known way of being wrong:
 
-Return the new draft version, its separate change log, and the unresolved queue.
+   - `no-verb?` misses imperatives and table cells
+   - `no-support?` fires on a sentence whose support is the sentence before it
+   - a document that names a banned word in order to ban it matches on that word
 
-### 3. Rewrite together
+3. Name the rule each finding breaks and what would change. Quote the unit.
+4. Order findings by consequence. A rule stated in three files outranks a sentence of forty words.
+5. Run the phrase pass only where the sentence pass found something, using `--lines`.
 
-Take one unresolved passage at a time unless the user requests a batch. Quote it, explain the problem, ask for the user's meaning or wording, offer one concise suggestion in their established voice, and offer to keep the original. Apply nothing until the user approves exact wording or supplies their own. Their wording is authoritative apart from authorised mechanical corrections.
+The lexicon for hedges, contrasts and verb cues lives at the top of `scripts/evaluate.py`. Edit it there; do not copy it into a report or a document.
 
-## Editing rules
+## Part 2 — Humanise
 
-- Every part supports the thesis or governing purpose. Every paragraph contributes one step and every sentence advances it.
-- State claims directly. Remove filler, announcements, meta-commentary, and repeated conclusions. Put conclusions after their support.
-- Prefer concrete actors, actions, relations, mechanisms, consequences, and referents. Noun and verb pairs must make literal or conventional sense.
-- Lists contain only distinct, relevant, compatible items. Transitions express a real relation.
-- Prefer positive formulations. Negate only a relevant claim worth rejecting. Use **not X but Y** only when X is a real common view that the argument displaces.
-- Introduce no metaphor unless the user supplies or approves it.
-- Keep prose direct, conversational, precise, and recognisably the user's. Preserve necessary technical language and purposeful repetition.
-- Prefer full stops. Introduce no semicolons or em dashes without approval.
+Produce a table before touching the file:
 
-## Versions and change log
+| Location | Before | After | Rule | Approval needed |
+|---|---|---|---|---|
 
-Preserve the user's version system. Otherwise call the source **Draft v1** and increment every delivered revision containing changes. Reports and unapproved suggestions do not change the version.
+Then:
 
-Keep the change log outside the draft. Record every change with its location, exact before and after wording or cut text, reason, and authority. Verification is read-only. Queue newly found issues instead of silently fixing them.
-
-Apply the same method in any language.
+- Apply only the changes the user approved. A diagnosis, a report or silence is not approval.
+- Never change a claim, an instruction, a path, an identifier, a scope or a date without asking. A deletion that cannot change meaning may be applied when the user asks for the pass to be applied as a whole.
+- Keep the change log outside the document: location, before, after, reason.
+- A document that changed materially returns to Part 1, because an edit introduces new sentences with the same faults.
+- Verify by rerunning the script on the changed file and confirming the findings are gone, not merely reduced.
