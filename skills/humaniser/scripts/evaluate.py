@@ -36,6 +36,14 @@ PHRASE_SPLIT = re.compile(
     r",\s+|\s*;\s+|\s*:\s+|\s+[—–]\s+|\s+[—–]\s*|\s+—\s*"
     r"|\s+(?:and|but|or|which|that|because|while|where|so|yet)\s+")
 
+# Surface features, counted per 1000 words. Counts only: what they mean is
+# the agent's call, and the thresholds live in the skill, not here.
+SEMI = re.compile(r";")
+DASH = re.compile(r"—")
+PAREN = re.compile(r"\([^)]*\)")
+QUES = re.compile(r"\?")
+
+
 
 
 
@@ -142,8 +150,20 @@ def report(paths, level, lines, out, limit):
     out.write(f"blocks {len(blocks)} · sentences {len(lens)} · words "
               f"{sum(lens)} · sentences/block {len(lens) / len(blocks):.1f}\n\n")
     if lens:
+        mean = sum(lens) / len(lens)
+        var = (sum((n - mean) ** 2 for n in lens) / len(lens)) ** 0.5
         out.write(f"sentence words: min {min(lens)} · median "
-                  f"{sorted(lens)[len(lens) // 2]} · max {max(lens)}\n\n")
+                  f"{sorted(lens)[len(lens) // 2]} · max {max(lens)} · "
+                  f"mean {mean:.1f} · sd {var:.1f} · cv {var / mean:.2f}\n\n")
+
+    body = " ".join(t for _, _, t in blocks)
+    nw = len(body.split()) or 1
+    out.write("surface counts per 1000 words: "
+              + " · ".join(
+                  f"{name} {len(rx.findall(body)) / nw * 1000:.1f}"
+                  for name, rx in (("semicolons", SEMI), ("em-dashes", DASH),
+                                   ("parentheses", PAREN), ("questions", QUES)))
+              + "\n\n")
 
     rep = repeats([(ln, tx) for _, ln, tx in blocks])
     if rep:

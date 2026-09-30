@@ -34,6 +34,31 @@ Out: approved wording, quotations, source excerpts, and the article's own prose.
 
 Report the writing problems as writing problems. Never claim or imply who wrote a passage.
 
+## Voice
+
+The standards above judge quality: could this sentence be clearer, tighter, better supported. They do not judge voice. A rulebook can satisfy every one of them and still not sound like a person, so voice is scored separately, on the document rather than the sentence, against the counts the report prints.
+
+| # | Guideline | Measured threshold |
+|---|---|---|
+| V1 | Sentence lengths vary across the document. | `cv` at or above 0.6 |
+| V2 | Semicolons are rare. | 6 or fewer per 1000 words |
+| V3 | The document does not run on one template. | judgement |
+| V4 | At least one sentence could only have been written by this author: a specific claim, an odd qualifier, a comparison nobody asked for. | judgement |
+| V5 | The document contains a concession or an admission. | judgement |
+
+V1 and V2 come from measurement across seven files, three of which are not calibration targets. Agent-facing files scored `cv` 0.43 to 0.54 and 10.7 to 13.9 semicolons per 1000 words; section drafts scored 0.72 to 0.85 and 0.0 to 4.7. V3 to V5 are yours to judge.
+
+First person is not a voice test. The AI-authored abstract carries the highest rate in the repository, 25.9 per 1000 words, because it is written in the author's first person as a device, while sections 1 and 3 sit at 0.5. A guideline that rewarded first person would have raised the score of the one file known to be AI-written.
+
+## Scoring
+
+Report two numbers, never one averaged figure, because averaging a per-sentence score with a per-document score hides the result that matters.
+
+- **Quality**: for each block, count the standards passed over the standards that apply. The document's quality score is the mean across blocks.
+- **Voice**: each of V1 to V5 passes or fails for the whole document. The voice score is the fraction passed.
+
+The Human verdict is the voice score, and quality gates it: a document that fails quality cannot be called Human however varied its sentences are.
+
 ## Part 1 — Evaluate
 
 The script segments markdown and prints each unit with the units around it:
@@ -42,7 +67,16 @@ The script segments markdown and prints each unit with the units around it:
 - a sentence with the phrases beside it and the block it sits in
 - a block with the blocks before and after it
 
-It classifies nothing and scores nothing. It reports the word count of each unit, the sentence-length distribution, and every three-word span occurring in more than one block, because those are tedious to check by eye. Whether a unit is bloated, hedged, unsupported or inflated is your judgement, made by the standards above with the unit's context in front of you.
+It classifies nothing and scores nothing. It reports the word count of each unit, the sentence-length distribution with its coefficient of variation, the density of semicolons, em-dashes, parentheses and questions, and every three-word span occurring in more than one block, because those are tedious to check by eye. Whether a unit is bloated, hedged, unsupported or inflated is your judgement, made by the standards above with the unit's context in front of you.
+
+Two anchors calibrate the voice score, and they were set before the voice guidelines were written:
+
+| File | Expected voice | Why |
+|---|---|---|
+| `AGENTS.md` | 0% | A rulebook read by agents. Regularity is its function. |
+| `sections/section-n/ai-and-fetishism-draft-section-n.md` | over 90% | The author's prose. |
+
+A guideline is never added because it moves a target file's score. If a file lands away from its anchor, that is the finding and the guideline set is wrong, not the file. Report the number as measured.
 
 ```bash
 python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
