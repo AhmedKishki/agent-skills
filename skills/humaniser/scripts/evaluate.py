@@ -30,7 +30,9 @@ LIST_ITEM = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
 FOOTNOTE = re.compile(r"^\[\^\d+\]:\s")
 
 # Do not split after an abbreviation, an initial, or a lowercase letter.
-ABBREV = (r"(?<!\be\.g)(?<!\bi\.e)(?<!\betc)(?<!\bcf)(?<!\bvs)(?<!\bpp)"
+# The capital guard covers initials ("Anna L. Tsing"), which the abbreviation
+# list cannot enumerate.
+ABBREV = (r"(?<![A-Z])(?<!\be\.g)(?<!\bi\.e)(?<!\betc)(?<!\bcf)(?<!\bvs)(?<!\bpp)"
           r"(?<!\bno)(?<!\bFig)(?<!\bal)(?<!\bDr)(?<!\bMs)(?<!\bst)")
 SENTENCE_END = re.compile(ABBREV + r"(?<=[.!?])[\"')\]]*\s+(?=[A-Z“‘(\[*])"
                          r"|(?<=\])\s+(?=[A-Z“‘])")
