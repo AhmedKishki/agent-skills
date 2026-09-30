@@ -4,9 +4,9 @@ description: >-
   Find AI writing patterns in markdown and report them against a checklist. Use
   for AGENTS.md, plans, todos, arcs, progress files, supplements, skill files,
   READMEs and any prose a person or an agent reads. The script segments the
-  document into context windows, the agent works the 31-item checklist over them,
-  and the result is a ranked list of findings for approval. Not for approved
-  wording, quotations or source excerpts.
+  document into context windows, the agent works a semantic-first checklist over
+  them, and the result is a ranked list of findings for approval. Not for
+  approved wording, quotations or source excerpts.
 ---
 
 # Humaniser
@@ -18,8 +18,8 @@ Three things, kept separate on purpose:
 | Layer | What it is | Who does it |
 |---|---|---|
 | **The loop** | `scripts/evaluate.py` segments the document into context windows and counts tokens | the script |
-| **The standard** | [references/checklist.md](references/checklist.md) holds 31 concrete tells | the checklist |
-| **The judgement** | whether a given window exhibits a given tell | you |
+| **The standard** | [references/checklist.md](references/checklist.md) holds the semantic checks, the surface checks and the mechanical faults | the checklist |
+| **The judgement** | whether a given sentence says anything | you |
 
 The script never decides what is wrong with a sentence. It supplies the windows; you work the checklist against them. Rewriting the text on the strength of those findings is the next step and is not built yet.
 
@@ -27,7 +27,7 @@ The script never decides what is wrong with a sentence. It supplies the windows;
 
 | File | What it holds |
 |---|---|
-| [references/checklist.md](references/checklist.md) | The 31 checks, each with what to look for, why it is a tell, and an example. This is the instrument. |
+| [references/checklist.md](references/checklist.md) | Part A semantic checks, Part B surface checks, Part C mechanical and provenance faults, and what to keep. This is the instrument. |
 | [references/scoring.md](references/scoring.md) | How to run the script, what its numbers mean, and how to report a result. |
 | `scripts/evaluate.py` | Segmentation and counts. No thresholds, no scores, no opinions. |
 
@@ -41,17 +41,22 @@ Out: approved wording, quotations, source excerpts, and the article's own prose,
 
 ## Part 1 — Evaluate
 
+Read the document once before running the script, so the first reading is not the report's.
+
 ```bash
 python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
 ```
 
-The script segments the document and prints the counts, then the repeated 3-grams, then every block, sentence and phrase with the units around it. A tell is judged in the window it sits in, not from a string in isolation.
+The report gives every block, sentence and phrase with the units around it. A judgement is made in the window a sentence sits in, not from a string in isolation.
 
-Walk the report in the order [the checklist's pass index](references/checklist.md) gives, because the report is built to be walked: counts, then blocks, then sentences, then phrases narrowed to the blocks that flagged, then the 3-gram list, then one whole read. Each check says which part of the report it consumes, so the two files are meant to be used together.
+Work Part A on the `## Sentences` section. These are the checks that decide: the sentence either says something or it does not, and the surface cannot settle it. Pass every related file in one invocation, because the 3-gram list is computed across all of them and it is the only way to see a rule restated in three places.
 
-Pass every related file in one invocation. The 3-gram list is computed across all of them, and it is the only way to see a rule restated in three places.
+Work Part B on the blocks and the 3-grams. These cannot decide anything alone. A generated passage passes all of them. They matter when a semantic check has already found the sentence thin.
 
-For each finding give the item number, the location, a quotation, and what the pattern does to the reader. Order findings by consequence: a contradiction between two blocks outranks a one-line closer, because one is a defect in the content and the other in the surface.
+Work Part C on one whole read. These are the mechanical and provenance faults, they are not voice, and they must not be folded into a voice figure. They concentrate in edited files, which is why a working draft carries more of them than a generated one.
+
+For each finding give the item number, the location, a quotation, and the test it failed. Order by consequence: a wrong figure outranks a tell, because one is a defect in the content and the other in the surface.
+
 
 ## Part 2 — Humanise
 

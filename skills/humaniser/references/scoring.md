@@ -21,20 +21,31 @@ The report has four sections, in this order, and the checklist's pass index walk
 
 **`## Phrases`** — each phrase with its neighbouring phrases, its sentence, the surrounding sentences, and its block. Emitted only at `--level phrase` or `--level all`; narrow it with `--lines` because it is the widest pass.
 
-The script segments and counts. It classifies nothing, scores nothing, and holds no thresholds. Footnote entries are listed as blocks so a finding can cite one, but they are excluded from every statistic: a citation is not prose. Headings are not units, so §20 and §24 need the file itself.
+The script segments and counts. It classifies nothing, scores nothing, and holds no thresholds. Footnote entries are listed as blocks so a finding can cite one, but they are excluded from every statistic: a citation is not prose. Headings are not units, so B11 and B12 need the file itself.
 
 Pass several files in one run: the 3-gram list is computed across all of them, and that is the only way §31 becomes visible.
 
-## The two numbers
+## The numbers
 
-**Pattern score.** For each checklist item, decide whether the document exhibits it, and in how many blocks. Report the fraction of the 31 items the document passes, and list the failures by item number with a quoted example each. A document that passes 20 of 31 is not "65% human" — it has six tells, and the number only tells you where to look.
+**Part A count.** For each of the seven semantic families, decide whether the document exhibits it, and in how many sentences. Report the families that fired, not a single percentage: A1 and A6 alone can account for most of what is wrong with a passage, and a number that merges them tells the reader nothing they can act on. Give each finding a quotation, a line number, and the test it failed.
 
-**Counts.** The measured numbers are facts about the text, not verdicts on it. Report them, and say what they show. Three findings from measuring this repository, which changed how the checklist is written:
+**Part B count.** The same, over the surface items. Report it separately and label it as a tie-breaker.
 
-- Sentence-length variation does not separate registers. Prose in `sections/section-1/ai-and-fetishism-draft-section-1.md` measures a coefficient of variation of 0.52 against 0.49 for `AGENTS.md`. The drafts read as *less* varied because they carry long quoted sources and parenthetical citations inside short sentences. The measurement is worth taking and is worth nothing as a threshold.
-- Semicolon density does separate them: 10.7 to 14.2 per 1000 words in agent-facing files against 0.0 to 4.7 in section drafts. It is a symptom of the semicolon-joined imperative, which is §11 and §19 at register scale.
-- The repeated 3-gram list finds more than any judgement call. A verbatim clause across six entries is §28, and no amount of reading catches it as reliably as the list.
-- Bold label openings separate them hardest: 85 of 146 blocks in the draft-scale todo, 7 of 84 in `AGENTS.md`, and 0 of 42 and 0 of 68 in the section 1 and section 3 drafts. It is a count, it needs no judgement, and it is the single clearest number for telling a template from prose.
+**Part C list.** The mechanical and provenance faults. Never fold these into a voice figure. A document can have no voice tells and four content defects, and a merged number hides exactly that.
+
+**Counts.** The measured numbers are facts about the text, not verdicts on it. Report them and say what they show. Four findings from measuring this repository:
+
+- Sentence-length variation separates nothing. Prose in `sections/section-1/ai-and-fetishism-draft-section-1.md` measures 0.47 against 0.49 for `AGENTS.md`. The drafts read as *less* varied because they carry long quoted sources inside short sentences. Worth taking, worth nothing as a threshold.
+- Semicolon density marks a register rather than an author: 10.7 to 14.2 per 1000 words in agent-facing files against 0.0 to 4.7 in section drafts. B7.
+- Bold label openings mark a template, not a person: 85 of 146 blocks in the draft-scale todo, 0 in every section draft.
+- The repeated 3-gram list finds more than any judgement call, and it also finds the residue an editor leaves: half-merged sentences, a repeated clause whose second copy is weaker, a term whose word order has drifted.
+
+## A note on what a score can be
+
+Two earlier versions of this instrument rated generated passages *cleaner* than the author's own drafts: 4.3 tells per thousand words against 6.1, and before that 90 to 92 per cent quality against 51. Both were form-based rubrics, and form is what a generated passage gets right. The author's own classification of eight passages, blind to which were which, was correct eight times out of eight on the same text the rubric scored backwards.
+
+So the instrument does not certify authorship. It names the sentences that say nothing, and the author decides what that means for the document.
+
 
 ## Judging a document you did not write
 

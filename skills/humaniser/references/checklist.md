@@ -1,128 +1,149 @@
 # Checklist
 
-The instrument for `scripts/evaluate.py`. Each check names the part of the report it consumes, so the walk follows the report's own order rather than this file's grouping.
+The instrument for `scripts/evaluate.py`. Semantic checks first: they are decisive. Surface checks come second and can only tip the scale.
 
-## Pass index
+Why this order. A generated passage and a written one can be identical in form — the same sentence lengths, the same punctuation, the same absence of repetition — and one of them can say nothing. Formatting cannot tell those apart. Meaning can. So the report supplies context windows, Part A asks whether the sentence means anything, and Part B asks whether its shape gives the reader away.
 
-| Walk this | From the report | Then apply |
-|---|---|---|
-| 1. Counts | the header: `cv`, semicolons, em-dashes, questions, `bold label openings`, `curly quotes` | §8, §19, §21, §29 |
-| 2. Blocks | the `## Blocks` section: every block with the blocks beside it | §2, §20, §24, §25, §27 |
-| 3. Sentences | the `## Sentences` section: every sentence with its phrases and its block | §1, §3–§7, §9–§18, §22, §23, §26 |
-| 4. Phrases | `--level phrase`, narrowed with `--lines` to blocks step 3 flagged | §1, §6, §14, §15 |
-| 5. 3-grams | the `## 3-grams` section, computed across every file in the run | §28, §31 |
-| 6. Whole document | read it once end to end | §27, §30 |
+Two tests run under everything in Part A:
 
-A pattern is a default choice, not a proof. A person can make any one of them on purpose. Act on one sighting for §1–§5; items marked *weak alone* need company from other tells in the same block. Several tells together are the safeguard.
+- **Can you say it back in plain words without it turning poetic?** If the literal version is empty, the sentence carries no meaning.
+- **What does this add, and to what?** If the answer is nothing, or nothing in particular, the element is dead weight.
 
-Do not act on a watched phrase inside a quotation, a title, a proper name, a code span, or a passage that discusses the phrase rather than uses it. This matters more here than in prose, because a document about AI voice quotes those words on purpose.
+## A. Slop features
 
-## A. Staging instead of stating
+The six families, expanded. Each check gives what to look for, a test, and an example from this repository.
 
-The strongest and most frequent tells. Act on one sighting.
+**A1 Vague referent.** A noun whose content the reader has to supply.
 
-**§1 Not X but Y** — *sentences, phrases.* `not X but Y`; `not just`, `not only`, `not merely X, but Y`; `it's not X, it's Y`; the reversed `X rather than Y`; the same contrast split across sentences ("This does not mean X. It means Y."); a clipped negative tail ("…, no guessing"). The negative half names something no one claimed, so the positive half sounds larger. Keep a contrast only when the negative half corrects a belief the reader actually holds, or when both halves carry information. Split across two blocks, the report gives you the negative in one and the positive in the other.
-> Before: It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere.
-> After: The heavy beat adds to the aggressive tone.
+- **A1a The bare abstract noun.** *a boom, the expectation, the image, the rhetoric, the problem.* Point at it and ask what it contains. A category is not a thing.
+- **A1b Comparison with an unstated term.** *further than the stock market, over X, more than before.* Compared with what, said where?
+- **A1c Demonstrative standing in for a noun.** *That answer, This one states, It has reached the arsenal.* The pronoun points at something the reader cannot see.
+- **A1d Plural with no members.** *the social relations, the ordinary relations* without saying whose or which.
+- **A1e The collective that is not a collective.** *every large technology firm, nearly every company,* where the exception would matter.
 
-**§2 One-line closers and fragments** — *blocks.* A one-sentence block that restates the block before it; "That is the real win."; "That distinction matters."; "Let that sink in."; the same closer after several blocks; a sentence after an example that names what the example showed ("This shows the importance of…", "The message was clear:"); a row of fragments ("No aesthetic prior. No nostalgia."). One short sentence can carry emphasis when it carries a new fact. Cut a closer that repeats.
+> That answer now sits at the centre of a boom.
+> Boom of what, and what does the answer have to do with its centre?
 
-**§3 Sayings that sound deep** — *sentences.* `the real question is`, `at its core`, `in reality`, `what really matters`, `fundamentally`, `the deeper issue`, `the heart of the matter`, `X is the Y of Z`, `X becomes a trap`, `X is not a tool but a mirror`, `the language of`, `the currency of`, `the architecture of`. An ordinary point dressed as a hidden truth. Replace the saying with the specific claim.
+Compare, from the same section written by the author:
 
-**§4 Staged run-up** — *sentences.* `Let's dive in`, `let's explore`, `let's break this down`, `here's what you need to know`, `now let's look at`, `without further ado`, `heads up`, `quick note`, `Honestly?`, `Look,`, `Here's the thing`, `Real talk`. The writer announces the point or stages a moment of candour. Remove the run-up, not just its tone. A "look" inside a sentence is ordinary; the tell is the standalone opener before a routine claim.
+> The most valuable company in the world, Nvidia, with a $5.4tn market cap, has cashed in on Big Tech's AI aspirations (21 May 2026).
 
-**§5 Arguing with no one** — *sentences.* `This isn't (mainly) about`, `I'm not saying`, `To be clear`, `Don't get me wrong`, `This is not to say`, `Some might say… but`, `A tempting approach would be`, `One might be tempted to`, `You might think… but`, `It would be easy to just`. The text rejects an option that appears nowhere else, usually a leftover from an earlier draft. Several unrelated rejections in a row are a stronger sign than one.
+**A2 Metaphorical.** A figure doing work the literal words cannot.
 
-## B. Rhythm by rule
+- **A2a Figure standing in for a mechanism.** *get behind the fetishism, unlock the mysteries, open up the question.* What operation is this?
+- **A2b Figure with no literal remainder.** Translate it back. If the plain version is empty, the figure carried nothing.
+- **A2c The inherited figure.** A term the article has already defined, used as a figure, so the definition returns as a discovery. *The cloud is a metaphor for a physical place* restates the article's own premise as a finding.
+- **A2d Process noun in place of an actor.** *the commodification of, the digitalisation of, the fetishism of.* A sentence with someone in it says more.
+- **A2e Conduit metaphor.** *the flow of value, the web of relations, the chain of production,* where the article argues the relation is not a chain.
 
-**§6 Forced triads** — *sentences, phrases.* Three items where the meaning has two or four, at sentence or block scale. The phrase pass shows the three items as separate units with their context, which is where you see whether each adds a distinct idea. Three real items are fine.
-> Before: A career can look promising and fail. A relationship can feel important and end. A skill can take years and remain useless.
-> After: A career can look promising and fail. So can a relationship that felt important and ended, or a skill that took years and remained useless.
+> Any sober assessment of what a technology might do for us has to get behind the fetishism of things.
+> Get behind it by doing what?
 
-**§7 Repeated sentence openings** — *sentences.* Consecutive units in the report start with the same subject or the same first word. Do not ban the word; a remaining sentence may still start with "She."
+**A3 Subject and verb mismatch.** The verb is carried by something that cannot do it.
 
-**§8 Dashes as the universal connector** — *counts, sentences.* Start from the `em-dashes` count in the header, then read the sentences that contain one. Replace with a period, comma, colon or parentheses where the relation allows. *Weak alone* — many editors use dashes — but a high count is not. If the author's own prose uses dashes, match its rate rather than removing them.
+- **A3a Abstraction as actor.** *the network names, the analysis makes visible, the relations produce* where a person or a mechanism would.
+- **A3b The wrong valency.** *a set of relations is invoked: extraction, manufacturing, freight.* Extraction is not invoked; something invokes it.
+- **A3c Collective noun with a member's action.** *capitalism decides, the market consumes, the system designates,* where the argument is about who inside it does it.
+- **A3d Passive hiding the actor the sentence is about.** *waste is designated, data is labelled,* when the designating is the point.
 
-**§9 Stacked qualifiers** — *sentences.* `to be fair`, `it's also possible`, `could potentially`, `might arguably`, `in some cases it may`, `this is an inference`. Repeated editing adds one qualifier until every claim sounds uncertain. Keep a qualifier the source supports. Ordinary hedges such as *perhaps* are human habits, not tells. *Weak alone.*
+> the network it names runs on data centres
+> How does a network name?
 
-**§10 Hyphenated pairs everywhere** — *sentences.* The compound keeps its hyphen after the noun: "a high-quality report" is right, "the report is high-quality" is the tell. Words the dictionary always spells with a hyphen keep it everywhere. *Weak alone.*
+**A4 Opened and closed.** A loop raised and tidied away, so the reader feels an insight that has not happened.
 
-**§11 Passive voice and missing subjects** — *sentences.* The text hides who acts, or drops the subject ("No configuration file needed"). Use active voice when it names the actor more clearly. *Weak alone.*
+- **A4a The question that is not one.** Shaped as a question with no uncertainty in it, answered by the writer in the next clause.
+- **A4b The frame resolved by the next sentence.** The second sentence restates the first in a shorter form.
+- **A4c The verdict that closes nothing.** After *That is what defetishising AI comes down to*, is anything established that the opening did not contain?
+- **A4d The exception that neutralises the claim it follows.** *even when it is a metaphor for data centres,* attached to a sentence that has already made the point.
+- **A4e The escalation with no landing.** *It has reached the arsenal,* after a sentence about expectations.
 
-## C. Inflation and borrowed authority
+> That expectation has already reached further than the stock market. It has reached the arsenal.
+> The second sentence is the first one again.
 
-The fact underneath is usually sound. Keep it and remove the dressing.
+**A5 Grandiose.** The topic made to sound larger than the claim.
 
-**§12 Overused words** — *sentences.* `Actually, additionally, align with, bolstered, crucial, deep dive, delve, enduring, enhance, garner, gated (figurative), highlight (verb), interplay, intricate, key (adjective), landscape (abstract), meticulous, pivotal, quietly, robust (figurative), showcase, tapestry, testament, underscore (verb), valuable, vibrant`. Models use these far more often than people do, especially in groups. A formal word outside this list is not a tell by itself.
+- **A5a Scale without a figure.** *the most valuable company in the world* is a fact with a number and a puff without one.
+- **A5b Importance by adjective.** *profoundly destructive, the unprecedented expansion, enormous volumes, the deep intermingling of.*
+- **A5c The virtue frame.** *any sober assessment, we must get behind.* The reader is cast as insufficient for not already agreeing.
+- **A5d The myth with a sting.** *Sovereign AI is a myth, and a useful one.* The cleverness is the content.
+- **A5e The borrowed narrative.** *companies they are not supposed to be beating, the race for superintelligence,* where a trope stands in for the relation.
+- **A5f Significance in place of a fact.** *this raises concerns around priorities for water use.* Name the concern.
 
-**§13 Inflated significance** — *sentences.* `stands as a testament`, `a pivotal or crucial moment`, `plays a key role`, `marking or shaping the`, `underscores its importance`, `a broader, enduring legacy`, `setting the stage for`, `evolving landscape`, `Despite these challenges… continues to thrive`, and stock `Challenges and Legacy` / `Future Outlook` send-offs. Keep the fact, drop the significance, end on the last concrete fact.
+Test: delete the adjective. Does the claim survive with the same force? If yes, the adjective was the argument.
 
-**§14 Vague connection** — *sentences, phrases.* `associated with`, `in association with`, `connected to`, `in connection with`, `linked to`, `tied to`, said without saying how. "He was associated with the leadership of ExampleCorp" hides whether he was CEO, board member or consultant. Name the relationship the source gives; if the source does not say, keep the vague wording rather than inventing a role.
+**A6 Tell before show.** The text announces itself, its stakes or its structure before delivering anything.
 
-**§15 Shallow -ing riders** — *phrases.* `highlighting`, `underscoring`, `emphasizing`, `ensuring`, `reflecting`, `symbolizing`, `contributing to`, `cultivating`, `fostering`, `encompassing`, `showcasing`. An -ing phrase bolted onto a simple fact to sound deeper. The phrase pass isolates the rider from the fact it is attached to, which is where you see the join. Attaching it to a named source does not make it true. Keep the rider only when the source supports what it claims.
+- **A6a The roadmap.** *The last section named a method. This one states how I intend to carry it out.*
+- **A6b The promise of later.** *named here once, briefly, and developed later where the relations that produce them are traced.*
+- **A6c The stake-setting.** *it is worth being clear about what follows from this, because the opposite conclusion is common.*
+- **A6d The announced suspicion or importance.** *The rhetoric that surrounds this deserves suspicion.*
+- **A6e The self-description.** *the article's analysis defetishises, the purpose of the article is.*
+- **A6f The topic announcement.** *The image of AI is a particular version of this.*
+- **A6g The reaction told, not shown.** *which is a curious thing to read in an article about chatbots.* The reaction is reported as if it were a finding.
 
-**§16 Sales language** — *sentences.* `rich (figurative), profound, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, featuring, diverse array, breathtaking, must-visit, stunning`. The text reads like an advertisement.
+Test: delete the sentence. Does the next one still work? If it does, the sentence was a tell.
 
-**§17 Borrowed authority** — *sentences.* `experts argue`, `observers have cited`, `industry reports`, `some critics`, `several publications`, a list of outlets, `over N followers`. A name or an unnamed authority stands in for what was said. Use the real source or cut the claim. A missing citation alone is not a tell.
+> The last section named a method. This one states how I intend to carry it out, because a reader who has been told about defetishism should not then have to guess.
+> Delete the first two clauses and the paragraph is stronger. Car salesman showing the customer the car.
 
-**§18 Avoiding is, are, and has** — *sentences.* `serves as`, `stands as`, `functions as`, `operates as`, `marks`, `represents [a]`, `boasts`, `features`, `offers`, `maintains [a]`, `refers to`. Use the short verb.
-> Before: Gallery 825 serves as LAAA's exhibition space and boasts over 3,000 square feet.
-> After: Gallery 825 is LAAA's exhibition space and has 3,000 square feet.
+**A7 Reaction, elaboration and trope.** Not among the six families, but reported from the same pass and not to be dropped.
 
-## D. Formatting by rule
+- **A7a Reaction asserted.** *a curious thing, a remarkable shift, a striking result,* where the reaction is offered as the evidence.
+- **A7b Elaborating a question nobody asked.** *it is not simply the adversary.* The negative half answers an objection the text has not raised.
+- **A7c The contrast that inflates.** *not merely X but Y* where the X is not a view anyone holds. Keep it when the negative half corrects a belief the reader does hold, which is most of the time in this article, and cut it when it is only there to make the positive half sound bigger.
+- **A7d The narrative borrowed.** *the underdog, the race, the war,* standing in for a relation the article could state.
 
-**§19 Bold as decoration** — *counts, blocks.* Read `bold label openings` in the header first: it gives the number of blocks opening `**Label:**` out of the total. A majority means the document is a frame, not a list, and §27 applies too. Words bolded without a reason are the sentence-level case.
-> Before: - **User Experience:** The experience has been improved. - **Performance:** Performance has been enhanced.
-> After: The update improves the interface, speeds up load times and adds end-to-end encryption.
+## B. Surface
 
-**§20 Decorative headings** — *blocks.* Headings capitalising every main word; emojis or arrows as decoration; a horizontal rule between every block; a heading restating its own first block. Use sentence case and let the title stand once. Headings are not units in the report, so read them from the file.
+These cannot decide anything on their own. A generated passage passes all of them. They matter when a semantic check has already found the sentence thin and a surface habit confirms the diagnosis.
 
-**§21 Curly quotation marks** — *counts.* The `curly quotes` count is the whole check. A document that uses them everywhere and a document that uses them nowhere are each consistent; a document with one curly pair among straight ones is not. Most editors auto-curl, so this is a consistency check rather than a tell on its own.
+- **B1 One frame across blocks.** The same opening, field labels or closing clause in a run of blocks. Test: the first three words of each block. `bold label openings` in the report gives the count.
+- **B2 Repeated clause.** A span repeated verbatim where the second copy adds nothing. The 3-gram list is the only reliable way to see it.
+- **B3 The same claim three times.** A rule or definition stated in an overview, its own block, and again at the close.
+- **B4 Bold as decoration.** Bold with no reason, or a list giving every item a bold label and a colon.
+- **B5 Forced triads.** Three where the meaning has two or four.
+- **B6 Dashes as the universal join.** One per sentence stops reading as a choice. Match the author's rate rather than removing them.
+- **B7 Semicolon-joined imperatives.** A register rather than a sentence: 10 or more per thousand words marks agent-facing prose.
+- **B8 Repeated sentence openings.** Consecutive sentences starting the same way. The 3-gram list shows it.
+- **B9 Repeated block openings.** *The, The, The.* Legitimate as a rhythm and a tell as a habit.
+- **B10 Knowledge-limit hedging.** *as of publication, recent reports suggest, it is believed that.* State what the source does not show, or cut the sentence.
+- **B11 The heading restated by its first block.** Cut the block.
+- **B12 Writing about the document.** A legend, an order, a note about what was assembled. Keep a caveat that changes what the reader should do.
+- **B13 Hyphenation.** The compound keeping its hyphen after the noun. A *missing* hyphen is a copy fault, not this item.
 
-## E. Leftovers from the chat and the draft
+## C. Mechanical and provenance faults
 
-Remove outright; nothing here needs rewriting.
+Not voice. A reader trips on them whatever wrote the sentence, and they concentrate in files that have been edited, which is why a working draft carries more of them than a generated one. Report them under this heading and do not mix them into a voice score.
 
-**§22 Chatbot residue** — *sentences.* `I hope this helps`, `Of course!`, `Certainly!`, `Great question!`, `You're absolutely right`, `Would you like…`, `Want me to…?`, `Should I continue?`, `let me know`, `here is a…`. The most certain tell in this list and the easiest to miss when it wraps real content.
+- **C1 A figure stated two ways.** *hundreds of suppliers* and *tens of thousands of suppliers,* four sentences apart, with nothing saying they count different tiers.
+- **C2 A footnote carrying two unrelated figures.**
+- **C3 Footnote anchors out of sequence.** The number is supposed to be the order.
+- **C4 A locator pointing at the wrong source.**
+- **C5 Two names for one thing.** *the Democratic Republic of the Congo* and *the Democratic Republic of Congo* in one file.
+- **C6 A key term reversing its word order.** *waste data* and *data waste.*
+- **C7 A subject that cannot do its verb in a factual sentence.** A similarity cannot equate things.
+- **C8 A number with no period attached,** so the ratio the sentence exists to establish cannot be checked.
+- **C9 An unanchored referent at a pivot,** where the reader cannot tell which of two things just mentioned is meant.
+- **C10 A broken contraction or agreement,** the result of a bad edit: *is n't* for *isn't*, *All of these chains are the necessary condition* for four chains.
 
-**§23 Knowledge-limit disclaimers and guesses** — *sentences.* `as of [date]`, `up to my last training update`, `while specific details are limited`, `based on available information`, `not publicly available`, `in the provided sources`, `it is believed that`, `likely [grew up, studied]`. The text mentions where knowledge ends, or admits it found no source and fills the gap. State what the source does not show, or cut the sentence.
+## What to keep
 
-**§24 A heading repeated in the first block** — *blocks.* A heading followed by a one-line block restating it before the real content begins. The report's block list shows the heading and the block that follows it, so read them as a pair.
+A checklist that removes every tell removes the writer. These are load-bearing and no item above touches them:
 
-**§25 Writing about the document instead of its subject** — *blocks.* `was added to replace`; `generated from`; `compiled from`; `anything unconfirmed is flagged rather than guessed`; `the table below compares`; `this section is organized by owner`; a legend of an order the reader can already see. Keep a source credit the reader can follow and a caveat that changes what the reader should do. State a convention once, and only when the reader cannot infer it.
-
-## F. Writing for the wrong reader
-
-**§26 Re-explaining what the reader knows** — *sentences, blocks.* A reply that restates the problem, walks through the diagnosis and lays out the evidence before reaching the decision; background the reader already supplied; the answer in the last block. Each sentence reads fine alone, so this survives sentence-level cleanup. Lead with the decision.
-
-## G. Document scale
-
-The items above are sentence and block scale. These apply to the whole file, and they are the ones that catch a document built on a template. Count before you judge: a pattern in three blocks of eighty is a document-scale tell, a pattern in one is a sentence.
-
-**§27 One frame repeated across blocks** — *blocks, whole document.* The same opening, the same field labels, or the same closing clause in a run of blocks. Test: read only the first three words of each block in the `## Blocks` section. If they form a pattern, the document is a template. `bold label openings` in the header gives the count that starts the test.
-> Before: **Target:** … **Existing owners:** … **Section:** … **Evidence state:** … **What remains:** … (repeated for every entry)
-> After: Vary what each entry leads with, or drop the labels where the section heading already carries them.
-
-**§28 A stamp that carries no information** — *3-grams.* A clause repeated verbatim across blocks that is true of all of them and informative of none. "absent from the author's list of eight" on every entry of a list the reader can see. The 3-gram section lists it with every line it appears on; delete the stamp and it survives on none of them individually.
-
-**§29 Identical list-item shape** — *counts.* Every item the same length, or the same count of clauses. The report gives a word count per block: sort them and look at the spread. Items within a word or two of each other are one shape, not a list.
-
-**§30 A contradiction between two blocks** — *whole document.* A number or a range stated differently in two places. This is a defect whatever the voice, so check every number twice: once where it is used, once against the block that defines it. `## 3-grams` catches a figure restated identically; it cannot catch one restated differently, which is why this check needs a whole read.
-
-**§31 The same rule stated three times** — *3-grams.* Stated in the overview, restated in the block that owns it, and restated again in a list of files. Pass every related file in one invocation; the 3-gram list is computed across all of them, and it is the only way to see this.
-
-## When not to act
-
-Keep the details that carry the writer's voice unless they hurt the meaning:
-
-- a specific, unusual detail: a real address, an odd quote, a named person with a role
-- mixed feelings and unresolved tension: "I think this is mostly good, but it bothers me"
-- dated, era-bound references: slang, memes, in-jokes that map to a year
+- a specific, unusual detail: a real address, an odd figure, a named person with a role
+- a number with its period, its source and its date
+- mixed feelings left unresolved
 - a first-person choice the writer can explain
 - a genuine aside, parenthetical or self-correction
+- an era-bound reference: a meme, a dated phrase
+- a question the writer has not answered yet
 
-Text written before November 2022 is not AI-written, and a document that predates the model it describes may use its patterns on purpose.
+## How to use this
+
+Read the document once before the script runs, so the first reading is not the report's. Then walk the report: the `## Sentences` section for Part A, the blocks and 3-grams for Part B, and one whole read for Part C.
+
+Report Part A findings first and separately from Part C. A document can have no voice tells and several content defects, and reporting them as one number hides the fact that the prose is fine.
 
 ## Source
 
-§1–§26 are adapted from [blader/humanizer](https://github.com/blader/humanizer) (MIT), which derives them from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) maintained by WikiProject AI Cleanup. §27–§31 were added for this project after a blind evaluation panel found that sentence-level checks do not catch a document built on a template.
+A1 to A7 were derived from the author's own classification of passages in this repository, blind to which were generated. A1, A2, A3, A6 and A7b come from the six families the author named: vague referent, metaphorical, subject/verb mismatch, opened and closed, grandiose marketing, tell before show. B and C adapt checks from [blader/humanizer](https://github.com/blader/humanizer) (MIT), which derives from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), kept because formatting can tip a scale it cannot decide. A blind panel of eight evaluators, given the earlier 31-item version, rated generated passages cleaner than the author's own drafts: 4.3 tells per thousand words against 6.1. It was measuring editing residue, which is what a machine-written passage has none of.
