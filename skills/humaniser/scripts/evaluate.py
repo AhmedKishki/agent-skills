@@ -27,6 +27,7 @@ FENCE = re.compile(r"^\s*(```|~~~)")
 HEADING = re.compile(r"^(#{1,6})\s+(.*)$")
 TABLE_ROW = re.compile(r"^\s*\|")
 LIST_ITEM = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
+FOOTNOTE = re.compile(r"^\[\^\d+\]:\s")
 
 # Do not split after an abbreviation, an initial, or a lowercase letter.
 ABBREV = (r"(?<!\be\.g)(?<!\bi\.e)(?<!\betc)(?<!\bcf)(?<!\bvs)(?<!\bpp)"
@@ -81,6 +82,11 @@ def parse(path: Path):
             flush()
             level = len(head.group(1))
             headings = headings[:level - 1] + [head.group(2).strip()]
+            continue
+        if FOOTNOTE.match(line):
+            flush()
+            start = i
+            current.append(line.strip())
             continue
         if LIST_ITEM.match(line):
             flush()
