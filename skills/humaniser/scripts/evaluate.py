@@ -32,7 +32,8 @@ FOOTNOTE = re.compile(r"^\[\^\d+\]:\s")
 # Do not split after an abbreviation, an initial, or a lowercase letter.
 ABBREV = (r"(?<!\be\.g)(?<!\bi\.e)(?<!\betc)(?<!\bcf)(?<!\bvs)(?<!\bpp)"
           r"(?<!\bno)(?<!\bFig)(?<!\bal)(?<!\bDr)(?<!\bMs)(?<!\bst)")
-SENTENCE_END = re.compile(ABBREV + r"(?<=[.!?])[\"')\]]*\s+(?=[A-Z“‘(\[*])")
+SENTENCE_END = re.compile(ABBREV + r"(?<=[.!?])[\"')\]]*\s+(?=[A-Z“‘(\[*])"
+                         r"|(?<=\])\s+(?=[A-Z“‘])")
 PHRASE_SPLIT = re.compile(
     r",\s+|\s*;\s+|\s*:\s+|\s+[—–]\s+|\s+[—–]\s*|\s+—\s*"
     r"|\s+(?:and|but|or|which|that|because|while|where|so|yet)\s+")
@@ -151,11 +152,17 @@ def report(paths, level, lines, out, limit):
         return 0
 
     units = 0
-    lens = [words(s) for _, _, text in blocks for s in sentences(text)]
+    # A citation is not prose. Footnote entries are listed so a finding can cite
+    # one, but they are kept out of every statistic below.
+    prose = [b for b in blocks if not FOOTNOTE.match(b[2])]
+    notes = [b for b in blocks if FOOTNOTE.match(b[2])]
+    lens = [words(s) for _, _, text in prose for s in sentences(text)]
     out.write("# Context report\n\n")
     out.write(f"files: {', '.join(str(p) for p in paths)}\n\n")
-    out.write(f"blocks {len(blocks)} · sentences {len(lens)} · words "
-              f"{sum(lens)} · sentences/block {len(lens) / len(blocks):.1f}\n\n")
+    out.write(f"prose blocks {len(prose)} · sentences {len(lens)} · words "
+              f"{sum(lens)} · sentences/block "
+              f"{len(lens) / len(prose) if prose else 0:.1f}"
+              + (f" · footnote entries excluded {len(notes)}\n\n" if notes else "\n\n"))
     if lens:
         mean = sum(lens) / len(lens)
         var = (sum((n - mean) ** 2 for n in lens) / len(lens)) ** 0.5
@@ -163,15 +170,15 @@ def report(paths, level, lines, out, limit):
                   f"{sorted(lens)[len(lens) // 2]} · max {max(lens)} · "
                   f"mean {mean:.1f} · sd {var:.1f} · cv {var / mean:.2f}\n\n")
 
-    body = " ".join(t for _, _, t in blocks)
-    labels = sum(1 for _, _, t in blocks if re.match(r"\*\*[^*]{1,60}[:.]\*\*", t))
+    body = " ".join(t for _, _, t in prose)
+    labels = sum(1 for _, _, t in prose if re.match(r"\*\*[^*]{1,60}[:.]\*\*", t))
     nw = len(body.split()) or 1
     out.write("surface counts per 1000 words: "
               + " · ".join(
                   f"{name} {len(rx.findall(body)) / nw * 1000:.1f}"
                   for name, rx in (("semicolons", SEMI), ("em-dashes", DASH),
                                    ("parentheses", PAREN), ("questions", QUES)))
-              + f"\nbold label openings: {labels} of {len(blocks)} blocks · "
+              + f"\nbold label openings: {labels} of {len(prose)} prose blocks · "
               + f"curly quotes: {len(CURLY.findall(body))}\n\n")
 
     rep = repeats([(ln, tx) for _, ln, tx in blocks])

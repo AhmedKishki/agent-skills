@@ -21,7 +21,7 @@ The report has four sections, in this order, and the checklist's pass index walk
 
 **`## Phrases`** — each phrase with its neighbouring phrases, its sentence, the surrounding sentences, and its block. Emitted only at `--level phrase` or `--level all`; narrow it with `--lines` because it is the widest pass.
 
-The script segments and counts. It classifies nothing, scores nothing, and holds no thresholds. It skips front matter, fenced code, tables and footnote entries, because a reference is not prose and a citation is not a sentence. Headings are not units, so §20 and §24 need the file itself.
+The script segments and counts. It classifies nothing, scores nothing, and holds no thresholds. Footnote entries are listed as blocks so a finding can cite one, but they are excluded from every statistic: a citation is not prose. Headings are not units, so §20 and §24 need the file itself.
 
 Pass several files in one run: the 3-gram list is computed across all of them, and that is the only way §31 becomes visible.
 
