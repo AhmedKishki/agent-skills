@@ -45,15 +45,13 @@ Out: approved wording, quotations, source excerpts, and the article's own prose,
 python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
 ```
 
-The report prints every block, sentence and phrase with the units around it: a phrase with its neighbouring phrases, its sentence and the surrounding sentences and blocks; a sentence with the phrases beside it and its block; a block with the blocks before and after it. A tell is judged in the window it sits in, not from a string in isolation.
+The script segments the document and prints the counts, then the repeated 3-grams, then every block, sentence and phrase with the units around it. A tell is judged in the window it sits in, not from a string in isolation.
 
-Pass several files in one invocation. The repeated 3-gram list is computed across all of them, and it is the only way to see a rule restated in three places.
+Walk the report in the order [the checklist's pass index](references/checklist.md) gives, because the report is built to be walked: counts, then blocks, then sentences, then phrases narrowed to the blocks that flagged, then the 3-gram list, then one whole read. Each check says which part of the report it consumes, so the two files are meant to be used together.
 
-Then work the checklist in order, strongest first. For each finding give the item number, the location, a quotation, and what the pattern does to the reader.
+Pass every related file in one invocation. The 3-gram list is computed across all of them, and it is the only way to see a rule restated in three places.
 
-Read the whole document once before deciding anything. §27 to §31 are document-scale, and a frame repeated across eighty blocks cannot be seen from inside one of them.
-
-Order findings by consequence. A contradiction between two blocks outranks a one-line closer: one is a defect in the content, the other in the surface.
+For each finding give the item number, the location, a quotation, and what the pattern does to the reader. Order findings by consequence: a contradiction between two blocks outranks a one-line closer, because one is a defect in the content and the other in the surface.
 
 ## Part 2 — Humanise
 

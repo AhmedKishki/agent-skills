@@ -43,6 +43,7 @@ SEMI = re.compile(r";")
 DASH = re.compile(r"—")
 PAREN = re.compile(r"\([^)]*\)")
 QUES = re.compile(r"\?")
+CURLY = re.compile(r"[“”]")
 
 
 
@@ -163,13 +164,15 @@ def report(paths, level, lines, out, limit):
                   f"mean {mean:.1f} · sd {var:.1f} · cv {var / mean:.2f}\n\n")
 
     body = " ".join(t for _, _, t in blocks)
+    labels = sum(1 for _, _, t in blocks if re.match(r"\*\*[^*]{1,60}[:.]\*\*", t))
     nw = len(body.split()) or 1
     out.write("surface counts per 1000 words: "
               + " · ".join(
                   f"{name} {len(rx.findall(body)) / nw * 1000:.1f}"
                   for name, rx in (("semicolons", SEMI), ("em-dashes", DASH),
                                    ("parentheses", PAREN), ("questions", QUES)))
-              + "\n\n")
+              + f"\nbold label openings: {labels} of {len(blocks)} blocks · "
+              + f"curly quotes: {len(CURLY.findall(body))}\n\n")
 
     rep = repeats([(ln, tx) for _, ln, tx in blocks])
     if rep:
@@ -179,7 +182,7 @@ def report(paths, level, lines, out, limit):
         out.write("\n")
 
     if level in ("all", "paragraph"):
-        out.write("## Paragraphs\n")
+        out.write("## Blocks\n")
         for i, (ident, line, text) in enumerate(blocks):
             units += 1
             emit(out, f"P{i:03}", ident, text,
