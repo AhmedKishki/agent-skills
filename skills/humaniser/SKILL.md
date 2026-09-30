@@ -11,7 +11,7 @@ description: >-
 
 # Humaniser
 
-Documentation is read by people, so every sentence has to carry weight. This skill finds the sentences that do not, then proposes replacements. It judges nothing by itself: the script reports what is in the text, and you apply the standards below.
+Documentation is read by people, so every sentence has to carry weight. This skill finds the sentences that do not, then proposes replacements. It judges nothing by itself: the script reports what is in the text, and the standards below decide.
 
 ## Scope
 
@@ -22,12 +22,12 @@ Out: approved wording, quotations, source excerpts, and the article's own prose.
 ## Standards
 
 1. **Every word earns its place.** Delete any word whose removal changes no meaning. Test: cut the phrase, read the sentence, and see whether it still says the same thing.
-2. **Every sentence carries a claim and its support.** A claim on its own goes, or gains the figure, path, example or named source that backs it. The report's `no-support?` flag marks where to look first.
-3. **Short sentences only when they carry a thesis.** Chopping a sentence in half for rhythm reads as machine prose. Test: join it to its neighbour and see whether the point survives.
+2. **Every sentence carries a claim and its support.** A claim on its own goes, or gains the figure, path, example or named source that backs it.
+3. **Short sentences only when they carry a thesis.** A sentence cut in half for rhythm says less than the whole. Test: join it to its neighbour; if the point survives, it was one sentence too many.
 4. **Show the concrete case.** A critique without a named file, paragraph or example is an assertion. Test: can the reader check the claim without taking your word for it?
 5. **No contrast nobody asked for.** "Not just X but Y" is for displacing a view the reader actually holds. If X never appears in the document, cut it.
-6. **No repetition at any level** — word, phrase, sentence, paragraph, file. The report's 3-gram list covers the files you passed together, which is how you find a rule stated in three places.
-7. **No promotional or inflated wording.** Words like crucial, robust, landscape and leverage raise the volume without adding content. The report lists the hits.
+6. **No repetition at any level** — word, phrase, sentence, paragraph, file. The report's repeat list spans every file you pass it, which is how one rule restated in three places shows up.
+7. **No promotional or inflated wording.** Words like crucial, robust, landscape and leverage raise the volume without adding content. Cut them and say what the sentence means without them.
 8. **No hedging and no signposting.** Delete "it is important to note", "in this section", "we will now". A sentence that announces what it is about to do says nothing.
 9. **No unnecessary modifiers.** Cut the adverb that restates the verb and the adjective that restates the noun.
 10. **Regular structure reads as machine prose.** Do not imitate a human. Vary structure where the meaning varies and leave it alone where it does not.
@@ -36,13 +36,13 @@ Report the writing problems as writing problems. Never claim or imply who wrote 
 
 ## Part 1 — Evaluate
 
-The script segments markdown into paragraphs, sentences and phrases, then prints each unit with its neighbours:
+The script segments markdown and prints each unit with the units around it:
 
-- a phrase with the phrases, sentences and paragraphs around it
-- a sentence with its phrases and its paragraph
-- a paragraph with the paragraphs beside it
+- a phrase with its neighbouring phrases, its sentence and the sentences and paragraphs around that sentence
+- a sentence with the phrases beside it and the block it sits in
+- a block with the blocks before and after it
 
-It also prints facts about the text: word counts, repeated 3-grams, hedge and contrast hits, and whether a sentence contains a figure, path, footnote or named source.
+It classifies nothing and scores nothing. It reports the word count of each unit, the sentence-length distribution, and every three-word span occurring in more than one block, because those are tedious to check by eye. Whether a unit is bloated, hedged, unsupported or inflated is your judgement, made by the standards above with the unit's context in front of you.
 
 ```bash
 python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
@@ -60,17 +60,12 @@ python3 scripts/evaluate.py AGENTS.md plan.md --out /tmp/evaluate.md   # cross-f
 Work in this order:
 
 1. Run the sentence pass over the whole file, or over several files when checking for a rule repeated across them.
-2. Read the report and judge each unit against the standards, in the context the report gives. The facts are cues, and each one has a known way of being wrong:
-
-   - `no-verb?` misses imperatives and table cells
-   - `no-support?` fires on a sentence whose support is the sentence before it
-   - a document that names a banned word in order to ban it matches on that word
-
+2. Read every unit in the context the report gives it, then apply the standards. The script has already done the reading you would otherwise do by eye; what it cannot do is decide whether a claim is supported or a sentence is padded.
 3. Name the rule each finding breaks and what would change. Quote the unit.
-4. Order findings by consequence. A rule stated in three files outranks a sentence of forty words.
+4. Order findings by consequence. A rule restated across three files outranks a sentence of forty words.
 5. Run the phrase pass only where the sentence pass found something, using `--lines`.
 
-The lexicon for hedges, contrasts and verb cues lives at the top of `scripts/evaluate.py`. Edit it there; do not copy it into a report or a document.
+Sentence boundaries are punctuation, so an abbreviation, a path or a numbered list can be cut in the wrong place. When a unit looks truncated, read the paragraph it came from before judging it. That is the segmentation's one known weakness, and the report prints the block precisely so you can check it.
 
 ## Part 2 — Humanise
 

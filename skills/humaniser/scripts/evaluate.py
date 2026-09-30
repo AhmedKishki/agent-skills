@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Segment markdown into paragraphs, sentences and phrases; report each unit with nested context and mechanical facts.
+"""Segment markdown into paragraphs, sentences and phrases; print each unit with its context window.
 
     evaluate.py FILE [FILE ...] [--level all|sentence|phrase|paragraph]
                   [--lines 40-60,120-140] [--out REPORT.md] [--max-chars N]
 
-A "phrase" here is a comma, colon, dash or conjunction delimited span inside one
-sentence, which is the span that carries slop. Facts are properties of the text
-(word counts, repeats, presence of a digit, path or named source), never verdicts:
-the agent applies the guidelines. Verb and support detection are cues and can be
-wrong. Skips front matter, fenced code, tables and link definitions; carries the
-heading path on every unit.
+Segmentation only. The script cuts the text into units, counts tokens and
+prints the units around each one, so an agent can read a sentence next to its
+phrases and its paragraph and decide what the guidelines say about it. It
+classifies nothing: no word list, no claim detection, no score, no threshold.
+Word counts and repeated 3-grams are arithmetic on tokens, reported because
+they are tedious to check by eye, not because they are faults.
+
+Front matter, fenced code, tables and link definitions are skipped. Every unit
+carries its file, line and paragraph position.
 
 Standard library only.
 """
@@ -18,7 +21,6 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-from collections import Counter
 from pathlib import Path
 
 FENCE = re.compile(r"^\s*(```|~~~)")
@@ -34,56 +36,17 @@ PHRASE_SPLIT = re.compile(
     r",\s+|\s*;\s+|\s*:\s+|\s+[—–]\s+|\s+[—–]\s*|\s+—\s*"
     r"|\s+(?:and|but|or|which|that|because|while|where|so|yet)\s+")
 
-SUPPORT = re.compile(
-    r"\d"                                        # any figure
-    r"|`[^`]+`"                                  # code span: path, id, flag
-    r"|\[\^\d+\]"                                # footnote marker
-    r"|https?://"
-    r"|\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b")     # multi-word proper noun
 
-VERB_CUE = re.compile(
-    r"\b(?:is|are|was|were|be|been|being|has|have|had|do|does|did|"
-    r"makes?|made|takes?|took|carries|carried|gives?|gave|holds?|held|"
-    r"comes?|came|means?|meant|requires?|required|produces?|produced|"
-    r"creates?|created|reports?|reported|states?|stated|remains?|"
-    r"shows?|showed|records?|recorded|adds?|added|contains?|contained|"
-    r"includes?|included|needs?|must|should|would|will|can)\b", re.I)
-
-CONTRAST = re.compile(
-    r"\bnot (?:just|only|merely|simply)\b|\brather than\b|\binstead of\b"
-    r"|\bnot\b[^.]{0,60}\bbut\b", re.I)
-
-HEDGE = [
-    "it is important to note", "it should be noted", "it is worth noting",
-    "in order to", "the fact that", "it is clear that", "clearly",
-    "obviously", "essentially", "basically", "actually", "simply", "just",
-    "arguably", "somewhat", "very", "really", "quite", "typically",
-    "generally", "usually", "in many cases", "a range of", "a variety of",
-    "various", "numerous", "the way in which", "plays a", "plays an",
-    "key", "crucial", "vital", "pivotal", "seamless", "robust",
-    "comprehensive", "holistic", "nuanced", "landscape", "realm",
-    "testament", "leverage", "utilise", "utilize", "facilitate", "foster",
-    "showcase", "underscore", "delve", "multifaceted", "paradigm",
-    "in this section", "this section", "let us", "we will", "we now",
-    "as discussed", "as noted", "the following", "that said", "in practice",
-    "in principle", "to be clear", "as such", "in addition", "furthermore",
-    "moreover", "therefore", "thus", "hence", "overall", "ultimately",
-]
-
-
-HEDGE_RE = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(h) for h in HEDGE) + r")(?!\w)", re.I)
-LABEL = re.compile(r"^\*\*[^*]{1,40}:\*\*")
 
 
 def parse(path: Path):
-    """Return (heading_path, blocks). Each block is (line_no, text) of prose."""
-    text = path.read_text(encoding="utf-8")
-    if text.startswith("---\n"):
-        end = text.find("\n---\n", 4)
-        if end != -1:
-            text = text[end + 5:]
-    headings, blocks, current, start = [], [], [], None
-    fence = False
+    """Return (heading_path, blocks). Each block is (line_no, text) of prose.
+
+    Line numbers stay true to the file, so skipping front matter must not
+    renumber: front matter and fences are dropped by flag, never by slicing.
+    """
+    blocks, headings, current, start = [], [], [], None
+    fence = front = False
 
     def flush():
         nonlocal current, start
@@ -91,7 +54,13 @@ def parse(path: Path):
             blocks.append((start, " ".join(current).strip()))
         current, start = [], None
 
-    for i, line in enumerate(text.splitlines(), 1):
+    for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if i == 1 and line.strip() == "---":
+            front = True
+            continue
+        if front:
+            front = line.strip() != "---"
+            continue
         if FENCE.match(line):
             flush()
             fence = not fence
@@ -131,18 +100,14 @@ def words(text: str) -> int:
     return len(text.split())
 
 
-def hedges(text: str):
-    return sorted({m.group(0).lower() for m in HEDGE_RE.finditer(text)})
-
-
 def repeats(blocks):
-    """3-grams appearing in more than one block, with their locations."""
+    """3-grams occurring in more than one block, with their locations."""
     seen = {}
     for line, text in blocks:
-        for n in (text.split() for _ in (0,)):
-            for i in range(len(n) - 2):
-                g = " ".join(w.lower().strip(".,;:") for w in n[i:i + 3])
-                seen.setdefault(g, set()).add(line)
+        n = text.split()
+        for i in range(len(n) - 2):
+            g = " ".join(w.lower().strip(".,;:") for w in n[i:i + 3])
+            seen.setdefault(g, set()).add(line)
     return {g: sorted(ls) for g, ls in seen.items() if len(ls) > 1}
 
 
@@ -171,26 +136,20 @@ def report(paths, level, lines, out, limit):
         return 0
 
     units = 0
-    lens = []
-    for ident, _, text in blocks:
-        for s in sentences(text):
-            lens.append(words(s))
-    out.write("# Evaluate report\n\n")
+    lens = [words(s) for _, _, text in blocks for s in sentences(text)]
+    out.write("# Context report\n\n")
     out.write(f"files: {', '.join(str(p) for p in paths)}\n\n")
-    out.write(f"paragraphs {len(blocks)} · sentences {len(lens)} · "
-              f"words {sum(lens)} · sentences/para "
-              f"{len(lens) / len(blocks):.1f}\n\n")
+    out.write(f"blocks {len(blocks)} · sentences {len(lens)} · words "
+              f"{sum(lens)} · sentences/block {len(lens) / len(blocks):.1f}\n\n")
     if lens:
-        over = [n for n in lens if n > 30]
-        out.write(f"sentence words: min {min(lens)} median "
-                  f"{sorted(lens)[len(lens) // 2]} max {max(lens)} · "
-                  f"over 30 words: {len(over)}\n\n")
+        out.write(f"sentence words: min {min(lens)} · median "
+                  f"{sorted(lens)[len(lens) // 2]} · max {max(lens)}\n\n")
 
     rep = repeats([(ln, tx) for _, ln, tx in blocks])
     if rep:
-        out.write("## Repeated 3-grams across the range\n\n")
+        out.write("## 3-grams occurring in more than one block\n\n")
         for g, where in sorted(rep.items(), key=lambda kv: -len(kv[1])):
-            out.write(f"- `{g}` — {', '.join(str(w) for w in where)}\n")
+            out.write(f"- `{g}` — lines {', '.join(str(w) for w in where)}\n")
         out.write("\n")
 
     if level in ("all", "paragraph"):
@@ -209,15 +168,8 @@ def report(paths, level, lines, out, limit):
             sents = sentences(text)
             for j, s in enumerate(sents):
                 units += 1
-                f = [f"{words(s)} words"]
-                f.append("verb" if VERB_CUE.search(s) else "no-verb?")
-                f.append("support" if SUPPORT.search(s) else "no-support?")
-                h = hedges(s)
-                if h:
-                    f.append("hedge: " + ", ".join(h))
-                if CONTRAST.search(s):
-                    f.append("contrast")
-                emit(out, f"S{i:03}.{j}", f"{ident} ¶{j + 1}", s, " · ".join(f),
+                emit(out, f"S{i:03}.{j}", f"{ident} sentence {j + 1}", s,
+                     f"{words(s)} words",
                      [("prev phrase", phrases(sents[j - 1])[-1] if j else ""),
                       ("next phrase", phrases(sents[j + 1])[0] if j + 1 < len(sents) else ""),
                       ("prev sentence", sents[j - 1] if j else ""),
@@ -234,14 +186,9 @@ def report(paths, level, lines, out, limit):
                 ph = phrases(s)
                 for k, p in enumerate(ph):
                     units += 1
-                    f = [f"{words(p)} words"]
-                    h = hedges(p)
-                    if h:
-                        f.append("hedge: " + ", ".join(h))
-                    if CONTRAST.search(p):
-                        f.append("contrast")
                     emit(out, f"F{i:03}.{j}.{k}",
-                         f"{ident} ¶{j + 1} phrase {k + 1}", p, " · ".join(f),
+                         f"{ident} sentence {j + 1} phrase {k + 1}", p,
+                         f"{words(p)} words",
                          [("prev phrase", ph[k - 1] if k else ""),
                           ("next phrase", ph[k + 1] if k + 1 < len(ph) else ""),
                           ("sentence", s),
