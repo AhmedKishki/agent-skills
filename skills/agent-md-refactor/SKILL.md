@@ -42,6 +42,30 @@ description: Refactor agent-generated markdown of any kind — instruction files
   - A file does not announce that it is powerful, complete or the best available.
   - Where a limit exists, the file states the limit rather than the claim.
 
+## Sections
+
+- Divide the file into sections, and each section into subsections, wherever the entries fall into groups.
+  - A flat list of entries that differ in kind needs sections before it needs bullets.
+- Write each heading as a noun phrase or a question that describes what the section holds.
+  - A reader who reads only the headings should learn the file's structure.
+- Keep a heading honest. A heading promises what its section delivers.
+  - Do not write "Overview" or "General" when the section holds specific rules.
+  - Do not write "Next steps" when the section holds a decision record.
+- Order the sections so the file reads in the order a reader needs it.
+  - Put the purpose and the rules first, the detail last.
+- Do not invent a section that holds one bullet. Promote it to a bullet of its parent.
+- Grep the repository before renaming a heading. Another file may cite its anchor.
+
+## Consolidation across files
+
+- A rule that two files state belongs to the file that owns it.
+  - Keep the fullest statement in the owner.
+  - Replace every other statement with a link to the owner.
+- Consolidate the entries that repeat a value or a list.
+  - Define an item once, then refer to it by its identifier.
+- Keep a pointer where the reader needs the rule in context and the owner sits far away.
+- Report every consolidation with the files it touched.
+
 ## Bullets
 
 - No paragraphs. Every statement is a bullet, a table row, or a heading.
@@ -98,7 +122,10 @@ description: Refactor agent-generated markdown of any kind — instruction files
 ## Phase 3 — Structural pass
 
 - Make every statement a bullet, table row, or heading.
+- Divide the file into sections wherever the entries fall into groups.
+- Write each heading as a phrase that describes what its section holds.
 - Split a long bullet. Nest the parts under the claim they share.
+- Consolidate any rule that two files state into the file that owns it.
 - Cut every line the purpose test rejects.
 - Report every cut before making it. Never delete silently.
 
@@ -174,6 +201,9 @@ description: Refactor agent-generated markdown of any kind — instruction files
 | Optimising a line-count target | Judge by what the reader needs |
 | A paragraph where a bullet would do | One bullet, one contribution |
 | A bullet carrying two claims | Split and nest |
+| A flat list of entries that differ in kind | Divide the list into sections |
+| A heading that promises what the section does not hold | Write the heading the section earns |
+| The same rule stated in two files | Keep the owner, link the other file |
 | A flat list of unrelated items | Nest the items under the claim they share |
 | The same rule at two scopes | State it once at the widest scope |
 | Restating a project-wide rule | Link the authoritative owner |
@@ -197,6 +227,8 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - [ ] Each repeated rule is stated once
 - [ ] No file restates a project-wide rule, and no line states no live condition
 - [ ] Each kind of information has one owner; no file holds what serves another file
+- [ ] Each file is divided into sections whose headings describe their contents
+- [ ] Every repeated rule across the repository is consolidated into its owner
 - [ ] Every standing rule states how it handles its own exceptions
 - [ ] Every cut appears in the report
 - [ ] Every content unit is re-checked, and the counts and percentage are reported
