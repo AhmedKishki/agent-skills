@@ -10,9 +10,9 @@ description: Refactor agent-generated markdown of any kind — instruction files
 ## Purpose
 
 - State the file's purpose in one sentence.
-  - Write it into the frontmatter `description` if it does not state it there.
+  - Write the purpose into the frontmatter `description` when the file does not state it there.
 - Keep a line only if it serves that purpose.
-  - A line serving none is cut, not trimmed.
+  - Cut a line that serves no purpose. Do not trim it and keep it.
 - If the purpose is unclear or wrong, ask. Do not invent one.
 - The purpose governs every later decision in this skill. Nothing is kept against it.
 
@@ -21,10 +21,26 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - Short sentences, plain words, one claim each.
 - A bullet beats a sentence that only asserts a fact.
 - A table beats bullets when rows share one shape.
-- Nest headers and bullets only as deep as the content needs.
-- Cut hedging, throat-clearing, restatement, and any sentence repeating what the reader just read.
+- Nest a header or bullet only as deep as the content requires.
 - Cut adjectives and intensifiers that carry no argument.
 - Keep the author's voice and wording. Change structure and length, not tone.
+
+## Sentences
+
+- Write every bullet as a sentence that stands on its own. The parent bullet supplies the context.
+- Every sentence names its subject, verb and object. Never leave the actor unnamed.
+- Name the actor instead of "this", "it", "they" or "the above" when the referent is not the subject's own parent.
+  - A pronoun pointing at the parent bullet is clear. A pronoun pointing across the file is not.
+- Use the active voice. A sentence beginning "It should be" or "Can be" names no actor.
+- Cut announcements, throat-clearing and hedges.
+  - Cut "Note that", "It is important to", "It should be noted", "This is key".
+  - Cut "may", "might", "could" where the rule is unconditional. Keep them where the uncertainty is real.
+- Describe rather than sell. A markdown explains what the file does. A markdown does not persuade.
+  - Cut "powerful", "robust", "seamless", "comprehensive", "effortless", "delightful", "game-changing".
+  - Cut "we" and "our". Name the actor or the file.
+- Stay humble. A file explains its own behaviour and states its own limits.
+  - A file does not announce that it is powerful, complete or the best available.
+  - Where a limit exists, the file states the limit rather than the claim.
 
 ## Bullets
 
@@ -32,30 +48,30 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - One bullet makes one contribution.
   - If it carries a second, split it and nest the second under it.
   - Split any bullet long enough to hide two claims.
-- Every bullet nests under a parent stating the claim they share.
+- Nest every bullet under a parent that states the claim they share.
   - A flat list of unrelated items is a set of sections, not a list.
 - Four levels is the working limit. Past that, use a table or a subheading.
-- Consolidate repetition to one statement.
-- Say the thing in the fewest tokens that stays unambiguous.
+- State a repeated rule once, at its widest scope.
+- Use the fewest words that keep the meaning unambiguous.
 
 ## State
 
 - A markdown file holds current, operative decisions only.
-  - History belongs to Git.
+  - Git holds the history.
 
 - Delete dates, times, "as discussed on", decision logs, superseded versions, completed task lists, and abandoned alternatives.
 - Keep a decision while it is in force, and state it as though it were always so.
   - Record both constraints when both are live; the one that is live when the other has lapsed.
   - Record the rule, not the moment it was agreed.
 - Exception: content and evidence files, where the record is the content — drafts, material, source maps.
-  - Cut nothing there; only tighten.
+  - Cut nothing there. Tighten the wording only.
 - Exception: files whose stated purpose is the record itself — a changelog, a session log.
-  - Prune to live state; never split.
+  - Prune to the live state. Never split the file.
 
 ## Additions and removals
 
-- Additions are conservative. Every added line must be load-bearing; the default answer is cut.
-- Removals are encouraged when something is superseded, duplicated, or owned elsewhere.
+- Add a line only when the file cannot do its job without it. Cut by default.
+- Cut a line when the content is superseded, duplicated or owned elsewhere.
 
 ## Phase 1 — Type
 
@@ -63,62 +79,62 @@ description: Refactor agent-generated markdown of any kind — instruction files
 
 | Type | Remedy |
 |---|---|
-| Instruction or context file — `AGENTS.md`, `CLAUDE.md`, `.cursorrules` | Merge duplicate rules. Extract reference only if nothing cites the file by name |
-| Skill — `SKILL.md` with `references/` | Body stays procedural, deep reference moves to linked files, README stays short |
-| Plan or spec | Usually leave whole. Split only a section with independent coherence |
+| Instruction or context file — `AGENTS.md`, `CLAUDE.md`, `.cursorrules` | Merge the duplicate rules. Move reference material out only when nothing cites the file by name |
+| Skill — `SKILL.md` with `references/` | Keep the body procedural, move the deep reference into linked files, keep the README short |
+| Plan or spec | Leave the file whole in most cases. Split a section only when it stands on its own |
 | Progress or handoff log | Do not split. Prune to live state |
-| Content or evidence — draft, material, source map | Leave structure alone. Duplication is a content question |
-| Reference or appendix | Dedupe. Keep one owner, link to it |
+| Content or evidence — draft, material, source map | Leave the structure alone. Treat duplication as a content question |
+| Reference or appendix | Remove the duplication, keep one owner, and link to that owner |
 
-- Splitting is a last resort. Consolidating in place, and leaving a file alone, are both correct answers.
+- Treat splitting as a last resort. Consolidating in place and leaving a file alone both give a correct result.
 - Search the repository for citations of the filename before moving anything.
 
 ## Phase 2 — Contradictions
 
 - Find rules that conflict before restructuring.
-- Report each conflict as a question. Never pick a winner.
-- Re-read the surrounding sections first; an apparent conflict is often already reconciled nearby.
+- Report each conflict as a question. Leave the choice to the user.
+- Re-read the surrounding sections before reporting. A conflict often resolves itself nearby.
 
 ## Phase 3 — Structural pass
 
 - Make every statement a bullet, table row, or heading.
-- Split long bullets and nest them under the claim they share.
-- Cut what the purpose test rejects.
-- Report every cut. Never delete silently.
+- Split a long bullet. Nest the parts under the claim they share.
+- Cut every line the purpose test rejects.
+- Report every cut before making it. Never delete silently.
 
 ## Phase 4 — Semantic pass
 
-- A structural pass leaves duplication a merge reveals.
-  - Read each file against the others and ask of every statement:
+- A merge reveals duplication that a structural pass leaves in place.
+  - Read each file against the others.
+  - Ask four questions of every statement.
 
-- Is it true here, and only here?
-  - A rule enforced elsewhere is not restated. Name the owner and link, or cut the line.
-  - A fact derivable from the owner it points at is referenced, not repeated.
-- Is it meaningful at all?
-  - Cut a line the reader could already infer.
+- A rule enforced elsewhere is not restated. Name the owner and link, or cut the line.
+  - Reference a fact that the linked owner already implies.
+- A line must say something the reader could not infer.
+  - Cut a line the reader can already infer.
   - Cut a line whose only content is that something was checked, approved, confirmed or considered, with no live state attached.
-  - Cut a line describing a process rather than a state.
-- Does it belong to another kind of file?
-  - Every type of information, record, and documentation has one destination.
-  - A file holds only what serves its purpose; content found elsewhere moves out, not stays in both.
+  - Cut a line that describes a process rather than a state.
+- Every kind of information, record and documentation has exactly one owner.
+  - Move content that belongs elsewhere into the file that serves its purpose.
+  - Do not leave the same content in two files.
 
 ### Authoritative rules
 
-- Project-wide rules live in exactly one file — this skill, `AGENTS.md`, or another declared authority.
-  - No other file restates them. It links the owner instead.
-  - An approval, eligibility, or exclusion rule stated in several files is the common defect: keep the fullest statement in the owner and delete the rest.
-- A standing rule states how its own exceptions are handled.
-  - The rule owns the exception policy; an entry carries only its own exception.
-  - An entry that must deviate says so where the reader meets it, citing the rule.
-- Duplication is not always waste.
-  - Keep a second copy only where the file is read in a context that does not include the owner.
+- Put each project-wide rule in exactly one file — this skill, `AGENTS.md`, or another declared authority.
+  - Let every other file link the owner instead of restating the rule.
+  - An approval, eligibility or exclusion rule that appears in several files is the common defect. Keep the fullest statement in the owner and delete the rest.
+- A standing rule states how it handles its own exceptions.
+  - The rule owns the exception policy. An entry carries only its own exception.
+  - An entry that must deviate says so where the reader meets it, and cites the rule.
+- Some duplication earns its place.
+  - Keep a second copy only where a reader meets the file without the owner.
   - Link rather than restate even then.
 
 ## Phase 5 — Apply
 
-- Preserve existing formatting and frontmatter conventions.
+- Keep the file's existing formatting and frontmatter conventions.
 - Give output files only `name` and `description` frontmatter, `name` equal to the filename.
-- Locate each edit by content and assert it before writing.
+- Locate each edit by content. Assert the content exists before writing.
 
 ## Cut criteria
 
@@ -138,50 +154,50 @@ description: Refactor agent-generated markdown of any kind — instruction files
 
 ## Verification
 
-- Verification is mandatory. Restructuring is easy to eyeball and easy to get wrong.
+- Always verify. A reader can check a structure by eye and still miss a lost rule.
 
-1. Capture a baseline: line count, word count, section list.
-2. Enumerate the file's content units as a checklist — each rule, owner, command, override, exception, path.
-3. After editing, find a distinctive phrase from every unit in the new file.
-4. Confirm each removed line is a duplicate, a merge target, or a reported cut.
-5. Confirm every rule the file used to state still has one owner somewhere.
-6. Confirm every link and citation still resolves.
-7. Report lines, words, and percentage change.
+1. Capture a baseline: the line count, the word count and the section list.
+2. List the file's content units as a checklist: each rule, owner, command, override, exception and path.
+3. After editing, search the new file for a distinctive phrase from every unit.
+4. Confirm that every removed line duplicates another line, merges into another line, or appears in your cut report.
+5. Confirm that every rule the file used to state still has one owner somewhere.
+6. Confirm that every link and citation still resolves.
+7. Report the line count, the word count and the percentage change.
 
-- A small reduction is a legitimate finding when everything left is load-bearing. An inflated success claim is not.
+- Report a small reduction as the honest result when every remaining line carries weight. Do not describe a small reduction as a cleanup.
 
 ## Anti-patterns
 
 | Avoid | Instead |
 |---|---|
 | Defaulting to a split | Choose the remedy by type |
-| Optimising a line target | Judge by what the reader needs |
+| Optimising a line-count target | Judge by what the reader needs |
 | A paragraph where a bullet would do | One bullet, one contribution |
 | A bullet carrying two claims | Split and nest |
-| A flat list of unrelated items | Nest under the claim they share |
+| A flat list of unrelated items | Nest the items under the claim they share |
 | The same rule at two scopes | State it once at the widest scope |
 | Restating a project-wide rule | Link the authoritative owner |
 | An entry repeating its own rule | Rule states the policy, entry the deviation |
 | A README restating its `SKILL.md` | Point to the skill |
 | Growing a log forever | Prune to live state |
-| Silent deletion | Report, then cut on approval |
-| Adding to fill a gap | Cut instead |
-| Keeping history in the body | Leave it to Git |
-| Claiming success unmeasured | Report counts and percentage |
-| Splitting during a subtask | Refactor when asked |
+| Silent deletion | Report the cut, then delete it on approval |
+| Adding words to fill a gap | Cut the line instead |
+| Keeping history in the body | Leave the history to Git |
+| Claiming success without a measurement | Report the counts and the percentage |
+| Splitting a file during a subtask | Refactor the file when the user asks |
 
 ## Checklist
 
-- [ ] Purpose stated in one sentence and in the frontmatter
-- [ ] Type identified; citations searched
-- [ ] Contradictions surfaced for the user
-- [ ] Remedy chosen by type, trade-off stated
-- [ ] Applied; voice and conventions preserved
-- [ ] No paragraphs; every bullet one contribution and nested under a shared claim
-- [ ] Repetition consolidated to one statement per rule
-- [ ] Semantic pass: no rule restated from its owner, no line stating no live condition
-- [ ] Each information type has one destination; no file holds what serves another
-- [ ] Every standing rule states how its exceptions are handled
-- [ ] Every cut reported
-- [ ] Every content unit re-checked; counts and percentage reported
-- [ ] Submodule committed and pushed before the parent pointer
+- [ ] The purpose appears in one sentence and in the frontmatter
+- [ ] The type is identified and the citations are searched
+- [ ] Every contradiction is surfaced for the user
+- [ ] The remedy matches the type and the trade-off is stated
+- [ ] The file is applied with its voice and conventions preserved
+- [ ] The file has no paragraphs, and every bullet makes one contribution under a shared claim
+- [ ] Each repeated rule is stated once
+- [ ] No file restates a project-wide rule, and no line states no live condition
+- [ ] Each kind of information has one owner; no file holds what serves another file
+- [ ] Every standing rule states how it handles its own exceptions
+- [ ] Every cut appears in the report
+- [ ] Every content unit is re-checked, and the counts and percentage are reported
+- [ ] The submodule is committed and pushed before the parent pointer
