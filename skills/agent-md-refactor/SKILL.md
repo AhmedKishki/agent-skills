@@ -50,6 +50,24 @@ A markdown file holds current, operative decisions only. History belongs to Git.
 - Additions are conservative. Every added line must be load-bearing; the default answer is cut.
 - Removals are encouraged when something is superseded, duplicated, or owned elsewhere.
 
+## Semantic pass
+
+A structural pass leaves duplication that a merge reveals. After applying it, read the file against the others and ask of every statement:
+
+- Is it true here, and only here?
+  - A rule the project already enforces elsewhere is not restated. Name the owner and link to it, or cut the line.
+  - A fact already derivable from an owner it points at is not repeated. Reference the owner.
+- Is it meaningful at all?
+  - Cut a line that says nothing the reader could not infer.
+  - Cut a line whose only content is that something was checked, approved, confirmed or considered, with no live state attached.
+  - Cut a line that describes a process rather than a state.
+- Does it carry an exception or a scope limit?
+  - Where a standing rule admits exceptions, record them on the entry they apply to, not in the file that states the rule.
+  - A per-item exception belongs beside its item, so the rule is read once and the exception once.
+
+- Consolidate to a single statement. Two files restating one rule drift apart, and the copy is the one that goes unread.
+- Duplication is not always waste. Keep a second copy when the file is read in a context where the owner is not, and link rather than restate.
+
 ## Phase 1 — Type
 
 Identify the type before proposing. The type chooses the remedy; a wrong remedy damages the file.
@@ -135,6 +153,7 @@ A small reduction is a legitimate finding when everything left is load-bearing. 
 - [ ] Applied; voice and conventions preserved
 - [ ] No paragraphs; every bullet one contribution and nested under a shared claim
 - [ ] Repetition consolidated to one statement per rule
+- [ ] Semantic pass: no rule restated from its owner, no line that states no live condition
 - [ ] Every cut reported
 - [ ] Every content unit re-checked; counts and percentage reported
 - [ ] Submodule committed and pushed before the parent pointer
