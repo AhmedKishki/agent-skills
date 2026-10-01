@@ -25,6 +25,15 @@ Rewrite one markdown file into its shortest useful form.
 - Cut adjectives and intensifiers that carry no argument.
 - Keep the author's voice and wording. Change structure and length, not tone.
 
+## Bullets
+
+- No paragraphs. Every statement is a bullet, a table row, or a heading.
+- One bullet makes one contribution. If it carries a second, split it and nest.
+- Split any bullet that runs long enough to hide two claims.
+- Nest under a parent that states the shared claim, so parent and child are related rather than a flat list.
+- Four levels is the working limit. Past that, use a table or a subheading.
+- Consolidate repetition: state a rule once, at its widest scope, and let the narrower bullets refer to it.
+
 ## State
 
 A markdown file holds current, operative decisions only. History belongs to Git.
@@ -102,17 +111,20 @@ A small reduction is a legitimate finding when everything left is load-bearing. 
 
 ## Anti-patterns
 
-| Avoid | Instead |
-|---|---|
-| Defaulting to a split | Choose the remedy by type |
-| Optimising a line target | Judge by what the reader needs |
-| A README restating its `SKILL.md` | Point to the skill |
-| Growing a log forever | Prune to live state |
-| Silent deletion | Report, then cut on approval |
-| Adding to fill a gap | Cut instead |
-| Keeping history in the body | Leave it to Git |
-| Claiming success unmeasured | Report counts and percentage |
-| Splitting during a subtask | Refactor when asked |
+  | Avoid | Instead |
+  |---|---|
+  | Defaulting to a split | Choose the remedy by type |
+  | Optimising a line target | Judge by what the reader needs |
+  | A paragraph where a bullet would do | One bullet, one contribution |
+  | A flat list of unrelated items | Nest under the claim they share |
+  | The same rule at two scopes | State it once at the widest scope |
+  | A README restating its `SKILL.md` | Point to the skill |
+  | Growing a log forever | Prune to live state |
+  | Silent deletion | Report, then cut on approval |
+  | Adding to fill a gap | Cut instead |
+  | Keeping history in the body | Leave it to Git |
+  | Claiming success unmeasured | Report counts and percentage |
+  | Splitting during a subtask | Refactor when asked |
 
 ## Checklist
 
@@ -121,6 +133,8 @@ A small reduction is a legitimate finding when everything left is load-bearing. 
 - [ ] Contradictions surfaced for the user
 - [ ] Remedy chosen by type, trade-off stated
 - [ ] Applied; voice and conventions preserved
+- [ ] No paragraphs; every bullet one contribution and nested under a shared claim
+- [ ] Repetition consolidated to one statement per rule
 - [ ] Every cut reported
 - [ ] Every content unit re-checked; counts and percentage reported
 - [ ] Submodule committed and pushed before the parent pointer
