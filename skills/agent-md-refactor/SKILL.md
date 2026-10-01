@@ -1,124 +1,126 @@
 ---
 name: "agent-md-refactor"
-description: Refactor bloated agent-generated markdown of any kind — instruction files, skills, plans, progress logs, reference material, drafts — using progressive disclosure, type-appropriate remedies and a no-content-lost audit. Use when a markdown file that agents read or maintain has grown long, mixes unrelated concerns, duplicates rules, contradicts itself, or repeats superseded state.
+description: Refactor agent-generated markdown of any kind — instruction files, skills, plans, progress logs, reference material, drafts — into its shortest useful form. Holds operative decisions only, states the file's purpose in its frontmatter, and audits that nothing load-bearing was lost. Use when a markdown file an agent reads or maintains has grown long, mixes unrelated concerns, duplicates rules, contradicts itself, or carries superseded state.
 ---
 
 # Agent markdown refactor
 
-Agent-generated markdown accumulates bloat in specific, recognisable ways: rules get restated in two places, reference material crowds out rules, append-only logs never shrink, and skills grow a README that duplicates their own body. Each kind needs a different remedy, so the first step is always to identify what kind of file is being refactored.
+Rewrite one markdown file into its shortest useful form.
 
-This skill generalises progressive disclosure beyond instruction files. It applies to any markdown that an agent reads, writes or maintains.
+## Purpose
 
-## When to use
+- State the file's purpose in one sentence.
+- If its frontmatter `description` does not state it, write it there.
+- Keep a line only if it serves that purpose. A line that serves none is cut, not trimmed.
+- If the purpose is unclear or wrong, ask. Do not invent one.
+- The purpose governs every later decision in this skill. Nothing is kept against it.
 
-Any markdown an agent reads, writes or maintains that has grown long, mixes unrelated concerns, duplicates rules, contradicts itself, or carries superseded state. Common requests: "refactor my `AGENTS.md`", "my skill file is too long", "this progress log keeps growing", "my README duplicates the skill", "my plan doc is a mess".
+## Language
 
-## Phase 0: Identify the type
+- Short sentences, plain words, one claim each.
+- A bullet beats a sentence that only asserts a fact.
+- A table beats bullets when rows share one shape.
+- Nest headers and bullets only as deep as the content needs.
+- Cut hedging, throat-clearing, restatement, and any summary sentence that repeats what the reader just read.
+- Cut adjectives and intensifiers that carry no argument.
+- Keep the author's voice and wording. Change structure and length, not tone.
 
-Determine the file's type before proposing anything. The type decides the remedy, and applying the wrong one causes damage.
+## State
 
-| Type | Examples | Bloat symptom | Correct remedy |
-|---|---|---|---|
-| **Instruction / context** | `AGENTS.md`, `CLAUDE.md`, `COPILOT.md`, `.cursorrules` | Loaded on every task; reference material competes with rules | Merge duplicate rules; extract reference material **only if** nothing cites the file by name |
-| **Skill definition** | `SKILL.md` + `references/` | `SKILL.md` carries deep reference that is only read sometimes | Keep the body procedural; move deep reference to linked files; keep the README short |
-| **Plan / spec** | plan, design doc, requirements | Sections sprawl past the document's own scope | Usually leave whole. Split only where a section has independent coherence |
-| **Progress / handoff log** | progress files, session logs, changelogs | Append-only; completed and superseded entries never removed | **Do not split.** Prune to live state; Git preserves the history |
-| **Content / evidence** | drafts, material, source maps, notes | Already section-isolated; duplication is a provenance question, not a structure one | Leave structure alone. Fix duplication at the content level |
-| **Reference / appendix** | `references/*.md`, glossaries | Duplicated across files after copies diverged | Dedupe; keep one owner and link to it |
+A markdown file holds current, operative decisions only. History belongs to Git.
 
-**Splitting is a last resort, not a default.** A single-file consolidation is a valid and often correct outcome.
+- Delete dates, times, "as discussed on", decision logs, superseded versions, completed task lists, and abandoned alternatives.
+- Keep a decision while it is in force, and state it as though it were always so.
+- Record both constraints when both are live; record the one that is live when the other has lapsed.
+- Record the rule, not the moment it was agreed.
+- Exception: content and evidence files, where the record is the content — drafts, material, source maps. Cut nothing there; only tighten.
+- Exception: files whose stated purpose is the record itself — a changelog, a session log. Prune to live state, never split.
 
-**Check who cites the file.** Before moving or renaming anything, search the repository for references to it by name. If other files, skills, or a governing rules document name it, splitting or renaming breaks those citations, and the user must choose whether to update them.
+## Additions and removals
 
-## Phase 1: Find contradictions
+- Additions are conservative. Every added line must be load-bearing; the default answer is cut.
+- Removals are encouraged when something is superseded, duplicated, or owned elsewhere.
 
-Identify instructions that conflict with each other before restructuring. Examples: contradictory style guidance, incompatible workflow orders, mutually exclusive tool preferences.
+## Phase 1 — Type
 
-Report each conflict as a question for the user to resolve. Do not pick a winner. Many apparent conflicts are already reconciled elsewhere in the file — re-read the surrounding sections before raising one.
+Identify the type before proposing. The type chooses the remedy; a wrong remedy damages the file.
 
-## Phase 2: Identify the essentials
+| Type | Remedy |
+|---|---|
+| Instruction or context file — `AGENTS.md`, `CLAUDE.md`, `.cursorrules` | Merge duplicate rules. Extract reference only if nothing cites the file by name |
+| Skill — `SKILL.md` with `references/` | Body stays procedural, deep reference moves to linked files, README stays short |
+| Plan or spec | Usually leave whole. Split only a section with independent coherence |
+| Progress or handoff log | Do not split. Prune to live state |
+| Content or evidence — draft, material, source map | Leave structure alone. Duplication is a content question |
+| Reference or appendix | Dedupe. Keep one owner, link to it |
 
-Extract what belongs where, judged by how often a reader needs it.
+- Splitting is a last resort. Consolidating in place, and leaving a file alone, are both correct answers.
+- Search the repository for citations of the filename before moving anything.
 
-**Keep in the root:**
-- One-sentence purpose
-- Commands, paths, or identifiers that are non-obvious and load-bearing
-- Rules that apply to every task
-- Critical overrides of default behaviour
-- Links to the detail
+## Phase 2 — Contradictions
 
-**Move or cut:**
-- Reference material needed only sometimes
-- Language-, framework- or topic-specific conventions
-- Material that already has another canonical owner
-- Completed or superseded state in append-only files
+- Find rules that conflict before restructuring.
+- Report each conflict as a question. Never pick a winner.
+- Re-read the surrounding sections first; an apparent conflict is often already reconciled nearby.
 
-## Phase 3: Choose the remedy
+## Phase 3 — Apply
 
-Pick by type, from the Phase 0 table. State the choice and its trade-off rather than assuming the split. Typical outcomes:
+- Preserve existing formatting and frontmatter conventions.
+- Give output files only `name` and `description` frontmatter, `name` equal to the filename.
+- Locate each edit by content and assert it before writing.
 
-- **Consolidate in place** — merge duplicates, tighten prose, keep one file. The right choice when citations point at the file or when the document is a single governing source.
-- **Split into linked files** — when the root is read on every task but most content is not, and no citation prevents it.
-- **Prune to live state** — for logs. Delete or compress completed entries; do not archive them into new files, because Git already holds them.
-- **Dedupe against an existing owner** — point at the canonical file instead of restating its content.
-- **Leave alone** — a legitimate and frequent answer. Say so rather than manufacturing work.
+## Cut criteria
 
-Aim for 3–8 linked files when splitting. Fewer is better; more is navigation overhead.
+Apply the purpose test first. Then cut on any of these.
 
-## Phase 4: Apply
+| Criterion | Example |
+|---|---|
+| Superseded | A replaced rule kept alongside its replacement |
+| Historical | A date, a decision log, a finished task |
+| Duplicated | The same rule stated twice |
+| Owned elsewhere | A rule whose canonical owner is another file |
+| Rarely needed | Reference a reader opens occasionally |
+| Inert detail | Framework- or topic-specific detail that changes no behaviour |
+| Vague | "Write clean code" |
+| Overly obvious | "Do not introduce bugs" |
+| Redundant | "Use TypeScript" in a TypeScript project |
 
-- Keep the existing tone, formatting and frontmatter conventions. A refactor changes structure, not voice.
-- Use simple Markdown: short direct sentences, no repeated boilerplate, no completed process logs in a document meant to be read going forward.
-- Give output Markdown files only `name` and `description` frontmatter, with the filename as `name`.
-- Locate every edit by content and assert it before writing.
+- Report every cut. Never delete silently.
 
-## Phase 5: Flag for deletion
+## Verification
 
-Identify content that should go entirely. Report it; do not delete silently.
+Mandatory. Restructuring is easy to eyeball and easy to get wrong.
 
-| Criterion | Example | Why cut |
-|---|---|---|
-| Redundant | "Use TypeScript" in a TypeScript project | Agent already knows |
-| Too vague | "Write clean code" | Not actionable |
-| Overly obvious | "Don't introduce bugs" | Wastes context |
-| Default behaviour | "Use descriptive names" | Standard practice |
-| Outdated | References a removed command or file | No longer applies |
-| Already owned elsewhere | Restating a rule that has a canonical home | Two copies drift apart |
-| Superseded state | A resolved decision, a finished task | Append-only drift |
+1. Capture a baseline: line count, word count, section list.
+2. Enumerate the file's content units as a checklist — each rule, owner, command, override, exception, path.
+3. After editing, find a distinctive phrase from every unit in the new file.
+4. Confirm each removed line is a duplicate, a merge target, or a reported cut.
+5. Confirm every link and citation still resolves.
+6. Report lines, words, and percentage change.
 
-## Verification: no content lost
-
-This is the step that makes a refactor trustworthy, and it is mandatory. Structure changes are easy to eyeball and easy to get subtly wrong.
-
-1. **Capture a baseline** before editing — word and line counts, plus the list of sections.
-2. **Enumerate the content units** the file carries, as a checklist: each rule, each owner, each command, each override, each exception.
-3. **After editing, re-check every unit** by searching for a distinctive phrase from it, in the new file.
-4. **Confirm the removals are intended** — that each deleted line is a duplicate, a merge target, or a flagged deletion, and not an accident.
-5. **Verify links and references** resolve, and that citations to the refactored file still point at something real.
-6. **State the result numerically** — lines, words, and percentage change. If a refactor did not measurably reduce size, say so plainly rather than describing it as a cleanup.
-
-Report honestly: if the reduction is small, say the reason. "Everything here is load-bearing" is a legitimate finding; an inflated claim of success is not.
+A small reduction is a legitimate finding when everything left is load-bearing. An inflated success claim is not.
 
 ## Anti-patterns
 
-| Avoid | Why | Instead |
-|---|---|---|
-| Defaulting to a split | Breaks citations, fragments a single source of truth | Choose the remedy by file type |
-| Prescribing a line target as a goal | Optimises the metric, not the document | Judge by what a reader needs per task |
-| Restating a skill's body in its README | The README becomes a second copy that drifts | Short README: purpose, usage, license |
-| Keeping a README that duplicates `SKILL.md` | Two copies, two futures | Point to the skill |
-| Growing a log forever | History is Git's job | Prune to live state |
-| Silent deletion | Irreversible, and hides judgement | Flag, then delete on approval |
-| Claiming success without measuring | Unverifiable | Report counts and percentage |
-| Splitting during a subtask | Scope creep | Refactor when asked |
+| Avoid | Instead |
+|---|---|
+| Defaulting to a split | Choose the remedy by type |
+| Optimising a line target | Judge by what the reader needs |
+| A README restating its `SKILL.md` | Point to the skill |
+| Growing a log forever | Prune to live state |
+| Silent deletion | Report, then cut on approval |
+| Adding to fill a gap | Cut instead |
+| Keeping history in the body | Leave it to Git |
+| Claiming success unmeasured | Report counts and percentage |
+| Splitting during a subtask | Refactor when asked |
 
-## Execution checklist
+## Checklist
 
-- [ ] Phase 0: type identified; citing references found
-- [ ] Phase 1: contradictions surfaced and resolved by the user
-- [ ] Phase 2: essentials separated from reference material
-- [ ] Phase 3: remedy chosen by type, with trade-offs stated
-- [ ] Phase 4: applied, tone and conventions preserved
-- [ ] Phase 5: deletions flagged, not silent
-- [ ] Verification: every content unit re-checked; counts and percentage reported
-- [ ] Submodule changes committed and pushed before the parent pointer, if the skill lives in one
+- [ ] Purpose stated in one sentence and in the frontmatter
+- [ ] Type identified; citations searched
+- [ ] Contradictions surfaced for the user
+- [ ] Remedy chosen by type, trade-off stated
+- [ ] Applied; voice and conventions preserved
+- [ ] Every cut reported
+- [ ] Every content unit re-checked; counts and percentage reported
+- [ ] Submodule committed and pushed before the parent pointer
