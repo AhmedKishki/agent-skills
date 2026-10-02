@@ -5,7 +5,7 @@ description: Develop one section's argument through ordered passage purposes and
 
 # Section Arc
 
-`sections/section-n/arc-section-n.md` owns that section's driving claim or question and internal development. Read the article direction, its brief purpose in `plan.md`, and the section's current progress. Link to the article purpose instead of repeating it.
+Keep that section's driving claim or question and internal development in `sections/section-n/arc-section-n.md`. Read the article direction, its brief purpose in `plan.md`, and the section's current progress. Link to the article purpose instead of repeating it.
 
 ```markdown
 # Section 1 Arc

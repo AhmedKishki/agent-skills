@@ -5,7 +5,7 @@ description: Keep one section's local author inputs, approved synthesis and perm
 
 # Section Material
 
-`sections/section-n/material-section-n.md` owns exact local user inputs and approved passages for that section. Read its arc, requirements and progress before editing. Use [white-box synthesis](../tools/white-box-synthesis.md) for eligible wording and the separate [AI-authored procedure](../tools/ai-authored.md) for gap text.
+Keep exact local user inputs and approved passages for that section in `sections/section-n/material-section-n.md`. Read its arc, requirements and progress before editing. Use [white-box synthesis](../tools/white-box-synthesis.md) for eligible wording and the separate [AI-authored procedure](../tools/ai-authored.md) for gap text.
 
 ```markdown
 # Section 1 Material
@@ -34,4 +34,4 @@ Approved AI gap text may be stored here with its exact `⟦AI-AUTHORED: ...⟧` 
 
 White-box excludes every explicitly AI-authored span and dependent relation, even after approval or copying. Ordinary approved Mixed inputs remain eligible when their lineage is finite and recoverable; outputs using them remain Mixed. Do not turn the material file's permission to store AI text into permission to synthesise from it.
 
-After saving, verify exact approval, wording, authorship, resolvable basis, markers and live limits. Update local progress. Material approval does not authorise draft insertion; propose insertion separately. Keep construction records in the approval proposal, never in this file.
+After saving, verify exact approval, wording, authorship, resolvable basis, markers and live limits. Update local progress. Material approval does not authorise draft insertion; see [decisions](../rules/decisions.md). Keep construction records in the approval proposal, never in this file.

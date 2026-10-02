@@ -5,7 +5,7 @@ description: Share approved exact source quotations with verified identity, loca
 
 # Source Maps
 
-`sources/source-maps/<author-title>.md` owns one source's identity and approved exact excerpts. Sections share this evidence, not each other's synthesis. Read article direction, research requirements and the active passage's evidence need before selecting excerpts.
+Keep one source's identity and approved exact excerpts in `sources/source-maps/<author-title>.md`. Sections share this evidence, not each other's synthesis. Read article direction, research requirements and the active passage's evidence need before selecting excerpts.
 
 ## Mapping
 
@@ -13,7 +13,7 @@ description: Share approved exact source quotations with verified identity, loca
 2. Report retrieval failures and their limits honestly. Never claim a failed search confirmed a passage. Ask about an alternative verification route when needed; do not ingest or change source inclusion without permission.
 3. Verify source identity, wording and locators against the original. Search snippets and extracted text are provisional, not quote-safe or approved inputs. A quotation pasted by the user is still source-authored.
 4. Select contiguous spans preserving subject, scope, modality and qualification. Disclose meaning-neutral transcription normalisation. Reopen the original if context is insufficient or the intended use changes.
-5. Present the exact excerpt batch for approval, then save approved excerpts in source order. Mapping approval does not approve a synthesis or insertion.
+5. Present the exact excerpt batch for approval, then save approved excerpts in source order. Mapping approval does not approve a material passage, synthesis or insertion.
 
 ## File Shape
 

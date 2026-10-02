@@ -156,6 +156,9 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - Some duplication earns its place.
   - Keep a second copy only where a reader meets the file without the owner.
   - Link rather than restate even then.
+- A link that routes the reader to the file holding a rule is navigation, not a second copy of the rule.
+- A file states its own content. It does not describe what another file holds, and it does not replace its content with a link to it.
+- A qualification stays with the rule it qualifies. Move it into that rule's file.
 
 ## Phase 5 — Apply
 
@@ -218,18 +221,10 @@ description: Refactor agent-generated markdown of any kind — instruction files
 
 ## Checklist
 
-- [ ] The purpose appears in one sentence and in the frontmatter
 - [ ] The type is identified and the citations are searched
 - [ ] Every contradiction is surfaced for the user
 - [ ] The remedy matches the type and the trade-off is stated
 - [ ] The file is applied with its voice and conventions preserved
-- [ ] The file has no paragraphs, and every bullet makes one contribution under a shared claim
-- [ ] Each repeated rule is stated once
-- [ ] No file restates a project-wide rule, and no line states no live condition
-- [ ] Each kind of information has one owner; no file holds what serves another file
-- [ ] Each file is divided into sections whose headings describe their contents
-- [ ] Every repeated rule across the repository is consolidated into its owner
-- [ ] Every standing rule states how it handles its own exceptions
 - [ ] Every cut appears in the report
 - [ ] Every content unit is re-checked, and the counts and percentage are reported
 - [ ] The submodule is committed and pushed before the parent pointer

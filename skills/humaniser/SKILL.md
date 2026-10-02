@@ -23,15 +23,7 @@ Three things, kept separate on purpose:
 
 The script never decides what is wrong with a sentence. It supplies the windows; you work the checklist against them. Rewriting the text on the strength of those findings is the next step and is not built yet.
 
-## Files
-
-| File | What it holds |
-|---|---|
-| [references/checklist.md](references/checklist.md) | Part A semantic checks, Part B surface checks, Part C mechanical and provenance faults, and what to keep. This is the instrument. |
-| [references/scoring.md](references/scoring.md) | How to run the script, what its numbers mean, and how to report a result. |
-| `scripts/evaluate.py` | Segmentation and counts. No thresholds, no scores, no opinions. |
-
-Read the checklist before judging anything. It is the standard; this file is the procedure.
+Read the checklist before judging anything. Run the script and report its result per [scoring](references/scoring.md).
 
 ## Scope
 
@@ -68,16 +60,6 @@ Until then, report findings and stop. A finding is a proposal about wording, not
 
 Give the pattern score as a summary of the item-by-item verdicts, never as a measurement of the writer, and never as a bare figure without the findings behind it. Where an item is a judgement call, say so and give the reason. Report the script's counts as facts about the text and say what they show.
 
-Describe the writing problems as writing problems. Never claim or imply who wrote a passage.
+Report Part A findings first and separately from Part C. A document can have no voice tells and several content defects, and reporting them as one number hides the fact that the prose is fine.
 
-## What survives the pass
-
-A checklist that removes every tell also removes the writer. Keep:
-
-- a specific, unusual detail: a real address, an odd quote, a named person with a role
-- mixed feelings and unresolved tension
-- dated, era-bound references: slang, memes, in-jokes that map to a year
-- a first-person choice the writer can explain
-- a genuine aside, parenthetical or self-correction
-
-First person is not evidence of a human writer. A document can be written in the author's first person as a device, and the rate says nothing about who held the pen.
+Describe the writing problems as writing problems. Never claim or imply who wrote a passage. First person is not evidence of a human writer: a document can be written in the author's first person as a device, and the rate says nothing about who held the pen.

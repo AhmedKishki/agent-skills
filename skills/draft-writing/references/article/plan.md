@@ -5,7 +5,7 @@ description: Own article-level section order, purposes, drafting sequence and th
 
 # Article Plan
 
-`plan.md` owns article section order, each section's brief contribution, the agreed drafting and review sequence, and one current-section link. Read the thesis and requirements before proposing changes. Use [decisions](../rules/decisions.md); placement does not establish a claim or approve prose.
+Keep article section order, each section's brief contribution, the agreed drafting and review sequence, and one current-section link in `plan.md`. Read the thesis and requirements before proposing changes. Use [decisions](../rules/decisions.md); placement does not establish a claim or approve prose.
 
 ```markdown
 # Plan

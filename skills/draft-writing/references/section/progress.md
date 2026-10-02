@@ -5,7 +5,7 @@ description: Keep one section's exact resume point, approval state, live blocker
 
 # Section Progress
 
-`sections/section-n/progress-section-n.md` is that section's handoff. Read it before local work or ID allocation. It owns the current task, exact object, approval state, next action, unfinished verification, readiness and next local IDs. It does not duplicate the arc or approved prose.
+Keep that section's handoff, the current task, exact object, approval state, next action, unfinished verification, readiness and next local IDs in `sections/section-n/progress-section-n.md`. Read it before local work or ID allocation. It does not duplicate the arc or approved prose.
 
 ```markdown
 # Section 1 Progress

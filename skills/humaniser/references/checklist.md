@@ -130,19 +130,13 @@ Not voice. A reader trips on them whatever wrote the sentence, and they concentr
 
 A checklist that removes every tell removes the writer. These are load-bearing and no item above touches them:
 
-- a specific, unusual detail: a real address, an odd figure, a named person with a role
+- a specific, unusual detail: a real address, an odd figure or quote, a named person with a role
 - a number with its period, its source and its date
 - mixed feelings left unresolved
 - a first-person choice the writer can explain
 - a genuine aside, parenthetical or self-correction
-- an era-bound reference: a meme, a dated phrase
+- an era-bound reference: slang, memes, dated phrases, in-jokes that map to a year
 - a question the writer has not answered yet
-
-## How to use this
-
-Read the document once before the script runs, so the first reading is not the report's. Then walk the report: the `## Sentences` section for Part A, the blocks and 3-grams for Part B, and one whole read for Part C.
-
-Report Part A findings first and separately from Part C. A document can have no voice tells and several content defects, and reporting them as one number hides the fact that the prose is fine.
 
 ## Source
 

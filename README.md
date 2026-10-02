@@ -1,13 +1,14 @@
 # Agent Skills
 
-A collection of source-controlled skills for Codex and Claude. Skills live under `skills/`; each exposes a `SKILL.md` entry point and any supporting references, scripts, or assets.
+A collection of skills for Codex and Claude. Each lives under `skills/` with a `SKILL.md` entry point.
 
 ## Available skills
 
 | Skill | Purpose |
 |---|---|
+| [`agent-md-refactor`](skills/agent-md-refactor/) | Shorten agent-facing Markdown and consolidate information into its canonical owners. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
-| [`humaniser`](skills/humaniser/) | Diagnose and collaboratively revise prose while preserving the user's voice and approval over rewording. |
+| [`humaniser`](skills/humaniser/) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me), without repository packaging. |
 
 ## Install

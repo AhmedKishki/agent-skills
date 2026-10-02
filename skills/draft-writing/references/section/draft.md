@@ -5,7 +5,7 @@ description: Insert approved section prose, preserve voice and verify local foot
 
 # Section Draft
 
-`sections/section-n/draft-section-n.md` owns approved inserted prose and footnotes. Read article direction, requirements, the local arc and progress, and relevant local material. Do not use another section's inputs or prose for synthesis.
+Keep approved inserted prose and footnotes in `sections/section-n/draft-section-n.md`. Read article direction, requirements, the local arc and progress, and relevant local material. Do not use another section's inputs or prose for synthesis.
 
 ```markdown
 # <Approved reader-facing section heading>

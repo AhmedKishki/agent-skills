@@ -18,7 +18,7 @@ For a gap in section 1, the proposal names the local material passage or draft l
 
 ## Storage And Insertion
 
-Approved marked text may appear in `material-section-n.md` and `draft-section-n.md`. Material approval does not approve draft insertion; propose the latter separately. Keep exact markers through saves, verbatim insertion, moves, smoothing review and final assembly. Human plus AI is Mixed; wholly AI wording is AI. Supporting evidence in Basis is not a claim that the source wrote the AI words. Keep live limits and dependent relations in the passage's Constraint.
+Approved marked text may appear in `material-section-n.md` and `draft-section-n.md`. Keep exact markers through saves, verbatim insertion, moves, smoothing review and final assembly. Human plus AI is Mixed; wholly AI wording is AI. Supporting evidence in Basis is not a claim that the source wrote the AI words. Keep live limits and dependent relations in the passage's Constraint.
 
 Direct insertion means placing the already approved marked span at its approved destination without using it to generate other wording. If a complete passage combines eligible prose with an AI gap, show the white-box construction for eligible sentences and identify the marked insert separately. Do not describe the entire passage as a white-box result.
 

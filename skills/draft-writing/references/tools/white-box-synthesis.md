@@ -26,7 +26,7 @@ No operation may invent a connection, cause, comparison, interpretation, qualifi
 1. Identify the local passage, its purpose, exact eligible inputs, provenance and evidence limits.
 2. Construct the passage and check every meaning-bearing word and relation against those inputs.
 3. Show the complete output and a construction record for every sentence.
-4. Obtain exact approval, then save to the specified owner. Material approval and draft insertion are separate decisions.
+4. Obtain exact approval, then save to the specified owner.
 
 For each output sentence, show the exact output; every input label and file location; its author, source and locator; the exact copied span; and every operation. Spell out deleted words, inflections, normalisation and the basis for ordering. Codes, counts or summaries alone do not meet this requirement.
 
