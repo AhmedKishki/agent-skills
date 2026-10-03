@@ -104,6 +104,32 @@ class LinkChecks(unittest.TestCase):
 
 
 class SkillChecks(unittest.TestCase):
+    def test_new_project_paths_and_plan_links(self):
+        entry = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        tree = re.search(r"```text\n(.*?)\n```", entry, re.S)[1]
+        self.assertIn("  organisation/\n    thesis-and-vision.md\n    requirements.md\n    plan.md", tree)
+        self.assertIn("  sources/\n  source-maps/\n    <author-title>.md", tree)
+        for filename in ("thesis-and-vision.md", "requirements.md", "plan.md"):
+            owner = f"`organisation/{filename}`"
+            self.assertIn(owner, (REFERENCES / "article" / filename).read_text(encoding="utf-8"))
+            self.assertIn(owner, (REFERENCES / "rules/user-prompts.md").read_text(encoding="utf-8"))
+        source_map = (REFERENCES / "supplement/source-maps.md").read_text(encoding="utf-8")
+        self.assertIn("`source-maps/<author-title>.md`", source_map)
+        self.assertNotIn("sources/source-maps/", source_map)
+        plan = (REFERENCES / "article/plan.md").read_text(encoding="utf-8")
+        example = re.search(r"```markdown\n(.*?)\n```", plan, re.S)[1]
+        with TemporaryDirectory(prefix="draft-writing-project-") as temporary:
+            project = Path(temporary)
+            (project / "organisation").mkdir()
+            for section in (1, 2):
+                folder = project / "sections" / f"section-{section}"
+                folder.mkdir(parents=True)
+                for role in ("arc", "progress"):
+                    (folder / f"{role}-section-{section}.md").write_text("# Section\n", encoding="utf-8")
+            path = project / "organisation/plan.md"
+            path.write_text(example, encoding="utf-8")
+            self.assertEqual(link_errors(path), [])
+
     def test_reference_modules(self):
         self.assertEqual({p.relative_to(REFERENCES).as_posix() for p in REFERENCES.rglob("*.md")}, MODULES)
 

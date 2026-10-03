@@ -5,7 +5,7 @@ description: Record the agreed audience, voice, style, citations and project-spe
 
 # Requirements
 
-Keep the author's article-wide writing requirements in `requirements.md`. Read it before proposing prose, smoothing or formatting citations. Do not infer a missing preference from this skill's examples.
+Keep the author's article-wide writing requirements in `organisation/requirements.md`. Read it before proposing prose, smoothing or formatting citations. Do not infer a missing preference from this skill's examples.
 
 Record only agreed requirements under the relevant headings:
 

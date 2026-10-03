@@ -9,9 +9,9 @@ Read the current object before applying a prompt or direct edit. Separate indepe
 
 | Content | Owner |
 |---|---|
-| Motivation, theory, explanatory commitments, scope or main thesis | `thesis-and-vision.md` |
-| Audience, tone, style, length, quotations, footnotes or a standing project requirement | `requirements.md` |
-| Article section order, overall section purpose or drafting/review sequence | `plan.md` |
+| Motivation, theory, explanatory commitments, scope or main thesis | `organisation/thesis-and-vision.md` |
+| Audience, tone, style, length, quotations, footnotes or a standing project requirement | `organisation/requirements.md` |
+| Article section order, overall section purpose or drafting/review sequence | `organisation/plan.md` |
 | A section's argument, passage order or necessary connection | `arc-section-n.md` |
 | Exact reusable author wording with a clear local destination | Labelled local input beside that passage in `material-section-n.md` |
 | A quotation from another author | [Source mapping](../supplement/source-maps.md); retain source authorship and verify identity and locator |
@@ -24,7 +24,7 @@ For example, route a new thesis to thesis-and-vision, a citation instruction to 
 
 Preserve exact user spelling, punctuation and paragraph breaks. Instructions are not eligible prose or voice evidence. User-pasted quotations remain source-authored; approval does not make them the user's words. Routing an input does not approve a claim, synthesis, connection or insertion.
 
-If placement or intent is unclear, ask one focused question before saving it as approved content. If pausing, retain the exact unresolved input as pending in the active section's progress. Before any section exists, keep only the placement question and necessary exact text as a pending setup question in `plan.md`; remove it when resolved. Do not create an inbox or miscellaneous material file. Article-wide pending questions stay beside their target owner.
+If placement or intent is unclear, ask one focused question before saving it as approved content. If pausing, retain the exact unresolved input as pending in the active section's progress. Before any section exists, keep only the placement question and necessary exact text as a pending setup question in `organisation/plan.md`; remove it when resolved. Do not create an inbox or miscellaneous material file. Article-wide pending questions stay beside their target owner.
 
 Do not copy a user input to several sections to bypass source-only sharing. Ask for the destination or an explicit change to that rule. Direct user edits remain intact; if an edit changes evidence, provenance, placement or apparent authorship, identify the affected span and ask about the unresolved part rather than silently undoing or reclassifying it.
 

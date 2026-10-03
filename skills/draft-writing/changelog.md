@@ -7,6 +7,14 @@ description: Records the enduring user-visible history of the draft-writing skil
 
 This is the single enduring changelog for `draft-writing`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version. Entries were recovered from the former `change-log.md`, Git commits, annotated and lightweight tags, and published GitHub releases.
 
+## 26.0.0 — 2026-10-03
+
+- Changed the new-project layout: article direction lives in `organisation/thesis-and-vision.md`, `organisation/requirements.md` and `organisation/plan.md`; shared source maps live in `source-maps/<author-title>.md` at the article root.
+- Aligned source-map ownership instructions and behavioural fixtures with the new paths; repaired section links relative to `organisation/plan.md`.
+- Consolidated object-specific approval rules in the decisions module. Source-map and material approval still do not authorise draft insertion; approving AI text still does not make it eligible for white-box synthesis.
+- Clarified each module's storage owner without changing its content fields, section isolation, local identifiers or provenance restrictions.
+- Existing projects retain their established layout and restrictions. Move files and repair dependent paths only after explicit migration approval.
+
 ## 25.0.0 — 2026-09-28
 
 - Isolated each section's arc, progress, material and draft in its own directory; split article direction into thesis-and-vision, requirements and a small article plan.

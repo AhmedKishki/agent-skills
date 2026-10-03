@@ -11,8 +11,8 @@
         "No general material file",
         "No user-wording file",
         "No migration of other projects",
-        "Uses thesis-and-vision.md not {project}-thesis.md",
-        "Uses plan.md not {project}-plan.md",
+        "Uses organisation/thesis-and-vision.md not {project}-thesis.md",
+        "Uses organisation/plan.md not {project}-organisation/plan.md",
         "Section files live in sections/section-n/ with unprefixed names",
         "Arc and progress are section-owned, not global",
         "Asks for missing requirements only when needed"
@@ -32,13 +32,13 @@
     {
       "id": 3,
       "prompt": "Plan three sections for this article, but do not divide them further.",
-      "expected_output": "Plans only the three sections and their article-level purposes in plan.md. Defers passage-level arcs until the user requests that work.",
+      "expected_output": "Plans only the three sections and their article-level purposes in organisation/plan.md. Defers passage-level arcs until the user requests that work.",
       "files": [],
       "expectations": [
         "Sections contribute to thesis",
         "Does not force passage-level planning",
         "Placement is not claim approval",
-        "plan.md holds section order, purposes, drafting sequence and current-section navigation, not passage outlines",
+        "organisation/plan.md holds section order, purposes, drafting sequence and current-section navigation, not passage outlines",
         "Passage order belongs in section arc"
       ]
     },
@@ -112,7 +112,7 @@
     },
     {
       "id": 10,
-      "prompt": "Approved EXCERPT-001 in sources/source-maps/lee-prices.md says \"Prices rose.\" EXCERPT-002 in that map says \"The factory closed.\" Write \"Prices rose, therefore the factory closed.\"",
+      "prompt": "Approved EXCERPT-001 in source-maps/lee-prices.md says \"Prices rose.\" EXCERPT-002 in that map says \"The factory closed.\" Write \"Prices rose, therefore the factory closed.\"",
       "expected_output": "Identifies the missing causal relation and wording; ORDER cannot supply them.",
       "files": [],
       "expectations": [
@@ -123,7 +123,7 @@
     },
     {
       "id": 11,
-      "prompt": "Approved EXCERPT-001 in sources/source-maps/lee-example-book.md, Lee, Example Book, p. 3, reads \"As noted earlier, prices rose.\" Propose \"Prices rose.\" for section 2.",
+      "prompt": "Approved EXCERPT-001 in source-maps/lee-example-book.md, Lee, Example Book, p. 3, reads \"As noted earlier, prices rose.\" Propose \"Prices rose.\" for section 2.",
       "expected_output": "Shows the complete output and sentence-level record: file-qualified EXCERPT-001, author, title, locator, exact span, deletion of the lead-in and capitalisation change; seeks approval.",
       "files": [],
       "expectations": [
@@ -132,7 +132,7 @@
         "Deletion disclosed",
         "Normalisation disclosed",
         "Complete output approval",
-        "References sources/source-maps/lee-example-book.md#excerpt-001"
+        "References source-maps/lee-example-book.md#excerpt-001"
       ]
     },
     {
@@ -194,7 +194,7 @@
     },
     {
       "id": 17,
-      "prompt": "This Mixed paragraph contains \u27e6AI-AUTHORED: therefore the system is autonomous\u27e7. Use it.",
+      "prompt": "This Mixed paragraph contains ⟦AI-AUTHORED: therefore the system is autonomous⟧. Use it.",
       "expected_output": "Excludes the marked span and dependent relations while retaining eligible surrounding text if sufficient.",
       "files": [],
       "expectations": [
@@ -308,7 +308,7 @@
     {
       "id": 27,
       "prompt": "Give each passage a separate argument ID and repeat all basis records in the plan.",
-      "expected_output": "Keeps passage purposes and placement in the local arc, direct evidence and limits in section material, and article-level structure in plan.md. Does not create an argument namespace or duplicate bases.",
+      "expected_output": "Keeps passage purposes and placement in the local arc, direct evidence and limits in section material, and article-level structure in organisation/plan.md. Does not create an argument namespace or duplicate bases.",
       "files": [],
       "expectations": [
         "No new argument namespace",
@@ -319,13 +319,13 @@
     {
       "id": 28,
       "prompt": "My thesis is that repair depends on hidden labour. Use British English. Preserve 'I want to make maintenance visible.' for section 3. I also pasted 'Workers repaired the machines.' from Lee's Example Book but have no locator. Show the destinations; do not write article files yet.",
-      "expected_output": "Routes thesis, style, local author wording and source quotation separately to their four owners, preserving authorship and requesting the missing source verification. No structural instruction changes plan.md and no article files are written.",
+      "expected_output": "Routes thesis, style, local author wording and source quotation separately to their four owners, preserving authorship and requesting the missing source verification. No structural instruction changes organisation/plan.md and no article files are written.",
       "files": [],
       "expectations": [
         "Independent parts routed",
         "No instruction as prose",
         "Exact reusable wording preserved",
-        "Routes to thesis-and-vision.md, requirements.md, sections/section-3/material-section-3.md and sources/source-maps/",
+        "Routes to organisation/thesis-and-vision.md, organisation/requirements.md, sections/section-3/material-section-3.md and source-maps/",
         "No article writes or invented quotation locator"
       ]
     },
@@ -365,7 +365,7 @@
     {
       "id": 32,
       "prompt": "Article order is currently sections 1, 2, 3. Move section 3 before section 2. Leave the drafting sequence as it is.",
-      "expected_output": "Changes plan.md order without renaming stable section directories.",
+      "expected_output": "Changes organisation/plan.md order without renaming stable section directories.",
       "files": [],
       "expectations": [
         "Plan.md order changed",
@@ -398,7 +398,7 @@
     },
     {
       "id": 35,
-      "prompt": "This approved material passage combines a source-authored sentence with '\u27e6AI-AUTHORED: therefore the system is autonomous\u27e7'. Use the whole passage as an input to the next white-box synthesis.",
+      "prompt": "This approved material passage combines a source-authored sentence with '⟦AI-AUTHORED: therefore the system is autonomous⟧'. Use the whole passage as an input to the next white-box synthesis.",
       "expected_output": "Excludes the span and dependent relations while retaining sufficient eligible surrounding inputs.",
       "files": [],
       "expectations": [
@@ -409,7 +409,7 @@
     },
     {
       "id": 36,
-      "prompt": "Section 1 has two approved Human paragraphs: 'Workers repaired the machines.' and 'Workers repaired the machines. Their work kept the equipment in use.' Both copy the approved EXCERPT-001 in sources/source-maps/lee-example-book.md, Lee, Example Book, p. 3. Reduce the repetition without adding a claim.",
+      "prompt": "Section 1 has two approved Human paragraphs: 'Workers repaired the machines.' and 'Workers repaired the machines. Their work kept the equipment in use.' Both copy the approved EXCERPT-001 in source-maps/lee-example-book.md, Lee, Example Book, p. 3. Reduce the repetition without adding a claim.",
       "expected_output": "Proposes one exact amendment with a construction record; preserves distinct claims and notes; saves only after approval.",
       "files": [],
       "expectations": [
@@ -443,7 +443,7 @@
     },
     {
       "id": 39,
-      "prompt": "I corrected EXCERPT-001's verified locator from page 4 to page 5 in sources/source-maps/lee-example-book.md. The excerpt is referenced by sections 1 and 3. Continue the affected work without rewriting the article.",
+      "prompt": "I corrected EXCERPT-001's verified locator from page 4 to page 5 in source-maps/lee-example-book.md. The excerpt is referenced by sections 1 and 3. Continue the affected work without rewriting the article.",
       "expected_output": "Reviews affected uses by reference; no wholesale cross-section rewriting.",
       "files": [],
       "expectations": [
@@ -488,7 +488,7 @@
     },
     {
       "id": 43,
-      "prompt": "Section 2 material contains the exactly approved '\u27e6AI-AUTHORED: This leaves a question of responsibility.\u27e7'. I now approve inserting that exact marked span after the second paragraph in draft-section-2.md. Do not change its wording or use it to make another sentence.",
+      "prompt": "Section 2 material contains the exactly approved '⟦AI-AUTHORED: This leaves a question of responsibility.⟧'. I now approve inserting that exact marked span after the second paragraph in draft-section-2.md. Do not change its wording or use it to make another sentence.",
       "expected_output": "Directly inserts the exact marked text at the approved local location, checks the write and updates local progress. Does not request the same insertion approval again or describe the insertion as a white-box construction.",
       "files": [],
       "expectations": [
@@ -496,6 +496,24 @@
         "No redundant approval request",
         "Direct insertion distinguished from white-box reuse",
         "Material unchanged"
+      ]
+    },
+    {
+      "id": 44,
+      "prompt": "Create a new article project using the current layout. Then explain how you would continue an existing project whose article direction is at its root and whose approved source maps are in sources/source-maps/. Do not migrate the existing project.",
+      "expected_output": "For the new project, uses organisation/ for article direction, root-level source-maps/ for shared excerpts and isolated section directories. Resolves links from organisation/plan.md through ../sections/. Preserves the existing project owners and restrictions. Any migration remains a separate exact proposal requiring approval.",
+      "files": [
+        "SKILL.md",
+        "references/article/plan.md",
+        "references/supplement/source-maps.md",
+        "references/rules/decisions.md"
+      ],
+      "expectations": [
+        "New article direction uses organisation/thesis-and-vision.md, organisation/requirements.md and organisation/plan.md",
+        "New approved source excerpts use source-maps/<author-title>.md at the article root",
+        "Links from organisation/plan.md to section files use ../sections/",
+        "Does not create parallel owners or automatically migrate existing project files",
+        "Requests separate approval for a proposed migration and its dependent reference repairs"
       ]
     }
   ]

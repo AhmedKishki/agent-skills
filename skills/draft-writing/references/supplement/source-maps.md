@@ -5,7 +5,7 @@ description: Share approved exact source quotations with verified identity, loca
 
 # Source Maps
 
-Keep one source's identity and approved exact excerpts in `sources/source-maps/<author-title>.md`. Sections share this evidence, not each other's synthesis. Read article direction, research requirements and the active passage's evidence need before selecting excerpts.
+Keep one source's identity and approved exact excerpts in `source-maps/<author-title>.md`. Sections share this evidence, not each other's synthesis. Read article direction, research requirements and the active passage's evidence need before selecting excerpts.
 
 ## Mapping
 
@@ -38,6 +38,6 @@ Use only actual bibliographic and locator data. EPUB or unpaginated sources need
 
 Choose the stable author-title filename from verified identity. Distinguish a collision with a verified year or edition; ask if still ambiguous. No global source-code register is needed. Do not automatically rename an established map when correcting its title.
 
-The full excerpt identity is map path plus ID, for example `sources/source-maps/author-title.md#excerpt-001`. Use ID-only headings, titles beneath them, and the map's own next-excerpt counter. Advance the counter on allocation, including rejected selections. Never reuse retired numbers; reread before allocation, check Git when uncertain and resolve concurrent collisions without overwriting.
+The full excerpt identity is map path plus ID, for example `source-maps/author-title.md#excerpt-001`. Use ID-only headings, titles beneath them, and the map's own next-excerpt counter. Advance the counter on allocation, including rejected selections. Never reuse retired numbers; reread before allocation, check Git when uncertain and resolve concurrent collisions without overwriting.
 
 A verified transcription or locator correction retains its ID; a different selection, split or merge receives a new ID. Propose the exact correction for approval. Then search for affected references and inspect only their uses; record unfinished reviews in each affected section's progress. Do not silently rewrite other sections or treat their material as reusable input. Finish by checking exact wording, locators, counter and links.
