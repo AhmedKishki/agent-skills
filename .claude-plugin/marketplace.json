@@ -28,6 +28,39 @@
         "voice",
         "editing"
       ]
+    },
+    {
+      "name": "agent-md-refactor",
+      "displayName": "Agent MD Refactor",
+      "source": "./skills/agent-md-refactor",
+      "description": "Refactor agent-facing Markdown so each file holds everything its job requires and nothing outside it, with one owner per rule and one meta view.",
+      "tags": [
+        "markdown",
+        "refactoring",
+        "documentation"
+      ]
+    },
+    {
+      "name": "collaborative-learning",
+      "displayName": "Collaborative Learning",
+      "source": "./skills/collaborative-learning",
+      "description": "Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion.",
+      "tags": [
+        "learning",
+        "research",
+        "records"
+      ]
+    },
+    {
+      "name": "humaniser",
+      "displayName": "Humaniser",
+      "source": "./skills/humaniser",
+      "description": "Find AI writing patterns in Markdown against a semantic checklist and report a ranked list of findings for approval.",
+      "tags": [
+        "writing",
+        "editing",
+        "review"
+      ]
     }
   ]
 }
