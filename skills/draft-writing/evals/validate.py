@@ -411,11 +411,17 @@ class RefactorChecks(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        path = ROOT.parents[0] / "agent-md-refactor" / "SKILL.md"
-        if not path.is_file():
+        skill = ROOT.parents[0] / "agent-md-refactor"
+        if not (skill / "SKILL.md").is_file():
             raise unittest.SkipTest("Standalone skill has no sibling refactor skill")
-        cls.text = path.read_text(encoding="utf-8")
+        cls.paths = [skill / "SKILL.md", *sorted((skill / "references").glob("*.md"))]
+        cls.text = "\n".join(path.read_text(encoding="utf-8") for path in cls.paths)
         cls.lines = prose(cls.text).splitlines()
+
+    def test_links_resolve(self):
+        for path in self.paths:
+            with self.subTest(path=path):
+                self.assertEqual(link_errors(path), [])
 
     def test_incoming_anchors_are_checked_after_a_rename(self):
         anchors = [line for line in self.lines if re.search(r"\banchors?\b", line, re.I)]

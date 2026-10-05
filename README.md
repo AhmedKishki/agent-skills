@@ -6,7 +6,7 @@ A collection of skills for Codex and Claude. Each lives under `skills/` with a `
 
 | Skill | Purpose |
 |---|---|
-| [`agent-md-refactor`](skills/agent-md-refactor/) | Shorten agent-facing Markdown and consolidate information into its canonical owners. |
+| [`agent-md-refactor`](skills/agent-md-refactor/) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`humaniser`](skills/humaniser/) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me), without repository packaging. |

@@ -1,8 +1,6 @@
 # Agent markdown refactor
 
-Reduce a markdown file an agent reads or maintains to its shortest useful form.
-
-Full procedure: [SKILL.md](SKILL.md).
+Entry point: [SKILL.md](SKILL.md).
 
 ## License
 
