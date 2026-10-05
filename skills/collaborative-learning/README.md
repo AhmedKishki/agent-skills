@@ -14,9 +14,13 @@ Each topic forms one session. Explanations use plain language and clear referenc
 Questions and clarifications stay with their topic. Every explanation develops
 the full argument, including any necessary repetition.
 
+If you have not proposed a project name, the agent chooses one appropriate to
+its subject. Each session receives a descriptive title, and its file is created
+only when the session begins.
+
 The learning project contains:
 
-- `plan.md`: the confirmed plan and progress.
-- `session-n.md`: each topic's explanations, discussion, references, and optional exercises.
+- `learning-plan.md`: the confirmed plan and progress.
+- `sessions/<title>-session-n.md`: each topic's explanations, discussion, references, and optional exercises.
 
 See [SKILL.md](SKILL.md) for the agent workflow.

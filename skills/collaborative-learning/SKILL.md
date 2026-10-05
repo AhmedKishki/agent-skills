@@ -14,7 +14,8 @@ description: Conduct collaborative, source-grounded learning about a book, conce
 5. Invite confirmation or adaptation. Wait for confirmation before teaching.
 6. Read `references/teaching.md` and `references/records.md` before starting a session.
 7. Teach the approved topics in order, with concise, direct, plain explanations.
-8. Save each topic's explanation and interactions in `project/session-n.md`.
+8. Save explanations and interactions using the paths and lazy session creation
+   rules in `references/records.md`.
 9. Offer optional exercise questions at the end of a session.
 10. Continue through the confirmed plan at the user's pace.
 

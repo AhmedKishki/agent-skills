@@ -33,7 +33,7 @@ Explain the scope and why the sequence supports understanding, briefly.
 Ask the user to confirm or adapt the plan. Do not start teaching yet.
 If the user requests changes, revise the plan and obtain confirmation.
 Treat an explicit instruction to begin the presented plan as confirmation.
-Record the confirmed plan and any subsequent agreed changes in `project/plan.md`.
+Record the confirmed plan and any subsequent agreed changes in `<project>/learning-plan.md`.
 
 ## Adapt and resume
 

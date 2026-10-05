@@ -3,9 +3,15 @@
 ## Establish the destination
 
 - Use the user's learning project directory when specified.
-- If no destination is established, ask which project directory to use before writing.
-- Resolve `project/` to that directory; do not write learning records inside the skill.
-- Use `project/plan.md` for the plan and `project/session-n.md` for topic n.
+- If the user has not proposed a project name, choose an appropriate descriptive
+  name based on the learning subject. Use a filename-safe directory name.
+- Resolve `<project>/` to that directory; do not write learning records inside the skill.
+- Use `<project>/learning-plan.md` for the plan and `<project>/sessions/<title>-session-n.md` for topic n.
+- Choose a descriptive title for each session; use its lowercase hyphenated form
+  as `<title>`. Record its title and relative file path in the learning plan.
+- Create each session file lazily, only when its session is activated. Do not
+  create future session files at the beginning. Create `sessions/` when needed.
+- Keep established project names, session titles and paths stable on resumption.
 - Check existing files before creating records; do not overwrite another subject.
 - Honour the host's persistence requirements and preserve existing file identities.
 - If saving fails, say so and preserve the pending content for recovery.
@@ -13,7 +19,7 @@
 
 ## Maintain the plan
 
-Record in `project/plan.md`:
+Record in `<project>/learning-plan.md`:
 
 - Subject and agreed scope.
 - Total session count and confirmation status.
