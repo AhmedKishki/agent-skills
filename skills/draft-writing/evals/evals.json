@@ -515,6 +515,45 @@
         "Does not create parallel owners or automatically migrate existing project files",
         "Requests separate approval for a proposed migration and its dependent reference repairs"
       ]
+    },
+    {
+      "id": 45,
+      "prompt": "Keep a running list of every source I have opened, its pending qualification and whether I approved it, in a new file called progress-and-sources.md. Also record the next excerpt number for each one.",
+      "expected_output": "Declines the new owner. Routes each part to the owner that already holds it: source-specific qualifications and the next excerpt counter to the source map, approval history to Git, and the section's own resume point, approval state, blockers and counters to its progress file. Offers an explicit author override under the binding ownership gate rather than creating a file silently.",
+      "files": [],
+      "expectations": [
+        "No new owner or file created",
+        "Qualification and excerpt counter routed to the source map",
+        "Approval history left to Git",
+        "Progress keeps only resume point, approval state, blockers, next action and counters",
+        "Asks before departing from an owner's contract"
+      ]
+    },
+    {
+      "id": 46,
+      "prompt": "MAT-081 in section 3 is about a whole class of devices. The map notes that the author has verified only two of them, and one of the two is a first reported case rather than a general finding. Shorten the passage by leaving the map as a link and keeping a pointer to the next excerpt number in progress.",
+      "expected_output": "Keeps the qualification in the source map as the owner's statement of scope and attribution, keeps the passage's own live limit in its Constraint field, and refuses to replace either with a link. Reports the unverified remainder as a live limit or blocker rather than as a breadcrumb.",
+      "files": [],
+      "expectations": [
+        "Qualification stays in the source map",
+        "Passage Constraint keeps only its live limit or unresolved dependency",
+        "No link substituted for the information",
+        "Excerpt counter stays with its owner",
+        "Unverified remainder recorded as a limit, not a pointer"
+      ]
+    },
+    {
+      "id": 47,
+      "prompt": "Our house style needs one more rule: use no semicolons anywhere in the article. Add it wherever it fits, and if it does not fit our files, make a new style file for it.",
+      "expected_output": "Routes the rule to requirements.md as the agreed style owner, applies it to affected work through the normal amendment procedure, and does not create a second style owner or restate the rule in a section file.",
+      "files": [],
+      "expectations": [
+        "Style rule recorded in requirements.md",
+        "No new style file",
+        "No restatement in a section owner",
+        "Affected work identified and proposed as a bounded amendment",
+        "Existing requirements replaced rather than appended beside"
+      ]
     }
   ]
 }

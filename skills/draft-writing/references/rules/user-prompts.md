@@ -5,7 +5,7 @@ description: Route each part of a prompt to its owner without turning instructio
 
 # User Prompts
 
-Read the current object before applying a prompt or direct edit. Separate independent parts by function, preserving exact reusable wording. A multi-part prompt can update several owners, but each unresolved substantive decision follows [decisions](decisions.md), one question at a time.
+Read the current object before applying a prompt or direct edit. Apply [Binding ownership](../../SKILL.md#binding-ownership) to each information unit before writing; the owner module's Allowed list must admit it. A relevant unit is not automatically allowed. Separate independent parts by function, preserving exact reusable wording. A multi-part prompt can update several owners, but each unresolved substantive decision follows [decisions](decisions.md), one question at a time.
 
 | Content | Owner |
 |---|---|
@@ -24,8 +24,8 @@ For example, route a new thesis to thesis-and-vision, a citation instruction to 
 
 Preserve exact user spelling, punctuation and paragraph breaks. Instructions are not eligible prose or voice evidence. User-pasted quotations remain source-authored; approval does not make them the user's words. Routing an input does not approve a claim, synthesis, connection or insertion.
 
-If placement or intent is unclear, ask one focused question before saving it as approved content. If pausing, retain the exact unresolved input as pending in the active section's progress. Before any section exists, keep only the placement question and necessary exact text as a pending setup question in `organisation/plan.md`; remove it when resolved. Do not create an inbox or miscellaneous material file. Article-wide pending questions stay beside their target owner.
+If placement or intent is unclear, ask one focused question before writing it into a content owner. A pause may retain only the unresolved placement question and exact input required for the next decision, under progress's bounded pending-object exception. Before any section exists, use `organisation/plan.md`'s bounded setup exception instead; remove it when resolved. Do not create an inbox or miscellaneous material file. Article-wide pending questions stay beside their target owner.
 
 Do not copy a user input to several sections to bypass source-only sharing. Ask for the destination or an explicit change to that rule. Direct user edits remain intact; if an edit changes evidence, provenance, placement or apparent authorship, identify the affected span and ask about the unresolved part rather than silently undoing or reclassifying it.
 
-After routing, verify that every part has its proper owner, instructions have not become prose, and exact author/source wording remains distinguishable. Do not retain a duplicate prompt transcript after its live parts have been routed.
+After routing, verify each unit against its Allowed list, keep its qualifications in the same owner, and remove duplicate routing commentary rather than writing "recorded in" or "held elsewhere" summaries. Instructions must not become prose; author/source wording remains distinguishable. Do not retain a duplicate prompt transcript after routing its live parts.

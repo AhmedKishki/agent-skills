@@ -19,6 +19,92 @@ MODULES = {
 }
 
 
+OWNER_MODULES = {
+    "article/thesis-and-vision.md": (
+        (r"motivation|thesis", r"theory|commitment|scope"),
+        (r"\brequirements\b", r"\bplan\b", r"\bdraft\b"),
+    ),
+    "article/requirements.md": (
+        (r"audience", r"voice|style", r"citation"),
+        (r"thesis-and-vision", r"\bplan\b", r"\bdraft\b"),
+    ),
+    "article/plan.md": (
+        (r"section order|article order", r"sequence", r"current.section"),
+        (r"\barc\b", r"\bprogress\b", r"\bmaterial\b"),
+    ),
+    "section/arc.md": (
+        (r"passage", r"purpose", r"connection|order"),
+        (r"\bmaterial\b", r"\bprogress\b", r"\bdraft\b"),
+    ),
+    "section/progress.md": (
+        (r"resume|handoff|current", r"approval", r"\bstate\b", r"blocker|counter"),
+        (r"source maps?", r"\bmaterial\b", r"\barc\b"),
+    ),
+    "section/material.md": (
+        (r"constraint|condition", r"approved", r"basis|provenance"),
+        (r"source maps?", r"\barc\b", r"\bdraft\b"),
+    ),
+    "section/draft.md": (
+        (r"prose|passage", r"footnote|note marker", r"marker"),
+        (r"\bmaterial\b", r"\barc\b", r"\brequirements\b"),
+    ),
+    "supplement/source-maps.md": (
+        (r"excerpt", r"locator"),
+        (r"\bmaterial\b", r"\bdraft\b", r"\bprogress\b"),
+    ),
+}
+
+ENTRY_GATE = {
+    "allowlist": (r"allow\s*list|\ballowed\b",),
+    "rejects unlisted content": (
+        r"reject|refuse|absent|not allowed|prohibit|do not write|cannot enter|only listed",
+    ),
+    "author override": (r"override|except", r"author|user"),
+    "no implicit owner": (r"no implicit|do(?:es)? not create|never create", r"owner"),
+    "no breadcrumb substitute": (
+        r"breadcrumb|in place of the content|substitut|pointer instead|"
+        r"cannot replace|can not replace|does not replace|stand in for",
+    ),
+}
+
+PROGRESS_EXCLUSIONS = {
+    "source qualifications": (r"qualification|source scope|\bscope\b",),
+    "approval history": (r"history|approvals? record|decided decisions?",),
+    "source inventories": (r"inventor|source list|next.excerpt|excerpt counter",),
+}
+
+SOURCE_MAP_ALLOWED = {
+    "scope": r"scope|qualification",
+    "attribution": r"attribution",
+    "normalisation": r"normalis|normaliz|transcription",
+    "correction": r"correction",
+}
+
+MATERIAL_EXCLUSIONS = (r"scope|qualification", r"source maps?")
+
+INBOUND = r"incoming|inbound|cites|referencing|another file"
+ANCHOR_AFTER_EDIT = r"resolv|verif|check|update|redirect|repair|rename"
+
+QUALIFICATION_CHECKS = {
+    "before": r"\bbefore\b",
+    "after": r"\bafter\b",
+    "qualification": r"qualification|qualifier",
+    "scope": r"\bscope\b",
+    "order": r"\border\b",
+    "quantifier first": r"\bfirst\b",
+    "quantifier much": r"\bmuch\b",
+    "quantifier all": r"\ball\b",
+}
+
+SECOND_ORDER_DOC = (
+    r"second-order|second order|breadcrumb|describe what another file holds|"
+    r"documen(?:t|ts|ing) (?:other|another) file"
+)
+LINK_SUBSTITUTION = r"replace[sd]? (?:its|the) content with a link|in place of its content"
+PROTECTED = r"content and evidence|drafts?\b|material|source maps?"
+APPROVAL = r"approval|approved|ask"
+
+
 def prose(text):
     """Exclude fenced examples: their placeholder paths are not installed files."""
     lines = []
@@ -62,6 +148,49 @@ def link_errors(path):
         elif url.fragment and unquote(url.fragment) not in anchors(target.read_text(encoding="utf-8")):
             errors.append(f"{path}: missing anchor for {link}")
     return errors
+
+
+def contract_fields(text, label):
+    """Return every prose line declaring `**label:**`; a fenced shape is not a contract."""
+    pattern = rf"^\*\*{label}:\*\*\s*(.+)$"
+    return [match.group(1).strip() for match in re.finditer(pattern, prose(text), re.M)]
+
+
+def declared_items(payload):
+    """Split one contract field into its distinct declared items."""
+    parts = re.split(r"[;,]|\band\b", payload)
+    return [part.strip(" .:*") for part in parts if part.strip(" .:*")]
+
+
+def missing_groups(text, groups):
+    """Return the label groups that `text` does not state at all."""
+    return [group for group in groups if not re.search(group, text, re.I)]
+
+
+def has_any(text, pattern):
+    """Report whether one alternative appears, in any wording."""
+    return bool(re.search(pattern, text, re.I))
+
+
+def names_any(text, alternatives):
+    """Report whether the text names at least one of the alternatives."""
+    return any(re.search(alternative, text, re.I) for alternative in alternatives)
+
+
+def section(text, heading, level=2):
+    """Return the body of one plain heading, up to the next heading of the same or higher level."""
+    lines = prose(text).splitlines()
+    start = next((i + 1 for i, line in enumerate(lines)
+                  if line.strip() == "#" * level + f" {heading}"), None)
+    if start is None:
+        return ""
+    body = []
+    for line in lines[start:]:
+        marker = re.match(r"^(#{1,6})\s", line)
+        if marker and len(marker[1]) <= level:
+            break
+        body.append(line)
+    return "\n".join(body)
 
 
 class LinkChecks(unittest.TestCase):
@@ -223,6 +352,98 @@ class SkillChecks(unittest.TestCase):
                     self.assertTrue((ROOT / filename).is_file())
                 self.assertTrue(case["expectations"])
                 self.assertTrue(all(isinstance(e, str) and e.strip() for e in case["expectations"]))
+
+
+class OwnershipChecks(unittest.TestCase):
+    """Closed per-owner contracts and the central admission gate they answer to."""
+
+    def setUp(self):
+        self.modules = {name: (REFERENCES / name).read_text(encoding="utf-8")
+                        for name in OWNER_MODULES}
+
+    def field(self, name, label):
+        fields = contract_fields(self.modules[name], label)
+        self.assertEqual(len(fields), 1, f"{name} needs exactly one **{label}:** contract line")
+        return fields[0]
+
+    def test_owner_modules_declare_closed_contracts(self):
+        for name, (allowed_groups, deferred_to) in OWNER_MODULES.items():
+            with self.subTest(module=name):
+                allowed = self.field(name, "Allowed")
+                excluded = self.field(name, "Excluded")
+                self.assertEqual(missing_groups(allowed, allowed_groups), [])
+                self.assertTrue(names_any(excluded, deferred_to),
+                                f"{name} must name the owner that holds its excluded content")
+                self.assertGreaterEqual(len(declared_items(allowed)), 3)
+                self.assertGreaterEqual(len(declared_items(excluded)), 3)
+
+    def test_progress_excludes_qualifications_history_and_inventories(self):
+        excluded = self.field("section/progress.md", "Excluded")
+        for label, group in PROGRESS_EXCLUSIONS.items():
+            with self.subTest(exclusion=label):
+                self.assertEqual(missing_groups(excluded, group), [])
+
+    def test_source_maps_allow_source_specific_qualifications(self):
+        allowed = self.field("supplement/source-maps.md", "Allowed")
+        for label, pattern in SOURCE_MAP_ALLOWED.items():
+            with self.subTest(field=label):
+                self.assertTrue(has_any(allowed, pattern), f"source maps omit {label}")
+
+    def test_material_constraint_is_not_a_source_scope(self):
+        allowed = self.field("section/material.md", "Allowed")
+        excluded = self.field("section/material.md", "Excluded")
+        self.assertTrue(has_any(allowed, r"constraint|condition"))
+        self.assertEqual(missing_groups(excluded, MATERIAL_EXCLUSIONS), [])
+        fields = re.findall(r"^\*\*Constraint:\*\*\s*(.+)$", self.modules["section/material.md"], re.M)
+        self.assertEqual(len(fields), 1, "one passage Constraint field, in the file shape")
+        self.assertTrue(fields[0].strip())
+
+    def test_entry_binds_ownership_and_creates_no_implicit_owner(self):
+        body = section((ROOT / "SKILL.md").read_text(encoding="utf-8"), "Binding ownership")
+        self.assertTrue(body, "SKILL.md needs a ## Binding ownership section")
+        for label, groups in ENTRY_GATE.items():
+            with self.subTest(gate=label):
+                self.assertEqual(missing_groups(body, groups), [])
+
+
+class RefactorChecks(unittest.TestCase):
+    """Contract checks for the sibling refactor skill, skipped when it is not installed."""
+
+    @classmethod
+    def setUpClass(cls):
+        path = ROOT.parents[0] / "agent-md-refactor" / "SKILL.md"
+        if not path.is_file():
+            raise unittest.SkipTest("Standalone skill has no sibling refactor skill")
+        cls.text = path.read_text(encoding="utf-8")
+        cls.lines = prose(cls.text).splitlines()
+
+    def test_incoming_anchors_are_checked_after_a_rename(self):
+        anchors = [line for line in self.lines if re.search(r"\banchors?\b", line, re.I)]
+        self.assertGreaterEqual(len(anchors), 2, "one anchor line is not a verification procedure")
+        self.assertTrue([line for line in anchors if re.search(INBOUND, line, re.I)],
+                        "no anchor line states that another file may cite the heading")
+        self.assertTrue([line for line in anchors if re.search(ANCHOR_AFTER_EDIT, line, re.I)],
+                        "no anchor line requires resolving or repairing the result")
+
+    def test_qualifications_survive_before_and_after(self):
+        body = section(self.text, "Verification")
+        self.assertTrue(body, "the refactor skill needs a Verification section")
+        for label, pattern in QUALIFICATION_CHECKS.items():
+            with self.subTest(check=label):
+                self.assertTrue(has_any(body, pattern), f"Verification omits {label}")
+
+    def test_no_second_order_document(self):
+        self.assertTrue(has_any(prose(self.text), SECOND_ORDER_DOC),
+                        "a file may not hold documentation about other files")
+
+    def test_link_substitution_is_forbidden(self):
+        self.assertTrue(has_any(prose(self.text), LINK_SUBSTITUTION),
+                        "a link may not stand in for the information")
+
+    def test_protected_content_is_not_edited_without_approval(self):
+        self.assertTrue([line for line in self.lines
+                         if re.search(PROTECTED, line, re.I) and re.search(APPROVAL, line, re.I)],
+                        "content and evidence files state no approval boundary for edits")
 
 
 if __name__ == "__main__":

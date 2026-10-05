@@ -5,7 +5,11 @@ description: Keep one section's exact resume point, approval state, live blocker
 
 # Section Progress
 
-Keep that section's handoff, the current task, exact object, approval state, next action, unfinished verification, readiness and next local IDs in `sections/section-n/progress-section-n.md`. Read it before local work or ID allocation. It does not duplicate the arc or approved prose.
+**Owner:** `sections/section-n/progress-section-n.md`.
+**Allowed:** Current object and task, current action-specific approval/save state, exact next action, live blockers, unfinished verification targets, readiness, local counters and the bounded pending object below.
+**Excluded:** Source inventories, source quotations, source qualifications and locator corrections (source maps); passage constraints and saved inputs (material); argument development and passage order (arc); construction logs, approval history, completed task narratives and descriptions of other files' contents.
+
+Read progress before local work or ID allocation. A verification target identifies an action and object, not the source evidence or qualification itself.
 
 ```markdown
 # Section 1 Progress
@@ -17,7 +21,7 @@ Keep that section's handoff, the current task, exact object, approval state, nex
 **Next:** <The first exact action to take.>
 
 ## Blockers
-<Only live blockers and links to their owners.>
+<A live impediment, its exact object and the action needed to resolve it.>
 
 ## Counters
 - Next passage: P-002
@@ -27,7 +31,7 @@ Keep that section's handoff, the current task, exact object, approval state, nex
 
 This is a shape example, not initial state. Set actual values; omit empty fields and unused namespaces. Approval state is `pending`, `approved but unsaved`, or `saved`. An approved save failure remains `approved but unsaved`, with its exact object and failure recorded, not reported as completion.
 
-Retain an exact pending proposal only while needed to resume. Keep its input references so the full construction record can be rebuilt and re-presented; do not preserve a permanent operation log. If the proposal cannot be recovered, ask rather than reconstructing it from memory and treating it as approved. Remove pending text after rejection, replacement or successful save. A ready section may have a brief readiness record and counters without a fabricated next task.
+Retain only the exact pending object required for the next unresolved decision or approved-but-unsaved failure, when no proper owner already preserves it. Keep its input references so the construction record can be rebuilt and re-presented; do not keep alternatives or an operation log. If the object cannot be recovered, ask rather than reconstructing it from memory as approved. Remove pending text after rejection, replacement or successful save. A ready section needs no fabricated task.
 
 ## Local Identifiers
 
@@ -40,7 +44,7 @@ Use `P-001` for an arc passage, `U-001` for exact local user wording and `MAT-00
 
 ## Handoff And Readiness
 
-Update this file after decisions, saves, blockers and focus changes. Record unfinished citation or dependent-source reviews here with exact references, not repeated evidence. Article-level pending decisions belong beside their article owner; `plan.md` carries only the current-section navigation link.
+Update current state after decisions, saves, blockers and focus changes; replace stale state, do not append a history. For unfinished citation or source reviews, state the remaining action and exact target only. Put the source qualification or correction directly in its map. Article-level pending decisions remain beside their article owner; the plan carries only current-section navigation.
 
 A section is ready only when intended approved prose is inserted, its arc is checked, required smoothing and citations are complete, no blocker remains, and the user has approved the section. Record the current section approval here. Deferred review means review pending, not ready.
 

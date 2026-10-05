@@ -6,6 +6,7 @@ description: Refactor agent-generated markdown of any kind — instruction files
 # Agent markdown refactor
 
 - Rewrite one markdown file into its shortest useful form.
+- Apply structural and language edits to operational scaffolding only. Quotations, approved passages, author comments, drafts and finite provenance require their own edit or relocation approval.
 
 ## Purpose
 
@@ -59,11 +60,11 @@ description: Refactor agent-generated markdown of any kind — instruction files
 ## Consolidation across files
 
 - A rule that two files state belongs to the file that owns it.
-  - Keep the fullest statement in the owner.
-  - Replace every other statement with a link to the owner.
+  - Keep the complete rule and every unique qualification in the owner. Neither copy is a substitute when their limits or examples differ.
+  - Remove other copies. Keep a link only when it navigates to an input, rule or next action the reader needs.
 - Consolidate the entries that repeat a value or a list.
   - Define an item once, then refer to it by its identifier.
-- Keep a pointer where the reader needs the rule in context and the owner sits far away.
+- Do not replace the owner's information or qualifications with a pointer. Do not add a sentence announcing where a removed copy went.
 - Report every consolidation with the files it touched.
 
 ## Bullets
@@ -80,17 +81,17 @@ description: Refactor agent-generated markdown of any kind — instruction files
 
 ## State
 
-- A markdown file holds current, operative decisions only.
+- Operational scaffolding holds current, operative decisions only.
   - Git holds the history.
 
-- Delete dates, times, "as discussed on", decision logs, superseded versions, completed task lists, and abandoned alternatives.
+- Remove superseded proposals, completed intervention narratives, audit diaries, file-by-file save accounts and chat-option captions. Keep live approval states and exceptions, not their agreement history.
 - Keep a decision while it is in force, and state it as though it were always so.
   - Record both constraints when both are live; the one that is live when the other has lapsed.
   - Record the rule, not the moment it was agreed.
 - Exception: content and evidence files, where the record is the content — drafts, material, source maps.
-  - Cut nothing there. Tighten the wording only.
+  - Preserve exact recorded wording, dates, locators, approval scope and provenance. Refactor only separable scaffolding; do not tighten protected wording without approval.
 - Exception: files whose stated purpose is the record itself — a changelog, a session log.
-  - Prune to the live state. Never split the file.
+  - Preserve the required record. Age alone is not a reason to delete it or split the file.
 
 ## Additions and removals
 
@@ -112,6 +113,9 @@ description: Refactor agent-generated markdown of any kind — instruction files
 
 - Treat splitting as a last resort. Consolidating in place and leaving a file alone both give a correct result.
 - Search the repository for citations of the filename before moving anything.
+- Read the project's ownership contracts before planning edits. Classify every affected unit and its qualifications, and match them to one owner's allowed content.
+  - Relevance, an existing heading or the file already open does not admit unlisted content.
+  - If ownership is missing or ambiguous, ask before adding, deleting or relocating the unit. Protected misplaced records remain untouched until relocation is authorised; they do not permit new misplaced records.
 
 ## Phase 2 — Contradictions
 
@@ -126,6 +130,7 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - Write each heading as a phrase that describes what its section holds.
 - Split a long bullet. Nest the parts under the claim they share.
 - Consolidate any rule that two files state into the file that owns it.
+- Transfer every unique qualification to the receiving owner before removing the origin. Do not create a transfer diary or breadcrumb paragraph.
 - Cut every line the purpose test rejects.
 - Report every cut before making it. Never delete silently.
 
@@ -135,8 +140,7 @@ description: Refactor agent-generated markdown of any kind — instruction files
   - Read each file against the others.
   - Ask four questions of every statement.
 
-- A rule enforced elsewhere is not restated. Name the owner and link, or cut the line.
-  - Reference a fact that the linked owner already implies.
+- A unit must satisfy its owner's content contract. Move an authorised unit to its proper owner, not into a miscellaneous section or a file that merely links elsewhere.
 - A line must say something the reader could not infer.
   - Cut a line the reader can already infer.
   - Cut a line whose only content is that something was checked, approved, confirmed or considered, with no live state attached.
@@ -144,6 +148,9 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - Every kind of information, record and documentation has exactly one owner.
   - Move content that belongs elsewhere into the file that serves its purpose.
   - Do not leave the same content in two files.
+- Reject second-order documentation: sentences saying another file records, holds, contains or has received information. State the information directly in its owner, or cut a redundant report.
+- Keep source qualifications with sources, passage constraints with passages, and rule exceptions with their rules. Progress contains a resume point, next action and live blockers, not source inventories or approval histories.
+- Compare conditions, modality, attribution, scope and order before and after consolidation. A surviving label or distinctive phrase is not proof that the qualification survived.
 
 ### Authoritative rules
 
@@ -153,9 +160,7 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - A standing rule states how it handles its own exceptions.
   - The rule owns the exception policy. An entry carries only its own exception.
   - An entry that must deviate says so where the reader meets it, and cites the rule.
-- Some duplication earns its place.
-  - Keep a second copy only where a reader meets the file without the owner.
-  - Link rather than restate even then.
+- Preserve explicitly authorised content copies and standalone outputs required by their own contracts. Convenience or an isolated reading context does not authorise another operational record.
 - A link that routes the reader to the file holding a rule is navigation, not a second copy of the rule.
 - A file states its own content. It does not describe what another file holds, and it does not replace its content with a link to it.
 - A qualification stays with the rule it qualifies. Move it into that rule's file.
@@ -187,12 +192,14 @@ description: Refactor agent-generated markdown of any kind — instruction files
 - Always verify. A reader can check a structure by eye and still miss a lost rule.
 
 1. Capture a baseline: the line count, the word count and the section list.
-2. List the file's content units as a checklist: each rule, owner, command, override, exception and path.
-3. After editing, search the new file for a distinctive phrase from every unit.
-4. Confirm that every removed line duplicates another line, merges into another line, or appears in your cut report.
-5. Confirm that every rule the file used to state still has one owner somewhere.
-6. Confirm that every link and citation still resolves.
-7. Report the line count, the word count and the percentage change.
+2. Inventory each unit's owner, allowed category, protected wording, command, override, qualification, exception and path. Record scope and ordering words such as "only", "unless", "first" and "much, though not all".
+3. For each removal, identify the surviving owner and complete equivalent unit, or the approved obsolete content. Unmatched unique information fails verification.
+4. Compare before/after qualifications semantically, not just by phrase presence. Check attribution, modality, conditions, approval extent, exclusions and order; match protected wording and counters exactly unless their change was approved.
+5. Check each receiving owner's allowed content and confirm the actual information and its qualifications are present there, not only a link or a sentence about a move. Reject a duplicate operational record or an implicit ownership exception.
+6. Audit changed scaffolding for second-order documentation, source inventories in handoffs, historical narration, boilerplate and unclear actors. Treat string matches as findings to review, not permission to rewrite quotations or records.
+7. Check every inbound link and anchor after a heading or file change, including links in unchanged files; then check outgoing links, citations and identifier references.
+8. Run the project's applicable checks. A preservation or routing failure blocks completion; repair it or ask the author, never hide it behind a word-count reduction.
+9. Report the line count, word count and percentage change. Keep the audit and cut report out of the operational files being cleaned.
 
 - Report a small reduction as the honest result when every remaining line carries weight. Do not describe a small reduction as a cleanup.
 
@@ -213,6 +220,10 @@ description: Refactor agent-generated markdown of any kind — instruction files
 | An entry repeating its own rule | Rule states the policy, entry the deviation |
 | A README restating its `SKILL.md` | Point to the skill |
 | Growing a log forever | Prune to live state |
+| "The file records…" or "This was added…" | State the information in its owner |
+| Replacing required information with a link | Keep the information and its qualifications at the expected point |
+| A source qualification in progress | Qualify the source in its map; keep only the verification action in progress |
+| A surviving ID treated as proof of preservation | Compare the full scope, conditions, attribution and order |
 | Silent deletion | Report the cut, then delete it on approval |
 | Adding words to fill a gap | Cut the line instead |
 | Keeping history in the body | Leave the history to Git |

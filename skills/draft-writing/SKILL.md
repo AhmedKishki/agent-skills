@@ -34,6 +34,20 @@ Sections share source maps and article-wide direction only. Do not copy or refer
 
 Working Markdown files have only `name` and `description` frontmatter; `name` equals the filename. Use one H1, plain headings, flat lists, exact quotation blocks and relative links. Omit empty fields. Do not create general material, global progress, separate arguments or user-wording stores. Keep project-specific theory, citation style and research settings out of this skill.
 
+## Binding ownership
+
+Each owner module's **Allowed** list is a closed content contract: only listed information may enter that file. **Excluded** identifies common misroutes, not the full set of prohibited additions. An existing project's explicit contracts override the default paths and categories; a filename, heading or related topic is not an override.
+
+Before every write:
+1. Separate the proposed content into information units, keeping each qualification with the unit it limits.
+2. Resolve one declared owner for each unit and match it to that owner's Allowed list. Read the owner and its module; do not default to the file already open.
+3. If no allowed category matches, do not write. Route the unit to its declared owner, or ask the author to settle missing or ambiguous ownership. Do not create a catch-all, parallel register or implicit exception.
+4. Keep source scope, attribution and transcription limits in the source map; passage-specific conditions in material; article-wide writing requirements in requirements. Follow explicit project combinations of those owners.
+5. Replace the owner's current record instead of appending a duplicate. Record the information itself, not that another file records, contains or has received it. Links identify inputs or navigate to work; they cannot replace information that belongs in the destination.
+6. Check the changed unit against its contract and affected references. Preserve approval scope, qualifiers, provenance, identifiers and exact protected wording; ownership never grants approval or synthesis eligibility.
+
+Protected legacy records are not permission for new out-of-contract content. Do not delete or migrate them to enforce a contract without the author's required approval. A project-specific owner needs an explicit purpose and allowed categories before it accepts new information.
+
 ## Read By Task
 
 Read the governing project rules first. Load the relevant modules below, not the full reference library or release changelog.
@@ -58,7 +72,7 @@ Read the governing project rules first. Load the relevant modules below, not the
 ## Section Loop
 
 1. Read the three article files if present. Use the section named by the user, otherwise the current-section link in `plan.md`. Ask if neither identifies the section; do not scan every section to infer a resume point.
-2. Read that section's progress and arc, then only the local material, draft passages and shared excerpts needed for the current task. Route the prompt and settle one decision at a time.
+2. Read that section's progress and arc, then only the local material, draft passages and shared excerpts needed for the current task. Apply Binding ownership, route the prompt and settle one decision at a time.
 3. Identify the passage's purpose and missing wording or evidence. Map and approve necessary source excerpts; retrieval alone is not an eligible input.
 4. Use white-box as the basis for synthesis. Show the exact passage and full construction record for approval. Save approved material; propose draft insertion separately. AI gap text follows its own request, marking and approval procedure, never white-box reuse.
 5. Smooth the section one amendment at a time and verify affected footnotes. Ask for section review before drafting the next unless the user chooses later review.

@@ -5,7 +5,9 @@ description: Keep the author's current motivation, theoretical commitments and m
 
 # Thesis And Vision
 
-Keep why the article matters, its central claim, theoretical commitments, meta-theoretical commitments about explanation and knowledge, scope and open thesis questions in `organisation/thesis-and-vision.md`. Leave tone, citations, passage order, source excerpts and task logs elsewhere.
+**Owner:** `thesis-and-vision.md`, at `organisation/thesis-and-vision.md` in the default new-project layout.
+**Allowed:** Motivation, central claim, theoretical and explanatory commitments, scope, their qualifications, and unresolved questions that can change the thesis.
+**Excluded:** Tone and citation requirements (requirements); section order (plan); passage order (arc); exact inputs (material); source quotations and source-specific limits (source maps); task state, counters and activity history.
 
 Read the user's exact direction and the current file. Follow [decisions](../rules/decisions.md) before changing a substantive position. Use these headings only where content exists:
 

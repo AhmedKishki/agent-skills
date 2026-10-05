@@ -5,7 +5,11 @@ description: Develop one section's argument through ordered passage purposes and
 
 # Section Arc
 
-Keep that section's driving claim or question and internal development in `sections/section-n/arc-section-n.md`. Read the article direction, its brief purpose in `plan.md`, and the section's current progress. Link to the article purpose instead of repeating it.
+**Owner:** `sections/section-n/arc-section-n.md`.
+**Allowed:** Driving claim or question, ordered passage purposes, authorised connections, specific evidence needs and material references.
+**Excluded:** Article-wide direction (thesis/requirements); exact inputs and approved passages (material); source quotations and source-specific qualifications (source maps); approval/save histories, task state and counters (progress).
+
+Read article direction, the section's brief purpose in the plan and its current progress. The plan link navigates to article context; the arc must state its own driving question and development directly.
 
 ```markdown
 # Section 1 Arc

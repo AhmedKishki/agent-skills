@@ -5,7 +5,11 @@ description: Insert approved section prose, preserve voice and verify local foot
 
 # Section Draft
 
-Keep approved inserted prose and footnotes in `sections/section-n/draft-section-n.md`. Read article direction, requirements, the local arc and progress, and relevant local material. Do not use another section's inputs or prose for synthesis.
+**Owner:** `sections/section-n/draft-section-n.md`.
+**Allowed:** Approved reader-facing prose, its approved heading, footnotes and required AI-span markers.
+**Excluded:** Raw inputs, source-map notes, planning or review questions, task/approval state, counters, source qualifications as operational commentary, and descriptions of material transfers.
+
+Read article direction, requirements, the local arc and progress, and relevant local material. Do not use another section's inputs or prose for synthesis.
 
 ```markdown
 # <Approved reader-facing section heading>
@@ -36,6 +40,8 @@ Check author, title, locator, attribution, scope and qualification against sourc
 After insertion, movement or cutting, check missing definitions, unused notes, duplicate numbers, first-use citations and claim-to-note alignment. Present changed notes with the amendment for approval. Do not create a separate citation owner.
 
 ## Assembly
+
+**Derived owner:** `draft.md`. Only requested assembly of approved section prose, its footnotes and permanent AI labels is allowed; inputs, planning, review records and independently revised prose are excluded.
 
 Create `draft.md` only on an explicit request. It is a derived delivery, not a second drafting owner. Assemble approved sections in article-plan order without new prose. If the user requests an unreviewed section, settle its inclusion explicitly rather than calling it approved.
 

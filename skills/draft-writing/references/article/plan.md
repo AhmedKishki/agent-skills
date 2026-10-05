@@ -5,7 +5,11 @@ description: Own article-level section order, purposes, drafting sequence and th
 
 # Article Plan
 
-Keep article section order, each section's brief contribution, the agreed drafting and review sequence, and one current-section link in `organisation/plan.md`. Read the thesis and requirements before proposing changes. Use [decisions](../rules/decisions.md); placement does not establish a claim or approve prose.
+**Owner:** `plan.md`, at `organisation/plan.md` in the default new-project layout.
+**Allowed:** Article section order, each section's brief contribution, agreed drafting/review sequence, one current-section link, and the bounded pre-section setup question below.
+**Excluded:** Thesis or requirements; detailed passage order (arc); section status, next actions, blockers and counters (progress); source inventories and qualifications (source maps); material, draft prose and completed planning history.
+
+Read the thesis and requirements before proposing changes. Use [decisions](../rules/decisions.md); placement does not establish a claim or approve prose.
 
 ```markdown
 # Plan
