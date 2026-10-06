@@ -10,7 +10,12 @@
     {
       "name": "draft-writing",
       "displayName": "Draft Writing",
-      "source": "./skills/draft-writing",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/draft-writing-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/draft-writing-skill",
+      "repository": "https://github.com/AhmedKishki/draft-writing-skill",
       "description": "Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing.",
       "tags": [
         "writing",
@@ -21,7 +26,12 @@
     {
       "name": "write-like-me",
       "displayName": "Write Like Me",
-      "source": "./skills/write-like-me",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/write-like-me-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/write-like-me-skill",
+      "repository": "https://github.com/AhmedKishki/write-like-me-skill",
       "description": "Write, rewrite, and audit prose using an evidence-backed personal writing pattern while preserving meaning.",
       "tags": [
         "writing",
@@ -30,9 +40,14 @@
       ]
     },
     {
-      "name": "agent-md-refactor",
-      "displayName": "Agent MD Refactor",
-      "source": "./skills/agent-md-refactor",
+      "name": "markdown-refactor",
+      "displayName": "Markdown Refactor",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/markdown-refactor-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/markdown-refactor-skill",
+      "repository": "https://github.com/AhmedKishki/markdown-refactor-skill",
       "description": "Refactor agent-facing Markdown so each file holds everything its job requires and nothing outside it, with one owner per rule and one meta view.",
       "tags": [
         "markdown",
@@ -43,7 +58,12 @@
     {
       "name": "collaborative-learning",
       "displayName": "Collaborative Learning",
-      "source": "./skills/collaborative-learning",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/collaborative-learning-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/collaborative-learning-skill",
+      "repository": "https://github.com/AhmedKishki/collaborative-learning-skill",
       "description": "Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion.",
       "tags": [
         "learning",
@@ -54,7 +74,12 @@
     {
       "name": "humaniser",
       "displayName": "Humaniser",
-      "source": "./skills/humaniser",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/humaniser-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/humaniser-skill",
+      "repository": "https://github.com/AhmedKishki/humaniser-skill",
       "description": "Find AI writing patterns in Markdown against a semantic checklist and report a ranked list of findings for approval.",
       "tags": [
         "writing",

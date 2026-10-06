@@ -1,0 +1,15 @@
+[submodule "skills/draft-writing"]
+	path = skills/draft-writing
+	url = https://github.com/AhmedKishki/draft-writing-skill.git
+[submodule "skills/write-like-me"]
+	path = skills/write-like-me
+	url = https://github.com/AhmedKishki/write-like-me-skill.git
+[submodule "skills/markdown-refactor"]
+	path = skills/markdown-refactor
+	url = https://github.com/AhmedKishki/markdown-refactor-skill.git
+[submodule "skills/collaborative-learning"]
+	path = skills/collaborative-learning
+	url = https://github.com/AhmedKishki/collaborative-learning-skill.git
+[submodule "skills/humaniser"]
+	path = skills/humaniser
+	url = https://github.com/AhmedKishki/humaniser-skill.git

@@ -5,7 +5,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 ## File responsibilities
 
-- Keep each skill self-contained under `skills/<skill-name>/`.
+- Keep each skill self-contained in its own repository, included here as a submodule at `skills/<skill-name>/`.
 - Use `SKILL.md` for the operational workflow and routing to supporting files.
 - Use `references/*.md` for detailed instructions needed during that workflow.
 - Use the skill's `README.md` for a brief user-facing introduction and usage.
@@ -57,6 +57,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 - Save authorised changes to the repository and verify the resulting files.
 - Preserve concurrent changes; never force-push to overwrite them.
+- Commit and push a skill change in that skill's own repository first, then update this collection's submodule pointer.
 - Treat commits on `main` as development state, not published releases.
 - Follow the version and release policy in the root README for requested releases.
 - Keep version metadata, changelog entries, release tags, and assets consistent.
