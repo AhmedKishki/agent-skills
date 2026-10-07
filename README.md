@@ -6,6 +6,7 @@ A collection of skills for Codex and Claude. Each skill is its own Git repositor
 
 | Skill | Repository | Purpose |
 |---|---|---|
+| [`collaborative-coding`](skills/collaborative-coding/) | [collaborative-coding-skill](https://github.com/AhmedKishki/collaborative-coding-skill) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`collaborative-learning`](skills/collaborative-learning/) | [collaborative-learning-skill](https://github.com/AhmedKishki/collaborative-learning-skill) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
 | [`draft-writing`](skills/draft-writing/) | [draft-writing-skill](https://github.com/AhmedKishki/draft-writing-skill) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`humaniser`](skills/humaniser/) | [humaniser-skill](https://github.com/AhmedKishki/humaniser-skill) | Find repeated or unclear Markdown prose using a semantic checklist. |

@@ -13,3 +13,6 @@
 [submodule "skills/humaniser"]
 	path = skills/humaniser
 	url = https://github.com/AhmedKishki/humaniser-skill.git
+[submodule "skills/collaborative-coding"]
+	path = skills/collaborative-coding
+	url = https://github.com/AhmedKishki/collaborative-coding-skill.git
