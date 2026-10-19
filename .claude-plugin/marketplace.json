@@ -86,6 +86,22 @@
         "editing",
         "review"
       ]
+    },
+    {
+      "name": "white-box-synthesis",
+      "displayName": "White-Box Synthesis",
+      "source": {
+        "source": "github",
+        "repo": "AhmedKishki/white-box-synthesis-skill"
+      },
+      "homepage": "https://github.com/AhmedKishki/white-box-synthesis-skill",
+      "repository": "https://github.com/AhmedKishki/white-box-synthesis-skill",
+      "description": "Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request.",
+      "tags": [
+        "writing",
+        "research",
+        "provenance"
+      ]
     }
   ]
 }
