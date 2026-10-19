@@ -11,6 +11,7 @@ A collection of skills for Codex and Claude. Each skill is its own Git repositor
 | [`draft-writing`](skills/draft-writing/) | [draft-writing-skill](https://github.com/AhmedKishki/draft-writing-skill) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`humaniser`](skills/humaniser/) | [humaniser-skill](https://github.com/AhmedKishki/humaniser-skill) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`markdown-refactor`](skills/markdown-refactor/) | [markdown-refactor-skill](https://github.com/AhmedKishki/markdown-refactor-skill) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
+| [`white-box-synthesis`](skills/white-box-synthesis/) | [white-box-synthesis-skill](https://github.com/AhmedKishki/white-box-synthesis-skill) | Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request. |
 | [`write-like-me`](skills/write-like-me/) | [write-like-me-skill](https://github.com/AhmedKishki/write-like-me-skill) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me). |
 
 ## Install

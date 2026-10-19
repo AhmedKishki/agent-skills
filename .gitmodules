@@ -16,3 +16,6 @@
 [submodule "skills/collaborative-coding"]
 	path = skills/collaborative-coding
 	url = https://github.com/AhmedKishki/collaborative-coding-skill.git
+[submodule "skills/white-box-synthesis"]
+	path = skills/white-box-synthesis
+	url = https://github.com/AhmedKishki/white-box-synthesis-skill.git
