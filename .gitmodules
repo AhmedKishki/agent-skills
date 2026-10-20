@@ -19,3 +19,12 @@
 [submodule "skills/white-box-synthesis"]
 	path = skills/white-box-synthesis
 	url = https://github.com/AhmedKishki/white-box-synthesis-skill.git
+[submodule "skills/active-objects"]
+	path = skills/active-objects
+	url = https://github.com/AhmedKishki/active-objects-skill.git
+[submodule "skills/read-along-guide"]
+	path = skills/read-along-guide
+	url = https://github.com/AhmedKishki/read-along-guide-skill.git
+[submodule "skills/coding-partner"]
+	path = skills/coding-partner
+	url = https://github.com/AhmedKishki/coding-partner-skill.git

@@ -6,11 +6,14 @@ A collection of skills for Codex and Claude. Each skill is its own Git repositor
 
 | Skill | Repository | Purpose |
 |---|---|---|
+| [`active-objects`](skills/active-objects/) | [active-objects-skill](https://github.com/AhmedKishki/active-objects-skill) | Design and review event-driven embedded C firmware with queue-only communication and run-to-completion handlers. |
+| [`coding-partner`](skills/coding-partner/) | [coding-partner-skill](https://github.com/AhmedKishki/coding-partner-skill) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
 | [`collaborative-coding`](skills/collaborative-coding/) | [collaborative-coding-skill](https://github.com/AhmedKishki/collaborative-coding-skill) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`collaborative-learning`](skills/collaborative-learning/) | [collaborative-learning-skill](https://github.com/AhmedKishki/collaborative-learning-skill) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
 | [`draft-writing`](skills/draft-writing/) | [draft-writing-skill](https://github.com/AhmedKishki/draft-writing-skill) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`humaniser`](skills/humaniser/) | [humaniser-skill](https://github.com/AhmedKishki/humaniser-skill) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`markdown-refactor`](skills/markdown-refactor/) | [markdown-refactor-skill](https://github.com/AhmedKishki/markdown-refactor-skill) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
+| [`read-along-guide`](skills/read-along-guide/) | [read-along-guide-skill](https://github.com/AhmedKishki/read-along-guide-skill) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |
 | [`white-box-synthesis`](skills/white-box-synthesis/) | [white-box-synthesis-skill](https://github.com/AhmedKishki/white-box-synthesis-skill) | Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request. |
 | [`write-like-me`](skills/write-like-me/) | [write-like-me-skill](https://github.com/AhmedKishki/write-like-me-skill) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me). |
 
@@ -52,6 +55,9 @@ This repository is a Claude plugin marketplace named `ahmedkishki-skills`. Each 
 
 ```text
 /plugin marketplace add AhmedKishki/agent-skills
+/plugin install active-objects@ahmedkishki-skills
+/plugin install coding-partner@ahmedkishki-skills
+/plugin install read-along-guide@ahmedkishki-skills
 /plugin install draft-writing@ahmedkishki-skills
 /plugin install write-like-me@ahmedkishki-skills
 ```
