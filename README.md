@@ -26,11 +26,11 @@ The project gets an `agent-skills` link to the collection, which its Git ignores
 agent-skills update
 ```
 
-This pulls the latest skills. Your uncommitted edits are kept; if they clash with the update, nothing changes and the command says why.
+This pulls the latest skills and pushes your local commits. Uncommitted edits stay local and are listed. If local and remote contradict each other, nothing changes and the command tells you it needs a git reconcile, with the steps.
 
 ## Change a skill
 
-Edit it in `~/agent-skills/skills/` or through a project's link, then commit and push. Other machines get the change with `agent-skills update`.
+Edit it in `~/agent-skills/skills/` or through a project's link, commit, then run `agent-skills update` to push it. Other machines get the change with their next `agent-skills update`.
 
 ## Skills
 

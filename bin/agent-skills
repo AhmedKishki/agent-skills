@@ -5,15 +5,18 @@
 #
 #   agent-skills install      put this command on PATH and link every skill
 #                             into ~/.claude/skills
-#   agent-skills update       fast-forward the checkout to origin, then relink
+#   agent-skills update       pull the remote's commits or push local ones,
+#                             then relink
 #   agent-skills link [DIR]   link the checkout into a project as DIR/agent-skills
 #
 # Claude Code loads personal skills from ~/.claude/skills. Kilo Code loads the
 # same folder when its kilo.jsonc lists it under skills.paths.
 #
-# The update never merges and never overwrites work: it only fast-forwards. If
-# a local edit touches a file the update changes, or the checkout has commits
-# that origin lacks, it changes nothing and says why.
+# The update never merges and never overwrites work. It fast-forwards to the
+# remote's commits, or pushes the local commits the remote lacks. When local
+# and remote contradict each other (both have new commits, or uncommitted
+# edits touch files the remote changed), it changes nothing and asks for a git
+# reconcile. Uncommitted edits are never committed or pushed; it lists them.
 
 set -euo pipefail
 
@@ -67,6 +70,18 @@ install() {
 	fi
 }
 
+# Stop without changing anything, and show how to reconcile by hand.
+needsReconcile() {
+	cat >&2 <<-EOF
+		$1: this needs a git reconcile. Nothing was changed.
+		  cd $repo
+		  git status            # commit or stash your edits
+		  git pull --rebase     # then resolve any conflicts
+		  agent-skills update   # pushes the result
+	EOF
+	exit 1
+}
+
 update() {
 	local behind ahead
 
@@ -74,17 +89,21 @@ update() {
 	behind=$(git -C "$repo" rev-list --count 'HEAD..@{upstream}')
 	ahead=$(git -C "$repo" rev-list --count '@{upstream}..HEAD')
 	if [ "$behind" -gt 0 ] && [ "$ahead" -gt 0 ]; then
-		echo "the checkout and origin have both moved on; pull and push by hand"
+		needsReconcile "local and remote both have commits the other lacks"
 	elif [ "$behind" -gt 0 ]; then
-		if git -C "$repo" merge --ff-only --quiet '@{upstream}'; then
-			echo "updated by $behind commits"
-		else
-			echo "local changes touch files the update changes; nothing pulled"
-		fi
+		git -C "$repo" merge --ff-only --quiet '@{upstream}' ||
+			needsReconcile "your uncommitted edits clash with the remote's changes"
+		echo "pulled $behind commit(s)"
 	elif [ "$ahead" -gt 0 ]; then
-		echo "up to date; $ahead commits are not pushed yet"
+		git -C "$repo" push --quiet origin HEAD
+		echo "pushed $ahead commit(s)"
 	else
 		echo "up to date"
+	fi
+
+	if [ -n "$(git -C "$repo" status --porcelain)" ]; then
+		echo "uncommitted, so not pushed:"
+		git -C "$repo" status --short
 	fi
 	linkSkills
 }
