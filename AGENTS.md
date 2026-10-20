@@ -12,9 +12,9 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 - Use the skill's `README.md` for a brief user-facing introduction and usage.
 - Keep general creation, maintenance, editing, and release rules in this root
   `AGENTS.md`; do not embed them in a skill's operational instructions.
-- Keep collection discovery and installation information in the root `README.md`.
-- Keep `bin/agent-skills` and the README's install, link and update sections
-  consistent with each other.
+- Keep the root `README.md` to using the collection: install, link, update,
+  changing a skill and the list of skills. Keep it consistent with
+  `bin/agent-skills`.
 - Give each instruction one canonical owner; avoid copying rules between files.
 - Keep generated project records and temporary work outside skill directories.
 
@@ -52,6 +52,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 - Check that every linked resource exists and contains the expected instructions.
 - Remove placeholders and check the workflow against the user's requirements.
 - Run added or modified executable scripts with representative inputs.
+- Validate Claude metadata with `claude plugin validate . --strict`.
 - For behavioural changes, exercise relevant workflow paths where practical.
 - Distinguish structural validation from observed workflow behaviour.
 - Review the final diff and verify that only intended files changed.
@@ -62,7 +63,24 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 - Preserve concurrent changes; never force-push to overwrite them.
 - Commit and push skill changes to this repository's `main`.
 - Treat commits on `main` as development state, not published releases.
-- Follow the version and release policy in the root README for requested releases.
+- Follow the version and release policy below for requested releases.
 - Keep version metadata, changelog entries, release tags, and assets consistent.
 - Do not create a release merely because skill files were edited.
 - Report what changed and which checks actually passed.
+
+## Versions and releases
+
+- A skill may carry a `version` file whose single line is its current version,
+  updated in the commit that ships the change. Record user-visible changes in
+  the skill's changelog.
+- A release is an immutable annotated tag `<name>-vMAJOR.MINOR.PATCH` in this
+  repository, with a matching GitHub Release whose notes summarise the
+  changelog entry and which attaches one ZIP with exactly one top-level skill
+  directory.
+- `PATCH` fixes compatible behaviour, `MINOR` adds compatible behaviour, and
+  `MAJOR` changes a workflow or persisted format incompatibly.
+- Plugin manifests and marketplace entries omit `version` deliberately:
+  Git-backed installs use the resolved commit, so `--strict` validation
+  reports it as a warning.
+- Workflow-schema labels such as `v6 → v7` in migration instructions describe
+  persisted project-file compatibility, not release versions.
