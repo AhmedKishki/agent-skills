@@ -13,10 +13,10 @@
 # same folder when its kilo.jsonc lists it under skills.paths.
 #
 # The update never merges and never overwrites work. It fast-forwards to the
-# remote's commits, or pushes the local commits the remote lacks. When local
-# and remote contradict each other (both have new commits, or uncommitted
-# edits touch files the remote changed), it changes nothing and asks for a git
-# reconcile. Uncommitted edits are never committed or pushed; it lists them.
+# remote branch, or pushes the local commits the remote branch lacks. If the
+# branches have diverged, or the merge would overwrite local changes, it
+# changes nothing and shows how to resolve it with git. Local changes are
+# never committed or pushed; it lists them.
 
 set -euo pipefail
 
@@ -70,39 +70,40 @@ install() {
 	fi
 }
 
-# Stop without changing anything, and show how to reconcile by hand.
-needsReconcile() {
+# Stop without changing anything, and show how to resolve it with git.
+resolveWithGit() {
 	cat >&2 <<-EOF
-		$1: this needs a git reconcile. Nothing was changed.
+		$1. Nothing was changed. Resolve it with git:
 		  cd $repo
-		  git status            # commit or stash your edits
-		  git pull --rebase     # then resolve any conflicts
-		  agent-skills update   # pushes the result
+		  git status            # commit or stash your local changes
+		  git pull --rebase     # rebase onto the remote branch, resolve any conflicts
+		  agent-skills update   # push the result
 	EOF
 	exit 1
 }
 
 update() {
-	local behind ahead
+	local upstream behind ahead
 
 	git -C "$repo" fetch --quiet origin
-	behind=$(git -C "$repo" rev-list --count 'HEAD..@{upstream}')
-	ahead=$(git -C "$repo" rev-list --count '@{upstream}..HEAD')
+	upstream=$(git -C "$repo" rev-parse --abbrev-ref '@{upstream}')
+	behind=$(git -C "$repo" rev-list --count "HEAD..$upstream")
+	ahead=$(git -C "$repo" rev-list --count "$upstream..HEAD")
 	if [ "$behind" -gt 0 ] && [ "$ahead" -gt 0 ]; then
-		needsReconcile "local and remote both have commits the other lacks"
+		resolveWithGit "Your branch and '$upstream' have diverged"
 	elif [ "$behind" -gt 0 ]; then
-		git -C "$repo" merge --ff-only --quiet '@{upstream}' ||
-			needsReconcile "your uncommitted edits clash with the remote's changes"
-		echo "pulled $behind commit(s)"
+		git -C "$repo" merge --ff-only --quiet "$upstream" ||
+			resolveWithGit "Your local changes would be overwritten by merge"
+		echo "pulled $behind commit(s) from '$upstream'"
 	elif [ "$ahead" -gt 0 ]; then
 		git -C "$repo" push --quiet origin HEAD
-		echo "pushed $ahead commit(s)"
+		echo "pushed $ahead commit(s) to '$upstream'"
 	else
-		echo "up to date"
+		echo "up to date with '$upstream'"
 	fi
 
 	if [ -n "$(git -C "$repo" status --porcelain)" ]; then
-		echo "uncommitted, so not pushed:"
+		echo "local changes not committed, so not pushed:"
 		git -C "$repo" status --short
 	fi
 	linkSkills

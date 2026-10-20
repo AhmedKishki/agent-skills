@@ -26,7 +26,7 @@ The project gets an `agent-skills` link to the collection, which its Git ignores
 agent-skills update
 ```
 
-This pulls the latest skills and pushes your local commits. Uncommitted edits stay local and are listed. If local and remote contradict each other, nothing changes and the command tells you it needs a git reconcile, with the steps.
+This pulls the latest skills and pushes your local commits. Local changes you have not committed stay local and are listed. If your branch and the remote have diverged, or the merge would overwrite your local changes, nothing changes and the command shows how to resolve it with git.
 
 ## Change a skill
 
