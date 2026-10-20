@@ -10,39 +10,48 @@
     {
       "name": "active-objects",
       "displayName": "Active Objects",
-      "source": { "source": "github", "repo": "AhmedKishki/active-objects-skill" },
-      "homepage": "https://github.com/AhmedKishki/active-objects-skill",
-      "repository": "https://github.com/AhmedKishki/active-objects-skill",
-      "description": "Design and review event-driven embedded C firmware with private state, queue-only communication and run-to-completion handlers.",
-      "tags": ["embedded", "c", "architecture"]
+      "source": "./skills/active-objects",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/active-objects",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "Design and review event-driven code built from active objects: private state, queue-only communication and run-to-completion handlers.",
+      "tags": [
+        "embedded",
+        "c",
+        "architecture"
+      ]
     },
     {
       "name": "coding-partner",
       "displayName": "Coding Partner",
-      "source": { "source": "github", "repo": "AhmedKishki/coding-partner-skill" },
-      "homepage": "https://github.com/AhmedKishki/coding-partner-skill",
-      "repository": "https://github.com/AhmedKishki/coding-partner-skill",
+      "source": "./skills/coding-partner",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/coding-partner",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints.",
-      "tags": ["coding", "learning", "collaboration"]
+      "tags": [
+        "coding",
+        "learning",
+        "collaboration"
+      ]
     },
     {
       "name": "read-along-guide",
       "displayName": "Read-Along Guide",
-      "source": { "source": "github", "repo": "AhmedKishki/read-along-guide-skill" },
-      "homepage": "https://github.com/AhmedKishki/read-along-guide-skill",
-      "repository": "https://github.com/AhmedKishki/read-along-guide-skill",
+      "source": "./skills/read-along-guide",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/read-along-guide",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Build source-grounded book companions with step-by-step arguments, verified quotations, diagrams, linked definitions and PDF output.",
-      "tags": ["learning", "reading", "pdf"]
+      "tags": [
+        "learning",
+        "reading",
+        "pdf"
+      ]
     },
     {
       "name": "draft-writing",
       "displayName": "Draft Writing",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/draft-writing-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/draft-writing-skill",
-      "repository": "https://github.com/AhmedKishki/draft-writing-skill",
+      "source": "./skills/draft-writing",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/draft-writing",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing.",
       "tags": [
         "writing",
@@ -53,12 +62,9 @@
     {
       "name": "write-like-me",
       "displayName": "Write Like Me",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/write-like-me-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/write-like-me-skill",
-      "repository": "https://github.com/AhmedKishki/write-like-me-skill",
+      "source": "./skills/write-like-me",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/write-like-me",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Write, rewrite, and audit prose using an evidence-backed personal writing pattern while preserving meaning.",
       "tags": [
         "writing",
@@ -69,12 +75,9 @@
     {
       "name": "markdown-refactor",
       "displayName": "Markdown Refactor",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/markdown-refactor-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/markdown-refactor-skill",
-      "repository": "https://github.com/AhmedKishki/markdown-refactor-skill",
+      "source": "./skills/markdown-refactor",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/markdown-refactor",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Refactor agent-facing Markdown so each file holds everything its job requires and nothing outside it, with one owner per rule and one meta view.",
       "tags": [
         "markdown",
@@ -85,12 +88,9 @@
     {
       "name": "collaborative-learning",
       "displayName": "Collaborative Learning",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/collaborative-learning-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/collaborative-learning-skill",
-      "repository": "https://github.com/AhmedKishki/collaborative-learning-skill",
+      "source": "./skills/collaborative-learning",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/collaborative-learning",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion.",
       "tags": [
         "learning",
@@ -101,12 +101,9 @@
     {
       "name": "humaniser",
       "displayName": "Humaniser",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/humaniser-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/humaniser-skill",
-      "repository": "https://github.com/AhmedKishki/humaniser-skill",
+      "source": "./skills/humaniser",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/humaniser",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Find AI writing patterns in Markdown against a semantic checklist and report a ranked list of findings for approval.",
       "tags": [
         "writing",
@@ -117,12 +114,9 @@
     {
       "name": "white-box-synthesis",
       "displayName": "White-Box Synthesis",
-      "source": {
-        "source": "github",
-        "repo": "AhmedKishki/white-box-synthesis-skill"
-      },
-      "homepage": "https://github.com/AhmedKishki/white-box-synthesis-skill",
-      "repository": "https://github.com/AhmedKishki/white-box-synthesis-skill",
+      "source": "./skills/white-box-synthesis",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/white-box-synthesis",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request.",
       "tags": [
         "writing",

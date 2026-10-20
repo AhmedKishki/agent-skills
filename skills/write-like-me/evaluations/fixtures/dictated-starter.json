@@ -1,0 +1,29 @@
+{
+  "primary_context": "personal email",
+  "keep": [
+    "Connect the recommendation to the reason"
+  ],
+  "avoid": [
+    "Generic engagement questions"
+  ],
+  "samples": [
+    {
+      "id": "spoken-01",
+      "input_kind": "dictated_prompt_answer",
+      "provenance": "written_by_user",
+      "text": "I think people make this harder than it is because they start with the tool instead of the decision"
+    },
+    {
+      "id": "spoken-02",
+      "input_kind": "dictated_prompt_answer",
+      "provenance": "written_by_user",
+      "text": "what changed my mind was seeing a simple process work better than the polished one"
+    },
+    {
+      "id": "spoken-03",
+      "input_kind": "dictated_prompt_answer",
+      "provenance": "written_by_user",
+      "text": "the useful advice is to name the real problem before adding more steps"
+    }
+  ]
+}

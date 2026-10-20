@@ -1,0 +1,19 @@
+{
+  "study_id": "write-like-me-private-beta-001",
+  "cases": [
+    {
+      "participant_id": "P001",
+      "trial_id": "P001-T01",
+      "task_context": "email",
+      "baseline_output": "Replace with the strong plain-prompt output.",
+      "write_like_me_output": "Replace with the Write Like Me output."
+    },
+    {
+      "participant_id": "P001",
+      "trial_id": "P001-T02",
+      "task_context": "public post",
+      "baseline_output": "Replace with the strong plain-prompt output for the second unseen task.",
+      "write_like_me_output": "Replace with the Write Like Me output for the second unseen task."
+    }
+  ]
+}

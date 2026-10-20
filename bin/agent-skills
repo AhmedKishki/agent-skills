@@ -1,0 +1,128 @@
+#!/usr/bin/env bash
+#
+# agent-skills: one checkout of this collection per machine, linked to where
+# the agents and the projects look for it.
+#
+#   agent-skills install      put this command on PATH and link every skill
+#                             into ~/.claude/skills
+#   agent-skills update       fast-forward the checkout to origin, then relink
+#   agent-skills link [DIR]   link the checkout into a project as DIR/agent-skills
+#
+# Claude Code loads personal skills from ~/.claude/skills. Kilo Code loads the
+# same folder when its kilo.jsonc lists it under skills.paths.
+#
+# The update never merges and never overwrites work: it only fast-forwards. If
+# a local edit touches a file the update changes, or the checkout has commits
+# that origin lacks, it changes nothing and says why.
+
+set -euo pipefail
+
+repo=$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)
+skillsDir="$HOME/.claude/skills"
+kiloConfig="${XDG_CONFIG_HOME:-$HOME/.config}/kilo/kilo.jsonc"
+
+# Give every skill of the checkout a link in ~/.claude/skills. Whatever stands
+# there under a skill's name (an old copy, a link elsewhere) is moved into
+# ~/.claude/skill-backups/<time>/, not deleted. Links to skills that the
+# checkout no longer has are removed.
+linkSkills() {
+	local skill name target backupDir=""
+
+	mkdir -p "$skillsDir"
+	for skill in "$repo"/skills/*/; do
+		skill=${skill%/}
+		name=$(basename "$skill")
+		target="$skillsDir/$name"
+		[ -f "$skill/SKILL.md" ] || continue
+		[ "$(readlink "$target")" = "$skill" ] && continue
+		if [ -e "$target" ] || [ -L "$target" ]; then
+			backupDir=${backupDir:-$HOME/.claude/skill-backups/$(date +%Y%m%dT%H%M%S)}
+			mkdir -p "$backupDir"
+			mv "$target" "$backupDir/"
+			echo "moved the old $target to $backupDir/"
+		fi
+		ln -s "$skill" "$target"
+		echo "linked $name"
+	done
+
+	for target in "$skillsDir"/*; do
+		if [ -L "$target" ] && [ ! -e "$target" ]; then
+			case $(readlink "$target") in
+			"$repo"/skills/*)
+				rm "$target"
+				echo "removed the link to $(basename "$target"), which the checkout no longer has"
+				;;
+			esac
+		fi
+	done
+}
+
+install() {
+	mkdir -p "$HOME/.local/bin"
+	ln -sfn "$repo/bin/agent-skills" "$HOME/.local/bin/agent-skills"
+	linkSkills
+
+	if ! grep -qF "$skillsDir" "$kiloConfig" 2>/dev/null; then
+		echo "Kilo Code: add $skillsDir to skills.paths in $kiloConfig"
+	fi
+}
+
+update() {
+	local behind ahead
+
+	git -C "$repo" fetch --quiet origin
+	behind=$(git -C "$repo" rev-list --count 'HEAD..@{upstream}')
+	ahead=$(git -C "$repo" rev-list --count '@{upstream}..HEAD')
+	if [ "$behind" -gt 0 ] && [ "$ahead" -gt 0 ]; then
+		echo "the checkout and origin have both moved on; pull and push by hand"
+	elif [ "$behind" -gt 0 ]; then
+		if git -C "$repo" merge --ff-only --quiet '@{upstream}'; then
+			echo "updated by $behind commits"
+		else
+			echo "local changes touch files the update changes; nothing pulled"
+		fi
+	elif [ "$ahead" -gt 0 ]; then
+		echo "up to date; $ahead commits are not pushed yet"
+	else
+		echo "up to date"
+	fi
+	linkSkills
+}
+
+# Link the checkout into a project and keep it out of the project's Git through
+# .git/info/exclude, which is never committed. The pattern has no trailing
+# slash: Git sees a symlink as a file, not a directory.
+linkProject() {
+	local dir="${1:-.}" link prefix exclude
+
+	dir=$(cd "$dir" && pwd)
+	link="$dir/agent-skills"
+	if [ "$(readlink "$link")" = "$repo" ]; then
+		echo "$link already links to $repo"
+	elif [ -e "$link" ] || [ -L "$link" ]; then
+		echo "$link already exists; move it away first" >&2
+		exit 1
+	else
+		ln -s "$repo" "$link"
+		echo "linked $link"
+	fi
+
+	if exclude=$(git -C "$dir" rev-parse --path-format=absolute --git-path info/exclude 2>/dev/null); then
+		prefix=$(git -C "$dir" rev-parse --show-prefix)
+		if ! grep -qxF "/${prefix}agent-skills" "$exclude" 2>/dev/null; then
+			mkdir -p "$(dirname "$exclude")"
+			echo "/${prefix}agent-skills" >> "$exclude"
+			echo "excluded it in $exclude"
+		fi
+	fi
+}
+
+case ${1:-} in
+install) install ;;
+update) update ;;
+link) linkProject "${2:-.}" ;;
+*)
+	echo "usage: agent-skills install | update | link [DIR]" >&2
+	exit 2
+	;;
+esac

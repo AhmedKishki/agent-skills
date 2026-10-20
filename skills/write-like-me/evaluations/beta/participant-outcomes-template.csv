@@ -1,0 +1,2 @@
+participant_id,completed_onboarding,minutes_to_first_rewrite,reused_file_fresh_chat,reused_without_help,understands_starter,understands_unknown,would_use_again,notes
+P001,YES,0,YES,YES,YES,YES,YES,

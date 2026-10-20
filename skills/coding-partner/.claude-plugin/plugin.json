@@ -1,0 +1,12 @@
+{
+  "name": "coding-partner",
+  "description": "Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/coding-partner",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

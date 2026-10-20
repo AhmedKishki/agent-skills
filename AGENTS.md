@@ -5,13 +5,16 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 ## File responsibilities
 
-- Keep each skill self-contained in its own repository, included here as a submodule at `skills/<skill-name>/`.
+- Keep each skill self-contained in its own directory, `skills/<skill-name>/`, with
+  everything it needs inside it.
 - Use `SKILL.md` for the operational workflow and routing to supporting files.
 - Use `references/*.md` for detailed instructions needed during that workflow.
 - Use the skill's `README.md` for a brief user-facing introduction and usage.
 - Keep general creation, maintenance, editing, and release rules in this root
   `AGENTS.md`; do not embed them in a skill's operational instructions.
 - Keep collection discovery and installation information in the root `README.md`.
+- Keep `bin/agent-skills` and the README's install, link and update sections
+  consistent with each other.
 - Give each instruction one canonical owner; avoid copying rules between files.
 - Keep generated project records and temporary work outside skill directories.
 
@@ -57,7 +60,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 - Save authorised changes to the repository and verify the resulting files.
 - Preserve concurrent changes; never force-push to overwrite them.
-- Commit and push a skill change in that skill's own repository first, then update this collection's submodule pointer.
+- Commit and push skill changes to this repository's `main`.
 - Treat commits on `main` as development state, not published releases.
 - Follow the version and release policy in the root README for requested releases.
 - Keep version metadata, changelog entries, release tags, and assets consistent.

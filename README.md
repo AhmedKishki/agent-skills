@@ -1,120 +1,124 @@
 # Agent Skills
 
-A collection of skills for Codex and Claude. Each skill is its own Git repository, included here as a submodule under `skills/` with a `SKILL.md` entry point.
+A collection of skills for Claude and Kilo Code, also usable from Codex. Every skill lives in this one repository, in `skills/<name>/` with a `SKILL.md` entry point. `bin/agent-skills` installs the collection once per machine, links it into projects and updates it.
 
 ## Available skills
 
-| Skill | Repository | Purpose |
-|---|---|---|
-| [`active-objects`](skills/active-objects/) | [active-objects-skill](https://github.com/AhmedKishki/active-objects-skill) | Design and review event-driven embedded C firmware with queue-only communication and run-to-completion handlers. |
-| [`coding-partner`](skills/coding-partner/) | [coding-partner-skill](https://github.com/AhmedKishki/coding-partner-skill) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
-| [`collaborative-coding`](skills/collaborative-coding/) | [collaborative-coding-skill](https://github.com/AhmedKishki/collaborative-coding-skill) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
-| [`collaborative-learning`](skills/collaborative-learning/) | [collaborative-learning-skill](https://github.com/AhmedKishki/collaborative-learning-skill) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
-| [`draft-writing`](skills/draft-writing/) | [draft-writing-skill](https://github.com/AhmedKishki/draft-writing-skill) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
-| [`humaniser`](skills/humaniser/) | [humaniser-skill](https://github.com/AhmedKishki/humaniser-skill) | Find repeated or unclear Markdown prose using a semantic checklist. |
-| [`markdown-refactor`](skills/markdown-refactor/) | [markdown-refactor-skill](https://github.com/AhmedKishki/markdown-refactor-skill) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
-| [`read-along-guide`](skills/read-along-guide/) | [read-along-guide-skill](https://github.com/AhmedKishki/read-along-guide-skill) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |
-| [`white-box-synthesis`](skills/white-box-synthesis/) | [white-box-synthesis-skill](https://github.com/AhmedKishki/white-box-synthesis-skill) | Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request. |
-| [`write-like-me`](skills/write-like-me/) | [write-like-me-skill](https://github.com/AhmedKishki/write-like-me-skill) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me). |
+| Skill | Purpose |
+|---|---|
+| [`active-objects`](skills/active-objects/) | Design and review event-driven code built from active objects: private state, queue-only communication and run-to-completion handlers. |
+| [`coding-partner`](skills/coding-partner/) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
+| [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
+| [`collaborative-learning`](skills/collaborative-learning/) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
+| [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
+| [`humaniser`](skills/humaniser/) | Find repeated or unclear Markdown prose using a semantic checklist. |
+| [`markdown-refactor`](skills/markdown-refactor/) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
+| [`read-along-guide`](skills/read-along-guide/) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |
+| [`white-box-synthesis`](skills/white-box-synthesis/) | Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request. |
+| [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me). |
 
-## Install
+## Install (Linux)
 
-Clone the collection with its submodules:
-
-```sh
-git clone --recurse-submodules https://github.com/AhmedKishki/agent-skills.git
-cd agent-skills
-```
-
-Each skill is released in its own repository. Pin a skill to one of its own tags inside its submodule:
+Clone the collection to `~/agent-skills` and install it:
 
 ```sh
-git -C skills/draft-writing fetch --tags
-git -C skills/draft-writing checkout "vX.Y.Z"
+git clone https://github.com/AhmedKishki/agent-skills.git ~/agent-skills
+~/agent-skills/bin/agent-skills install
 ```
 
-Replace the example tag with a published release tag from that skill's repository.
+`install` does two things:
 
-`skills/write-like-me/` includes the upstream skill entry point, its references, runtime scripts, agent metadata, and license. No upstream installer is required.
+- links `~/.local/bin/agent-skills` to the command, so it runs from anywhere;
+- links every skill into `~/.claude/skills/<name>`, where Claude Code loads personal skills. Anything already there under a skill's name, such as an older copy, is moved to `~/.claude/skill-backups/<time>/`.
+
+Kilo Code loads the same folder once `~/.config/kilo/kilo.jsonc` lists it; `install` says so when it does not:
+
+```jsonc
+"skills": { "paths": ["/home/<user>/.claude/skills"] }
+```
+
+Load each skill through these links only. A skill also installed as a Claude plugin, or copied into a project's `.claude/skills`, `.kilo/skills` or `.agents/skills`, loads a second time.
+
+## Use it in a project
+
+Inside a project, link the checkout so its skills can be opened, referenced and edited from that workspace:
+
+```sh
+agent-skills link            # or: agent-skills link path/to/project
+```
+
+This creates `./agent-skills`, a symlink to `~/agent-skills`, and adds `/agent-skills` to the project's `.git/info/exclude`, which Git never commits. The project's own files stay untouched, and no agent loads the skills from this path, so nothing loads twice. Every project shares the one checkout: an edit made through any project's link is the same edit everywhere.
+
+## Updates
+
+Bring the checkout up to date from a terminal:
+
+```sh
+agent-skills update
+```
+
+An update only fast-forwards:
+
+- local edits are kept, as long as the update does not change the same files;
+- if it would, or if the checkout has commits that origin lacks, nothing changes and the update says why;
+- after pulling, links are added for new skills and removed for deleted ones.
+
+An edit reaches another machine once it is committed and pushed and `agent-skills update` runs on that machine; the update itself never commits or pushes.
+
+## Other hosts
 
 ### Codex
 
-Codex discovers personal skills in `~/.agents/skills` and supports symlinked skill directories.
+Codex discovers personal skills in `~/.agents/skills` and supports symlinked skill directories:
 
 ```sh
 mkdir -p ~/.agents/skills
-ln -s "$PWD/skills/draft-writing" ~/.agents/skills/draft-writing
-ln -s "$PWD/skills/write-like-me" ~/.agents/skills/write-like-me
+ln -s ~/agent-skills/skills/draft-writing ~/.agents/skills/draft-writing
 ```
 
-Invoke the skills with `$draft-writing` or `$write-like-me`, or describe a matching task. See the [official Codex skill documentation](https://developers.openai.com/codex/skills).
+Invoke a skill with `$draft-writing`, or describe a matching task. See the [official Codex skill documentation](https://developers.openai.com/codex/skills).
 
 ### Claude plugin marketplace
 
-This repository is a Claude plugin marketplace named `ahmedkishki-skills`. Each entry points directly at the skill's own repository, so the submodules do not need to be initialised for an install. In Claude, open **Customize → Plugins → Personal plugins**, select **Add marketplace**, add `https://github.com/AhmedKishki/agent-skills`, and install the skills you want:
+This repository is also a Claude plugin marketplace named `ahmedkishki-skills`, for installing single skills without a checkout. Each entry points at its skill's directory in this repository:
 
 ```text
 /plugin marketplace add AhmedKishki/agent-skills
-/plugin install active-objects@ahmedkishki-skills
-/plugin install coding-partner@ahmedkishki-skills
-/plugin install read-along-guide@ahmedkishki-skills
 /plugin install draft-writing@ahmedkishki-skills
-/plugin install write-like-me@ahmedkishki-skills
 ```
 
-The marketplace entries follow each skill repository's default branch. To reproduce an exact version, pin the skill's repository and tag in the marketplace entry's `source` (`ref`), or check out that tag in the submodule.
+Use either the marketplace or `agent-skills install` on a machine, not both. A public repository works for personal marketplaces and Claude Code. Organization-managed GitHub sync requires the marketplace repository to be private or internal, and organization owners trigger **Update** manually for each release. See [Anthropic's plugin marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces).
 
-A public repository works for personal marketplaces and Claude Code. Organization-managed GitHub sync requires the marketplace repository to be private or internal. Under this repository's Git-derived version policy, organization owners should trigger **Update** manually for each release; Anthropic's automatic organization sync currently requires an explicit plugin-version bump. See [Anthropic's plugin marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces).
+### Claude.ai skill upload
 
-### Standalone Claude installation
-
-Claude Code also discovers personal skills in `~/.claude/skills`; a project can instead place the directory at `.claude/skills/draft-writing`.
-
-```sh
-mkdir -p ~/.claude/skills
-ln -s "$PWD/skills/draft-writing" ~/.claude/skills/draft-writing
-ln -s "$PWD/skills/write-like-me" ~/.claude/skills/write-like-me
-```
-
-Invoke these standalone installations with `/draft-writing` or `/write-like-me`, or describe a matching task. See the [official Claude Code skill documentation](https://code.claude.com/docs/en/skills).
-
-If symlinks are unavailable, copy the complete skill directory. Keep `SKILL.md` and its linked directories together.
-
-#### Claude.ai skill upload
-
-Download the dedicated `draft-writing.zip` asset from a release and upload it under **Settings → Features**. Use the per-skill asset, not GitHub's repository source archive, so the ZIP has `draft-writing/SKILL.md` at the required depth. See [Anthropic's skill documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+Download a skill's ZIP asset from its release and upload it under **Settings → Features**. Use the per-skill asset, not GitHub's source archive, so the ZIP has `<name>/SKILL.md` at the required depth. See [Anthropic's skill documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
 
 ## Codex and Claude compatibility
 
-The portable workflow follows the open [Agent Skills specification](https://agentskills.io/specification): instructions live in `SKILL.md`, and supporting files use relative links. OpenAI-specific presentation metadata is isolated in `agents/openai.yaml`; Claude marketplace metadata is isolated in `.claude-plugin/`. Each host ignores the other's metadata. Host behavior can differ, so every release should validate the skill and test its main workflow in both Codex and Claude.
+The portable workflow follows the open [Agent Skills specification](https://agentskills.io/specification): instructions live in `SKILL.md`, and supporting files use relative links. OpenAI-specific presentation metadata is isolated in `agents/openai.yaml`; Claude plugin metadata is isolated in `.claude-plugin/`. Each host ignores the other's metadata. Host behaviour can differ, so every release should validate the skill and test its main workflow in each host it targets.
 
 ## Versions and releases
 
-Each skill repository may carry a `version` file (for example `draft-writing/version`) whose single line is the current version string (for example `7.3.0`), updated in the same commit that ships the change. The immutable annotated tag `vMAJOR.MINOR.PATCH` in that skill's repository is the release marker; the `version` file records that same number for readability and tooling, not a second source of truth. Record user-visible changes in the skill's changelog.
+A skill may carry a `version` file whose single line is its current version (for example `7.3.0`), updated in the same commit that ships the change. The release marker is an immutable annotated tag in this repository named `<name>-vMAJOR.MINOR.PATCH`, such as `draft-writing-v10.0.0`; the `version` file records the same number for readability and tooling. Record user-visible changes in the skill's changelog.
 
-- Commits on a skill repository's `main` are unreleased development state.
-- Published skill versions use immutable annotated tags named `vMAJOR.MINOR.PATCH` in the skill's own repository and a matching GitHub Release.
-- The Claude marketplace entry omits a plugin `version` deliberately: Git-backed installs use the resolved commit, while a release-tag pin in the entry's `source` supplies the immutable version.
-- Release notes summarize the corresponding changelog entry and add publication assets and compatibility results.
-- Each release attaches a ZIP for the skill, with exactly one top-level skill directory.
-- `PATCH` fixes compatible behavior, `MINOR` adds compatible behavior, and `MAJOR` changes a workflow or persisted format incompatibly.
+- Commits on `main` are unreleased development state.
+- Plugin manifests and marketplace entries omit a plugin `version` deliberately: Git-backed installs use the resolved commit, so `claude plugin validate --strict` reports the missing version as a warning.
+- Each release tag has a matching GitHub Release whose notes summarize the changelog entry and which attaches one ZIP with exactly one top-level skill directory.
+- `PATCH` fixes compatible behaviour, `MINOR` adds compatible behaviour, and `MAJOR` changes a workflow or persisted format incompatibly.
 
-Inspect a checkout (the tag remains the canonical version identifier; the `version` file mirrors it):
+Find a skill's latest release in a checkout:
 
 ```sh
-git describe --tags --match 'v*' --always --dirty
+git describe --tags --match 'draft-writing-v*' --abbrev=0
 ```
 
 Workflow-schema labels such as `v6 → v7` inside migration instructions describe persisted project-file compatibility; they are not package release versions.
 
-## Publishing future updates
+## Publishing updates
 
-1. Make a focused change in the skill's own repository and keep each skill self-contained.
-2. Validate its structure, linked resources, observable behavior, and Claude marketplace metadata with `claude plugin validate . --strict`.
-3. Test the changed workflow in Codex and Claude.
-4. Update the skill's enduring changelog with user-visible changes and any migration or breaking change; derive release notes from that entry.
-5. Merge the reviewed change to the skill repository's `main`.
-6. Create and push an annotated tag in the skill repository, build the per-skill ZIP, and publish the matching GitHub Release.
-7. Update the submodule pointer in this collection to the released commit.
-
-Future updates may refine existing skills or add new skills as submodules. They should keep canonical state lean, preserve host-portable instructions, and announce compatibility or migration requirements before users upgrade.
+1. Make a focused change in the skill's directory and keep the skill self-contained.
+2. Validate its structure, linked resources and Claude metadata with `claude plugin validate . --strict`.
+3. Test the changed workflow in the hosts it targets.
+4. Update the skill's changelog with user-visible changes and any migration or breaking change.
+5. Commit and push to `main`; `agent-skills update` brings it to the other machines.
+6. For a release, create and push the annotated `<name>-vX.Y.Z` tag, build the per-skill ZIP and publish the matching GitHub Release.
