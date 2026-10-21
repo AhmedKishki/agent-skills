@@ -26,7 +26,7 @@ git clone https://github.com/AhmedKishki/agent-skills.git ~/agent-skills
 
 This links every skill into `~/.claude/skills`, where Claude Code finds it; an older copy already there is moved to `~/.claude/skill-backups/`. For Kilo Code, add `~/.claude/skills` to `skills.paths` in `~/.config/kilo/kilo.jsonc`.
 
-Choose marketplace installation or local linking for a given skill to avoid loading two copies. The link, update and editing commands below apply to the local-checkout route.
+Choose marketplace installation or local linking for a given skill to avoid loading two copies. The project-link and editing commands below apply to the local-checkout route.
 
 ## Use in a project
 
@@ -55,6 +55,10 @@ agent-skills update
 ```
 
 This pulls the latest skills and pushes your local commits. Local changes you have not committed stay local and are listed. If your branch and the remote have diverged, or the merge would overwrite your local changes, nothing changes and the command shows how to resolve it with git.
+
+After Git succeeds, it relinks local skills and refreshes the catalog if `ahmedkishki-skills` is already registered in Claude Code. This requires `claude` and `python3` on PATH; otherwise it reports the skipped refresh and the manual command above. A failed lookup or refresh exits nonzero after the Git/link update, without rolling it back.
+
+The refresh uses Claude's registered source and branch or tag, not necessarily this checkout. It never registers a marketplace or installs or enables plugins. Marketplace registration alone does not load every skill; use the individual plugin install and update commands above. Local linking and synced copies remain separate from the marketplace cache.
 
 ## Change a skill
 

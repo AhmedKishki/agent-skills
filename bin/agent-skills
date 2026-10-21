@@ -6,7 +6,7 @@
 #   agent-skills install      put this command on PATH and link every skill
 #                             into ~/.claude/skills
 #   agent-skills update       pull the remote's commits or push local ones,
-#                             then relink
+#                             then relink and refresh a registered marketplace
 #   agent-skills link [DIR]   link the checkout into a project as DIR/agent-skills
 #
 # Claude Code loads personal skills from ~/.claude/skills. Kilo Code loads the
@@ -82,6 +82,41 @@ resolveWithGit() {
 	exit 1
 }
 
+# Refresh only this collection's already registered catalog. Let Claude use
+# its registered source/ref; never register, install, or enable plugins here.
+refreshMarketplace() {
+	local registered remedy="claude plugin marketplace update ahmedkishki-skills"
+
+	if ! command -v claude >/dev/null 2>&1; then
+		echo "Claude Code not found; marketplace refresh skipped. Run '$remedy' when available."
+		return 0
+	fi
+	if ! command -v python3 >/dev/null 2>&1; then
+		echo "Python 3 not found; marketplace refresh skipped. Run '$remedy' manually."
+		return 0
+	fi
+	if ! registered=$(claude plugin marketplace list --json | python3 -c '
+import json, sys
+items = json.load(sys.stdin)
+if not isinstance(items, list) or not all(
+    isinstance(item, dict) and isinstance(item.get("name"), str) for item in items
+):
+    raise ValueError("Expected a JSON array of named marketplaces")
+print("yes" if any(item["name"] == "ahmedkishki-skills" for item in items) else "no")
+'); then
+		echo "Git/link update finished, but Claude marketplace lookup failed. Retry with '$remedy'." >&2
+		return 1
+	fi
+	if [ "$registered" = no ]; then
+		echo "Claude marketplace ahmedkishki-skills is not registered; refresh skipped."
+		return 0
+	fi
+	if ! claude plugin marketplace update ahmedkishki-skills; then
+		echo "Git/link update finished, but Claude marketplace refresh failed. Retry with '$remedy'." >&2
+		return 1
+	fi
+}
+
 update() {
 	local upstream behind ahead
 
@@ -107,6 +142,7 @@ update() {
 		git -C "$repo" status --short
 	fi
 	linkSkills
+	refreshMarketplace
 }
 
 # Link the checkout into a project and keep it out of the project's Git through
