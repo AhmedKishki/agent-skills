@@ -67,6 +67,7 @@ CASES = [
     ("loop", lambda d: (d["steps"][0].update(supports="B", status="gap", missing="A → B: x"),
                         d["steps"][1].update(supports="A")), "loops"),
     ("missing source check", lambda d: d["checks"].pop(), "contradiction check"),
+    ("conflict as an object", lambda d: d.update(conflicts=[{"a": 1}], notes="One note."), "list of sentences"),
     ("sentences out of order", lambda d: d["sentences"].reverse(), "chain order"),
     ("step with no sentence", lambda d: d["sentences"].pop(), "No source sentence"),
     ("copy from AI-authored span", lambda d: (d["sources"]["S2"].update(
