@@ -1,50 +1,54 @@
 # State machines in C
 
-Read this before designing, writing or reviewing an object's behaviour.
-It lists the contracts, explains the words, shows how to plan a machine
-with an event table, and gives C shapes for flat and nested machines and
-for deferred events. Everything in the contracts section holds in every
-project; the decisions (D-numbers) are in `decisions.md`.
+An object's behaviour is one state machine. The rules below hold in every
+project. D9 decides how the machine is coded and D10 settles one detail of
+nested transitions (`decisions.md`).
 
-## Contracts
+## Rules
 
-A state is a stretch of time in which the object waits and reacts in one
-way. It holds the part of the history that matters.
+A state is a stretch of time in which the object waits and reacts to events
+in one particular way. The state records the part of the object's history
+that still matters.
 
-- History that changes how the object reacts is a **state**, not a flag. A
-  `bool` or mode variable tested in several places is a missing state. Keep
-  other values (counts, measurements, buffers) only where states would
-  multiply, and give each one a reason.
-- **Guards** (conditions on a transition) have no side effects. Guards on the
-  same event in the same state never overlap. A growing chain of guards is a
-  missing state.
-- Every state and signal pair has a deliberate reaction: **handle**,
-  **ignore**, **defer** or **pass** to the outer state. A pair nobody thought
-  about is a gap, not permission to drop the event.
-- Set-up and clean-up that belong to a state go in its **entry** and **exit**
-  actions: start a timer on entry, stop it on exit.
-- After the initial transition, the state changes only through one
-  transition function. It runs the exit actions, then the transition's
+- Keep any history that changes how the object reacts as a **state**. A
+  `bool` or mode variable that is tested in several places is a state that
+  nobody has modelled yet. Keep other values, such as counts, measurements
+  and buffers, only where modelling them as states would multiply the
+  states, and give each value a reason.
+- **Guards** are conditions on a transition. They have no side effects, and
+  two guards on the same event in the same state never overlap. When the
+  guards on one event in one state keep multiplying, the object is missing a
+  state.
+- Give every pair of state and signal a chosen reaction: **handle**,
+  **ignore**, **defer**, or **pass** to the outer state. A pair that nobody
+  has considered is a gap in the design, and the code must not drop such an
+  event by default. Give the pair a reaction.
+- Set-up and clean-up that belong to a state go in its **entry** and
+  **exit** actions. For example, start a timer on entry and stop it on exit.
+  Prefer them to actions on single transitions, because they run however
+  the state is entered or left.
+- After the initial transition, the state changes only in one transition
+  function. That function runs the exit actions, then the transition's
   action, then the entry actions.
-- No state change inside an entry or exit action. If the next state depends
-  on a condition, use two transitions with opposite guards. Entry and exit
-  actions cannot see the event that caused them; save any value they need
-  first.
-- The machine, and every state that contains others, has an initial
-  transition into an inner state. The machine's first one runs once, on the
-  start event.
-- Nest states when it removes repetition. An event an inner state does not
-  handle, or whose guards all fail, goes to the outer state. How the coding
-  works is D9; one detail of nested transitions is D10.
-- An **internal transition** runs its action and stays put. A
-  **self-transition** leaves and re-enters, running exit and entry actions.
-  Choose on purpose.
-- A deferred event waits, as a copy, in the object's own small store (D6). A
-  state that handles deferred events recalls one on entry, and another
-  after handling each recalled event, while the store is not empty. A
-  recall puts the event at the front of the queue, at most once per handler
-  call.
-- States and transitions are fixed in the code, never built at run time.
+- Never change state inside an entry or exit action. When the next state
+  depends on a condition, write two transitions with opposite guards. Entry
+  and exit actions cannot see the event that caused them, so save any value
+  they need beforehand.
+- The machine and every state that contains other states have an initial
+  transition into an inner state. The machine's own initial transition runs
+  once, on the start event.
+- Nest states where nesting removes repetition. An event that an inner state
+  does not handle, or whose guards all fail, goes to the outer state.
+- An **internal transition** runs its action and stays in the state. A
+  **self-transition** leaves the state and enters it again, so its exit and
+  entry actions run. Choose between them by whether the design needs the
+  exit and entry actions to run.
+- A deferred event waits as a copy in the object's own small store (D6). A
+  state that handles deferred events recalls one on entry, and another after
+  handling each recalled event, until the store is empty. A recall puts the
+  event at the front of the queue, and a handler call recalls at most once.
+- States and transitions are fixed in the code. Nothing builds or changes
+  them at run time.
 
 ## The words
 
@@ -56,39 +60,40 @@ way. It holds the part of the history that matters.
 | action | code that runs on a transition |
 | entry action | code that runs every time a state is entered |
 | exit action | code that runs every time a state is left |
-| internal transition | an action that runs without leaving the state; no exit or entry |
-| self-transition | leaving a state and entering it again; exit and entry both run |
+| internal transition | an action that runs inside the state, with no exit or entry action |
+| self-transition | leaving a state and entering it again, so both exit and entry actions run |
 | initial transition | the step into an inner state when an outer state, or the whole machine, is entered |
-| nested state | a state inside another; the outer state holds behaviour they share |
+| nested state | a state inside another state, where the outer state holds the behaviour they share |
 | defer | keep an event for later, because the current state cannot handle it yet |
-| pass | let the outer state handle an event the inner state does not |
+| pass | let the outer state handle an event that the inner state does not handle |
 
-## Plan first: the event table
+## Plan with an event table
 
 Before writing code, list every state and every signal the object can
-receive, and give each pair a reaction:
+receive, and choose a reaction for each pair:
 
-- **handle**: do something, perhaps change state;
-- **ignore**: drop it on purpose;
-- **defer**: keep it until a state that handles it is entered;
-- **pass**: hand it to the outer state.
+- **handle**: do something, perhaps change state.
+- **ignore**: drop the event knowingly.
+- **defer**: keep the event until a state that handles it is entered.
+- **pass**: hand the event to the outer state.
 
-A row may cover "any other" signal, but no pair is left to chance. Write
-the table before the code; the code then follows it.
+One row may cover "any other" signal, as long as every pair ends up with a
+reaction. Once the table exists, the code follows it.
 
-An example: a button that is sensed, given time to settle, and reported to
-the lamp only when its level changes. A power manager can suspend it. It
-uses one timer, and a count carried in the timeout recognises late ones
-(one possible answer to D8, see `timers.md`). It assumes D3 chose an integer
-data type, `ao_data_t`.
+The example object reads a button. It senses the button, gives it time to
+settle, and tells the lamp only when the level changes. A power manager can
+suspend the button object. The object has one timer and recognises late timeouts with a
+count carried in the timeout, which is one possible answer to D8
+(`timers.md`). The code assumes that D3 chose an integer data type,
+`ao_data_t`.
 
 | State | Signal | Guard | Reaction | Action | Next state |
 |---|---|---|---|---|---|
 | (start) | `AO_SIG_START` | – | handle | – | Sensing |
-| Sensing | entry | – | – | `sense_begin()`; start timer (settle) | – |
-| Sensing | `AO_SIG_TIMEOUT` | count matches | handle | read the level; post a change to the lamp | Waiting |
+| Sensing | entry | – | – | `sense_begin()`, then start the timer (settle) | – |
+| Sensing | `AO_SIG_TIMEOUT` | count matches | handle | read the level and post any change to the lamp | Waiting |
 | Sensing | `POWER_SUSPEND` | – | handle | abandon the reading | Suspended |
-| Waiting | entry | – | – | start timer (poll − settle) | – |
+| Waiting | entry | – | – | start the timer (poll − settle) | – |
 | Waiting | `AO_SIG_TIMEOUT` | count matches | handle | – | Sensing |
 | Waiting | `POWER_SUSPEND` | – | handle | – | Suspended |
 | Sensing, Waiting | exit | – | – | stop the timer | – |
@@ -96,13 +101,14 @@ data type, `ao_data_t`.
 | any | `AO_SIG_TIMEOUT` | count does not match | ignore | – | – |
 | any | any other | – | ignore | – | – |
 
-Suspending while a timeout is already queued is exactly the case D8 is
-about. The old timeout still arrives, and the count shows it is late.
+Suspending the object while a timeout is already queued produces a late
+timeout, which is the case D8 covers. The old timeout still arrives, and its
+count shows that it is late.
 
 ## A flat machine (D9 default)
 
-A switch on a state `enum`, with one transition function. This is the
-button above.
+The button below uses the default from D9: a switch on a state `enum` with
+one transition function.
 
 ```c
 /* button.c */
@@ -113,7 +119,7 @@ button above.
 #include "lamp.h"                /* extern ao_t *const lamp; */
 #include "signals.h"             /* the project's one signal enum */
 
-/* +1 because a timer starts partway through a tick (references/kernel.md) */
+/* +1 because a timer starts partway through a tick (timers.md) */
 #define SETTLE_TICKS (5u + 1u)           /* at least 5 ticks */
 #define WAIT_TICKS   ((20u - 5u) + 1u)   /* at least 15 ticks */
 
@@ -173,7 +179,7 @@ static void report_change(const ao_event_t *e)
 {
     (void)e;
     bool now = sense_end();
-    if (now != pressed) {        /* post a change, not a repeat */
+    if (now != pressed) {        /* post only when the level changed */
         pressed = now;
         ao_post(lamp, now ? BUTTON_PRESSED : BUTTON_RELEASED, 0);
     }
@@ -216,25 +222,25 @@ static void handler(const ao_event_t *e)
 }
 ```
 
-What the shape shows:
+In this code:
 
-- The state is a `static enum`, never a set of flags. `pressed` is a kept
-  value with a stated reason.
-- Apart from the initial transition, `tran()` is the only place `state` is
-  assigned, so exit and entry actions always run, in the right order.
-- An internal transition is just the action, with no call to `tran()`. A
+- The state is a `static enum`. `pressed` is a kept value, and its comment
+  gives the reason it is not a state.
+- Apart from the initial transition, only `tran()` assigns `state`. The exit
+  and entry actions therefore always run, in the right order.
+- An internal transition calls its action without calling `tran()`. A
   self-transition is `tran(state, action, e)`.
-- The handler's `switch` mirrors the event table. Each `break` without a
-  match is an "ignore" row; write a comment where that is not obvious.
-- The action gets the event; entry and exit actions do not, because they
-  run however the state is entered or left.
+- The handler's `switch` follows the event table. A `break` with no match is
+  an "ignore" row. Give it a comment wherever that is not obvious.
+- The transition's action receives the event. Entry and exit actions do not,
+  because they run however the state is entered or left.
 
 ## Nested machines (D9 alternative)
 
-Use nesting when several states share behaviour, such as a "reset" that
-works in all of them. Each state is a constant record that names its outer
-state, its initial inner state, its entry and exit actions and its reaction
-to events:
+Nest states when several states share behaviour, such as a reset that works
+in all of them. Each state is then a constant record naming its outer state,
+its initial inner state, its entry and exit actions and its reaction to
+events:
 
 ```c
 typedef enum { HANDLED, IGNORED, PASS, TRAN } ao_result_t;
@@ -256,35 +262,36 @@ struct state {
 };
 ```
 
-Dispatching an event:
+To dispatch an event:
 
 1. Start at the current innermost state and call `react`. While the result
    is `PASS`, move to the parent and try again. If the outermost state
-   passes too, the event is ignored; make sure that is deliberate.
+   passes as well, the event is ignored, and the design must intend that.
 2. On `TRAN`, the state that returned it is the source. Find the nearest
-   state that contains both the source and the target. When one of them
+   state that contains both the source and the target. When one of the two
    contains the other, D10 decides whether that outer state counts as
-   "containing" (local) or not (external).
-3. Run exit actions from the current innermost state outwards, stopping
+   containing them (local) or not (external).
+3. Run the exit actions from the current innermost state outwards, stopping
    just below that common state.
 4. Run the transition's action.
-5. Run entry actions from just below the common state inwards, down to the
-   target.
+5. Run the entry actions from just below the common state inwards, down to
+   the target.
 6. While the target has an initial inner state, enter it and run its entry
-   action. The last one reached is the new current state.
+   action. The last state reached becomes the current state.
 
-A self-transition (the target is the source) always leaves and re-enters
-the source. D10 covers the other two cases, from an outer state to one of
-its own inner states and back out. Record which one the project uses, and
-keep it the same everywhere.
+A self-transition, where the target is the source, always leaves the source
+and enters it again. D10 covers the two other cases: from an outer state to
+one of its own inner states, and from an inner state out to its outer state.
+Record the project's choice and apply it everywhere.
 
-The states, their parents and their initial states are `const` and fixed at
-build time. Nothing creates or changes them while the program runs.
+The states, their parents and their initial states are `const` and fixed
+when the code is built. Nothing creates or changes them at run time.
 
 ## Deferring events
 
-Defer when an event arrives too early: for example, a "send" request while
-the radio is still connecting.
+An event arrives too early when the current state cannot handle it yet, for
+example a send request while the radio is still connecting. The object then
+defers it:
 
 ```c
 #define DEFER_LEN 2u             /* D6 */
@@ -315,46 +322,47 @@ static void recall_one(void)
 }
 ```
 
-- Mark the deferring states in the event table with "defer".
-- Defer in an outer state where possible, so that the rule is written once.
-- Recall the oldest first. Recalling one event per handler call keeps them
-  in order and leaves room for events posted meanwhile.
+- Mark the deferring states with "defer" in the event table.
+- Where possible, defer in an outer state, so that the rule appears once.
+- Recall the oldest event first. One recall per handler call keeps the
+  deferred events in order and leaves room in the queue for events posted
+  in the meantime.
 
 ## Late timeouts
 
-Any state that stops or restarts a timer can receive a late timeout. How to
-recognise it is D8; the options are in `timers.md`.
+Any state that stops or restarts a timer can receive a late timeout. D8
+decides how the object recognises one, and `timers.md` lists the options.
 
-## Useful shapes
+## Common shapes
 
-- **One outermost state** for behaviour every state shares, such as reset or
-  a fault, written once.
-- **Posting to yourself** to split long work into short handler calls, or to
-  drive regular polling with the timer.
-- **Remembering the last inner state**, so that re-entering an outer state
-  resumes where it left off. Keep the last inner state in a variable set by
-  the inner states' entry actions, and enter it instead of the usual initial
-  state.
-- **Sub-machines** for independent parts of one object's behaviour. A
-  sub-machine is part of its object, not an object: the object calls it
-  directly with the current event and starts its initial transition itself.
-  It reports back by posting to the owner's queue. Never depend on the order
-  in which sub-machines are called.
+- One outermost state holds the behaviour that every state shares, such as a
+  reset or a fault, so that behaviour is written once.
+- An object posts to itself to split long work into short handler calls, or
+  uses its timer to drive regular polling.
+- To resume an outer state where it left off, keep the last inner state in a
+  variable that the inner states' entry actions set. Enter that state in
+  place of the usual initial state.
+- Independent parts of one object's behaviour can live in sub-machines. A
+  sub-machine belongs to its object and has no queue of its own. The object
+  calls the sub-machine directly with the current event and starts the
+  sub-machine's initial transition. The sub-machine reports back by posting
+  to its owner's queue. No code may depend on the order in which
+  sub-machines are called.
 
 ## State machine checklist
 
-- [ ] Every state and signal pair has a deliberate reaction.
-- [ ] No flag or mode variable stands in for a state. Each kept value has a
-      reason not to be a state.
+- [ ] Every pair of state and signal has a chosen reaction.
+- [ ] No flag or mode variable stands in for a state, and each kept value
+      has a reason for not being a state.
 - [ ] Guards have no side effects and never overlap.
 - [ ] After start-up, the state changes only in the transition function, in
       the order exit, action, entry.
 - [ ] No transition happens inside an entry or exit action.
 - [ ] Entry and exit actions do not read the event.
-- [ ] Every timer is started in a state's entry and stopped in its exit,
-      and late timeouts are recognised as decided in D8.
-- [ ] Every state that contains others has an initial transition.
-- [ ] Deferred events are kept as copies, in a store sized under D6, and
+- [ ] Every timer is started in a state's entry action and stopped in its
+      exit action, and late timeouts are recognised as decided in D8.
+- [ ] Every state that contains other states has an initial transition.
+- [ ] Deferred events are kept as copies in a store sized under D6, and are
       recalled oldest first, at most one per handler call.
-- [ ] D10 is decided wherever a transition goes between an outer state and
+- [ ] D10 is decided wherever a transition runs between an outer state and
       one of its own inner states.

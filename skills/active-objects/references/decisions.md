@@ -1,39 +1,39 @@
 # Decisions
 
-These are the parts of the design that change from project to project.
-None of them may be chosen for the user.
+A decision is a part of the design that changes from project to project.
+The user makes every decision.
 
-## How to put a decision to the user
+## Putting a decision to the user
 
-1. Before code relies on a decision, ask about it. Don't wait until the code
-   is written.
-2. In a few plain sentences, give the question, the options, what each one
-   costs or gains, and the default where there is one.
-3. Wait for a clear yes. Silence or a question is not a yes.
-4. Ask where approved decisions are recorded, and record each one there
+1. Raise the decision before writing any code that relies on it.
+2. State the question, the options, what each option gains and costs, and
+   the default if there is one. A few plain sentences are enough.
+3. Wait for a clear yes. Silence or a follow-up question leaves the decision
+   open.
+4. Ask where approved decisions should be recorded. Record each one there
    with its reason.
-5. If a later change needs a different answer, put the change to the user in
-   the same way.
+5. When a later change needs a different answer, put the new question to
+   the user in the same way.
 
-Each message's agreement is a decision in the same way
-(`objects-and-messages.md`). So is every exception to a contract.
+The agreement for each message is also a decision
+(`objects-and-messages.md`), and so is every exception to a contract.
 
 ## The decisions
 
-| # | Decision | Options | Default | Details in |
+| # | Decision | Options | Default | Module |
 |---|---|---|---|---|
-| D1 | Kernel | a cooperative kernel written for the project: one loop, handlers never interrupt each other; RTOS threads: one FreeRTOS or Zephyr thread per object, higher priority preempts lower | cooperative kernel | `kernel.md` |
-| D2 | Priorities, deadlines and start order | the order of objects (cooperative) or thread priorities (RTOS); each object's deadline; how worst-case handler time is measured; how equal priorities are handled; the order in which objects start | ordered by deadline, measured on the target | `kernel.md` |
-| D3 | Event types and memory | the signal type; the data type and size (a single value, or a fixed payload); events copied into the queue, or read-only events from a pool with a use count | copied into the queue; no default for the types or size | `objects-and-messages.md`, `kernel.md` |
-| D4 | Delivery | posted to a named object; published to subscribers; both | named object | `objects-and-messages.md` |
-| D5 | Full queue, store or pool | drop the new event, only where you can show for that message that it never happens; treat it as a bug and stop with an assertion; keep spare room for key messages | none | `objects-and-messages.md`, `kernel.md` |
-| D6 | Sizes | each queue, deferral store and event pool; under RTOS threads, each thread stack and the RTOS timer command queue | start generous, record the lowest free count under the heaviest load, shrink with a recorded margin | `objects-and-messages.md` |
-| D7 | Timers per object | one one-shot timer; several, each with its own signal; periodic timers | one one-shot timer | `timers.md` |
-| D8 | Late timeouts | a count carried in the timeout and checked by a guard; a stop that reports "already posted"; a kernel that removes it from the queue on stop | none | `timers.md` |
-| D9 | State-machine coding | a switch on a state `enum` with one transition function; state-handler functions with nesting; a state table | a switch for flat machines; propose an approach when nesting is needed | `state-machines.md` |
-| D10 | Nested transitions | whether a transition between an outer state and one of its own inner states leaves and re-enters the outer state (external) or not (local) | none; ask when nesting is used | `state-machines.md` |
-| D11 | Boundary modules | which modules are not objects (drivers, clock, pure helpers, protocol converters), what each may do, how one used by several objects is protected | nothing exempt until decided | `objects-and-messages.md` |
-| D12 | Errors | the response to a broken contract, an impossible event, or an overflow that must not happen; for example, an assertion kept on in production with a handler that stops, records and restarts | none | `handlers.md` |
-| D13 | Objects and hiding | one object per `.c` file with `static` state; or an object type with several instances, whose handler gets a `self` pointer; how internals are kept out of reach | one object per `.c` file; peers see only an incomplete type | `objects-and-messages.md`, `kernel.md` |
-| D14 | Ticks and sleep | the tick period and tick type; how deep idle sleeps; what wakes it (a periodic tick, or a hardware timer set for the next due timer) | none; ask with the power budget in hand | `timers.md`, `kernel.md` |
-| D15 | Interrupt levels | the kernel's critical sections mask all interrupts; or only those up to a set level, so that faster interrupts above it keep running but may never post | mask all interrupts | `handlers.md`, `kernel.md` |
+| D1 | Kernel | A cooperative kernel written for the project, where one loop runs the handlers and no handler interrupts another. Or RTOS threads, one FreeRTOS or Zephyr thread per object, where a higher priority preempts a lower one. | Cooperative kernel. | `kernel.md` |
+| D2 | Priorities, deadlines and start order | The order of the objects (cooperative) or their thread priorities (RTOS). Each object's deadline. How the worst-case handler time is measured. How equal priorities are treated. The order in which the objects start. | Order by deadline and measure on the target. | `kernel.md` |
+| D3 | Event types and memory | The signal type. The data type and size, either one value or a fixed payload. Whether events are copied into the queue or taken read-only from a pool with a use count. | Copied into the queue. No default for the types or the size. | `objects-and-messages.md`, `kernel.md` |
+| D4 | Delivery | Post to a named object, publish to subscribers, or both. | Named object. | `objects-and-messages.md` |
+| D5 | Full queue, store or pool | Drop the new event, allowed only where you can show, for that message, that the queue, store or pool never fills. Stop with an assertion and treat the overflow as a bug. Keep spare room for important messages. | None. | `objects-and-messages.md`, `kernel.md` |
+| D6 | Sizes | Every queue, deferral store and event pool. Under RTOS threads, also each thread stack and the RTOS timer command queue. | Start generous, record the lowest free count under the heaviest load, then shrink and keep a recorded margin. | `objects-and-messages.md` |
+| D7 | Timers per object | One one-shot timer, several timers with a signal each, or periodic timers. | One one-shot timer. | `timers.md` |
+| D8 | Late timeouts | Carry a count in the timeout and check it with a guard. Use a stop that reports whether the timeout was already posted. Or let the kernel remove the queued timeout on stop. | None. | `timers.md` |
+| D9 | State-machine coding | A switch on a state `enum` with one transition function, state-handler functions that support nesting, or a state table. | A switch for flat machines. Propose an approach when the machine needs nesting. | `state-machines.md` |
+| D10 | Nested transitions | For a transition between an outer state and one of its own inner states, either leave and re-enter the outer state (external) or stay in it (local). | None. Ask when the machine uses nesting. | `state-machines.md` |
+| D11 | Boundary modules | Which modules are not objects (drivers, the clock, pure helpers, protocol converters). What each one may do. How a module used by several objects is protected. | No module is exempt until this is decided. | `objects-and-messages.md` |
+| D12 | Errors | What happens on a broken contract, an impossible event, or an overflow that must never happen. One option is an assertion kept on in production, with a handler that stops the system, records the fault and restarts. | None. | `handlers.md` |
+| D13 | Objects and hiding | One object per `.c` file with `static` state, or an object type with several instances whose handler receives a `self` pointer. Also how the internals are kept out of reach. | One object per `.c` file. Peers see only an incomplete type. | `objects-and-messages.md`, `kernel.md` |
+| D14 | Ticks and sleep | The tick period and tick type. How deeply idle sleeps. What wakes it, either a periodic tick or a hardware timer set for the next due timer. | None. Ask with the power budget at hand. | `timers.md`, `kernel.md` |
+| D15 | Interrupt levels | The kernel's critical sections mask every interrupt, or only those up to a set level. Faster interrupts above that level keep running and must not post. | Mask every interrupt. | `handlers.md`, `kernel.md` |

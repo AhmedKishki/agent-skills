@@ -1,63 +1,57 @@
 # The kernel
 
-The pattern does not depend on the kernel. This file describes what a
-recommended kernel looks like: what any kernel must do, a C interface
-sketch, and how it runs in the two forms of D1. The first form is a
-cooperative kernel written for the project. The second is RTOS threads,
-with one FreeRTOS or Zephyr thread per object.
-
-Read this before writing or reviewing kernel code, or before adapting an
-existing kernel. Everything here is a contract unless a decision (D-number)
-is named; see `decisions.md`. The kernel keeps the same contracts as the objects: it never
-blocks in a handler's place, never shares an object's data and never offers
-a back door between objects.
+The pattern runs on any kernel that keeps the rules below, whether the
+kernel is new or an existing one being adapted. D1 (`decisions.md`) chooses
+between two forms: a cooperative kernel written for the project, and RTOS
+threads with one FreeRTOS or Zephyr thread per object. The kernel follows
+the same rules as the objects. It never blocks on a handler's behalf, never
+shares an object's data and gives objects no way to reach each other.
 
 ## What every kernel must do
 
-1. **It calls every handler, and nothing else does.** It never runs one
+1. The kernel is the only code that calls handlers, and it never runs one
    object's handler twice at the same time.
-2. **Start first.** Each object handles its start event before any other
-   event sent to it.
-3. **One at a time, in order.** An object's events reach it one at a time,
-   first in, first out. The only exception is a recalled event, which goes
-   to the front.
-4. **Posting** copies the event (or passes a pooled one, D3) and returns at
+2. Each object handles its start event before any other event sent to it.
+3. An object receives its events one at a time, in the order they were
+   posted. A recalled event is the only exception and goes to the front.
+4. A post copies the event, or passes a pooled one (D3), and returns at
    once. It never blocks, never calls the receiver, keeps no pointer into
-   the sender's data and works from every context that posts. A full queue
-   is handled inside the post, as decided in D5.
-5. **Timers** only post a timeout into their own object's queue. An object
+   the sender's data and works from every context that posts. The post
+   itself handles a full queue as decided in D5.
+5. A timer only posts a timeout into its own object's queue, and an object
    can name only its own timers.
-6. **Idle** never misses an event that arrives just before the CPU or thread
+6. Idle never misses an event that arrives just before the CPU or the thread
    goes idle.
-7. **Protection.** It guards its own queues, timers and pools against every
-   context that touches them, on every core that runs objects or posts.
-8. **Only on events.** It calls a handler only when there is an event for
-   it; idle objects are never polled.
-9. **Priority** (D2) decides which object runs next. On RTOS threads it also
-   lets a higher-priority object preempt a lower one. Priority alone does not
-   prove a deadline is met; measure it.
-10. **Sleep.** Only the kernel decides when the CPU sleeps; on an RTOS, its
-    idle thread does.
-11. **Nothing more.** It offers posting, timers and recall, and nothing that
-    lets objects reach each other. It adds no layers or wrappers without a
-    real need.
+7. The kernel protects its queues, timers and pools against every context
+   that touches them, on every core that runs objects or posts.
+8. The kernel calls a handler only when an event is waiting for it, and
+   never polls an idle object.
+9. Priority (D2) decides which object runs next. On RTOS threads, priority
+   also lets a higher-priority object preempt a lower one. Priority alone
+   does not show that a deadline is met, so measure the handler times
+   against the deadlines.
+10. Only the kernel decides when the CPU sleeps. On an RTOS, the idle thread
+    makes that decision.
+11. The kernel offers posting, timers and recall, and nothing that lets one
+    object reach another. It adds no layers or wrappers without a real
+    need.
 
 ## Start-up and shutdown
 
 - If the CPU starts with interrupts enabled, `main()` masks them before
-  anything else.
-- Every queue (and event pool) exists before anything can post to it.
-- Each owner's set-up runs once and configures only what it owns.
-- Each object handles its start event before any other event. Peers get
-  starting values as messages from the owner, usually sent on its start
-  event.
+  doing anything else.
+- Every queue, and every event pool, exists before anything can post to it.
+- Each owner's set-up runs once and configures only what that owner owns.
+- Each object handles its start event before any other event. Peers receive
+  their starting values as messages from the owner, usually sent on the
+  owner's start event.
 - An interrupt that posts is enabled only once every queue it posts to
-  exists. In practice each owner enables its own interrupts on its start
+  exists. In practice, each owner enables its own interrupts on its start
   event. On a cooperative kernel, the CPU's interrupts are unmasked after
   every start event has run.
 - The start order is approved as part of D2.
-- An object that can stop first makes sure nothing posts to it any more,
-  then releases what it owns.
+- An object that can stop first makes sure that nothing posts to it any
+  more, then releases what it owns.
 
 ## Layers
 
@@ -70,22 +64,22 @@ port  or  RTOS adaptation       critical sections, idle, ticks / RTOS calls
 
 Objects never include the port or RTOS headers for kernel purposes. Moving
 from the cooperative kernel to RTOS threads changes the kernel core and the
-adaptation, not the objects.
+adaptation layer, and leaves the objects as they are.
 
 ## Interface sketch
 
-The types are the project's, not the kernel's. A small `ao_types.h`,
-written per project, defines them:
+The types belong to the project. A small `ao_types.h`, written for each
+project, defines them:
 
 | Type | What it is | Decided in |
 |---|---|---|
 | `ao_signal_t` | wide enough for every signal in the project | D3 |
-| `ao_data_t` | the data an event carries: a single value or a fixed payload struct | D3 |
+| `ao_data_t` | the data an event carries, either a single value or a fixed payload struct | D3 |
 | `ao_tick_t` | an unsigned tick count that wraps around | D14 |
 | `ao_qindex_t` | holds the largest queue size, and the target reads it in one indivisible access | D6 |
 | `ao_prio_t` | holds the highest priority | D2 |
 
-What every module may include:
+Every module may include `ao.h`:
 
 ```c
 /* ao.h */
@@ -115,8 +109,9 @@ void ao_post(ao_t *to, ao_signal_t sig, ao_data_t data);
 #endif
 ```
 
-What only object modules and the kernel include. Peers include only `ao.h`,
-where `ao_t` is incomplete, so they cannot reach these fields (D13):
+Only object modules and the kernel include `ao_object.h`. Peers include
+`ao.h` alone, where `ao_t` is incomplete, so they cannot reach its fields
+(D13):
 
 ```c
 /* ao_object.h */
@@ -166,7 +161,7 @@ void ao_recall(const ao_event_t *e);
 #endif
 ```
 
-What `main()` calls:
+`main()` calls one function:
 
 ```c
 /* ao_kernel.h */
@@ -174,7 +169,7 @@ void ao_run(void);   /* start events, then outside senders, then dispatch;
                         never returns */
 ```
 
-An object then looks like this:
+The lamp object below uses the interface:
 
 ```c
 /* lamp.c */
@@ -206,18 +201,18 @@ static void handler(const ao_event_t *e)
 }
 ```
 
-Every handler matches `ao_handler_t` exactly. Calling a function through a
-mismatched pointer type is undefined behaviour in C, and a cast does not fix
-it.
+Every handler matches `ao_handler_t` exactly. In C, calling a function
+through a mismatched pointer type is undefined behaviour, and a cast does
+not make the call safe.
 
-With D3 set to a payload struct, `ao_post()` takes it by pointer and
+With a payload struct (D3), `ao_post()` takes the payload by pointer and
 copies it. With pooled events, the queue holds pointers and `ao_post()`
-takes a pool event. Either way, the contracts stay the same.
+takes an event from the pool. The rules stay the same in both cases.
 
-With D13 set to an object type with several instances, the handler type
+When D13 chooses an object type with several instances, the handler type
 becomes `void (*)(ao_t *self, const ao_event_t *e)`. Each instance is a
 struct whose first member is its `ao_t`, so the handler can convert `self`
-back to the instance:
+back into the instance:
 
 ```c
 typedef struct {
@@ -227,16 +222,17 @@ typedef struct {
 } led_t;
 ```
 
-## Cooperative kernel (D1 default)
+## Cooperative kernel
 
-One loop on one stack. Handlers never interrupt each other; only interrupts
-interrupt a handler. Priority decides who runs next, so check every object's
-longest handler against the deadlines of every higher-priority object.
+This is the default form under D1. One loop runs on one stack. No handler
+interrupts another, and only interrupts can interrupt a handler. Priority
+decides which handler runs next, so check every object's longest handler
+against the deadlines of all higher-priority objects.
 
 ### Port
 
-One small file per target supplies these. No other kernel code touches the
-hardware.
+Each target supplies one small port file with the functions below, and no
+other kernel code touches the hardware.
 
 ```c
 /* ao_port.h */
@@ -263,12 +259,13 @@ ao_tick_t ao_port_ticks(void);
 void ao_port_start(void);
 ```
 
-Most cores can wake from a pending interrupt while interrupts are still
-masked: the port runs the core's wait-for-interrupt instruction inside the
-critical section. A core that wakes only with interrupts enabled needs its
-documented enable-and-sleep sequence, which leaves no gap between the two.
-Either way, something must wake the CPU when a timer is due: the periodic
-tick interrupt, or a hardware timer set for the next due timer (D14).
+Most cores wake from a pending interrupt while interrupts are still masked.
+On those cores, the port runs the core's wait-for-interrupt instruction
+inside the critical section. A core that wakes only with interrupts enabled
+needs its documented enable-and-sleep sequence, which leaves no gap between
+enabling and sleeping. In both cases, something must wake the CPU when a
+timer falls due: the periodic tick interrupt, or a hardware timer set for
+the next due timer (D14).
 
 ### The loop
 
@@ -291,42 +288,44 @@ repeat forever:
     start the scan again from the top
 ```
 
-Equal priorities are not allowed unless D2 says how ties are broken.
+Equal priorities are allowed only if D2 says how ties are broken.
 
 ### Queue
 
-- A ring buffer per object, with `head` (the oldest event) and `count` (the
-  number waiting).
+- Each object has a ring buffer with `head`, the index of the oldest event,
+  and `count`, the number of events waiting.
 - A post writes at `(head + count) % size` and increments `count`. A take
   reads at `head`, moves `head` on and decrements `count`. Both happen
   inside a critical section.
-- A recall also happens inside a critical section. It checks for room
-  first, because an interrupt may have filled the queue meanwhile. It then
-  moves `head` back one place, writes there and increments `count`.
+- A recall also runs inside a critical section. It first checks for room,
+  because an interrupt may have filled the queue in the meantime. It then
+  moves `head` back one place, writes the event there and increments
+  `count`.
 - `head` and `count` are `volatile`, because interrupts post. Reading
-  `count` outside a critical section is safe only where the target reads
-  it in one indivisible access.
+  `count` outside a critical section is safe only where the target reads it
+  in one indivisible access.
 - A post from an interrupt costs a function call and a critical section.
-  Measure it against the interrupt's time budget.
+  Measure that cost against the interrupt's time budget.
 
 ### Timers
 
 - Each timer is a start tick and an interval, compared with
   `ao_port_ticks()`.
-- It is due when `(ao_tick_t)(now - start) >= ticks`. Unsigned subtraction
-  makes counter wrap-around harmless.
-- It is stopped before its timeout is posted. If the queue is full, that
-  timeout is lost (D5).
+- A timer is due when `(ao_tick_t)(now - start) >= ticks`. Unsigned
+  subtraction makes counter wrap-around harmless.
+- The loop stops a timer before posting its timeout. If the queue is full,
+  that timeout is lost (D5).
 - To wait at least N full ticks, set N + 1 (`timers.md`).
-- Handlers and the loop are the only code that touches timer fields. They
-  never run at the same time, so the fields need no critical section.
+- Only handlers and the loop touch the timer fields. They never run at the
+  same time, so the fields need no critical section.
 
-## RTOS threads (D1 alternative)
+## RTOS threads
 
-Each object is one thread that waits in exactly one place: the receive on
-its own queue. Higher priority preempts lower, but each object still handles
-its own events one at a time, and nothing is shared, so objects need no
-locks between them.
+This is the alternative form under D1. Each object is one thread, and the
+thread waits in exactly one place: the receive on its own queue. A higher
+priority preempts a lower one. Each object still handles its own events one
+at a time, and because nothing is shared, objects need no locks between
+them.
 
 ### Mapping
 
@@ -336,9 +335,9 @@ locks between them.
 | thread | `xTaskCreateStatic()` | `k_thread_create()` |
 | post from a thread | `xQueueSend(q, &e, 0)` | `k_msgq_put(q, &e, K_NO_WAIT)` |
 | post from an interrupt | `xQueueSendFromISR(q, &e, &woken)`, then `portYIELD_FROM_ISR(woken)` | `k_msgq_put(q, &e, K_NO_WAIT)` |
-| timer | `xTimerCreateStatic()`, one-shot; its callback runs in the timer service task | `k_timer_init()`; its expiry function runs in interrupt context |
-| priority | a larger number is more urgent | a smaller number is more urgent; use non-negative (preemptible) priorities |
-| interrupts that post (D15) | at or below `configMAX_SYSCALL_INTERRUPT_PRIORITY` | not zero-latency interrupts |
+| timer | `xTimerCreateStatic()`, one-shot. Its callback runs in the timer service task. | `k_timer_init()`. Its expiry function runs in interrupt context. |
+| priority | A larger number is more urgent. | A smaller number is more urgent. Use non-negative (preemptible) priorities. |
+| interrupts that post (D15) | at or below `configMAX_SYSCALL_INTERRUPT_PRIORITY` | any interrupt except a zero-latency one |
 
 `struct ao` holds the RTOS queue, thread and timer objects in place of
 `head`, `count` and the timer fields. Each thread's stack size is part of
@@ -356,20 +355,22 @@ repeat forever:
     call the handler with the event
 ```
 
-- Recall uses a one-event slot per object instead of the RTOS queue, so it
-  works whether or not the RTOS can insert at the front. One slot is enough
-  because a handler recalls at most once. Only the object's own thread
-  touches the slot, so it needs no protection.
-- On FreeRTOS, "waiting forever" with `portMAX_DELAY` needs
-  `INCLUDE_vTaskSuspend` set to 1; otherwise loop on the receive.
+- Recall uses each object's one-event recall slot in place of the RTOS
+  queue, so it works whether or not the RTOS can insert at the front of a
+  queue. One slot is enough,
+  because a handler recalls at most once per call. Only the object's own
+  thread touches the slot, so the slot needs no protection.
+- On FreeRTOS, waiting forever with `portMAX_DELAY` requires
+  `INCLUDE_vTaskSuspend` to be 1. Without it, loop around the receive.
 
 ### Posting
 
-- `ao_post()` uses a zero wait (`0` or `K_NO_WAIT`), so it never blocks.
-  A failed send is handled as decided in D5.
-- On FreeRTOS, `ao_post()` picks the interrupt-safe call when called from an
-  interrupt (for example with `xPortIsInsideInterrupt()` where the port
-  provides it), or the project provides a separate `ao_post_from_isr()`.
+- `ao_post()` uses a zero wait (`0` or `K_NO_WAIT`), so it never blocks. A
+  failed send is handled as decided in D5.
+- On FreeRTOS, `ao_post()` uses the interrupt-safe call when an interrupt
+  calls it, for example by checking `xPortIsInsideInterrupt()` where the
+  port provides it. Alternatively the project provides a separate
+  `ao_post_from_isr()`.
 
 ### Timers
 
@@ -377,75 +378,76 @@ repeat forever:
   `AO_SIG_TIMEOUT` and the timer's data. It runs no application code.
 - `ao_timer_start()` and `ao_timer_stop()` find the calling object through
   the current thread, so an object can still name only its own timer.
-- `ao_timer_start()` stops the timer before it sets the new data, so a
-  timer that fires in between cannot carry the new data.
-- Stopping an RTOS timer does not take back a timeout that was already
-  posted. A count carried in the timeout and checked by a guard is the
-  method that works in every case (D8).
+- `ao_timer_start()` stops the timer before setting the new data. A timer
+  that fires in between therefore cannot carry the new data.
+- Stopping an RTOS timer cannot take back a timeout that was already
+  posted. A count carried in the timeout and checked by a guard works in
+  every case (D8).
 - On FreeRTOS, start and stop are commands sent to the timer service task.
   Give that task a higher priority than every object, so that each command
-  takes effect before the object's handler goes on. Send the commands with a
-  block time of 0. The timer command queue is sized under D6, and a failed
-  command is an error under D12.
+  takes effect before the object's handler continues. Send the commands
+  with a block time of 0. The timer command queue is sized under D6, and a
+  failed command is an error under D12.
 
 ### Start-up
 
 - If the CPU starts with interrupts enabled, `main()` masks them first.
 - Create every queue, timer and thread before any thread runs. On FreeRTOS,
-  create them all before `vTaskStartScheduler()`. On Zephyr, create the
-  threads with a start delay of `K_FOREVER`, then `k_thread_start()` them
-  in the order approved under D2.
-- Each thread handles its own start event before receiving. Events posted
-  to it earlier wait in its queue.
+  create them all before calling `vTaskStartScheduler()`. On Zephyr, create
+  the threads with a start delay of `K_FOREVER`, then call
+  `k_thread_start()` on each in the order approved under D2.
+- Each thread handles its own start event before its first receive. Events
+  posted to the thread earlier wait in its queue.
 - Each owner enables its own peripheral interrupts on its start event, after
   its queue exists.
 
-### What a handler must not call
+### Calls that block
 
 `vTaskDelay`, `k_sleep`, `xSemaphoreTake`, `k_sem_take`, `k_mutex_lock`,
-`xQueueReceive` or `k_msgq_get` with a non-zero wait, or any blocking driver
-call. In a handler, every RTOS call uses a zero timeout. Under RTOS threads
-these calls are easy to reach for, and each one breaks run to completion.
+`xQueueReceive` or `k_msgq_get` with a non-zero wait, and any blocking
+driver call all make a handler wait. Every RTOS call in a handler therefore
+uses a zero timeout. These calls are easy to reach for under RTOS threads,
+and each of them breaks run to completion.
 
 ### Shared resources
 
-Nothing is shared by default. The only allowed exception (approved and
-recorded) is a short, bounded priority-ceiling section around a resource
-several objects must use. Use `vTaskSuspendAll()`/`xTaskResumeAll()` or
-`k_sched_lock()`/`k_sched_unlock()`, or raise the holder to the highest
-user's priority for the section. Make no RTOS calls inside it. Nobody waits
-for it. These locks cover one core only. A blocking mutex between objects
-is never allowed.
+By default nothing is shared. The only exception allowed, once approved and
+recorded, is a short, bounded priority-ceiling section around a resource
+that several objects must use. The section uses
+`vTaskSuspendAll()`/`xTaskResumeAll()` or `k_sched_lock()`/`k_sched_unlock()`,
+or raises the holder to the highest priority among the users for its
+duration. It makes no RTOS calls, and no user ever waits for it. These locks
+cover one core only. A blocking mutex between objects is never allowed.
 
 ### Idle
 
 The RTOS idle thread does the idling, including any tickless low-power mode
-(D14). No object sleeps the CPU.
+(D14). No object puts the CPU to sleep.
 
 ## Measuring handler time
 
-D2 needs the worst-case time of each handler. Measure it on the target:
-read a cycle counter before and after the handler, or toggle a spare pin
-around it and watch it with a logic analyser. Record the worst case seen
-under the heaviest load.
+D2 needs each handler's worst-case time, measured on the target. Read a
+cycle counter before and after the handler, or toggle a spare pin around it
+and watch the pin with a logic analyser. Record the worst case seen under
+the heaviest load.
 
 ## Kernel checklist
 
-- [ ] Only the kernel calls handlers, never one handler twice at once.
+- [ ] Only the kernel calls handlers, and never one handler twice at once.
 - [ ] Every object gets its start event before any other event.
-- [ ] Queues are first in, first out, except for recall at the front.
+- [ ] Queues are first in, first out, apart from recall at the front.
 - [ ] `ao_post()` copies, returns at once, never blocks, never calls the
       receiver, works from every posting context and applies D5.
 - [ ] Every critical section saves and restores the interrupt state.
 - [ ] Recall is protected, checks for room and happens at most once per
       handler call.
 - [ ] Timers only post into their own object's queue, and the interface
-      cannot name another object's timer. Starting stops first, then sets
-      the data.
+      cannot name another object's timer. Starting a timer stops it first,
+      then sets its data.
 - [ ] Idle cannot miss an event posted just before it, and something wakes
-      the CPU when a timer is due.
-- [ ] Kernel structures are protected against every context, and every
-      core, that touches them.
+      the CPU when a timer falls due.
+- [ ] Kernel structures are protected against every context and every core
+      that touches them.
 - [ ] Interrupts that post run at a level the kernel masks.
 - [ ] Nothing in the kernel lets one object reach another's internals.
 - [ ] Interrupts start only after every queue exists and, on the cooperative
