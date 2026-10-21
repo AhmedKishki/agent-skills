@@ -1,0 +1,12 @@
+{
+  "name": "collaborative-coding",
+  "description": "Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/collaborative-coding",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

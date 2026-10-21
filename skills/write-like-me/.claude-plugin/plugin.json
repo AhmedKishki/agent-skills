@@ -1,0 +1,12 @@
+{
+  "name": "write-like-me",
+  "description": "Write, rewrite, and audit prose using an evidence-backed personal writing pattern while preserving meaning.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/write-like-me",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

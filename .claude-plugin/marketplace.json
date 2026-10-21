@@ -34,6 +34,19 @@
       ]
     },
     {
+      "name": "collaborative-coding",
+      "displayName": "Collaborative Coding",
+      "source": "./skills/collaborative-coding",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/collaborative-coding",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations.",
+      "tags": [
+        "coding",
+        "learning",
+        "collaboration"
+      ]
+    },
+    {
       "name": "read-along-guide",
       "displayName": "Read-Along Guide",
       "source": "./skills/read-along-guide",
@@ -96,6 +109,19 @@
         "learning",
         "research",
         "records"
+      ]
+    },
+    {
+      "name": "human-writing",
+      "displayName": "Human Writing",
+      "source": "./skills/human-writing",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-writing",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences.",
+      "tags": [
+        "writing",
+        "editing",
+        "review"
       ]
     },
     {

@@ -4,12 +4,29 @@ Skills for Claude Code and Kilo Code. Each skill is a folder in `skills/` with a
 
 ## Install
 
+### Claude Code marketplace: choose individual skills
+
+Run these commands in your shell:
+
+```sh
+claude plugin marketplace add AhmedKishki/agent-skills
+claude plugin install coding-partner@ahmedkishki-skills
+```
+
+The repository provides one root marketplace, `ahmedkishki-skills`, with one independently installable plugin per skill. Replace `coding-partner` with any name in the table below. Each plugin explicitly discovers its root `SKILL.md` through `"skills": ["./"]`; there are no nested marketplaces.
+
+Start a new Claude Code session or run `/reload-plugins` after installation. Invoke the example as `/coding-partner:coding-partner`.
+
+### Local checkout: link every skill for Claude Code and Kilo Code
+
 ```sh
 git clone https://github.com/AhmedKishki/agent-skills.git ~/agent-skills
 ~/agent-skills/bin/agent-skills install
 ```
 
 This links every skill into `~/.claude/skills`, where Claude Code finds it; an older copy already there is moved to `~/.claude/skill-backups/`. For Kilo Code, add `~/.claude/skills` to `skills.paths` in `~/.config/kilo/kilo.jsonc`.
+
+Choose marketplace installation or local linking for a given skill to avoid loading two copies. The link, update and editing commands below apply to the local-checkout route.
 
 ## Use in a project
 
@@ -21,6 +38,17 @@ agent-skills link
 The project gets an `agent-skills` link to the collection, which its Git ignores, so you can open and edit the skills from your workspace.
 
 ## Update
+
+For marketplace installs, refresh the catalog and update each installed plugin:
+
+```sh
+claude plugin marketplace update ahmedkishki-skills
+claude plugin update coding-partner@ahmedkishki-skills
+```
+
+Replace `coding-partner` with the installed skill's name. Start a new session or run `/reload-plugins` to load the update.
+
+For a local checkout:
 
 ```sh
 agent-skills update
@@ -41,6 +69,7 @@ Edit it in `~/agent-skills/skills/` or through a project's link, commit, then ru
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`collaborative-learning`](skills/collaborative-learning/) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
+| [`human-writing`](skills/human-writing/) | Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences. |
 | [`humaniser`](skills/humaniser/) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`markdown-refactor`](skills/markdown-refactor/) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
 | [`read-along-guide`](skills/read-along-guide/) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |

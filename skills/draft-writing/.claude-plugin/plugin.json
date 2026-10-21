@@ -1,0 +1,12 @@
+{
+  "name": "draft-writing",
+  "description": "Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/draft-writing",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

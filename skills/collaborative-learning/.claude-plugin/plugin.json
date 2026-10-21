@@ -1,0 +1,12 @@
+{
+  "name": "collaborative-learning",
+  "description": "Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/collaborative-learning",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

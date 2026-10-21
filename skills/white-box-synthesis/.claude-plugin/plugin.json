@@ -1,0 +1,12 @@
+{
+  "name": "white-box-synthesis",
+  "description": "Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/white-box-synthesis",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

@@ -1,6 +1,15 @@
 ---
 name: white-box-synthesis
-description: Answer a query only from supplied sources (retrieval or RAG results, quotations, passages, notes or the user's own writing) by white-box synthesis. Plans the argument A → B → … → Z first, keeps only source sentences necessary for Z, and renders every sentence from exact source wording through five operations, so neither the wording nor the connections come from the agent. Marks each missing link as ⟦GAP: X → Y⟧, adds a marked AI link only where the user allows it, and returns the synthesis, references, minimal provenance and reasoning. Use when the user supplies sources with a question to answer from them, or asks for a white-box, source-only, traceable or provenance-preserving answer.
+description: >-
+  Answer a query only from supplied sources (retrieval or RAG results, quotations,
+  passages, notes or the user's own writing) by white-box synthesis. Plans the
+  argument A → B → … → Z first, keeps only source sentences necessary for Z, and
+  renders every sentence from exact source wording through five operations, so
+  neither the wording nor the connections come from the agent. Marks each missing
+  link as ⟦GAP: X → Y⟧, adds a marked AI link only where the user allows it, and
+  returns the synthesis, references, minimal provenance and reasoning. Use when
+  the user supplies sources with a question to answer from them, or asks for a
+  white-box, source-only, traceable or provenance-preserving answer.
 ---
 
 # White-box synthesis

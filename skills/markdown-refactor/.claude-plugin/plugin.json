@@ -1,0 +1,12 @@
+{
+  "name": "markdown-refactor",
+  "description": "Refactor agent-facing Markdown so each file holds everything its job requires and nothing outside it, with one owner per rule and one meta view.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/markdown-refactor",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

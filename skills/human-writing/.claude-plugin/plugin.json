@@ -1,0 +1,12 @@
+{
+  "name": "human-writing",
+  "description": "Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-writing",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}
