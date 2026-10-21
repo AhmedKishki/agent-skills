@@ -1,85 +1,76 @@
 ---
 name: active-objects
 description: >-
-  Use when designing, writing, reviewing or refactoring event-driven software
-  built from active objects: objects that each own private state and a private
-  event queue and handle one event at a time under a dispatcher. Also use when
-  a module is about to call, query, set or share another module's state, wait
-  or block inside an event handler, or do application work inside an
-  interrupt.
+  Use when designing, writing or reviewing embedded C built from active
+  objects: modules that own their data, receive work only as events in their
+  own queue, and handle one event at a time with a state machine. Covers the
+  objects, events, signals, queues, handlers, state machines, timers,
+  interrupts and the kernel beneath them, whether a cooperative kernel
+  written for the project or RTOS threads on FreeRTOS or Zephyr. Enforces
+  the pattern's contracts and puts every project decision to the user for
+  approval. Also use when code is about to read or change another module's
+  data, wait inside a handler, add a flag instead of a state, or do real work
+  in an interrupt or callback.
 ---
 
 # Active objects
 
-An active object owns its state and its resources and reacts to one event at
-a time. Other code reaches it only by posting an event to its queue. Every
-rule in this skill protects one of three properties:
+An active object is a module that owns its data and the hardware it drives.
+It has its own queue of events and handles them one at a time, start to
+finish, using a state machine to remember where it is. Other code reaches it
+only by posting an event to its queue. The pattern does not depend on the
+kernel underneath.
 
-1. **One owner.** Each piece of state and each resource belongs to exactly
-   one object.
-2. **Queues only.** Objects communicate only by posting events into each
-   other's queues.
-3. **Run to completion.** A handler processes one event and returns; it never
-   waits.
+## How to work
 
-The rules say what a code base must do to follow the pattern, not how to lay
-it out: sizes, types, names and data layouts are the code base's own
-decisions. A language that lets code reach another object's members does not
-make that access permitted. Existing code that breaks a rule is debt to
-remove, not an example to copy.
+Every design detail is one of two kinds.
 
-## The parts
+- **Contract** (intransitive): holds in every project and on every kernel.
+  Enforce it in everything you write or review, kernel code included. When
+  code breaks one, say which, what goes wrong and how to fix it; don't build
+  on the break. Set one aside only when the user explicitly approves an
+  exception for a stated reason, and record and mark it.
+- **Decision** (transitive): chosen per project. Before code relies on one,
+  put it to the user with its options, trade-offs and default (if it has
+  one), and wait for a clear yes. Never choose for the user. Record approved
+  decisions where the user says.
 
-| Part | What the pattern requires |
+When anything is unclear, ask. If C lets code reach something, that does not
+make the access allowed. Existing code that breaks a contract is debt, not a
+precedent.
+
+## The three promises
+
+Every contract protects one of these.
+
+1. **One owner.** Each piece of data and each resource belongs to one object.
+2. **Queues only.** Objects talk only by posting events.
+3. **Run to completion.** A handler deals with one event fully and returns
+   without waiting.
+
+## Never
+
+- Read, write, call or share another object's internals: no getters,
+  setters, shared modules or aliasing globals.
+- Block or wait in a handler, or save a position inside it.
+- Do more than capture data and post in an interrupt, callback or foreign
+  thread.
+- Let a flag stand in for a state.
+- Start, stop or inspect another object's timer.
+- Call a handler from anywhere but the kernel.
+- Pick a project decision yourself.
+
+## Where to go
+
+Read the module that matches the task before writing or reviewing code.
+Read several when the task spans them.
+
+| Task | Read |
 |---|---|
-| State | Private to its object and kept from one event to the next. |
-| Handler | Called once per event; returns when that event is handled. |
-| Queue | The object's own; anyone may post to it, only the dispatcher takes from it. |
-| Timers | Belong to the object and deliver timeout events into its own queue. |
-| Dispatcher | Picks the next event, calls its object's handler, and sleeps when no work is left. |
-
-An event is a signal, which names what happened, together with exactly the
-data that signal is agreed to carry. The framework copies and delivers events
-without interpreting their data, and provides nothing beyond posting, the
-queues, timers and the dispatcher.
-
-## Rules by topic
-
-| Read | Covers | When |
-|---|---|---|
-| [Messaging](references/messaging.md) | Queue-only communication, state and events, message contracts, full queues | Before adding or changing any interaction between objects |
-| [Handlers](references/handlers.md) | Run to completion, waiting, sequences, publishing state, timers, startup | Before writing or reviewing a handler |
-| [Interrupts and ownership](references/interrupts-and-ownership.md) | Work in interrupts, data shared with them, owned hardware | When an interrupt, a register or a shared resource is involved |
-| [Framework](references/framework.md) | What posting, queues, the dispatcher, timers and sleep must guarantee | Before writing or reviewing the framework itself |
-
-## Red flags: stop and redesign
-
-| Thought | Reality |
-|---|---|
-| "Just a small read-only getter." | It ties the reader to the owner's representation and timing and skips the queue's ordering. It is a bypass. |
-| "The receiver can fetch the value when it is notified." | The receiver then acts on whatever the producer holds now, not on the event. Ordering and freshness become undefined. |
-| "Put the shared state in a common module." | It is the same access under a different name. |
-| "A short loop until the flag is set." | Only a bounded wait shorter than every deadline is allowed. Otherwise, start a timer and return. |
-| "The interrupt already has the data; it can do the work." | Interrupts capture and post. Work inside them delays every other interrupt and breaks run-to-completion reasoning. |
-| "Calling the handler directly is simpler." | Only the dispatcher calls handlers; a direct call runs one handler inside another. |
-| "The structure is visible, so I can use its members." | Visibility is not permission. |
-| "Pick a payload or a retry now; change it later." | Message contracts are agreed before they are implemented. |
-| "Post it anyway; someone might need it." | An event exists only for a consumer that acts on it. |
-| "The existing code already does it." | Existing bypasses are debt to remove, not a pattern. |
-
-## Adding or changing an active object
-
-1. Name the interaction's producer, consumer, the state involved and the
-   events.
-2. Agree each message: meaning, signal and data, initial-state delivery,
-   ordering and freshness, full-queue behaviour.
-3. Add each new signal to the central list with its producers, consumers and
-   data.
-4. Keep the state private; expose only a handle that names the destination.
-5. Write the handler: one event per call, explicit state for sequences, the
-   object's own timers for delays, then return.
-6. Let interrupts only capture data and post.
-7. Configure owned hardware in its owner; begin the behaviour on the start
-   event; deliver initial peer state by message.
-8. Place the object in the priority order by deadline, and check the longest
-   handler against the deadlines of every higher-priority object.
+| Settling any project choice: kernel, priorities, event data, delivery, full queues, sizes, timers, state-machine coding, boundaries, errors, hiding, ticks and sleep, interrupt levels | `references/decisions.md` |
+| Designing objects, events, signals, messages between objects, or who owns which resource | `references/objects-and-messages.md` |
+| Writing a handler, or code in an interrupt, callback or other thread | `references/handlers.md` |
+| Designing or coding an object's behaviour: states, transitions, guards, entry and exit, nesting, deferring | `references/state-machines.md` |
+| Using timers, or dealing with late timeouts | `references/timers.md` |
+| Writing or reviewing the kernel: queues, posting, the dispatcher, idle, the RTOS adaptation, start-up and shutdown | `references/kernel.md` |
+| Finishing or reviewing any change | `references/review.md` |
