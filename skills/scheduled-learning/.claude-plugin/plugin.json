@@ -1,0 +1,12 @@
+{
+  "name": "scheduled-learning",
+  "description": "Study a source section by section across manual or automated runs, with source-faithful explanations and a persistent progress file.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/scheduled-learning",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}

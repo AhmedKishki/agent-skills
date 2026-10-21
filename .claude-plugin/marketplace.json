@@ -112,6 +112,19 @@
       ]
     },
     {
+      "name": "scheduled-learning",
+      "displayName": "Scheduled Learning",
+      "source": "./skills/scheduled-learning",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/scheduled-learning",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "Study a source section by section across manual or automated runs, with source-faithful explanations and a persistent progress file.",
+      "tags": [
+        "learning",
+        "reading",
+        "progress"
+      ]
+    },
+    {
       "name": "white-box-synthesis",
       "displayName": "White-Box Synthesis",
       "source": "./skills/white-box-synthesis",
