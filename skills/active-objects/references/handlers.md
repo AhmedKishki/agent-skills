@@ -7,13 +7,11 @@ read before waiting may be out of date when it resumes.
 
 - Handle one event and return. To wait, start the object's timer, or return
   and handle the next event when it arrives.
-- Never block. Every RTOS call in a handler uses a zero timeout (`0` or
-  `K_NO_WAIT`). That rules out `vTaskDelay`, `k_sleep`, `xSemaphoreTake`,
-  `k_mutex_lock` and any receive that waits. A loop that waits for a flag or
-  a register blocks too.
-- Many driver and stack calls block, for example Zephyr's `i2c_transfer`,
-  `spi_transceive` and `adc_read`. Use their asynchronous or callback forms,
-  and post the completion as an event.
+- Never block. Every RTOS call in a handler uses a zero timeout, which
+  rules out a delay, a semaphore or mutex take, and any receive that waits.
+  A loop that waits for a flag or a register blocks too.
+- Many driver and stack calls block. Use their asynchronous or callback
+  forms, and post the completion as an event.
 - A short busy-wait with a fixed bound, such as one ADC conversion, is
   allowed only if it is shorter than every deadline, including its failure
   path. Record it with the decisions.
@@ -39,29 +37,26 @@ These rules apply to every context outside an object's handler: interrupt
 handlers, RTOS timer callbacks, library callbacks such as a BLE stack's, and
 any other thread.
 
-- Code in these contexts only captures data and posts an event. It stores
-  the captured data in memory that the receiving object owns, and the
-  handler does the work.
-- Every exception needs approval and a recorded reason. For example, a
-  waveform interrupt may set its own output pins, because the waveform
-  cannot wait for a handler.
+- Code in these contexts does short, bounded work on data it owns, such as
+  filtering a reading or deciding whether anything changed, and then posts.
+  Work that is long, or that needs an object's state, goes to that object's
+  handler. Its worst-case time delays every handler and every lower
+  interrupt, so it counts against every deadline (D2).
+- An interrupt that drives a resource an object owns needs an approved
+  exception with a recorded reason. For example, a waveform interrupt may
+  set the object's output pins, because the waveform cannot wait for a
+  handler.
 - Posting must be safe from every context that posts. Code that disables
   interrupts saves the interrupt state first and restores it afterwards. It
   never simply re-enables interrupts, because the caller may have had them
-  disabled. On an RTOS, interrupts use the queue calls made for interrupts
-  (`kernel.md`, Mapping).
+  disabled. On an RTOS, an interrupt posts through the RTOS's
+  interrupt-safe call.
 - An interrupt that posts runs at a level that the kernel's critical
-  sections mask (D15). On FreeRTOS, that level is at or below
-  `configMAX_SYSCALL_INTERRUPT_PRIORITY`. On Zephyr, a zero-latency
-  interrupt must not post.
-- Posting never blocks the poster. A failed post is handled as decided in
-  D5.
+  sections mask (D15).
 - Data shared between an interrupt and its own object's handler is
   `volatile`, and the handler accesses it with interrupts disabled. Between
-  threads, pass data by posting. Where posting is impossible, use C11 atomics
-  or an approved priority-ceiling section (`objects-and-messages.md`,
-  Ownership). A blocking mutex is never allowed. `volatile` on its own does
-  not synchronise threads.
+  threads, pass data by posting, and where posting is impossible, use C11
+  atomics. `volatile` on its own does not synchronise threads.
 - When an object's handler and its own interrupt both touch a hardware
   register, change the register in one of two ways: with one write that
   affects only the intended bits, as a set/clear register allows, or with a

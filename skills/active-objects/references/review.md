@@ -20,10 +20,12 @@ is about to break a contract or skip a decision.
 | "That event can't arrive in this state." | Choose its reaction anyway. | `state-machines.md` |
 | "I'll change state in the entry action." | Entry actions never change state. Write two transitions with opposite guards. | `state-machines.md` |
 | "A short loop until the flag is set." | The loop blocks the handler. Start the timer and return. | `handlers.md` |
-| "A quick `vTaskDelay` is harmless here." | The delay holds up every event queued behind the handler. Start the timer and return. | `handlers.md` |
+| "A quick delay call is harmless here." | The delay holds up every event queued behind the handler. Start the timer and return. | `handlers.md` |
 | "This driver call only takes a moment." | A call that can wait blocks the handler. Use the asynchronous form and post the result. | `handlers.md` |
-| "The interrupt already has the data, so it can do the work." | Work in an interrupt lengthens interrupt latency and breaks run-to-completion reasoning. Capture the data and post. | `handlers.md` |
+| "The interrupt already has the data, so it can do all the work." | Long work in an interrupt delays every handler and every lower interrupt. Do the short part on the interrupt's own data, post, and leave the rest to the handler. | `handlers.md` |
+| "If the queue is full, the event is just dropped." | A full queue is a bug, like a stack overflow. Size the queue so it never fills. | `objects-and-messages.md` |
 | "Calling the handler directly is simpler." | A handler called from another handler runs inside it, and a call from anywhere else breaks one-at-a-time delivery. Only the kernel calls handlers. | `kernel.md` |
+| "I'll update the diagram once the code settles." | A diagram that lags the code describes software that does not exist. Change it in the same change. | `diagrams.md` |
 | "The timeout arrived, so the time is up." | The timeout may be late. Check it as decided in D8. | `timers.md` |
 | "The header shows the struct, so I can use its fields." | If C allows an access, that does not make it permitted. | `objects-and-messages.md` |
 | "The kernel could let objects peek at each other." | The kernel follows the same contracts as the objects. | `kernel.md` |
@@ -31,21 +33,7 @@ is about to break a contract or skip a decision.
 
 ## Conformance check
 
-- [ ] Each object's internals are out of reach, and peers get only a handle.
-- [ ] Every interaction between objects is a posted event with an approved
-      agreement.
-- [ ] No handler blocks, waits on an RTOS call, saves a position or keeps a
-      pointer to an event.
-- [ ] Every pair of state and signal has a chosen reaction, no flag stands in
-      for a state, and set-up and clean-up sit in entry and exit actions.
-- [ ] Timers are started and stopped only by their own object, and late
-      timeouts are recognised as decided in D8.
-- [ ] Interrupts and callbacks only capture data and post, at a level the
-      kernel masks, and posting is safe and never blocks.
-- [ ] Every resource has one owner.
-- [ ] Start-up follows `kernel.md`, section Start-up and shutdown.
+- [ ] The change keeps every rule of each module it touches, and every item
+      of the "Never" list in `SKILL.md`.
 - [ ] Every decision the code relies on is approved and recorded, and every
       exception is approved, recorded and marked in the code.
-- [ ] Kernel code passes the checklist at the end of `kernel.md`.
-- [ ] Each state machine passes the checklist at the end of
-      `state-machines.md`.
