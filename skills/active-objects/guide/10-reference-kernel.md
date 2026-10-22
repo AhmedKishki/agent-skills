@@ -1,9 +1,9 @@
 # 10. A reference kernel in C
 
-The skill's `references/kernel.md` states what any kernel must do. This
-guide shows one way to meet those rules in C: the layers, a full interface,
-the port of a cooperative kernel, its ring queue, and RTOS threads on
-FreeRTOS and Zephyr. Every project chooses its own names and types.
+One way to meet the rules of the skill's `references/kernel.md` in C: the
+layers, a full interface, the port of a cooperative kernel, its ring queue,
+and RTOS threads on FreeRTOS and Zephyr. Every project chooses its own names
+and types.
 
 ## Layers
 
@@ -216,13 +216,15 @@ ao_tick_t ao_port_ticks(void);
 void ao_port_start(void);
 ```
 
-Most cores wake from a pending interrupt while interrupts are still masked.
-On those cores, the port runs the core's wait-for-interrupt instruction
-inside the [critical section](glossary.md#critical-section). A core that wakes only with interrupts enabled
-needs its documented enable-and-sleep sequence, which leaves no gap between
-enabling and sleeping. In both cases, something must wake the CPU when a
-timer falls due: the periodic tick interrupt, or a hardware timer set for
-the next due timer (D14).
+A Cortex-M0+ core, for example, leaves its wait-for-interrupt instruction
+when an interrupt becomes pending that would preempt if PRIMASK were clear,
+so its port executes WFI inside the [critical section](glossary.md#critical-section).[^1] An AVR
+core sleeps reliably only with interrupts enabled, and its documented
+sequence enables them immediately before the SLEEP instruction: the
+instruction after SEI always executes before any interrupt, so no gap opens
+between enabling and sleeping.[^2] In both cases, something must
+wake the CPU when a timer falls due: the periodic tick interrupt, or a
+hardware timer set for the next due timer (D14).
 
 ### Queue
 
@@ -256,10 +258,10 @@ them.
 | queue | `xQueueCreateStatic()` of `ao_event_t` | `k_msgq_init()` or `K_MSGQ_DEFINE` of `ao_event_t` |
 | thread | `xTaskCreateStatic()` | `k_thread_create()` |
 | post from a thread | `xQueueSend(q, &e, 0)` | `k_msgq_put(q, &e, K_NO_WAIT)` |
-| post from an interrupt | `xQueueSendFromISR(q, &e, &woken)`, then `portYIELD_FROM_ISR(woken)` | `k_msgq_put(q, &e, K_NO_WAIT)` |
-| timer | `xTimerCreateStatic()`, one-shot. Its callback runs in the timer service task. | `k_timer_init()`. Its expiry function runs in interrupt context. |
-| priority | A larger number is more urgent. | A smaller number is more urgent. Use non-negative (preemptible) priorities. |
-| interrupts that post (D15) | at or below `configMAX_SYSCALL_INTERRUPT_PRIORITY` | any interrupt except a zero-latency one |
+| post from an interrupt | `xQueueSendFromISR(q, &e, &woken)`, then a context switch if `woken` is set, `portYIELD_FROM_ISR(woken)` on many ports[^3] | `k_msgq_put(q, &e, K_NO_WAIT)`, allowed in an interrupt[^4] |
+| timer | `xTimerCreateStatic()`, one-shot. Its callback runs in the timer service task.[^5] | `k_timer_init()`. Its expiry function runs in interrupt context.[^6] |
+| priority | A larger number is more urgent.[^7] | A smaller number is more urgent. Use non-negative (preemptible) priorities.[^8] |
+| interrupts that post (D15) | at or below `configMAX_SYSCALL_INTERRUPT_PRIORITY`[^9] | any interrupt except a zero-latency one[^10] |
 
 `struct ao` holds the RTOS queue, thread and timer objects in place of
 `head`, `count` and the timer fields. Each thread's stack size is part of
@@ -283,7 +285,8 @@ repeat forever:
   because a handler recalls at most once per call. Only the object's own
   thread touches the slot, so the slot needs no protection.
 - On FreeRTOS, waiting forever with `portMAX_DELAY` requires
-  `INCLUDE_vTaskSuspend` to be 1. Without it, loop around the receive.
+  `INCLUDE_vTaskSuspend` to be 1.[^11] Without it, loop around
+  the receive.
 
 ### Posting
 
@@ -291,9 +294,9 @@ repeat forever:
   failed send means a full queue, a bug that `ao_post()` reports with
   `AO_ERROR()` (D12).
 - On FreeRTOS, `ao_post()` uses the interrupt-safe call when an interrupt
-  calls it, for example by checking `xPortIsInsideInterrupt()` where the
-  port provides it. Alternatively the project provides a separate
-  `ao_post_from_isr()`.
+  calls it, for example by checking `xPortIsInsideInterrupt()`, which many
+  ports define in their `portmacro.h`.[^12] Alternatively the
+  project provides a separate `ao_post_from_isr()`.
 
 ### Timers
 
@@ -306,9 +309,11 @@ repeat forever:
 - Stopping an RTOS timer cannot take back a timeout that was already
   posted. A count carried in the timeout and checked by a [guard](glossary.md#guard) works in
   every case (D8).
-- On FreeRTOS, start and stop are commands sent to the timer service task.
-  Give that task a higher priority than every object, so that each command
-  takes effect before the object's handler continues. Send the commands
+- On FreeRTOS, start and stop are commands sent to the timer service task
+  through the timer command queue, and the task processes them only when it
+  is the highest-priority task able to run.[^13] Give that task a
+  higher priority than every object, so that each command takes effect
+  before the object's handler continues. Send the commands
   with a block time of 0. The timer command queue is sized under D6, and a
   failed command is an error under D12.
 
@@ -318,7 +323,7 @@ repeat forever:
 - Create every queue, timer and thread before any thread runs. On FreeRTOS,
   create them all before calling `vTaskStartScheduler()`. On Zephyr, create
   the threads with a start delay of `K_FOREVER`, then call
-  `k_thread_start()` on each in the order approved under D2.
+  `k_thread_start()` on each in the order approved under D2.[^14]
 - Each thread handles its own start event before its first receive. Events
   posted to the thread earlier wait in its queue.
 - Each owner enables its own peripheral interrupts on its start event, after
@@ -328,11 +333,15 @@ repeat forever:
 
 `vTaskDelay`, `k_sleep`, `xSemaphoreTake`, `k_sem_take`, `k_mutex_lock`,
 `xQueueReceive` or `k_msgq_get` with a non-zero wait, and any blocking
-driver call all make a handler wait. Every RTOS call in a handler therefore
-uses a zero timeout. These calls are easy to reach for under RTOS threads,
-and each of them breaks [run to completion](glossary.md#run-to-completion). Driver and stack calls block as
-well, for example Zephyr's `i2c_transfer`, `spi_transceive` and `adc_read`;
-their asynchronous or callback forms post the completion as an event.
+driver call all make a handler wait. Zephyr likewise lets
+an interrupt receive from a message queue only with `K_NO_WAIT`.[^15] Every RTOS call in a handler therefore uses a zero
+timeout. These calls are easy to reach for under RTOS threads, and each of
+them breaks [run to completion](glossary.md#run-to-completion). Driver calls block as well. Zephyr's
+`adc_read()` returns once the conversion sequence is complete, and its
+asynchronous form `adc_read_async()` reports completion through a
+signal.[^16] `spi_transceive()` is synchronous, and its asynchronous
+forms need `CONFIG_SPI_ASYNC`.[^17] The asynchronous forms let the
+handler return and receive the completion as an event.
 
 ### Shared resources
 
@@ -341,10 +350,32 @@ recorded, is a short, bounded priority-ceiling section around a resource
 that several objects must use. The section uses
 `vTaskSuspendAll()`/`xTaskResumeAll()` or `k_sched_lock()`/`k_sched_unlock()`,
 or raises the holder to the highest priority among the users for its
-duration. It makes no RTOS calls, and no user ever waits for it. These locks
-cover one core only. A blocking mutex between objects is never allowed.
+duration.[^18] It makes no RTOS calls, and no user ever waits
+for it. On a multicore Zephyr system, the scheduler lock does not stop
+threads on the other cores.[^19] A blocking mutex between
+objects is never allowed.
 
 ### Idle
 
 The RTOS idle thread does the idling, including any tickless low-power mode
 (D14). No object puts the CPU to sleep.
+
+[^1]: Arm, *Cortex-M0+ Devices Generic User Guide*, “WFI”, https://developer.arm.com/documentation/dui0662/latest/The-Cortex-M0--Instruction-Set/Miscellaneous-instructions/WFI.
+[^2]: AVR-LibC, *User Manual*, “<avr/sleep.h>: Power Management and Sleep Modes”, https://avr-libc.nongnu.org/user-manual/group__avr__sleep.html.
+[^3]: FreeRTOS, “xQueueSendFromISR”, https://www.freertos.org/Documentation/02-Kernel/04-API-references/06-Queues/04-xQueueSendFromISR.
+[^4]: Zephyr Project, “Message Queue APIs”, Zephyr API Documentation, https://docs.zephyrproject.org/apidoc/latest/group__msgq__apis.html.
+[^5]: FreeRTOS, “FreeRTOS software timers”, https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/05-Software-timers/03-Timer-daemon-configuration.
+[^6]: Zephyr Project, “Timers”, Zephyr Project Documentation, https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html.
+[^7]: FreeRTOS, “Tasks”, task priorities, https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/01-Tasks-and-co-routines/03-Task-priorities.
+[^8]: Zephyr Project, “Threads”, Zephyr Project Documentation, https://docs.zephyrproject.org/latest/kernel/services/threads/index.html.
+[^9]: FreeRTOS, “Running the RTOS on a ARM Cortex-M Core”, https://freertos.org/Documentation/02-Kernel/03-Supported-devices/04-Demos/ARM-Cortex/RTOS-Cortex-M3-M4.
+[^10]: Zephyr Project, “Interrupts”, Zephyr Project Documentation, https://docs.zephyrproject.org/latest/kernel/services/interrupts.html.
+[^11]: FreeRTOS, “xQueueReceive”, https://www.freertos.org/Documentation/02-Kernel/04-API-references/06-Queues/09-xQueueReceive.
+[^12]: Richard Damon, reply of 15 March 2023 in “A portable way to determine is current context a task or ISR?”, FreeRTOS Community Forums, https://forums.freertos.org/t/a-portable-way-to-determine-is-current-context-a-task-or-isr/16946.
+[^13]: FreeRTOS, “FreeRTOS software timers”.
+[^14]: Zephyr Project, “Threads”.
+[^15]: Zephyr Project, “Kernel Services”, Zephyr Project Documentation, https://docs.zephyrproject.org/latest/kernel/services/index.html.
+[^16]: Zephyr Project, “ADC”, Zephyr API Documentation, https://docs.zephyrproject.org/apidoc/latest/group__adc__interface.html.
+[^17]: Zephyr Project, “SPI”, Zephyr API Documentation, https://docs.zephyrproject.org/apidoc/latest/group__spi__interface.html.
+[^18]: FreeRTOS, “vTaskSuspendAll”, https://www.freertos.org/Documentation/02-Kernel/04-API-references/04-RTOS-kernel-control/05-vTaskSuspendAll.
+[^19]: Zephyr Project, “Thread APIs”, Zephyr API Documentation, https://docs.zephyrproject.org/latest/doxygen/html/group__thread__apis.html.

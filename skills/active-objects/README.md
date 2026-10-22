@@ -112,7 +112,7 @@ the details for FreeRTOS and Zephyr.
 | `README.md` | this explanation and the sources | never, because it is for people |
 | `guide/01-active-objects.md` | why active objects: inversion of control, the older ways of managing the CPU, the active object model, the rules and heuristics | never, because it is for people |
 | `guide/02-events-and-queues.md` | events and signals, direct posting and publish-subscribe, event memory, queue sizing, deferral | never, because it is for people |
-| `guide/03-state-machines.md` | UML state machine concepts, with a map from the book's chapter 2 to the Crash Course note | never, because it is for people |
+| `guide/03-state-machines.md` | UML state machine concepts: states, guards, nesting, entry and exit actions, the order of a transition, pseudostates, designing a machine | never, because it is for people |
 | `guide/04-coding-state-machines.md` | the standard ways of coding state machines, state-handler functions, nesting, pitfalls | never, because it is for people |
 | `guide/05-state-patterns.md` | Ultimate Hook, Reminder, Deferred Event, Orthogonal Component, Transition to History | never, because it is for people |
 | `guide/06-kernels.md` | the vanilla kernel, the preemptive run-to-completion kernel, a traditional RTOS, and how to choose | never, because it is for people |
