@@ -42,6 +42,7 @@ DELETE passes when the source, read in its context, asserts the shortened span. 
 | `end-stop` | End a sentence with a full stop, only when its source sentence ends with one |
 | `semicolon` | Replace a semicolon between two full clauses with a full stop and a capital |
 | `pair` | Apply a whole-word pair the user supplied for this task, such as `labor` → `labour` |
+| `space` | Insert spaces into one word the source ran together, such as `byMarx` → `by Marx`. Only where the source lost a space between two words |
 
 - A sentence starts with a capital letter, and the script refuses one that does not. After a DELETE at its start, NORMALISE `case` to upper.
 - Whitespace is collapsed automatically.

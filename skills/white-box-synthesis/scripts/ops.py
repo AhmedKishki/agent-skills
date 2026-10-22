@@ -88,10 +88,12 @@ def normalise(text, op, ctx):
         if not rest[:1].isalpha():
             raise Rejected("NORMALISE semicolon must be followed by a clause.")
         return text[:start] + ". " + rest[0].upper() + rest[1:], "NORMALISE semicolon → full stop"
-    if rule == "pair":
+    if rule in ("pair", "space"):
         old, new = op.get("from", ""), op.get("to", "")
-        if {"from": old, "to": new} not in ctx["pairs"]:
+        if rule == "pair" and {"from": old, "to": new} not in ctx["pairs"]:
             raise Rejected(f"NORMALISE pair {old!r} -> {new!r} is not declared.")
-        start, end = find(text, old, op.get("occurrence", 1), "NORMALISE pair")
-        return text[:start] + new + text[end:], f'NORMALISE "{old}" → "{new}"'
+        if rule == "space" and not " ".join(new.split()) == new != old == new.replace(" ", ""):
+            raise Rejected(f"NORMALISE space {old!r} -> {new!r} may only insert spaces.")
+        start, end = find(text, old, op.get("occurrence", 1), f"NORMALISE {rule}")
+        return text[:start] + new + text[end:], f'NORMALISE {rule} "{old}" → "{new}"'
     raise Rejected(f"NORMALISE rule {rule!r} is not on the closed list.")

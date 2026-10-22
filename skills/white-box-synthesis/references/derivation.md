@@ -47,6 +47,7 @@
   - `{"op": "NORMALISE", "rule": "quotes", "result": "…"}`
   - `{"op": "NORMALISE", "rule": "end-stop"}` and `{"op": "NORMALISE", "rule": "semicolon"}`
   - `{"op": "NORMALISE", "rule": "pair", "from": "…", "to": "…"}`
+  - `{"op": "NORMALISE", "rule": "space", "from": "byMarx", "to": "by Marx"}`
 
 ## Example: a licensed join
 
