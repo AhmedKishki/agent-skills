@@ -33,7 +33,8 @@ def reasoning(d, steps, sources, results, spans, built):
         lines.append(f"  - {label}: {used} of {total} sentences copied.")
     lines += ["- Conflicts:"] + ([f"  - {c}" for c in d.get("conflicts", [])] or ["  - None."])
     lines += ["- Source checks:"] + [f"  - {k}: {v}" for k, v in results.items()]
-    devs = [f"  - Sentence {n}: {s['deviation']} Waived: {' '.join(w)}" for n, s, *_, w in built if w]
+    devs = [f"  - Sentence {n}: {s['deviation']} " + (f"Waived: {' '.join(w)}" if w else
+             "No rule needed it.") for n, s, *_, w in built if s.get("deviation")]
     lines += ["- Deviations:"] + (devs or ["  - None."])
     lines += [f"- Note: {note}" for note in d.get("notes", [])]
     lines.append("- Wording check: passed by scripts/render.py. Meaning checks: best effort.")

@@ -21,7 +21,7 @@
 ## Provenance
 
 - One line per sentence names each piece's source and its operations, or `verbatim`. A connective line names the link it realises.
-- A sentence that broke a form rule ends its line with `· DEVIATION: why`.
+- A sentence that states a deviation ends its line with `· DEVIATION: why`.
 - One line per gap or AI link names the link and the sentence it follows.
 - When the user asks for full provenance, show the derivation file.
 
@@ -30,7 +30,7 @@
 - Z in planning words, then the chain: each step, its sources, its link and why it is needed.
 - The count of gaps and AI links on the chain. The sources establish Z only when the count is 0.
 - Left out: sentences that bear on the query, each with its reason, and how many sentences of each source were copied. An antecedent's sentence is not counted.
-- Conflicts and their effect on Z, one source check per source, each sentence's deviation with the rules it waived, then notes.
+- Conflicts and their effect on Z, one source check per source, each stated deviation with the rules it waived, or that no rule needed it, then notes.
 - Whether the wording check ran.
 - Reasoning is the agent's own wording. It explains decisions, never enters the synthesis and is never a source.
 

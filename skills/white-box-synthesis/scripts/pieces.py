@@ -80,5 +80,7 @@ def join_pieces(sentence, steps, sources, pairs):
         guideline(f"{out[:40]!r} must start with a capital: NORMALISE case to upper.")
     mark = "[" + "; ".join(labels) + "]"
     end = re.search(r"[.?!][”’\"')\]]*$", out)
+    if not end:
+        guideline(f"{out[-40:]!r} must end with a full stop: NORMALISE end-stop.")
     out = f"{out[:end.start()]} {mark}{end.group()}" if end else f"{out} {mark}"
     return out, labels, " + ".join(prov), spans

@@ -36,6 +36,11 @@ CASES = [
     ("a changed letter still refused", lambda d: (sentence(d, 1), piece(d, 1).update(ops=[
         {"op": "NORMALISE", "rule": "quotes", "result": piece(d, 1)["text"].replace("fell", "felt")}])),
      "punctuation only"),
+    ("a deviation with nothing to waive recorded", lambda d: sentence(d, 0), None),
+    ("a missing full stop refused", lambda d: piece(d, 1).update(text=piece(d, 1)["text"][:-1]),
+     "must end with a full stop"),
+    ("a missing full stop waived", lambda d: (sentence(d, 1), piece(d, 1).update(
+        text=piece(d, 1)["text"][:-1])), None),
     ("a deviation without a reason", lambda d: (sentence(d, 1, ""), piece(d, 1).update(
         ops=[{"op": "DELETE", "text": "hold"}])), "deviation saying why"),
 ]

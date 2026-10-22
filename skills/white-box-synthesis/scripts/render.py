@@ -45,7 +45,8 @@ def render(d):
         if sentence.get("paragraph") and paras[-1]:
             paras.append([])
         paras[-1].append(text)
-        prov.append(f"{n}. {line}" + (f" · DEVIATION: {sentence['deviation']}" if waived else ""))
+        why = sentence.get("deviation")
+        prov.append(f"{n}. {line}" + (f" · DEVIATION: {why}" if why else ""))
         refs += labels
         for label, span in used:
             spans.setdefault(label, []).append(span)
