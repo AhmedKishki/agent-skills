@@ -43,6 +43,7 @@ DELETE passes when the source, read in its context, asserts the shortened span. 
 | `semicolon` | Replace a semicolon between two full clauses with a full stop and a capital |
 | `pair` | Apply a whole-word pair the user supplied for this task, such as `labor` → `labour` |
 
+- A sentence starts with a capital letter, and the script refuses one that does not. After a DELETE at its start, NORMALISE `case` to upper.
 - Whitespace is collapsed automatically.
 - No other punctuation changes. A comma, a dash or a question mark can change a claim.
 
