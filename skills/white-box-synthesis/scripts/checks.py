@@ -1,8 +1,7 @@
 """Check the argument chain, its links and the per-source checks."""
 import re
 
-from ops import Rejected
-from pieces import copy_span
+from ops import Rejected, copy_span
 
 STATUSES = {"part", "stated", "gap", "ai"}
 

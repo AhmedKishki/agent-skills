@@ -20,4 +20,4 @@ Optional: draft text around where the reply will go (output context), spelling p
 
 The entry point is [SKILL.md](SKILL.md). Install the complete directory so that `references/` and `scripts/` remain available. The script needs Python 3.8 or later and no packages. Without Python, the agent renders the reply by hand and says the wording check did not run.
 
-Run the script's tests with `python3 tests/test_render.py` and `python3 tests/test_space.py`.
+Run the script's tests with `python3 tests/test_render.py`, `python3 tests/test_space.py` and `python3 tests/test_deviation.py`.

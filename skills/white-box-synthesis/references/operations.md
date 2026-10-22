@@ -13,6 +13,13 @@
 
 - Translation, paraphrase, synonyms, tense changes and added words are not operations.
 
+## Deviations
+
+- These form rules are strong guidelines: the whole-word edge of a span, a DELETE that merges two words, a punctuation change beyond quote glyphs, the end-stop and semicolon conditions, a join without a licensed connective, a connective without a stated link or from another source than its licence, the chain order of sentences, and a capital at the start of a sentence.
+- A sentence breaks one only by adding `"deviation": "why"`. The script records the break: provenance marks the sentence and Reasoning lists what was waived. A deviation without a reason is refused.
+- A deviation never waives exact copying, an INFLECT or NORMALISE that changes a word, the AI-link permission, the chain's structure or the source checks.
+- State one only when keeping the rule would lose a claim the source makes, and never to go against a source.
+
 ## DELETE test
 
 DELETE passes when the source, read in its context, asserts the shortened span. Keep these unchanged:
