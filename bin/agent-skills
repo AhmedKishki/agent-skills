@@ -4,13 +4,13 @@
 # the agents and the projects look for it.
 #
 #   agent-skills install      put this command on PATH and link every skill
-#                             into ~/.claude/skills
+#                             for Claude Code, Kilo Code and Cline
 #   agent-skills update       pull the remote's commits or push local ones,
 #                             then relink and refresh a registered marketplace
 #   agent-skills link [DIR]   link the checkout into a project as DIR/agent-skills
 #
-# Claude Code loads personal skills from ~/.claude/skills. Kilo Code loads the
-# same folder when its kilo.jsonc lists it under skills.paths.
+# Personal skills live in ~/.claude/skills, ~/.kilo/skills and ~/.cline/skills.
+# Link the same checkout into each agent's native directory; no config edits.
 #
 # The update never merges and never overwrites work. It fast-forwards to the
 # remote branch, or pushes the local commits the remote branch lacks. If the
@@ -21,15 +21,11 @@
 set -euo pipefail
 
 repo=$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)
-skillsDir="$HOME/.claude/skills"
-kiloConfig="${XDG_CONFIG_HOME:-$HOME/.config}/kilo/kilo.jsonc"
 
-# Give every skill of the checkout a link in ~/.claude/skills. Whatever stands
-# there under a skill's name (an old copy, a link elsewhere) is moved into
-# ~/.claude/skill-backups/<time>/, not deleted. Links to skills that the
-# checkout no longer has are removed.
-linkSkills() {
-	local skill name target backupDir=""
+# Back up collisions under each agent's own directory. Only exact links created
+# by this checkout are owned here; never clean up unrelated skills or links.
+linkAgentSkills() {
+	local agentHome="$1" skillsDir="$1/skills" skill name target backupDir=""
 
 	mkdir -p "$skillsDir"
 	for skill in "$repo"/skills/*/; do
@@ -37,26 +33,33 @@ linkSkills() {
 		name=$(basename "$skill")
 		target="$skillsDir/$name"
 		[ -f "$skill/SKILL.md" ] || continue
-		[ "$(readlink "$target")" = "$skill" ] && continue
+		[ "$(readlink "$target" 2>/dev/null)" = "$skill" ] && continue
 		if [ -e "$target" ] || [ -L "$target" ]; then
-			backupDir=${backupDir:-$HOME/.claude/skill-backups/$(date +%Y%m%dT%H%M%S)}
-			mkdir -p "$backupDir"
+			if [ -z "$backupDir" ]; then
+				mkdir -p "$agentHome/skill-backups"
+				backupDir=$(mktemp -d "$agentHome/skill-backups/$(date +%Y%m%dT%H%M%S).XXXXXX")
+			fi
 			mv "$target" "$backupDir/"
 			echo "moved the old $target to $backupDir/"
 		fi
 		ln -s "$skill" "$target"
-		echo "linked $name"
+		echo "linked $target"
 	done
 
 	for target in "$skillsDir"/*; do
-		if [ -L "$target" ] && [ ! -e "$target" ]; then
-			case $(readlink "$target") in
-			"$repo"/skills/*)
-				rm "$target"
-				echo "removed the link to $(basename "$target"), which the checkout no longer has"
-				;;
-			esac
+		name=$(basename "$target")
+		if [ -L "$target" ] && [ "$(readlink "$target")" = "$repo/skills/$name" ] &&
+			[ ! -f "$repo/skills/$name/SKILL.md" ]; then
+			rm "$target"
+			echo "removed $target, which the checkout no longer provides as a skill"
 		fi
+	done
+}
+
+linkSkills() {
+	local agent
+	for agent in .claude .kilo .cline; do
+		linkAgentSkills "$HOME/$agent"
 	done
 }
 
@@ -65,9 +68,10 @@ install() {
 	ln -sfn "$repo/bin/agent-skills" "$HOME/.local/bin/agent-skills"
 	linkSkills
 
-	if ! grep -qF "$skillsDir" "$kiloConfig" 2>/dev/null; then
-		echo "Kilo Code: add $skillsDir to skills.paths in $kiloConfig"
-	fi
+	case :$PATH: in
+	*:"$HOME/.local/bin":*) ;;
+	*) echo "Add $HOME/.local/bin to PATH to run agent-skills by name; no shell configuration was changed." ;;
+	esac
 }
 
 # Stop without changing anything, and show how to resolve it with git.

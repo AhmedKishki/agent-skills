@@ -28,7 +28,8 @@ class UpdateTests(unittest.TestCase):
         self.bin = self.root / "bin"
         self.bin.mkdir()
         # A closed PATH makes absent-tool tests independent of the host.
-        for name in ("bash", "readlink", "dirname", "mkdir", "basename", "ln", "python3"):
+        for name in ("bash", "readlink", "dirname", "mkdir", "basename", "ln", "python3",
+                     "mktemp", "date", "mv", "rm", "cat"):
             (self.bin / name).symlink_to(shutil.which(name))
         self.calls = self.root / "calls"
         self.env = {
@@ -93,16 +94,78 @@ esac
                     "claude plugin marketplace list --json",
                     "claude plugin marketplace update ahmedkishki-skills",
                 ])
-                self.assertEqual(
-                    (self.home / ".claude/skills/example").resolve(),
-                    self.repo / "skills/example",
-                )
+                for agent in ("claude", "kilo", "cline"):
+                    link = self.home / f".{agent}/skills/example"
+                    self.assertTrue(link.is_symlink())
+                    self.assertEqual(os.readlink(link), str(self.repo / "skills/example"))
+
+    def test_update_discovers_new_skills_and_removes_only_canonical_stale_links(self):
+        result, _ = self.run_update()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        (self.repo / "skills/example/SKILL.md").unlink()
+        new = self.repo / "skills/new-skill"
+        new.mkdir()
+        (new / "SKILL.md").write_text("new skill\n")
+        for agent in ("claude", "kilo", "cline"):
+            directory = self.home / f".{agent}/skills"
+            directory.mkdir(parents=True, exist_ok=True)
+            (directory / "foreign").symlink_to(self.root / "missing")
+            (directory / "nested").symlink_to(self.repo / "skills/unrelated/nested")
+        result, _ = self.run_update()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for agent in ("claude", "kilo", "cline"):
+            directory = self.home / f".{agent}/skills"
+            self.assertFalse(os.path.lexists(directory / "example"))
+            self.assertEqual(os.readlink(directory / "new-skill"), str(new))
+            self.assertEqual(os.readlink(directory / "foreign"), str(self.root / "missing"))
+            self.assertEqual(os.readlink(directory / "nested"),
+                             str(self.repo / "skills/unrelated/nested"))
 
     def test_unregistered_marketplace_is_not_added(self):
         result, calls = self.run_update(MARKETPLACES='[{"name":"ahmedkishki-skills-other"}]')
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("not registered", result.stdout)
         self.assertEqual(calls, ["claude plugin marketplace list --json"])
+
+    def test_real_git_fast_forward_reconciles_all_agents(self):
+        git = shutil.which("git")
+        if git is None:
+            self.skipTest("Git is unavailable")
+
+        def run_git(*args):
+            result = subprocess.run(
+                [git, "-c", "user.name=Test", "-c", "user.email=test@example.invalid",
+                 "-c", "commit.gpgsign=false", *map(str, args)],
+                env={**os.environ, "HOME": str(self.home), "GIT_CONFIG_NOSYSTEM": "1"},
+                text=True, capture_output=True, timeout=10,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+        remote = self.root / "remote.git"
+        run_git("init", "--bare", remote)
+        run_git("init", "-b", "main", self.repo)
+        run_git("-C", self.repo, "add", ".")
+        run_git("-C", self.repo, "commit", "-m", "Initial skills")
+        run_git("-C", self.repo, "remote", "add", "origin", remote)
+        run_git("-C", self.repo, "push", "-u", "origin", "main")
+        publisher = self.root / "publisher"
+        run_git("clone", "-b", "main", remote, publisher)
+        (self.bin / "git").unlink()
+        (self.bin / "git").symlink_to(git)
+        result, _ = self.run_update()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        (publisher / "skills/example/SKILL.md").unlink()
+        (publisher / "skills/new").mkdir()
+        (publisher / "skills/new/SKILL.md").write_text("new skill\n")
+        run_git("-C", publisher, "add", "-A")
+        run_git("-C", publisher, "commit", "-m", "Replace skill")
+        run_git("-C", publisher, "push")
+        result, _ = self.run_update()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        for agent in ("claude", "kilo", "cline"):
+            directory = self.home / f".{agent}/skills"
+            self.assertFalse(os.path.lexists(directory / "example"))
+            self.assertEqual(os.readlink(directory / "new"), str(self.repo / "skills/new"))
 
     def test_missing_optional_tools(self):
         for tool in ("claude", "python3"):
@@ -136,7 +199,7 @@ esac
         self.assertIn("claude plugin marketplace update ahmedkishki-skills", result.stderr)
         self.assertEqual(len(calls), 2)
 
-    def test_git_failure_never_touches_claude(self):
+    def test_git_failure_never_links_skills_or_refreshes_marketplace(self):
         for env in (
             {"AHEAD": "1", "BEHIND": "1"},
             {"BEHIND": "1", "FAIL_MERGE": "1"},
@@ -147,7 +210,8 @@ esac
                 result, calls = self.run_update(**env)
                 self.assertNotEqual(result.returncode, 0)
                 self.assertEqual(calls, [])
-                self.assertFalse((self.home / ".claude/skills").exists())
+                for agent in ("claude", "kilo", "cline"):
+                    self.assertFalse((self.home / f".{agent}/skills").exists())
 
 
 class MarketplaceTests(unittest.TestCase):
