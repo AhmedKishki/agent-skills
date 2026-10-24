@@ -21,8 +21,7 @@ The six families, expanded. Each check gives what to look for, a test, and an ex
 - **A1d Plural with no members.** *the social relations, the ordinary relations* without saying whose or which.
 - **A1e The collective that is not a collective.** *every large technology firm, nearly every company,* where the exception would matter.
 
-> That answer now sits at the centre of a boom.
-> Boom of what, and what does the answer have to do with its centre?
+> That answer now sits at the centre of a boom. Boom of what, and what does the answer have to do with its centre?
 
 Compare, from the same section written by the author:
 
@@ -36,8 +35,7 @@ Compare, from the same section written by the author:
 - **A2d Process noun in place of an actor.** *the commodification of, the digitalisation of, the fetishism of.* A sentence with someone in it says more.
 - **A2e Conduit metaphor.** *the flow of value, the web of relations, the chain of production,* where the article argues the relation is not a chain.
 
-> Any sober assessment of what a technology might do for us has to get behind the fetishism of things.
-> Get behind it by doing what?
+> Any sober assessment of what a technology might do for us has to get behind the fetishism of things. Get behind it by doing what?
 
 **A3 Subject and verb mismatch.** The verb is carried by something that cannot do it.
 
@@ -46,8 +44,7 @@ Compare, from the same section written by the author:
 - **A3c Collective noun with a member's action.** *capitalism decides, the market consumes, the system designates,* where the argument is about who inside it does it.
 - **A3d Passive hiding the actor the sentence is about.** *waste is designated, data is labelled,* when the designating is the point.
 
-> the network it names runs on data centres
-> How does a network name?
+> the network it names runs on data centres How does a network name?
 
 **A4 Opened and closed.** A loop raised and tidied away, so the reader feels an insight that has not happened.
 
@@ -57,8 +54,7 @@ Compare, from the same section written by the author:
 - **A4d The exception that neutralises the claim it follows.** *even when it is a metaphor for data centres,* attached to a sentence that has already made the point.
 - **A4e The escalation with no landing.** *It has reached the arsenal,* after a sentence about expectations.
 
-> That expectation has already reached further than the stock market. It has reached the arsenal.
-> The second sentence is the first one again.
+> That expectation has already reached further than the stock market. It has reached the arsenal. The second sentence is the first one again.
 
 **A5 Grandiose.** The topic made to sound larger than the claim.
 
@@ -83,8 +79,7 @@ Test: delete the adjective. Does the claim survive with the same force? If yes, 
 
 Test: delete the sentence. Does the next one still work? If it does, the sentence was a tell.
 
-> The last section named a method. This one states how I intend to carry it out, because a reader who has been told about defetishism should not then have to guess.
-> Delete the first two clauses and the paragraph is stronger. Car salesman showing the customer the car.
+> The last section named a method. This one states how I intend to carry it out, because a reader who has been told about defetishism should not then have to guess. Delete the first two clauses and the paragraph is stronger. Car salesman showing the customer the car.
 
 **A7 Reaction, elaboration and trope.** Not among the six families, but reported from the same pass and not to be dropped.
 

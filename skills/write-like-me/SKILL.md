@@ -22,9 +22,7 @@ Give people one warm writing conversation, not a writing laboratory. Keep the me
 - Do not position this as AI-detector bypass. The goal is faithful, specific writing with less generic model texture.
 - Make ordinary writing and rewriting outputs paste-ready. Do not announce that the skill is active or wrap the requested prose in routine process commentary.
 
-Read [conversation contract](references/conversation-contract.md) before a first-run or multi-step interaction.
-Read [language variety contract](references/language-variety-contract.md) before learning or applying a personal pattern.
-Read [authorial decisions contract](references/authorial-decisions-contract.md) before a deep structural rewrite.
+Read [conversation contract](references/conversation-contract.md) before a first-run or multi-step interaction. Read [language variety contract](references/language-variety-contract.md) before learning or applying a personal pattern. Read [authorial decisions contract](references/authorial-decisions-contract.md) before a deep structural rewrite.
 
 ## First interaction
 
@@ -123,8 +121,7 @@ python3 scripts/build_starter_voice_file.py \
 
 Use one `--input` per independent item. A single input file may instead separate samples with a line containing `=== SAMPLE ===`. For answers dictated in the current conversation, replace `--input-kind typed_prompt_answer` with `--dictated`; keep `--provenance written_by_user`. For writing supplied from elsewhere, pass confirmed provenance only after the ownership question has been answered. Otherwise leave provenance unknown or use the manifest.
 
-Treat typed prompt-answer containers as collection boundaries, not paragraph evidence. Treat dictated transcripts as evidence of wording, explanation order, connection, directness, stance, and footing, but not reliable evidence of punctuation, paragraphs, sentence boundaries, or deliberate fragments.
-Do not convert the topics or opinions inside onboarding answers into `keep`, `avoid`, or `Preferred` rules. Those fields are only for explicit writing-output preferences, corrections, or rejected styles the user names as preferences.
+Treat typed prompt-answer containers as collection boundaries, not paragraph evidence. Treat dictated transcripts as evidence of wording, explanation order, connection, directness, stance, and footing, but not reliable evidence of punctuation, paragraphs, sentence boundaries, or deliberate fragments. Do not convert the topics or opinions inside onboarding answers into `keep`, `avoid`, or `Preferred` rules. Those fields are only for explicit writing-output preferences, corrections, or rejected styles the user names as preferences.
 
 ## Route 3: write or make this sound like me
 
@@ -188,9 +185,7 @@ python3 scripts/update_writing_pattern.py \
 
 Use evidence labels, not a fake precision score. Apply the canonical Starter, Emerging, and Strong thresholds in [output contracts](references/output-contracts.md). Nothing becomes Observed below the Emerging floor unless it is an explicit Preferred rule.
 
-Do not promote confidence because one sample is long. Do not claim a stable recurring phrase from repetition inside only one sample.
-Do not promote confidence because the same or substantially overlapping sample appears more than once.
-The overall label does not apply automatically to every feature. Paragraphing, punctuation, openings, endings, and other signals keep their own Observed, Tentative, or Unknown evidence state.
+Do not promote confidence because one sample is long. Do not claim a stable recurring phrase from repetition inside only one sample. Do not promote confidence because the same or substantially overlapping sample appears more than once. The overall label does not apply automatically to every feature. Paragraphing, punctuation, openings, endings, and other signals keep their own Observed, Tentative, or Unknown evidence state.
 
 ## Continuity and privacy
 
@@ -200,8 +195,7 @@ For local agent installations, use `~/.write-like-me/MY_WRITING_PATTERN.md` as t
 
 Confirmed corrections persist only when they are written into that portable file. Never claim silent or account-level learning.
 
-Do not upload samples to a third-party service unless the user explicitly asks for that workflow. Keep local analysis local when file tools are available.
-Diagnostic JSON omits raw source text by default. Use `--include-source-text` only when the user explicitly needs it and understands that the diagnostic file will contain their writing.
+Do not upload samples to a third-party service unless the user explicitly asks for that workflow. Keep local analysis local when file tools are available. Diagnostic JSON omits raw source text by default. Use `--include-source-text` only when the user explicitly needs it and understands that the diagnostic file will contain their writing.
 
 ## Release check
 

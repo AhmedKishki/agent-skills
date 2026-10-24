@@ -5,9 +5,7 @@ description: Keep one section's local author inputs, approved synthesis and perm
 
 # Section Material
 
-**Owner:** `sections/section-n/material-section-n.md`.
-**Allowed:** Exact local author wording, exactly approved passages, identifiers, basis references, finite provenance, current wording approval scope and passage-specific conditions. Approved marked AI gap text is admitted only when the project's provenance rules permit its storage.
-**Excluded:** Instructions and article requirements; arc outlines; source-specific scope, attribution or transcription limits (source maps); pending prose, task state and save histories (progress); construction logs and another section's inputs.
+**Owner:** `sections/section-n/material-section-n.md`. **Allowed:** Exact local author wording, exactly approved passages, identifiers, basis references, finite provenance, current wording approval scope and passage-specific conditions. Approved marked AI gap text is admitted only when the project's provenance rules permit its storage. **Excluded:** Instructions and article requirements; arc outlines; source-specific scope, attribution or transcription limits (source maps); pending prose, task state and save histories (progress); construction logs and another section's inputs.
 
 Read the arc, requirements and progress before editing. Use [white-box synthesis](../tools/white-box-synthesis.md) for eligible wording and the separate [AI-authored procedure](../tools/ai-authored.md) for gap text.
 

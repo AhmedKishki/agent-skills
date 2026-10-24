@@ -1,7 +1,6 @@
 """Import user-supplied awesome-cv-html JSON before candidate review and sealing.
 
-Upstream schema: jgibson02/awesome-cv-html at
-623db739ded2af91da17e68bdb8d139c35dd4678. No demo data is fetched.
+No demo data is fetched.
 """
 import re
 from html import escape

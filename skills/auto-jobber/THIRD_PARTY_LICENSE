@@ -1,9 +1,5 @@
-Portions of assets/cv.html and assets/cv.css are adapted from:
-https://github.com/jgibson02/awesome-cv-html
-Revision: 623db739ded2af91da17e68bdb8d139c35dd4678
-Original author identified by the project: John Gibson.
-Its LICENSE.md contains the following MIT notice (package.json instead says ISC).
-The distributed notice is preserved verbatim below, including its unnamed holder.
+Portions of assets/cv.html and assets/cv.css are adapted from John Gibson's awesome-cv-html: https://github.com/jgibson02/awesome-cv-html
+The project's LICENSE.md notice is preserved verbatim below.
 
 The MIT License (MIT)
 

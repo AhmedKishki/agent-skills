@@ -1,9 +1,6 @@
 # 10. A reference kernel in C
 
-One way to meet the rules of the skill's `references/kernel.md` in C: the
-layers, a full interface, the port of a cooperative kernel, its ring queue,
-and RTOS threads on FreeRTOS and Zephyr. Every project chooses its own names
-and types.
+One way to meet the rules of the skill's `references/kernel.md` in C: the layers, a full interface, the port of a cooperative kernel, its ring queue, and RTOS threads on FreeRTOS and Zephyr. Every project chooses its own names and types.
 
 ## Layers
 
@@ -14,14 +11,11 @@ kernel core                     queues, timers, dispatching
 port  or  RTOS adaptation       critical sections, idle, ticks / RTOS calls
 ```
 
-Objects never include the port or RTOS headers for kernel purposes. Moving
-from the cooperative kernel to RTOS threads changes the kernel core and the
-adaptation layer, and leaves the objects as they are.
+Objects never include the port or RTOS headers for kernel purposes. Moving from the cooperative kernel to RTOS threads changes the kernel core and the adaptation layer, and leaves the objects as they are.
 
 ## Interface sketch
 
-The types belong to the project. A small `ao_types.h`, written for each
-project, defines them:
+The types belong to the project. A small `ao_types.h`, written for each project, defines them:
 
 | Type | What it is | Decided in |
 |---|---|---|
@@ -71,9 +65,7 @@ void ao_on_error(const char *file, int line);
 #endif
 ```
 
-Only object modules and the kernel include `ao_object.h`. Peers include
-`ao.h` alone, where `ao_t` is incomplete, so they cannot reach its fields
-(D13):
+Only object modules and the kernel include `ao_object.h`. Peers include `ao.h` alone, where `ao_t` is incomplete, so they cannot reach its fields (D13):
 
 ```c
 /* ao_object.h */
@@ -163,18 +155,11 @@ static void handler(const ao_event_t *e)
 }
 ```
 
-Every handler matches `ao_handler_t` exactly. In C, calling a function
-through a mismatched pointer type is undefined behaviour, and a cast does
-not make the call safe.
+Every handler matches `ao_handler_t` exactly. In C, calling a function through a mismatched pointer type is undefined behaviour, and a cast does not make the call safe.
 
-With a payload struct (D3), `ao_post()` takes the payload by pointer and
-copies it. With pooled events, the queue holds pointers and `ao_post()`
-takes an event from the pool. The rules stay the same in both cases.
+With a payload struct (D3), `ao_post()` takes the payload by pointer and copies it. With pooled events, the queue holds pointers and `ao_post()` takes an event from the pool. The rules stay the same in both cases.
 
-When D13 chooses an object type with several instances, the handler type
-becomes `void (*)(ao_t *self, const ao_event_t *e)`. Each instance is a
-struct whose first member is its `ao_t`, so the handler can convert `self`
-back into the instance:
+When D13 chooses an object type with several instances, the handler type becomes `void (*)(ao_t *self, const ao_event_t *e)`. Each instance is a struct whose first member is its `ao_t`, so the handler can convert `self` back into the instance:
 
 ```c
 typedef struct {
@@ -188,8 +173,7 @@ typedef struct {
 
 ### Port
 
-Each target supplies one small port file with the functions below, and no
-other kernel code touches the hardware.
+Each target supplies one small port file with the functions below, and no other kernel code touches the hardware.
 
 ```c
 /* ao_port.h */
@@ -216,40 +200,19 @@ ao_tick_t ao_port_ticks(void);
 void ao_port_start(void);
 ```
 
-A Cortex-M0+ core, for example, leaves its wait-for-interrupt instruction
-when an interrupt becomes pending that would preempt if PRIMASK were clear,
-so its port executes WFI inside the [critical section](glossary.md#critical-section).[^1] An AVR
-core sleeps reliably only with interrupts enabled, and its documented
-sequence enables them immediately before the SLEEP instruction: the
-instruction after SEI always executes before any interrupt, so no gap opens
-between enabling and sleeping.[^2] In both cases, something must
-wake the CPU when a timer falls due: the periodic tick interrupt, or a
-hardware timer set for the next due timer (D14).
+A Cortex-M0+ core, for example, leaves its wait-for-interrupt instruction when an interrupt becomes pending that would preempt if PRIMASK were clear, so its port executes WFI inside the [critical section](glossary.md#critical-section).[^1] An AVR core sleeps reliably only with interrupts enabled, and its documented sequence enables them immediately before the SLEEP instruction: the instruction after SEI always executes before any interrupt, so no gap opens between enabling and sleeping.[^2] In both cases, something must wake the CPU when a timer falls due: the periodic tick interrupt, or a hardware timer set for the next due timer (D14).
 
 ### Queue
 
-- Each object has a ring buffer with `head`, the index of the oldest event,
-  and `count`, the number of events waiting.
-- A post writes at `(head + count) % size` and increments `count`. A take
-  reads at `head`, moves `head` on and decrements `count`. Both happen
-  inside a critical section.
-- A recall also runs inside a critical section. It first checks for room,
-  because an interrupt may have filled the queue in the meantime. It then
-  moves `head` back one place, writes the event there and increments
-  `count`.
-- `head` and `count` are `volatile`, because interrupts post. Reading
-  `count` outside a critical section is safe only where the target reads it
-  in one indivisible access.
-- A post from an interrupt costs a function call and a critical section.
-  Measure that cost against the interrupt's time budget.
+- Each object has a ring buffer with `head`, the index of the oldest event, and `count`, the number of events waiting.
+- A post writes at `(head + count) % size` and increments `count`. A take reads at `head`, moves `head` on and decrements `count`. Both happen inside a critical section.
+- A recall also runs inside a critical section. It first checks for room, because an interrupt may have filled the queue in the meantime. It then moves `head` back one place, writes the event there and increments `count`.
+- `head` and `count` are `volatile`, because interrupts post. Reading `count` outside a critical section is safe only where the target reads it in one indivisible access.
+- A post from an interrupt costs a function call and a critical section. Measure that cost against the interrupt's time budget.
 
 ## RTOS threads
 
-This is the alternative form under D1. Each object is one thread, and the
-thread waits in exactly one place: the receive on its own queue. A higher
-priority preempts a lower one. Each object still handles its own events one
-at a time, and because nothing is shared, objects need no locks between
-them.
+This is the alternative form under D1. Each object is one thread, and the thread waits in exactly one place: the receive on its own queue. A higher priority preempts a lower one. Each object still handles its own events one at a time, and because nothing is shared, objects need no locks between them.
 
 ### Mapping
 
@@ -263,9 +226,7 @@ them.
 | priority | A larger number is more urgent.[^7] | A smaller number is more urgent. Use non-negative (preemptible) priorities.[^8] |
 | interrupts that post (D15) | at or below `configMAX_SYSCALL_INTERRUPT_PRIORITY`[^9] | any interrupt except a zero-latency one[^10] |
 
-`struct ao` holds the RTOS queue, thread and timer objects in place of
-`head`, `count` and the timer fields. Each thread's stack size is part of
-D6.
+`struct ao` holds the RTOS queue, thread and timer objects in place of `head`, `count` and the timer fields. Each thread's stack size is part of D6.
 
 ### Thread body
 
@@ -279,86 +240,40 @@ repeat forever:
     call the handler with the event
 ```
 
-- Recall uses each object's one-event recall slot in place of the RTOS
-  queue, so it works whether or not the RTOS can insert at the front of a
-  queue. One slot is enough,
-  because a handler recalls at most once per call. Only the object's own
-  thread touches the slot, so the slot needs no protection.
-- On FreeRTOS, waiting forever with `portMAX_DELAY` requires
-  `INCLUDE_vTaskSuspend` to be 1.[^11] Without it, loop around
-  the receive.
+- Recall uses each object's one-event recall slot in place of the RTOS queue, so it works whether or not the RTOS can insert at the front of a queue. One slot is enough, because a handler recalls at most once per call. Only the object's own thread touches the slot, so the slot needs no protection.
+- On FreeRTOS, waiting forever with `portMAX_DELAY` requires `INCLUDE_vTaskSuspend` to be 1.[^11] Without it, loop around the receive.
 
 ### Posting
 
-- `ao_post()` uses a zero wait (`0` or `K_NO_WAIT`), so it never blocks. A
-  failed send means a full queue, a bug that `ao_post()` reports with
-  `AO_ERROR()` (D12).
-- On FreeRTOS, `ao_post()` uses the interrupt-safe call when an interrupt
-  calls it, for example by checking `xPortIsInsideInterrupt()`, which many
-  ports define in their `portmacro.h`.[^12] Alternatively the
-  project provides a separate `ao_post_from_isr()`.
+- `ao_post()` uses a zero wait (`0` or `K_NO_WAIT`), so it never blocks. A failed send means a full queue, a bug that `ao_post()` reports with `AO_ERROR()` (D12).
+- On FreeRTOS, `ao_post()` uses the interrupt-safe call when an interrupt calls it, for example by checking `xPortIsInsideInterrupt()`, which many ports define in their `portmacro.h`.[^12] Alternatively the project provides a separate `ao_post_from_isr()`.
 
 ### Timers
 
-- A timer's callback or expiry function only calls `ao_post()` with
-  `AO_SIG_TIMEOUT` and the timer's data. It runs no application code.
-- `ao_timer_start()` and `ao_timer_stop()` find the calling object through
-  the current thread, so an object can still name only its own timer.
-- `ao_timer_start()` stops the timer before setting the new data. A timer
-  that fires in between therefore cannot carry the new data.
-- Stopping an RTOS timer cannot take back a timeout that was already
-  posted. A count carried in the timeout and checked by a [guard](glossary.md#guard) works in
-  every case (D8).
-- On FreeRTOS, start and stop are commands sent to the timer service task
-  through the timer command queue, and the task processes them only when it
-  is the highest-priority task able to run.[^13] Give that task a
-  higher priority than every object, so that each command takes effect
-  before the object's handler continues. Send the commands
-  with a block time of 0. The timer command queue is sized under D6, and a
-  failed command is an error under D12.
+- A timer's callback or expiry function only calls `ao_post()` with `AO_SIG_TIMEOUT` and the timer's data. It runs no application code.
+- `ao_timer_start()` and `ao_timer_stop()` find the calling object through the current thread, so an object can still name only its own timer.
+- `ao_timer_start()` stops the timer before setting the new data. A timer that fires in between therefore cannot carry the new data.
+- Stopping an RTOS timer cannot take back a timeout that was already posted. A count carried in the timeout and checked by a [guard](glossary.md#guard) works in every case (D8).
+- On FreeRTOS, start and stop are commands sent to the timer service task through the timer command queue, and the task processes them only when it is the highest-priority task able to run.[^13] Give that task a higher priority than every object, so that each command takes effect before the object's handler continues. Send the commands with a block time of 0. The timer command queue is sized under D6, and a failed command is an error under D12.
 
 ### Start-up
 
 - If the CPU starts with interrupts enabled, `main()` masks them first.
-- Create every queue, timer and thread before any thread runs. On FreeRTOS,
-  create them all before calling `vTaskStartScheduler()`. On Zephyr, create
-  the threads with a start delay of `K_FOREVER`, then call
-  `k_thread_start()` on each in the order approved under D2.[^14]
-- Each thread handles its own start event before its first receive. Events
-  posted to the thread earlier wait in its queue.
-- Each owner enables its own peripheral interrupts on its start event, after
-  its queue exists.
+- Create every queue, timer and thread before any thread runs. On FreeRTOS, create them all before calling `vTaskStartScheduler()`. On Zephyr, create the threads with a start delay of `K_FOREVER`, then call `k_thread_start()` on each in the order approved under D2.[^14]
+- Each thread handles its own start event before its first receive. Events posted to the thread earlier wait in its queue.
+- Each owner enables its own peripheral interrupts on its start event, after its queue exists.
 
 ### Calls that block
 
-`vTaskDelay`, `k_sleep`, `xSemaphoreTake`, `k_sem_take`, `k_mutex_lock`,
-`xQueueReceive` or `k_msgq_get` with a non-zero wait, and any blocking
-driver call all make a handler wait. Zephyr likewise lets
-an interrupt receive from a message queue only with `K_NO_WAIT`.[^15] Every RTOS call in a handler therefore uses a zero
-timeout. These calls are easy to reach for under RTOS threads, and each of
-them breaks [run to completion](glossary.md#run-to-completion). Driver calls block as well. Zephyr's
-`adc_read()` returns once the conversion sequence is complete, and its
-asynchronous form `adc_read_async()` reports completion through a
-signal.[^16] `spi_transceive()` is synchronous, and its asynchronous
-forms need `CONFIG_SPI_ASYNC`.[^17] The asynchronous forms let the
-handler return and receive the completion as an event.
+`vTaskDelay`, `k_sleep`, `xSemaphoreTake`, `k_sem_take`, `k_mutex_lock`, `xQueueReceive` or `k_msgq_get` with a non-zero wait, and any blocking driver call all make a handler wait. Zephyr likewise lets an interrupt receive from a message queue only with `K_NO_WAIT`.[^15] Every RTOS call in a handler therefore uses a zero timeout. These calls are easy to reach for under RTOS threads, and each of them breaks [run to completion](glossary.md#run-to-completion). Driver calls block as well. Zephyr's `adc_read()` returns once the conversion sequence is complete, and its asynchronous form `adc_read_async()` reports completion through a signal.[^16] `spi_transceive()` is synchronous, and its asynchronous forms need `CONFIG_SPI_ASYNC`.[^17] The asynchronous forms let the handler return and receive the completion as an event.
 
 ### Shared resources
 
-By default nothing is shared. The only exception allowed, once approved and
-recorded, is a short, bounded priority-ceiling section around a resource
-that several objects must use. The section uses
-`vTaskSuspendAll()`/`xTaskResumeAll()` or `k_sched_lock()`/`k_sched_unlock()`,
-or raises the holder to the highest priority among the users for its
-duration.[^18] It makes no RTOS calls, and no user ever waits
-for it. On a multicore Zephyr system, the scheduler lock does not stop
-threads on the other cores.[^19] A blocking mutex between
-objects is never allowed.
+By default nothing is shared. The only exception allowed, once approved and recorded, is a short, bounded priority-ceiling section around a resource that several objects must use. The section uses `vTaskSuspendAll()`/`xTaskResumeAll()` or `k_sched_lock()`/`k_sched_unlock()`, or raises the holder to the highest priority among the users for its duration.[^18] It makes no RTOS calls, and no user ever waits for it. On a multicore Zephyr system, the scheduler lock does not stop threads on the other cores.[^19] A blocking mutex between objects is never allowed.
 
 ### Idle
 
-The RTOS idle thread does the idling, including any tickless low-power mode
-(D14). No object puts the CPU to sleep.
+The RTOS idle thread does the idling, including any tickless low-power mode (D14). No object puts the CPU to sleep.
 
 [^1]: Arm, *Cortex-M0+ Devices Generic User Guide*, “WFI”, https://developer.arm.com/documentation/dui0662/latest/The-Cortex-M0--Instruction-Set/Miscellaneous-instructions/WFI.
 [^2]: AVR-LibC, *User Manual*, “<avr/sleep.h>: Power Management and Sleep Modes”, https://avr-libc.nongnu.org/user-manual/group__avr__sleep.html.

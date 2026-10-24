@@ -85,8 +85,7 @@ Confidence
 [Starter / Emerging / Strong] because [number of independent samples, approximate word count, and any important limitation].
 ```
 
-Do not flood an ordinary user with ratios. Put useful measured detail in the reusable file.
-Translate common connective repetition into behaviour. Prefer `connects a judgement directly to its reason` over `uses because often`.
+Do not flood an ordinary user with ratios. Put useful measured detail in the reusable file. Translate common connective repetition into behaviour. Prefer `connects a judgement directly to its reason` over `uses because often`.
 
 ## Portable Markdown voice file
 
@@ -254,8 +253,7 @@ Render a compact 300 to 550 word file at every confidence level. Confidence chan
 - Emerging: at least 4 independent samples and at least 800 words.
 - Strong: at least 10 verified independent samples and at least 3,000 verified human-authored or substantially human-edited words in the supported context.
 
-The label describes evidence sufficiency, not a probability that text is the author.
-Each feature keeps its own Preferred, Observed, Tentative, Unknown, or Rejected state. Nothing becomes Observed below the Emerging floor unless the user explicitly confirms it as Preferred. Overall confidence never turns an unsupported punctuation, paragraph, opening, or ending rule into an observed one.
+The label describes evidence sufficiency, not a probability that text is the author. Each feature keeps its own Preferred, Observed, Tentative, Unknown, or Rejected state. Nothing becomes Observed below the Emerging floor unless the user explicitly confirms it as Preferred. Overall confidence never turns an unsupported punctuation, paragraph, opening, or ending rule into an observed one.
 
 ## Semantic release check
 

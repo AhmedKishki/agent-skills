@@ -1,13 +1,10 @@
 # Humaniser
 
-Use this skill to evaluate Markdown prose for generic AI writing patterns,
-content defects and mechanical faults.
-It reports findings for review; automatic rewriting is not implemented.
+Use this skill to evaluate Markdown prose for generic AI writing patterns, content defects and mechanical faults. It reports findings for review; automatic rewriting is not implemented.
 
 ## Typical usage
 
-> Use humaniser to evaluate this README and its related instructions.
-> Report the writing problems with quotations and locations; do not rewrite them.
+> Use humaniser to evaluate this README and its related instructions. Report the writing problems with quotations and locations; do not rewrite them.
 
 ## What to expect
 
@@ -16,8 +13,6 @@ It reports findings for review; automatic rewriting is not implemented.
 - Ranked findings identifying the location, quotation and failed test.
 - Content and provenance faults reported separately from voice findings.
 
-Scores summarise the findings, not the identity of the writer.
-Protected wording and source passages may be scored, but evaluation does not
-authorise changing them. The skill stops after reporting.
+Scores summarise the findings, not the identity of the writer. Protected wording and source passages may be scored, but evaluation does not authorise changing them. The skill stops after reporting.
 
 See [SKILL.md](SKILL.md) for the full workflow.

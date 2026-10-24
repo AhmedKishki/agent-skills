@@ -1,20 +1,15 @@
 # Repository Instructions
 
-Apply these rules when creating, editing, maintaining, or releasing skills in
-`agent-skills`. Honour the user's requested scope and established decisions.
+Apply these rules when creating, editing, maintaining, or releasing skills in `agent-skills`. Honour the user's requested scope and established decisions.
 
 ## File responsibilities
 
-- Keep each skill self-contained in its own directory, `skills/<skill-name>/`, with
-  everything it needs inside it.
+- Keep each skill self-contained in its own directory, `skills/<skill-name>/`, with everything it needs inside it.
 - Use `SKILL.md` for the operational workflow and routing to supporting files.
 - Use `references/*.md` for detailed instructions needed during that workflow.
 - Use the skill's `README.md` for a brief user-facing introduction and usage.
-- Keep general creation, maintenance, editing, and release rules in this root
-  `AGENTS.md`; do not embed them in a skill's operational instructions.
-- Keep the root `README.md` to using the collection: install, link, update,
-  changing a skill and the list of skills. Keep it consistent with
-  `bin/agent-skills`.
+- Keep general creation, maintenance, editing, and release rules in this root `AGENTS.md`; do not embed them in a skill's operational instructions.
+- Keep the root `README.md` to using the collection: install, link, update, changing a skill and the list of skills. Keep it consistent with `bin/agent-skills`.
 - Give each instruction one canonical owner; avoid copying rules between files.
 - Keep generated project records and temporary work outside skill directories.
 
@@ -27,6 +22,8 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 - Give `SKILL.md` YAML frontmatter containing `name` and `description`.
 - Describe the task and its triggering conditions clearly in `description`.
 - Write direct instructions that another agent can execute.
+- Keep each Markdown prose paragraph on one physical line; preserve code blocks, tables and list structure.
+- Give each third-party credit one owner, such as the skill's README or a dedicated notice. Preserve required license notices and omit commit hashes from prose.
 - Keep the entry point concise; place detailed procedures in linked references.
 - Link every supporting reference directly from `SKILL.md` and state when to read it.
 - Use relative paths within a skill so the complete directory remains portable.
@@ -39,10 +36,8 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 - Keep new skill files and this `AGENTS.md` at 100 lines or fewer per file.
 - When editing a skill file, keep the resulting file within that limit.
-- Split longer instructions into coherent reference files; do not compress prose
-  into unreadably long lines to evade the limit.
-- If splitting an existing file would exceed the authorised scope, explain the
-  required restructuring and ask before expanding the task.
+- Split longer instructions into coherent reference files; do not compress prose into unreadably long lines to evade the limit.
+- If splitting an existing file would exceed the authorised scope, explain the required restructuring and ask before expanding the task.
 - Apply the limit to skill package files, not to records produced by a skill.
 - Do not refactor unrelated existing files merely to enforce the limit.
 
@@ -70,17 +65,8 @@ Apply these rules when creating, editing, maintaining, or releasing skills in
 
 ## Versions and releases
 
-- A skill may carry a `version` file whose single line is its current version,
-  updated in the commit that ships the change. Record user-visible changes in
-  the skill's changelog.
-- A release is an immutable annotated tag `<name>-vMAJOR.MINOR.PATCH` in this
-  repository, with a matching GitHub Release whose notes summarise the
-  changelog entry and which attaches one ZIP with exactly one top-level skill
-  directory.
-- `PATCH` fixes compatible behaviour, `MINOR` adds compatible behaviour, and
-  `MAJOR` changes a workflow or persisted format incompatibly.
-- Plugin manifests and marketplace entries omit `version` deliberately:
-  Git-backed installs use the resolved commit, so `--strict` validation
-  reports it as a warning.
-- Workflow-schema labels such as `v6 → v7` in migration instructions describe
-  persisted project-file compatibility, not release versions.
+- A skill may carry a `version` file whose single line is its current version, updated in the commit that ships the change. Record user-visible changes in the skill's changelog.
+- A release is an immutable annotated tag `<name>-vMAJOR.MINOR.PATCH` in this repository, with a matching GitHub Release whose notes summarise the changelog entry and which attaches one ZIP with exactly one top-level skill directory.
+- `PATCH` fixes compatible behaviour, `MINOR` adds compatible behaviour, and `MAJOR` changes a workflow or persisted format incompatibly.
+- Plugin manifests and marketplace entries omit `version` deliberately: Git-backed installs use the resolved commit, so `--strict` validation reports it as a warning.
+- Workflow-schema labels such as `v6 → v7` in migration instructions describe persisted project-file compatibility, not release versions.

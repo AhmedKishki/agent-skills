@@ -5,9 +5,7 @@ description: Share approved exact source quotations with verified identity, loca
 
 # Source Maps
 
-**Owner:** `source-maps/<author-title>.md`, resolved through the project's established layout.
-**Allowed:** Verified source identity, citation details, exact excerpts and locators, excerpt approval scope, source-specific context, attribution and use limits, transcription normalisation, pending source corrections, unmapped verification targets and excerpt counters.
-**Excluded:** Article interpretation or theoretical priorities (thesis/arc); passage-specific synthesis conditions (material); section usage logs, task state (progress), approval conversations, corpus-wide rankings and generic project-rule boilerplate.
+**Owner:** `source-maps/<author-title>.md`, resolved through the project's established layout. **Allowed:** Verified source identity, citation details, exact excerpts and locators, excerpt approval scope, source-specific context, attribution and use limits, transcription normalisation, pending source corrections, unmapped verification targets and excerpt counters. **Excluded:** Article interpretation or theoretical priorities (thesis/arc); passage-specific synthesis conditions (material); section usage logs, task state (progress), approval conversations, corpus-wide rankings and generic project-rule boilerplate.
 
 Sections share this evidence, not each other's synthesis. Read article direction, research requirements and the active passage's evidence need before selecting excerpts.
 

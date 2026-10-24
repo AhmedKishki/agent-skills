@@ -1,13 +1,10 @@
 # Review
 
-Before finishing a change, check it against the red flags and the
-conformance check. When a check fails, name the contract or decision involved, say what goes wrong
-because of it, and propose a fix.
+Before finishing a change, check it against the red flags and the conformance check. When a check fails, name the contract or decision involved, say what goes wrong because of it, and propose a fix.
 
 ## Red flags
 
-If you catch yourself thinking one of these, stop. Each one means the work
-is about to break a contract or skip a decision.
+If you catch yourself thinking one of these, stop. Each one means the work is about to break a contract or skip a decision.
 
 | Thought | Reality | Module |
 |---|---|---|
@@ -33,7 +30,5 @@ is about to break a contract or skip a decision.
 
 ## Conformance check
 
-- [ ] The change keeps every rule of each module it touches, and every item
-      of the "Never" list in `SKILL.md`.
-- [ ] Every decision the code relies on is approved and recorded, and every
-      exception is approved, recorded and marked in the code.
+- [ ] The change keeps every rule of each module it touches, and every item of the "Never" list in `SKILL.md`.
+- [ ] Every decision the code relies on is approved and recorded, and every exception is approved, recorded and marked in the code.

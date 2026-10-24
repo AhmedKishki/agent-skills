@@ -5,9 +5,7 @@ description: Keep one section's exact resume point, approval state, live blocker
 
 # Section Progress
 
-**Owner:** `sections/section-n/progress-section-n.md`.
-**Allowed:** Current object and task, current action-specific approval/save state, exact next action, live blockers, unfinished verification targets, readiness, local counters and the bounded pending object below.
-**Excluded:** Source inventories, source quotations, source qualifications and locator corrections (source maps); passage constraints and saved inputs (material); argument development and passage order (arc); construction logs, approval history, completed task narratives and descriptions of other files' contents.
+**Owner:** `sections/section-n/progress-section-n.md`. **Allowed:** Current object and task, current action-specific approval/save state, exact next action, live blockers, unfinished verification targets, readiness, local counters and the bounded pending object below. **Excluded:** Source inventories, source quotations, source qualifications and locator corrections (source maps); passage constraints and saved inputs (material); argument development and passage order (arc); construction logs, approval history, completed task narratives and descriptions of other files' contents.
 
 Read progress before local work or ID allocation. A verification target identifies an action and object, not the source evidence or qualification itself.
 

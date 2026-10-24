@@ -10,9 +10,7 @@ You get four parts: the synthesis, its references, minimal provenance and the ag
 
 Give the query and the sources together. For example:
 
-> Use white-box-synthesis. Query: What happened to prices and incomes after the mill closed?
-> S1: Lee, *Example Book*, p. 3: "…"
-> S2: retrieval result, Diaz, *Sample Study*, ch. 2: "…"
+> Use white-box-synthesis. Query: What happened to prices and incomes after the mill closed? S1: Lee, *Example Book*, p. 3: "…" S2: retrieval result, Diaz, *Sample Study*, ch. 2: "…"
 
 Optional: draft text around where the reply will go (output context), spelling pairs for your house style, and permission to fill named gaps with AI links.
 

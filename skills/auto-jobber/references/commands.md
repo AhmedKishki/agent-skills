@@ -1,9 +1,6 @@
 # CLI walkthrough and artifacts
 
-Set `SKILL` to the installed skill directory. Workspace defaults to
-`AUTO_JOBBER_HOME`, otherwise `~/.local/share/auto-jobber`; explicit `--workspace`
-overrides both and must precede the subcommand. Keep private records outside the
-skill and repositories. Commands return JSON; retain their returned paths/IDs.
+Set `SKILL` to the installed skill directory. Workspace defaults to `AUTO_JOBBER_HOME`, otherwise `~/.local/share/auto-jobber`; explicit `--workspace` overrides both and must precede the subcommand. Keep private records outside the skill and repositories. Commands return JSON; retain their returned paths/IDs.
 
 ## Onboard and review the CV
 
@@ -31,8 +28,7 @@ python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" preview
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" seal
 ```
 
-`ACTUAL_USER_REPLY` means the explicit reply just received, not example consent.
-Optional voice retention before review/sealing:
+`ACTUAL_USER_REPLY` means the explicit reply just received, not example consent. Optional voice retention before review/sealing:
 
 ```bash
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" remember-voice \
@@ -41,8 +37,7 @@ python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" remember-voice 
 
 ## Repeat for each job
 
-Run `status` again and resolve Freshness before `new`. Follow Voice to obtain this
-job's words and save them in `/private/actual-user-words.txt` before `wording`.
+Run `status` again and resolve Freshness before `new`. Follow Voice to obtain this job's words and save them in `/private/actual-user-words.txt` before `wording`.
 
 ```bash
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" new \
@@ -58,11 +53,7 @@ python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" source \
   --title 'Actual official source title' --kind primary
 ```
 
-Example domains are syntax illustrations, not evidence. Repeat `source` for real
-research; `--kind` accepts primary/secondary. Optional `--text-file /private/saved.txt`
-captures faithful extracted page text; `--published-at YYYY-MM-DD` records a
-source-supported date. Network fetching expects public HTTPS URLs.
-After authoring `research.json`/`plan.json` and completing source/voice audits:
+Example domains are syntax illustrations, not evidence. Repeat `source` for real research; `--kind` accepts primary/secondary. Optional `--text-file /private/saved.txt` captures faithful extracted page text; `--published-at YYYY-MM-DD` records a source-supported date. Network fetching expects public HTTPS URLs. After authoring `research.json`/`plan.json` and completing source/voice audits:
 
 ```bash
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" check \
@@ -75,21 +66,8 @@ python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" verify --build 
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" archive --build "$BUILD"
 ```
 
-`build --html-only` is an HTML draft fallback; later make a fresh full build.
-`doctor` reports but does not install Python/Chrome/Poppler. Use existing
-Chrome/Chromium (`CHROME_BIN` selects it), `pdfinfo`, `pdftotext`, `pdftoppm`.
-The preview tool is needed even if `ready_for_pdf` is true without it.
-Do not disable Chrome's sandbox or set up a local model/database/API account.
+`build --html-only` is an HTML draft fallback; later make a fresh full build. `doctor` reports but does not install Python/Chrome/Poppler. Use existing Chrome/Chromium (`CHROME_BIN` selects it), `pdfinfo`, `pdftotext`, `pdftoppm`. The preview tool is needed even if `ready_for_pdf` is true without it. Do not disable Chrome's sandbox or set up a local model/database/API account.
 
-The workspace retains raw intake/source variants, profile, CV/CSS, baseline
-revisions and CV-only `previews/`. Applications retain posting, `input/` baseline,
-`sources/`, `wording/`, plan and research. Successful `builds/` revisions retain
-their input, evidence, user wording, HTML/CSS, `cv.patch`, report and manifest.
-Full builds add PDFs/text/PNGs; the render report gives exact paths.
-`verify` detects file-set/hash changes, not truth or consent. `archive` copies the
-verified revision into the application's local `archive/`; nothing is submitted.
+The workspace retains raw intake/source variants, profile, CV/CSS, baseline revisions and CV-only `previews/`. Applications retain posting, `input/` baseline, `sources/`, `wording/`, plan and research. Successful `builds/` revisions retain their input, evidence, user wording, HTML/CSS, `cv.patch`, report and manifest. Full builds add PDFs/text/PNGs; the render report gives exact paths. `verify` detects file-set/hash changes, not truth or consent. `archive` copies the verified revision into the application's local `archive/`; nothing is submitted.
 
-`extract` works offline on PDF (Poppler), DOCX (stdlib), HTML or UTF-8 text,
-including `.md`. Input and DOCX document XML are limited to 10 MiB. It refuses
-existing output and fewer than 40 readable characters; no legacy DOC/image OCR.
-Languages owns variant preview/seal and approved wording-translation commands.
+`extract` works offline on PDF (Poppler), DOCX (stdlib), HTML or UTF-8 text, including `.md`. Input and DOCX document XML are limited to 10 MiB. It refuses existing output and fewer than 40 readable characters; no legacy DOC/image OCR. Languages owns variant preview/seal and approved wording-translation commands.

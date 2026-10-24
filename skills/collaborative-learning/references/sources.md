@@ -8,8 +8,7 @@
 - Prefer primary texts, original research, or authoritative documentation as appropriate.
 - Inspect the actual source content before mapping or explaining its arguments.
 - Identify the edition or version where it affects wording, pagination, or content.
-- If necessary content is unavailable, disclose the gap and ask for the material
-  or agreement to use an accessible alternative; do not invent its arguments.
+- If necessary content is unavailable, disclose the gap and ask for the material or agreement to use an accessible alternative; do not invent its arguments.
 
 ## Ground each explanation
 
@@ -32,7 +31,6 @@
 - For unpaginated material, give the heading and a stable passage locator.
 - Distinguish printed page numbers from PDF viewer pages when they differ.
 - For web sources, include the URL and relevant heading or section.
-- Give full reference details again in each session; never use an earlier session
-  as the location of the evidence or bibliography.
+- Give full reference details again in each session; never use an earlier session as the location of the evidence or bibliography.
 - Preserve portable references in Markdown files as well as any chat citations.
 - Quote accurately and only as much as needed and permitted.

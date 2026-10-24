@@ -96,4 +96,4 @@ To add a skill, create `skills/<name>/SKILL.md` and its supporting files, then r
 | [`read-along-guide`](skills/read-along-guide/) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |
 | [`scheduled-learning`](skills/scheduled-learning/) | Study a source section by section across manual or automated runs, with source-faithful explanations and a persistent progress file. |
 | [`white-box-synthesis`](skills/white-box-synthesis/) | Answer a query only from supplied sources, with marked AI-authored connections, references and provenance on request. |
-| [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. Upstream skill files from [HopLittleBunny/write-like-me](https://github.com/HopLittleBunny/write-like-me). |
+| [`write-like-me`](skills/write-like-me/) | Write, rewrite, or audit prose using an evidence-backed personal writing pattern. |

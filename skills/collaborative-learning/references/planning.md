@@ -22,18 +22,13 @@
 
 ## Present and confirm
 
-Begin the learning summary with: `Proposed plan: N sessions.`
-Then show:
+Begin the learning summary with: `Proposed plan: N sessions.` Then show:
 
 | Session | Topic | Related subtopics / arguments | Sources and locations |
 |---|---|---|---|
 | 1 | [Topic] | [Ordered subtopics] | [Inspected sources] |
 
-Explain the scope and why the sequence supports understanding, briefly.
-Ask the user to confirm or adapt the plan. Do not start teaching yet.
-If the user requests changes, revise the plan and obtain confirmation.
-Treat an explicit instruction to begin the presented plan as confirmation.
-Record the confirmed plan and any subsequent agreed changes in `<project>/learning-plan.md`.
+Explain the scope and why the sequence supports understanding, briefly. Ask the user to confirm or adapt the plan. Do not start teaching yet. If the user requests changes, revise the plan and obtain confirmation. Treat an explicit instruction to begin the presented plan as confirmation. Record the confirmed plan and any subsequent agreed changes in `<project>/learning-plan.md`.
 
 ## Adapt and resume
 

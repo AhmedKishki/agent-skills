@@ -104,8 +104,7 @@ Edit only the masters. The deliverables in `guide/` are always regenerated from 
    - missing or garbled argument steps;
    - table accuracy;
    - figure accuracy, comparing redrawn figures element by element with the originals and new figures with the text they illustrate;
-   - glossary accuracy.
-   Each finding cites the source line and proposes corrected wording. The report stays under 1,200 words, with no style comments. Verify each finding against the source yourself, then apply the fixes.
+   - glossary accuracy. Each finding cites the source line and proposes corrected wording. The report stays under 1,200 words, with no style comments. Verify each finding against the source yourself, then apply the fixes.
 7. **Writing pass**: follow `references/prose.md` (deletion test, say-it-directly, style check). Then run the quote check again.
 8. **Deliver**: regenerate `guide/`, copy the guide files and images to the outputs folder, zip them, and send with SendUserFile. Reply in a few sentences: what was covered, which figures were redrawn and which were added, notable fixes, and anything to check. Then wait for the go-ahead.
 

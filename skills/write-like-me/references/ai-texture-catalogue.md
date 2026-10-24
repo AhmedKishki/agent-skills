@@ -152,6 +152,4 @@ After rewriting, check:
 6. Does the ending belong to this argument?
 7. Did the writer make the central decisions, or did the edit merely disguise a generic structure?
 
-## Influence and attribution
-
-The named-pattern audit and minimum-effective-edit emphasis were strengthened after reviewing Peter Yang's MIT-licensed [No AI Slop](https://github.com/petergyang/no-ai-slop) skill. The distinction between surface texture and underlying authorial decisions was sharpened after reviewing Russell et al.'s [StoryScope](https://arxiv.org/abs/2604.03136) research on long-form fiction. Write Like Me independently expresses and contextualises these ideas, rejects blanket vocabulary and structural bans, and adds its own evidence model, portable personal profile, correction learning, sample isolation, and deterministic rewrite verification.
+The named-pattern audit and minimum-effective-edit emphasis draw on Peter Yang's [No AI Slop](https://github.com/petergyang/no-ai-slop) skill.

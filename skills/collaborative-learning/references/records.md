@@ -3,14 +3,11 @@
 ## Establish the destination
 
 - Use the user's learning project directory when specified.
-- If the user has not proposed a project name, choose an appropriate descriptive
-  name based on the learning subject. Use a filename-safe directory name.
+- If the user has not proposed a project name, choose an appropriate descriptive name based on the learning subject. Use a filename-safe directory name.
 - Resolve `<project>/` to that directory; do not write learning records inside the skill.
 - Use `<project>/learning-plan.md` for the plan and `<project>/sessions/<title>-session-n.md` for topic n.
-- Choose a descriptive title for each session; use its lowercase hyphenated form
-  as `<title>`. Record its title and relative file path in the learning plan.
-- Create each session file lazily, only when its session is activated. Do not
-  create future session files at the beginning. Create `sessions/` when needed.
+- Choose a descriptive title for each session; use its lowercase hyphenated form as `<title>`. Record its title and relative file path in the learning plan.
+- Create each session file lazily, only when its session is activated. Do not create future session files at the beginning. Create `sessions/` when needed.
 - Keep established project names, session titles and paths stable on resumption.
 - Check existing files before creating records; do not overwrite another subject.
 - Honour the host's persistence requirements and preserve existing file identities.
@@ -27,8 +24,7 @@ Record in `<project>/learning-plan.md`:
 - User confirmation and agreed plan changes.
 - Current session, covered subtopics, next subtopic, and pending questions.
 
-Keep completed, current, and pending coverage distinguishable.
-Update progress after saving the corresponding session content.
+Keep completed, current, and pending coverage distinguishable. Update progress after saving the corresponding session content.
 
 ## Maintain each session
 

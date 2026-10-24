@@ -9,8 +9,7 @@ Diagrams are a main tool for explaining complicated arguments. Every chapter of 
   - every label and symbol (subscripts with `<tspan baseline-shift="sub">`);
   - every arrow, with its direction and style (solid, dashed, single or double head);
   - every line;
-  - the relative layout.
-  Do not add, drop, merge or reinterpret anything inside the drawing.
+  - the relative layout. Do not add, drop, merge or reinterpret anything inside the drawing.
 - **Helpful additions**, such as a key explaining the symbols or the names the author gives to each model's error, are allowed only when the author's own text supplies them. Set them visibly apart, in a separate key block or in smaller muted text. The caption says what was added: "redrawn from Bhaskar's diagram; the key is added from his text".
 - **Placement**: at the point in the unit where the author's argument uses the figure.
 - **Caption**: `*Figure N.M. <what the figure shows>, redrawn from <Author>'s diagram.*`

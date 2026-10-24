@@ -11,22 +11,15 @@ description: >-
 
 # Coding Partner
 
-- Keep the code a white box: the user can understand its mechanisms, assumptions,
-  and structure.
+- Keep the code a white box: the user can understand its mechanisms, assumptions, and structure.
 
 ## Code model
 
-- A chunk is coherent behaviour explainable using a small, explicit contract
-  for its dependencies. Identify its inputs, outputs, relevant side effects,
-  and failure behaviour.
+- A chunk is coherent behaviour explainable using a small, explicit contract for its dependencies. Identify its inputs, outputs, relevant side effects, and failure behaviour.
 - A segment combines chunks and references into a larger operation.
-- A fragment is a reference to behaviour implemented elsewhere, such as a
-  function call. Explain its contract; expand its implementation when that
-  mechanism is necessary to understand the current chunk.
-- These are explanatory roles, not fixed language constructs. A function can
-  be a chunk in one explanation and a segment in another.
-- Choose boundaries by meaningful behaviour, not line counts. Do not refactor
-  existing code merely to make it fit this model.
+- A fragment is a reference to behaviour implemented elsewhere, such as a function call. Explain its contract; expand its implementation when that mechanism is necessary to understand the current chunk.
+- These are explanatory roles, not fixed language constructs. A function can be a chunk in one explanation and a segment in another.
+- Choose boundaries by meaningful behaviour, not line counts. Do not refactor existing code merely to make it fit this model.
 
 ## Entry point and functions
 
@@ -38,5 +31,4 @@ description: >-
 | [Documentation](references/documentation.md) | Document file operation and necessary design decisions. | Before writing or assessing code documentation, or proposing source changes. |
 | [Engineering](references/engineering.md) | Propose, approve, apply, and verify changes. | Before proposing or applying code or documentation changes. |
 
-- Load only the modules needed for the current request, following the reading
-  conditions above.
+- Load only the modules needed for the current request, following the reading conditions above.

@@ -2,13 +2,9 @@
 
 ## Putting a decision to the user
 
-- A few plain sentences are enough for each option. Silence or a follow-up
-  question leaves the decision open, and each approved decision is recorded
-  with its reason.
-- When a later change needs a different answer, put the new question to the
-  user in the same way.
-- The agreement for each message is also a decision
-  (`objects-and-messages.md`), and so is every exception to a contract.
+- A few plain sentences are enough for each option. Silence or a follow-up question leaves the decision open, and each approved decision is recorded with its reason.
+- When a later change needs a different answer, put the new question to the user in the same way.
+- The agreement for each message is also a decision (`objects-and-messages.md`), and so is every exception to a contract.
 
 ## The decisions
 
@@ -30,6 +26,4 @@
 | D15 | Interrupt levels | The kernel's critical sections mask every interrupt, or only those up to a set level. Faster interrupts above that level keep running and must not post. | Mask every interrupt. | `handlers.md`, `kernel.md` |
 | D16 | Diagrams | Where the PlantUML files live. Whether the project's documents also keep ASCII diagrams, each with a PlantUML counterpart that changes with it; a diagram there is a picture of boxes, arrows, states or timelines, not a formula or a list. | A `uml/` folder beside the sources, without ASCII copies. | `diagrams.md` |
 
-D5 is not a decision: a full queue, store or pool is a bug, like a stack
-overflow (`kernel.md`). D6 sizes each one so that it never fills, and D12
-sets what happens if one fills anyway.
+D5 is not a decision: a full queue, store or pool is a bug, like a stack overflow (`kernel.md`). D6 sizes each one so that it never fills, and D12 sets what happens if one fills anyway.

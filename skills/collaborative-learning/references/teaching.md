@@ -6,8 +6,7 @@
 - Introduce the current session number, topic, and related arguments briefly.
 - Explain in concise, direct, plain language without flattening the reasoning.
 - Define necessary terms when introducing them.
-- For each argument, make clear the question it addresses, the claim, its grounds,
-  the steps connecting those grounds to the claim, and the conclusion's limits.
+- For each argument, make clear the question it addresses, the claim, its grounds, the steps connecting those grounds to the claim, and the conclusion's limits.
 - Explain how related arguments connect within the current topic.
 - Use only the length required to make the argument understandable and complete.
 - Include clear source references throughout.
@@ -28,8 +27,7 @@
 - Answer the actual question before moving on; do not silently skip it.
 - Record the interaction and explanation in that same session file.
 - Continue with the next pending subtopic when the user asks to proceed.
-- Start the next session only after the current topic's planned coverage is complete
-  and the user asks to continue, unless the user explicitly requests a different pace.
+- Start the next session only after the current topic's planned coverage is complete and the user asks to continue, unless the user explicitly requests a different pace.
 - Do not equate a new conversation turn with a new session.
 - If “next” is ambiguous, clarify the intended next step.
 

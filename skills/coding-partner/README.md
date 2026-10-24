@@ -1,16 +1,12 @@
 # Coding Partner
 
-Use this skill to understand existing code or develop a change collaboratively,
-with readability and your design constraints guiding the work.
-Explanations follow meaningful chunks of behaviour rather than fixed line counts.
+Use this skill to understand existing code or develop a change collaboratively, with readability and your design constraints guiding the work. Explanations follow meaningful chunks of behaviour rather than fixed line counts.
 
 ## Typical usage
 
-> Use coding-partner to walk me through this parser one chunk at a time.
-> Explain its inputs, outputs and failure behaviour. Do not change the code.
+> Use coding-partner to walk me through this parser one chunk at a time. Explain its inputs, outputs and failure behaviour. Do not change the code.
 
-For a change, state the intended behaviour and any architecture, style or
-dependency constraints you want preserved.
+For a change, state the intended behaviour and any architecture, style or dependency constraints you want preserved.
 
 ## What to expect
 

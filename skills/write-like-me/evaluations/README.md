@@ -2,16 +2,13 @@
 
 `scenarios.json` defines realistic skill requests, critical deterministic checks, and plain-language criteria.
 
-`activation-scenarios.json` separately records requests that should and should not
-activate the skill. The package test suite checks that these cases remain balanced,
-unique, and aligned with the skill description:
+`activation-scenarios.json` separately records requests that should and should not activate the skill. The package test suite checks that these cases remain balanced, unique, and aligned with the skill description:
 
 ```bash
 python3 scripts/run_tests.py
 ```
 
-Activation behavior still needs a fresh-conversation smoke test on each target
-platform because routing is controlled by the host, not by this repository.
+Activation behavior still needs a fresh-conversation smoke test on each target platform because routing is controlled by the host, not by this repository.
 
 Validate the scenario contract:
 
@@ -76,7 +73,4 @@ python3 scripts/run_blind_beta.py --help
 
 ## Package boundary
 
-The Claude and OpenAI production ZIPs contain only runtime instructions,
-references, metadata where applicable, and the Starter-file builder. Tests,
-evaluation fixtures, beta materials, and development scripts ship only in the
-separate source/evaluation ZIP.
+The Claude and OpenAI production ZIPs contain only runtime instructions, references, metadata where applicable, and the Starter-file builder. Tests, evaluation fixtures, beta materials, and development scripts ship only in the separate source/evaluation ZIP.

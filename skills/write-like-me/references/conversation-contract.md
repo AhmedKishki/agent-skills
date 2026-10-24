@@ -37,8 +37,7 @@ Use this wording:
 
 Ask 2 to 3 questions together so the user can answer in one go. Keep them easy and varied. One question should invite an opinion or judgement; one may invite explanation or a small real example.
 
-Treat every answer as a collection item. Typed answer containers are not paragraph evidence. Dictated transcripts do not provide reliable punctuation, paragraph, sentence-boundary, or deliberate-fragment evidence.
-Do not turn the topic or advice inside an answer into an explicit writing preference. Only label something Preferred or Rejected when the user states it as a writing preference, correction, or anti-style rule.
+Treat every answer as a collection item. Typed answer containers are not paragraph evidence. Dictated transcripts do not provide reliable punctuation, paragraph, sentence-boundary, or deliberate-fragment evidence. Do not turn the topic or advice inside an answer into an explicit writing preference. Only label something Preferred or Rejected when the user states it as a writing preference, correction, or anti-style rule.
 
 ## Confirming source material
 

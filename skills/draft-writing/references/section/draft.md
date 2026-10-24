@@ -5,9 +5,7 @@ description: Insert approved section prose, preserve voice and verify local foot
 
 # Section Draft
 
-**Owner:** `sections/section-n/draft-section-n.md`.
-**Allowed:** Approved reader-facing prose, its approved heading, footnotes and required AI-span markers.
-**Excluded:** Raw inputs, source-map notes, planning or review questions, task/approval state, counters, source qualifications as operational commentary, and descriptions of material transfers.
+**Owner:** `sections/section-n/draft-section-n.md`. **Allowed:** Approved reader-facing prose, its approved heading, footnotes and required AI-span markers. **Excluded:** Raw inputs, source-map notes, planning or review questions, task/approval state, counters, source qualifications as operational commentary, and descriptions of material transfers.
 
 Read article direction, requirements, the local arc and progress, and relevant local material. Do not use another section's inputs or prose for synthesis.
 

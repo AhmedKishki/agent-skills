@@ -5,9 +5,7 @@ description: Record the agreed audience, voice, style, citations and project-spe
 
 # Requirements
 
-**Owner:** `requirements.md`, at `organisation/requirements.md` in the default new-project layout.
-**Allowed:** Agreed audience, tone, language, voice, length, citation style, evidence standards and standing writing requirements, with their limits and exceptions.
-**Excluded:** Thesis claims (thesis-and-vision); section or passage order (plan/arc); source-specific qualifications (source maps); task state (progress); corpus status, retrieval outputs, tool diagnostics and activity histories.
+**Owner:** `requirements.md`, at `organisation/requirements.md` in the default new-project layout. **Allowed:** Agreed audience, tone, language, voice, length, citation style, evidence standards and standing writing requirements, with their limits and exceptions. **Excluded:** Thesis claims (thesis-and-vision); section or passage order (plan/arc); source-specific qualifications (source maps); task state (progress); corpus status, retrieval outputs, tool diagnostics and activity histories.
 
 Read requirements before proposing prose, smoothing or formatting citations. Do not infer a missing preference from this skill's examples.
 
