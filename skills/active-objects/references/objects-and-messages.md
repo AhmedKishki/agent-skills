@@ -7,9 +7,6 @@
 - No other module can reach the object's state, kept values or handler
   (D13, see `decisions.md`). Peers get a handle they can post to and
   nothing more.
-- Other code reaches the object only by posting to its queue. Nothing calls
-  its handler, reads its variables or takes a pointer to its data.
-- The object's behaviour is one state machine (`state-machines.md`).
 
 ## Events and signals
 
@@ -19,9 +16,7 @@
   single signal with a 0 or 1 value would make the receiver decode which
   event happened. The signal alone tells the receiver what the data means.
 - One `enum` lists every signal. A comment beside each signal names its
-  senders, its receivers and the meaning of its data. The kernel reserves a
-  start signal and a timeout signal, with one timeout signal per timer when
-  D7 allows several.
+  senders, its receivers and the meaning of its data.
 - Signals are too fine when several of them are always handled alike. They
   are too coarse when handlers keep inspecting the data to tell cases apart.
 - A posted event is read-only. The receiver may use it only during the
@@ -43,8 +38,9 @@
 
 - Every message has an agreement, approved by the user before the message is
   built. The agreement covers the meaning, the signal and data, how the
-  receiver gets the starting value, how order and freshness work, and what a
-  full queue does (D5). Payload layout, retries, acknowledgements and keeping
+  receiver gets the starting value, how order and freshness work, and how
+  many of its events can wait in the receiver's queue (D6). Payload layout,
+  retries, acknowledgements and keeping
   only the newest event also belong to the agreement.
 - The sender is in charge of the value, and the receiver keeps its own copy.
   The sender posts the value itself at start-up and after each change that a
@@ -54,8 +50,6 @@
   no shared-state module and no globals that alias an object's data.
 - Never wait for a reply. A request and its reply are two events, and the
   reply is handled when it arrives.
-- Never start, stop or inspect another object's timer.
-- Whether events go to a named object or to subscribers is D4.
 
 ## Queues as the objects see them
 
@@ -63,15 +57,14 @@
   events out.
 - Events leave the queue in the order they arrived. The one exception is a
   deferred event put back at the front (`state-machines.md`).
-- A queue has a fixed size (D6). What a post to a full queue does is D5.
-- A message that carries state must never be dropped silently. For each such
-  message, show why the queue cannot be full, or agree a policy with the
-  user. An argument from priority, such as "the receiver always runs before
-  the sender posts again", holds only while D1 and D2 stay as they are. It
-  must also count posts from interrupts and several posts within one
-  handler.
-- A post never blocks and never calls the receiver. The kernel guarantees
-  both (`kernel.md`).
+- Each queue has its own fixed size (D6), large enough that it never
+  fills. A full queue is a bug, like a stack overflow, and the post reports
+  it (`kernel.md`, D12).
+- Size a queue from its producers: the most events they can post to it
+  while its object waits to run. An argument from priority, such as "the
+  receiver always runs before the sender posts again", holds only while D1
+  and D2 stay as they are. It must also count posts from interrupts and
+  several posts within one handler.
 - Keeping only the newest of several events is a choice the receiver makes
   in its own state. The kernel offers no such feature.
 

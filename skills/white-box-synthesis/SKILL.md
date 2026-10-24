@@ -17,8 +17,9 @@ description: >-
 - The skill turns `{query, sources, optional output context}` into `{synthesis, references, provenance, reasoning}`.
 - Two invariants govern every reply.
   - **Human wording.** Every character of the synthesis outside a marker replays from an exact source span through the legal operations. `scripts/render.py` checks this.
-  - **No invented content.** Every claim and link in the synthesis is asserted by a source at its scope, and the synthesis goes against no single source's claim. The agent checks this as well as it can. The user judges adequacy.
+  - **No contradiction, no invention.** The synthesis goes against no source's claim, and every claim and link in it is asserted by a source at its scope. This is the first duty. The agent checks it as well as it can. The user judges adequacy.
 - The agent never writes synthesis prose. It writes a derivation, and the script renders the synthesis from it.
+- The form rules in [Operations](references/operations.md) are strong guidelines. A sentence breaks one only by stating a `deviation`, which the reply records. Exact copying, adding no word, AI-link permission and the source checks never bend.
 - A missing link appears as `⟦GAP: X → Y: …⟧`. An AI-authored link appears only where the user allows it, as `⟦AI-AUTHORED: …⟧`.
 - Stricter project or skill rules govern where they apply. This skill does not relax them.
 
@@ -45,11 +46,11 @@ description: >-
 3. **Settle every link.** Each link is part of the answer, stated by a source, a gap or, where the user allows it, an AI-authored link.
 4. **Derive.** Write the derivation: exact spans and operations for each sentence, in chain order. Read [Operations](references/operations.md) and [Derivation](references/derivation.md).
 5. **Check meaning.** Apply the DELETE and licence tests to every sentence. Then check the whole synthesis against each source in turn, as Argument describes, and record each result in `checks`.
-6. **Render.** Run `python3 scripts/render.py <derivation.json>`. On a rejection, fix the derivation or turn the problem into a gap. Never edit the rendered text by hand.
+6. **Render.** Run `python3 scripts/render.py <derivation.json>`. On a rejection, fix the derivation, state a deviation for a form rule, or turn the problem into a gap. Never edit the rendered text by hand.
 7. **Present.** Read [Output](references/output.md). Present the rendered output in full.
 
 - Ask before deriving when sources cannot be told apart, or when an ambiguity in the query or in a source sentence would change the chain. Otherwise follow the host's or user's rules on when to ask.
-- If no source supplies any step, say so and give no synthesis. Offer to work from further sources.
+- Answer with what the sources support, and mark each missing part as a gap. Give no synthesis only when no source supplies any step; say so and offer to work from further sources.
 - If Python cannot run, render by hand strictly from the derivation and write "Wording check: not run." in Reasoning.
 - Keep every marker in every version. A request for a clean reply never removes a gap or an AI label.
 

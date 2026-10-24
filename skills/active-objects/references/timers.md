@@ -9,8 +9,6 @@ kernel implements them.
   code runs in the timer's context.
 - An object starts and stops only its own timers, and only from its own
   handler. The timer interface leaves no way to name another object's timer.
-- D7 (`decisions.md`) sets how many timers an object has and whether any
-  of them repeat.
 - Restarting a timer replaces the running one. The handler restarts a
   one-shot timer for each further timeout.
 - Timeouts are approximate. Interrupts, the running handler and queued
@@ -21,8 +19,6 @@ kernel implements them.
 - Each timer belongs to one state. Stop it when that state is left, normally
   in the state's exit action. With one timer per object, two nested states
   never both use it.
-- A lost timeout stops anything that restarts only on that timeout. Take
-  this into account in D5.
 
 ## Late timeouts (D8)
 

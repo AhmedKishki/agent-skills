@@ -39,6 +39,7 @@
 - `paragraph`: optional `true` to start a new paragraph.
 - `pieces`, in order. Each piece has `source`, `text` (exact whole words), optional `occurrence` (default 1) and optional `ops`.
 - A connective piece adds `"link"`: the id of the step whose stated link it realises.
+- `deviation`: optional, why the sentence breaks a form rule. See [Operations](operations.md).
 - `ops` apply in order. Add `occurrence` when the text appears more than once in the piece.
   - `{"op": "DELETE", "text": "…"}`
   - `{"op": "INFLECT", "kind": "agreement", "from": "rises", "to": "rise"}`
@@ -47,6 +48,7 @@
   - `{"op": "NORMALISE", "rule": "quotes", "result": "…"}`
   - `{"op": "NORMALISE", "rule": "end-stop"}` and `{"op": "NORMALISE", "rule": "semicolon"}`
   - `{"op": "NORMALISE", "rule": "pair", "from": "…", "to": "…"}`
+  - `{"op": "NORMALISE", "rule": "space", "from": "byMarx", "to": "by Marx"}`
 
 ## Example: a licensed join
 

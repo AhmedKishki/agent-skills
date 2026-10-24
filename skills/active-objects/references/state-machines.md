@@ -27,45 +27,29 @@ that still matters.
   **exit** actions. For example, start a timer on entry and stop it on exit.
   Prefer them to actions on single transitions, because they run however
   the state is entered or left.
-- After the initial transition, the state changes only in one transition
-  function. That function runs the exit actions, then the transition's
-  action, then the entry actions.
+- After the initial transition, the state changes in one place only: the
+  transition function, or the event processor. A transition runs its action
+  first, then the exit actions, then the entry actions. The action comes
+  first because it
+  belongs to the source state, like the guard: run after the exit actions,
+  it would find taken down what it may still need, such as a sensor the
+  exit action switched off.
 - Never change state inside an entry or exit action. When the next state
   depends on a condition, write two transitions with opposite guards. Entry
   and exit actions cannot see the event that caused them, so save any value
   they need beforehand.
 - The machine and every state that contains other states have an initial
-  transition into an inner state. The machine's own initial transition runs
-  once, on the start event.
+  transition into an inner state. An initial transition has no guard, and
+  its target lies inside the state that owns it. The machine's own initial
+  transition runs once, on the start event.
 - Nest states where nesting removes repetition. An event that an inner state
   does not handle, or whose guards all fail, goes to the outer state.
 - An **internal transition** runs its action and stays in the state. A
   **self-transition** leaves the state and enters it again, so its exit and
   entry actions run. Choose between them by whether the design needs the
   exit and entry actions to run.
-- A deferred event waits as a copy in the object's own small store (D6). A
-  state that handles deferred events recalls one on entry, and another after
-  handling each recalled event, until the store is empty. A recall puts the
-  event at the front of the queue, and a handler call recalls at most once.
 - States and transitions are fixed in the code. Nothing builds or changes
   them at run time.
-
-## The words
-
-| Word | Meaning |
-|---|---|
-| state | a stretch of time in which the object waits and reacts in one way |
-| transition | the change from one state to another, caused by an event |
-| guard | a condition a transition needs, such as `e->data > LIMIT` |
-| action | code that runs on a transition |
-| entry action | code that runs every time a state is entered |
-| exit action | code that runs every time a state is left |
-| internal transition | an action that runs inside the state, with no exit or entry action |
-| self-transition | leaving a state and entering it again, so both exit and entry actions run |
-| initial transition | the step into an inner state when an outer state, or the whole machine, is entered |
-| nested state | a state inside another state, where the outer state holds the behaviour they share |
-| defer | keep an event for later, because the current state cannot handle it yet |
-| pass | let the outer state handle an event that the inner state does not handle |
 
 ## Plan with an event table
 
@@ -78,7 +62,9 @@ receive, and choose a reaction for each pair:
 - **pass**: hand the event to the outer state.
 
 One row may cover "any other" signal, as long as every pair ends up with a
-reaction. Once the table exists, the code follows it.
+reaction. Once the table exists, the code follows it. The object's
+statechart (`diagrams.md`) draws the same machine: the table shows that
+every pair has a reaction, and the statechart shows the machine's shape.
 
 The example object reads a button. It senses the button, gives it time to
 settle, and tells the lamp only when the level changes. A power manager can
@@ -101,19 +87,18 @@ count carried in the timeout, which is one possible answer to D8
 | any | `AO_SIG_TIMEOUT` | count does not match | ignore | – | – |
 | any | any other | – | ignore | – | – |
 
-Suspending the object while a timeout is already queued produces a late
-timeout, which is the case D8 covers. The old timeout still arrives, and its
-count shows that it is late.
+## State-handler functions (D9 default)
 
-## A flat machine (D9 default)
-
-The button below uses the default from D9: a switch on a state `enum` with
-one transition function.
+Each state is one function. It receives every event that arrives while the
+object is in that state, and the reserved signals `AO_SIG_ENTRY` and
+`AO_SIG_EXIT` when the state is entered and left. Its entry and exit actions
+therefore sit in the same `switch` as its reactions. The current state is a
+pointer to that function, and a small event processor, `dispatch()`, is the
+only code that calls it.
 
 ```c
 /* button.c */
 #include <stdbool.h>
-#include <stddef.h>
 #include "ao_object.h"
 #include "button.h"
 #include "lamp.h"                /* extern ao_t *const lamp; */
@@ -123,12 +108,20 @@ one transition function.
 #define SETTLE_TICKS (5u + 1u)           /* at least 5 ticks */
 #define WAIT_TICKS   ((20u - 5u) + 1u)   /* at least 15 ticks */
 
-enum state { SENSING, WAITING, SUSPENDED };
+typedef enum { RET_HANDLED, RET_IGNORED, RET_TRAN } ret_t;
+typedef ret_t (*state_t)(const ao_event_t *e);
 
-static enum state state;
+static ret_t sensing(const ao_event_t *e);
+static ret_t waiting(const ao_event_t *e);
+static ret_t suspended(const ao_event_t *e);
+
+static state_t    state;         /* the current state's function */
 static ao_data_t  timer_count;   /* recognises late timeouts (D8) */
 static bool       pressed;       /* last level reported; as states it would
                                     double the machine */
+
+static const ao_event_t entry_event = { AO_SIG_ENTRY, 0 };
+static const ao_event_t exit_event  = { AO_SIG_EXIT, 0 };
 
 static void sense_begin(void);
 static bool sense_end(void);     /* the debounced level */
@@ -138,46 +131,28 @@ static void timer_start(ao_tick_t ticks)
     ao_timer_start(ticks, ++timer_count);
 }
 
-static bool is_current_timeout(const ao_event_t *e)
+/* A state returns tran(target) to take a transition, after its action. */
+static ret_t tran(state_t target)
 {
-    return e->sig == AO_SIG_TIMEOUT && e->data == timer_count;
+    state = target;
+    return RET_TRAN;
 }
 
-static void entry(enum state s)
+/* The event processor: after start-up, the only caller of the states.
+ * The source state has already run the transition's action; the
+ * processor exits the source, then enters the target. */
+static void dispatch(const ao_event_t *e)
 {
-    switch (s) {
-    case SENSING:   sense_begin(); timer_start(SETTLE_TICKS); break;
-    case WAITING:   timer_start(WAIT_TICKS);                  break;
-    case SUSPENDED:                                           break;
+    state_t source = state;
+
+    if (source(e) == RET_TRAN) {
+        (void)source(&exit_event);
+        (void)state(&entry_event);
     }
 }
 
-static void exit_action(enum state s)
+static void report_change(void)
 {
-    switch (s) {
-    case SENSING:
-    case WAITING:   ao_timer_stop(); break;   /* each stops its own timer */
-    case SUSPENDED:                  break;
-    }
-}
-
-typedef void (*action_t)(const ao_event_t *e);
-
-/* After start-up, the only place the state changes:
- * exit, then the action, then entry. */
-static void tran(enum state next, action_t action, const ao_event_t *e)
-{
-    exit_action(state);
-    if (action != NULL) {
-        action(e);
-    }
-    state = next;
-    entry(next);
-}
-
-static void report_change(const ao_event_t *e)
-{
-    (void)e;
     bool now = sense_end();
     if (now != pressed) {        /* post only when the level changed */
         pressed = now;
@@ -185,107 +160,171 @@ static void report_change(const ao_event_t *e)
     }
 }
 
-static void abandon_reading(const ao_event_t *e)
+static ret_t sensing(const ao_event_t *e)
 {
-    (void)e;
-    (void)sense_end();
+    switch (e->sig) {
+    case AO_SIG_ENTRY:
+        sense_begin();
+        timer_start(SETTLE_TICKS);
+        return RET_HANDLED;
+    case AO_SIG_EXIT:
+        ao_timer_stop();
+        return RET_HANDLED;
+    case AO_SIG_TIMEOUT:
+        if (e->data == timer_count) {    /* guard: not a late timeout (D8) */
+            report_change();
+            return tran(waiting);
+        }
+        return RET_IGNORED;
+    case POWER_SUSPEND:
+        (void)sense_end();               /* abandon the reading */
+        return tran(suspended);
+    }
+    return RET_IGNORED;                  /* any other signal */
+}
+
+static ret_t waiting(const ao_event_t *e)
+{
+    switch (e->sig) {
+    case AO_SIG_ENTRY:
+        timer_start(WAIT_TICKS);
+        return RET_HANDLED;
+    case AO_SIG_EXIT:
+        ao_timer_stop();
+        return RET_HANDLED;
+    case AO_SIG_TIMEOUT:
+        if (e->data == timer_count) {
+            return tran(sensing);
+        }
+        return RET_IGNORED;
+    case POWER_SUSPEND:
+        return tran(suspended);
+    }
+    return RET_IGNORED;
+}
+
+static ret_t suspended(const ao_event_t *e)
+{
+    switch (e->sig) {
+    case POWER_RESUME:
+        return tran(sensing);
+    }
+    return RET_IGNORED;                  /* a late timeout lands here */
 }
 
 static void handler(const ao_event_t *e)
 {
     if (e->sig == AO_SIG_START) {        /* the initial transition */
-        state = SENSING;
-        entry(SENSING);
+        state = sensing;
+        (void)state(&entry_event);
         return;
     }
-    switch (state) {
-    case SENSING:
-        if (is_current_timeout(e)) {
-            tran(WAITING, report_change, e);
-        } else if (e->sig == POWER_SUSPEND) {
-            tran(SUSPENDED, abandon_reading, e);
-        }
-        break;                           /* anything else: ignore */
-    case WAITING:
-        if (is_current_timeout(e)) {
-            tran(SENSING, NULL, e);
-        } else if (e->sig == POWER_SUSPEND) {
-            tran(SUSPENDED, NULL, e);
-        }
-        break;
-    case SUSPENDED:
-        if (e->sig == POWER_RESUME) {
-            tran(SENSING, NULL, e);
-        }
-        break;                           /* a late timeout lands here */
-    }
+    dispatch(e);
 }
 ```
 
 In this code:
 
-- The state is a `static enum`. `pressed` is a kept value, and its comment
-  gives the reason it is not a state.
-- Apart from the initial transition, only `tran()` assigns `state`. The exit
-  and entry actions therefore always run, in the right order.
-- An internal transition calls its action without calling `tran()`. A
-  self-transition is `tran(state, action, e)`.
-- The handler's `switch` follows the event table. A `break` with no match is
-  an "ignore" row. Give it a comment wherever that is not obvious.
-- The transition's action receives the event. Entry and exit actions do not,
-  because they run however the state is entered or left.
+- Each state's function holds all of that state: its entry and exit
+  actions, its guards and every reaction. Reading one function is enough to
+  draw the state.
+- `state` points at the current state's function. Apart from the initial
+  transition, only `tran()` changes it, and only `dispatch()` calls the
+  states, so every transition runs its action, then exit, then entry.
+- An internal transition does its work and returns `RET_HANDLED`. A
+  self-transition returns `tran()` with its own state, so its exit and entry
+  actions run.
+- A guard is an `if` inside its `case`. When the guard fails, the state
+  returns `RET_IGNORED`, as the event table's "ignore" row says.
+- A state function works only inside its `switch`, because the processor
+  also calls it for entry and exit. Code before the `switch` would run on
+  those calls too.
 
-## Nested machines (D9 alternative)
+## Nested states
 
-Nest states when several states share behaviour, such as a reset that works
-in all of them. Each state is then a constant record naming its outer state,
-its initial inner state, its entry and exit actions and its reaction to
-events:
+Nest states where several states share behaviour, such as a reset that
+works in all of them. The state functions keep the shape above and change
+in three ways:
+
+- An event that a state does not handle, or whose guards all fail, goes to
+  its outer state: the function ends with `return super(outer);` in place
+  of `return RET_IGNORED;`. The outermost states name `top`, which ignores
+  everything and is never the target of a transition.
+- A state that contains other states answers `AO_SIG_INIT` with `tran()` to
+  one of its inner states.
+- `tran()` and `super()` leave their answer in `temp`, because the processor
+  needs the current state and the target at the same time.
 
 ```c
-typedef enum { HANDLED, IGNORED, PASS, TRAN } ao_result_t;
+typedef enum { RET_HANDLED, RET_IGNORED, RET_TRAN, RET_SUPER } ret_t;
+typedef ret_t (*state_t)(const ao_event_t *e);
 
-typedef struct state state_t;
+static state_t state;            /* the current innermost state */
+static state_t temp;             /* RET_TRAN: the target; RET_SUPER: the outer state */
 
-typedef struct {
-    ao_result_t    result;
-    const state_t *target;                       /* when result is TRAN */
-    void         (*action)(const ao_event_t *e); /* when TRAN; may be NULL */
-} reaction_t;
+static ret_t tran(state_t target) { temp = target; return RET_TRAN; }
+static ret_t super(state_t outer) { temp = outer;  return RET_SUPER; }
 
-struct state {
-    const state_t *parent;       /* NULL for the outermost state */
-    const state_t *initial;      /* inner state to enter, or NULL */
-    void         (*entry)(void);
-    void         (*exit)(void);
-    reaction_t   (*react)(const ao_event_t *e);
-};
+static ret_t top(const ao_event_t *e)
+{
+    (void)e;
+    return RET_IGNORED;          /* the end of every chain of outer states */
+}
+
+static ret_t on(const ao_event_t *e)
+{
+    switch (e->sig) {
+    case AO_SIG_ENTRY: lamp_power(true);  return RET_HANDLED;
+    case AO_SIG_EXIT:  lamp_power(false); return RET_HANDLED;
+    case AO_SIG_INIT:  return tran(dim);  /* initial transition */
+    case RESET:        return tran(on);   /* works in every inner state */
+    }
+    return super(top);
+}
+
+static ret_t dim(const ao_event_t *e)
+{
+    switch (e->sig) {
+    case BRIGHTER: return tran(bright);
+    }
+    return super(on);            /* everything else goes to on */
+}
 ```
 
-To dispatch an event:
+`bright` has the same shape as `dim`.
 
-1. Start at the current innermost state and call `react`. While the result
-   is `PASS`, move to the parent and try again. If the outermost state
-   passes as well, the event is ignored, and the design must intend that.
-2. On `TRAN`, the state that returned it is the source. Find the nearest
-   state that contains both the source and the target. When one of the two
-   contains the other, D10 decides whether that outer state counts as
-   containing them (local) or not (external).
-3. Run the exit actions from the current innermost state outwards, stopping
-   just below that common state.
-4. Run the transition's action.
-5. Run the entry actions from just below the common state inwards, down to
-   the target.
-6. While the target has an initial inner state, enter it and run its entry
-   action. The last state reached becomes the current state.
+To dispatch an event, the processor:
+
+1. Calls the current state with the event. While the answer is
+   `RET_SUPER`, it calls the outer state named in `temp`. When the chain
+   reaches `top`, the event is ignored, and the design must intend that.
+2. On `RET_TRAN`, the transition's action has already run inside the state
+   that answered, which is the source. The processor finds the nearest
+   state that contains both the source and the target. It learns each
+   state's outer state by calling the state with `AO_SIG_EMPTY`, which no
+   state handles. When one of the two contains the other, D10 decides
+   whether that outer state counts as containing them (local) or not
+   (external).
+3. Runs the exit actions from the current innermost state outwards,
+   stopping just below that common state.
+4. Runs the entry actions from just below the common state inwards, down
+   to the target.
+5. While the state just entered answers `AO_SIG_INIT` with `RET_TRAN`,
+   enters that inner state as well. The last state entered becomes the
+   current state.
+
+On `AO_SIG_START`, the handler enters the target of the machine's initial
+transition, outermost state first, and then follows the `AO_SIG_INIT`
+answers as in step 5.
 
 A self-transition, where the target is the source, always leaves the source
 and enters it again. D10 covers the two other cases: from an outer state to
 one of its own inner states, and from an inner state out to its outer state.
 Record the project's choice and apply it everywhere.
 
-The states, their parents and their initial states are `const` and fixed
-when the code is built. Nothing creates or changes them at run time.
+The nesting and the transitions are written into the state functions, so
+they are fixed when the code is built. Nothing creates or changes them at
+run time.
 
 ## Deferring events
 
@@ -301,11 +340,11 @@ static uint8_t    deferred_count;
 
 static void defer(const ao_event_t *e)
 {
-    if (deferred_count < DEFER_LEN) {
-        deferred[deferred_count++] = *e;   /* a copy: *e is gone after the call */
-    } else {
-        /* a full store is handled as decided in D5 */
+    if (deferred_count >= DEFER_LEN) {     /* a bug: the store is too small (D6) */
+        AO_ERROR();                        /* D12; if it returns, e is dropped */
+        return;
     }
+    deferred[deferred_count++] = *e;       /* a copy: *e is gone after the call */
 }
 
 /* Call on entry to a state that handles deferred events, and again after
@@ -324,14 +363,10 @@ static void recall_one(void)
 
 - Mark the deferring states with "defer" in the event table.
 - Where possible, defer in an outer state, so that the rule appears once.
-- Recall the oldest event first. One recall per handler call keeps the
-  deferred events in order and leaves room in the queue for events posted
-  in the meantime.
-
-## Late timeouts
-
-Any state that stops or restarts a timer can receive a late timeout. D8
-decides how the object recognises one, and `timers.md` lists the options.
+- A state that handles deferred events recalls one on entry, and another
+  after handling each recalled event, until the store is empty. Recall the
+  oldest first: one recall per handler call keeps the deferred events in
+  order and leaves room in the queue for events posted in the meantime.
 
 ## Common shapes
 
@@ -348,21 +383,3 @@ decides how the object recognises one, and `timers.md` lists the options.
   sub-machine's initial transition. The sub-machine reports back by posting
   to its owner's queue. No code may depend on the order in which
   sub-machines are called.
-
-## State machine checklist
-
-- [ ] Every pair of state and signal has a chosen reaction.
-- [ ] No flag or mode variable stands in for a state, and each kept value
-      has a reason for not being a state.
-- [ ] Guards have no side effects and never overlap.
-- [ ] After start-up, the state changes only in the transition function, in
-      the order exit, action, entry.
-- [ ] No transition happens inside an entry or exit action.
-- [ ] Entry and exit actions do not read the event.
-- [ ] Every timer is started in a state's entry action and stopped in its
-      exit action, and late timeouts are recognised as decided in D8.
-- [ ] Every state that contains other states has an initial transition.
-- [ ] Deferred events are kept as copies in a store sized under D6, and are
-      recalled oldest first, at most one per handler call.
-- [ ] D10 is decided wherever a transition runs between an outer state and
-      one of its own inner states.

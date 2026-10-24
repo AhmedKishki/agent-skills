@@ -13,6 +13,13 @@
 
 - Translation, paraphrase, synonyms, tense changes and added words are not operations.
 
+## Deviations
+
+- These form rules are strong guidelines: the whole-word edge of a span, a DELETE that merges two words, a punctuation change beyond quote glyphs, the end-stop and semicolon conditions, a join without a licensed connective, a connective without a stated link or from another source than its licence, the chain order of sentences, a capital at the start of a sentence, and a full stop at its end.
+- A sentence breaks one only by adding `"deviation": "why"`. The script records every stated deviation, whether or not a rule needed it: provenance marks the sentence and Reasoning lists what was waived. A deviation without a reason is refused.
+- A deviation never waives exact copying, an INFLECT or NORMALISE that changes a word, the AI-link permission, the chain's structure or the source checks.
+- State one only when keeping the rule would lose a claim the source makes, and never to go against a source.
+
 ## DELETE test
 
 DELETE passes when the source, read in its context, asserts the shortened span. Keep these unchanged:
@@ -25,6 +32,7 @@ DELETE passes when the source, read in its context, asserts the shortened span. 
 - the scope of time, place and population
 
 - A whole clause may go when the remaining clause is asserted on its own, for example a concessive *though* clause. Record a removed qualification under Left out.
+- A COPY that starts inside a source sentence takes the same test. It keeps the sentence's frame, such as "Stated thus, …" or "X argues that", or the sentence states a deviation saying why.
 - A deletion must not create a relation. Removing *separately* or *also* can make two claims read as one.
 
 ## INFLECT
@@ -39,10 +47,12 @@ DELETE passes when the source, read in its context, asserts the shortened span. 
 |---|---|
 | `case` | Upper- or lower-case the first letter of a piece where it starts, or stops starting, a sentence. Never a proper noun |
 | `quotes` | Change quotation-mark and apostrophe glyphs only |
-| `end-stop` | End a sentence with a full stop, only when its source sentence ends with one |
+| `end-stop` | End a sentence with a full stop, only when its source sentence ends with one. A span that stops before its sentence's full stop needs it |
 | `semicolon` | Replace a semicolon between two full clauses with a full stop and a capital |
 | `pair` | Apply a whole-word pair the user supplied for this task, such as `labor` → `labour` |
+| `space` | Insert spaces into one word the source ran together, such as `byMarx` → `by Marx`. Only where the source lost a space between two words |
 
+- A sentence starts with a capital letter, and the script refuses one that does not. After a DELETE at its start, NORMALISE `case` to upper.
 - Whitespace is collapsed automatically.
 - No other punctuation changes. A comma, a dash or a question mark can change a claim.
 

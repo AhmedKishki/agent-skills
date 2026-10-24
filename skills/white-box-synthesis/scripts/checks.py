@@ -1,8 +1,7 @@
 """Check the argument chain, its links and the per-source checks."""
 import re
 
-from ops import Rejected
-from pieces import copy_span
+from ops import Rejected, copy_span
 
 STATUSES = {"part", "stated", "gap", "ai"}
 
@@ -39,6 +38,7 @@ def check_step(step, index, sources, allowed):
 
 def check_argument(derivation, sources):
     """Return steps by id after checking the chain reaches Z without loops."""
+    derivation.update(check_apparatus(derivation))
     steps = derivation.get("steps") or []
     ids = [s.get("id") for s in steps]
     if not steps or None in ids or len(set(ids)) != len(ids):
@@ -65,6 +65,18 @@ def check_sources(derivation, sources):
     if missing:
         raise Rejected("Record a contradiction check for: " + ", ".join(missing) + ".")
     return results
+
+
+def check_apparatus(derivation):
+    """Return notes and conflicts as lists of sentences. One bare sentence is a list of one."""
+    out = {}
+    for field in ("notes", "conflicts"):
+        value = derivation.get(field) or []
+        value = [value] if isinstance(value, str) else value
+        if not isinstance(value, list) or not all(isinstance(v, str) for v in value):
+            raise Rejected(f"{field} must be a list of sentences.")
+        out[field] = value
+    return out
 
 
 def coverage(src, spans):
