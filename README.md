@@ -69,6 +69,7 @@ Edit it in `~/agent-skills/skills/` or through a project's link, commit, then ru
 | Skill | Purpose |
 |---|---|
 | [`active-objects`](skills/active-objects/) | Design and review event-driven code built from active objects: private state, queue-only communication and run-to-completion handlers. |
+| [`auto-jobber`](skills/auto-jobber/) | Retain qualifications, review English/German CVs, research employers and prepare CVs and cover letters in the applicant's own wording. |
 | [`coding-partner`](skills/coding-partner/) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`collaborative-learning`](skills/collaborative-learning/) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |

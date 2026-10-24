@@ -21,6 +21,19 @@
       ]
     },
     {
+      "name": "auto-jobber",
+      "displayName": "Auto-jobber",
+      "source": "./skills/auto-jobber",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/auto-jobber",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "Retain qualifications, review English/German CVs, research employers and prepare CVs and cover letters in the applicant's own wording.",
+      "tags": [
+        "career",
+        "cv",
+        "writing"
+      ]
+    },
+    {
       "name": "coding-partner",
       "displayName": "Coding Partner",
       "source": "./skills/coding-partner",
