@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "job": {"company": "", "role": "", "language": "en", "url": ""},
+  "requirements": [],
+  "edits": [],
+  "user_input": null,
+  "letter": {"date": "", "greeting": "", "paragraphs": [], "closing": "", "wording_quotes": []},
+  "review": {"open_questions": [], "notes": []}
+}

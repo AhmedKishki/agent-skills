@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "person": {"name": "", "email": "", "phone": "", "location": ""},
+  "qualifications": {
+    "study": [], "work": [], "experience": [], "certificates": [],
+    "expertise": [], "languages": [], "projects": [], "online_presence": []
+  },
+  "interests": [],
+  "voice": {
+    "tone_preferences": [], "character_notes": [], "writing_preferences": [],
+    "avoid": [], "samples": []
+  },
+  "last_reviewed_at": null,
+  "evidence": [],
+  "editable_blocks": {},
+  "policy": {
+    "max_changed_blocks": 3,
+    "max_changed_word_ratio": 0.15,
+    "cv_max_pages": 2,
+    "letter_max_pages": 1,
+    "paper": "A4",
+    "research_max_age_days": 180
+  }
+}
