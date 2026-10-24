@@ -17,20 +17,22 @@ The repository provides one root marketplace, `ahmedkishki-skills`, with one ind
 
 Start a new Claude Code session or run `/reload-plugins` after installation. Invoke the example as `/coding-partner:coding-partner`.
 
-### Local checkout: install every skill for all three agents
+### Local checkout: install every skill for existing agents
 
 ```sh
 git clone https://github.com/AhmedKishki/agent-skills.git ~/agent-skills
 ~/agent-skills/bin/agent-skills install
 ```
 
-The installer links every skill into each agent's global skill directory:
+The installer checks these default agent directories and links every skill under `skills/` only where the parent directory already exists:
 
-| Agent | Directory |
+| Agent | Existing parent directory |
 |---|---|
-| Claude Code | `~/.claude/skills/` |
-| Kilo Code | `~/.kilo/skills/` |
-| Cline | `~/.cline/skills/` |
+| Claude Code | `~/.claude/` |
+| Kilo Code | `~/.kilo/` and `${XDG_CONFIG_HOME:-$HOME/.config}/kilo/` |
+| Cline | `~/.cline/` |
+
+Missing parent directories are reported and never created. A missing `skills/` subfolder may be created inside an existing parent. Each location gets its own synchronized or skipped report, including when its links are already correct. Directory presence is not a claim that an agent or VS Code extension is installed.
 
 No agent configuration or marketplace registration is required. Restart or reload your agent to discover the skills. Existing Kilo `skills.paths` entries pointing to `~/.claude/skills` are no longer needed; the installer leaves them unchanged.
 
@@ -68,9 +70,9 @@ agent-skills update
 
 This pulls the latest skills and pushes your local commits. Local changes you have not committed stay local and are listed. If your branch and the remote have diverged, or the merge would overwrite your local changes, nothing changes and the command shows how to resolve it with git.
 
-After Git succeeds, it synchronizes all three agents' links: newly added skills become available, existing skills use the updated checkout, and links owned by this checkout are removed when their skill disappears or loses its `SKILL.md`. Backups and unrelated skills are preserved. Rerunning `install` performs the same link synchronization without fetching or pushing Git commits.
+After Git succeeds, it synchronizes links only in existing agent directories: newly added skills become available, existing skills use the updated checkout, and links owned by this checkout are removed when their skill disappears or loses its `SKILL.md`. Backups and unrelated skills are preserved. Rerunning `install` performs the same directory checks and link synchronization without fetching or pushing Git commits.
 
-It then refreshes the catalog if `ahmedkishki-skills` is already registered in Claude Code. Only this optional refresh requires `claude` and `python3` on PATH; otherwise it reports the skipped refresh and the manual command above. A failed lookup or refresh exits nonzero after the Git/link update, without rolling it back.
+If `~/.claude/` exists, it then refreshes the catalog if `ahmedkishki-skills` is already registered in Claude Code. Only this optional refresh requires the `claude` CLI and `python3` on PATH; missing tools skip the refresh without affecting local skill links. A missing CLI does not mean the VS Code extension is absent. Without an existing Claude directory, it never invokes the CLI. A failed lookup or refresh exits nonzero after the Git/link update, without rolling it back.
 
 The refresh uses Claude's registered source and branch or tag, not necessarily this checkout. It never registers a marketplace or installs or enables plugins. Marketplace registration alone does not load every skill; use the individual plugin install and update commands above. Local linking and synced copies remain separate from the marketplace cache.
 

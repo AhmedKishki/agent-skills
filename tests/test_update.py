@@ -25,6 +25,8 @@ class UpdateTests(unittest.TestCase):
         (skill / "SKILL.md").write_text("---\nname: example\ndescription: Example.\n---\n")
         self.home = self.root / "home"
         self.home.mkdir()
+        for agent in ("claude", "kilo", "cline"):
+            (self.home / f".{agent}").mkdir()
         self.bin = self.root / "bin"
         self.bin.mkdir()
         # A closed PATH makes absent-tool tests independent of the host.
@@ -35,6 +37,7 @@ class UpdateTests(unittest.TestCase):
         self.env = {
             **os.environ,
             "HOME": str(self.home),
+            "XDG_CONFIG_HOME": str(self.home / ".config"),
             "PATH": str(self.bin),
             "CALLS": str(self.calls),
             "MARKETPLACES": json.dumps([
@@ -98,6 +101,40 @@ esac
                     link = self.home / f".{agent}/skills/example"
                     self.assertTrue(link.is_symlink())
                     self.assertEqual(os.readlink(link), str(self.repo / "skills/example"))
+                    self.assert_sync_report(result.stdout, self.home / f".{agent}")
+
+    def assert_sync_report(self, output, root):
+        lines = [line.lower() for line in output.splitlines() if str(root).lower() in line.lower()]
+        self.assertTrue(any("synchronized" in line and "local skill link" in line
+                            for line in lines), output)
+
+    def test_present_cli_does_not_materialize_missing_homes(self):
+        for agent in ("claude", "kilo", "cline"):
+            (self.home / f".{agent}").rmdir()
+        self.executable("claude", '#!/usr/bin/env bash\nmkdir -p "$HOME/.claude"\nprintf "claude called\\n" >> "$CALLS"\n')
+        result, calls = self.run_update()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(calls, [])
+        for root in [self.home / f".{agent}" for agent in ("claude", "kilo", "cline")] + [self.home / ".config/kilo"]:
+            self.assertFalse(os.path.lexists(root))
+            self.assertTrue(any(str(root) in line and "skipped" in line.lower()
+                                for line in result.stdout.splitlines()), result.stdout)
+
+    def test_cli_absent_still_synchronizes_existing_subset_and_xdg(self):
+        (self.bin / "claude").unlink()
+        (self.home / ".cline").rmdir()
+        xdg = self.root / "xdg/kilo"
+        xdg.mkdir(parents=True)
+        result, calls = self.run_update(XDG_CONFIG_HOME=str(xdg.parent))
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(calls, [])
+        self.assertIn("Claude CLI", result.stdout)
+        self.assertIn("PATH", result.stdout)
+        self.assertNotIn("Claude Code not found", result.stdout + result.stderr)
+        for root in (self.home / ".claude", self.home / ".kilo", xdg):
+            self.assertTrue((root / "skills/example").is_symlink())
+            self.assert_sync_report(result.stdout, root)
+        self.assertFalse((self.home / ".cline").exists())
 
     def test_update_discovers_new_skills_and_removes_only_canonical_stale_links(self):
         result, _ = self.run_update()
@@ -136,7 +173,8 @@ esac
             result = subprocess.run(
                 [git, "-c", "user.name=Test", "-c", "user.email=test@example.invalid",
                  "-c", "commit.gpgsign=false", *map(str, args)],
-                env={**os.environ, "HOME": str(self.home), "GIT_CONFIG_NOSYSTEM": "1"},
+                env={**os.environ, "HOME": str(self.home),
+                     "XDG_CONFIG_HOME": self.env["XDG_CONFIG_HOME"], "GIT_CONFIG_NOSYSTEM": "1"},
                 text=True, capture_output=True, timeout=10,
             )
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
@@ -178,6 +216,9 @@ esac
                 self.assertIn("refresh skipped", result.stdout)
                 self.assertIn("claude plugin marketplace update ahmedkishki-skills", result.stdout)
                 self.assertEqual(calls, [])
+                for agent in ("claude", "kilo", "cline"):
+                    self.assertTrue((self.home / f".{agent}/skills/example").is_symlink())
+                    self.assert_sync_report(result.stdout, self.home / f".{agent}")
                 (self.root / tool).rename(original)
 
     def test_failed_or_invalid_lookup_never_refreshes(self):

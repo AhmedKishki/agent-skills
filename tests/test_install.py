@@ -49,7 +49,74 @@ class InstallTests(unittest.TestCase):
                 self.assertEqual(os.readlink(directory / name), str(self.repo / "skills" / name))
             self.assertFalse(os.path.lexists(directory / "not-a-skill"))
 
+    def create_homes(self):
+        for agent in AGENTS:
+            (self.home / f".{agent}").mkdir(exist_ok=True)
+
+    def assert_report(self, output, root, action):
+        lines = [line.lower() for line in output.splitlines() if str(root).lower() in line.lower()]
+        self.assertTrue(any(action in line for line in lines), output)
+        if action == "synchronized":
+            self.assertTrue(any("local skill link" in line for line in lines), output)
+
+    def test_missing_homes_are_skipped_even_with_agent_binaries(self):
+        for agent in AGENTS:
+            binary = self.bin / agent
+            binary.write_text("#!/usr/bin/env bash\nexit 99\n")
+            binary.chmod(0o755)
+        output = self.install()
+        for root in [self.home / f".{agent}" for agent in AGENTS] + [self.home / ".config/kilo"]:
+            self.assertFalse(os.path.lexists(root))
+            self.assert_report(output, root, "skipped")
+        self.assertTrue((self.home / ".local/bin/agent-skills").is_symlink())
+
+    def test_existing_subset_creates_skills_but_not_other_homes(self):
+        root = self.home / ".cline"
+        root.mkdir()
+        output = self.install()
+        self.assertEqual(os.readlink(root / "skills/alpha"), str(self.repo / "skills/alpha"))
+        self.assert_report(output, root, "synchronized")
+        for agent in ("claude", "kilo"):
+            missing = self.home / f".{agent}"
+            self.assertFalse(missing.exists())
+            self.assert_report(output, missing, "skipped")
+
+    def test_kilo_xdg_default_and_override(self):
+        native = self.home / ".kilo"
+        native.mkdir()
+        default = self.home / ".config/kilo"
+        default.mkdir(parents=True)
+        env = self.env.copy()
+        del env["XDG_CONFIG_HOME"]
+        result = subprocess.run([str(self.repo / "bin/agent-skills"), "install"],
+                                env=env, capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertTrue((default / "skills/alpha").is_symlink())
+        shutil.rmtree(default / "skills")
+        override = self.root / "custom-config/kilo"
+        override.mkdir(parents=True)
+        output = self.install(XDG_CONFIG_HOME=str(override.parent))
+        for root in (native, override):
+            self.assertTrue((root / "skills/alpha").is_symlink())
+            self.assert_report(output, root, "synchronized")
+        self.assertFalse((default / "skills").exists())
+
+    def test_symlink_directory_root_works_and_invalid_roots_are_untouched(self):
+        target = self.root / "agent-home"
+        target.mkdir()
+        (self.home / ".claude").symlink_to(target, target_is_directory=True)
+        (self.home / ".kilo").write_text("keep root file")
+        (self.home / ".cline").symlink_to(self.root / "missing")
+        output = self.install()
+        self.assertTrue((target / "skills/alpha").is_symlink())
+        self.assertEqual((self.home / ".kilo").read_text(), "keep root file")
+        self.assertEqual(os.readlink(self.home / ".cline"), str(self.root / "missing"))
+        self.assertFalse((self.root / "missing").exists())
+        for agent in ("kilo", "cline"):
+            self.assert_report(output, self.home / f".{agent}", "skipped")
+
     def test_install_without_agents_is_idempotent_and_warns_about_path(self):
+        self.create_homes()
         sentinels = {}
         for relative in (".bashrc", ".profile", ".zshrc", ".config/kilo/kilo.jsonc",
                          ".claude/settings.json", ".cline/settings.json"):
@@ -62,11 +129,15 @@ class InstallTests(unittest.TestCase):
         self.assertIn("PATH", output)
         self.assertIn(str(self.home / ".local/bin"), output)
         self.assert_links()
+        for agent in AGENTS:
+            self.assert_report(output, self.home / f".{agent}", "synchronized")
         command = self.home / ".local/bin/agent-skills"
         self.assertEqual(command.resolve(), self.repo / "bin/agent-skills")
         output = self.install(PATH=f"{self.home / '.local/bin'}:{self.bin}")
         self.assertNotIn("PATH", output)
         self.assert_links()
+        for agent in AGENTS:
+            self.assert_report(output, self.home / f".{agent}", "synchronized")
         self.assertFalse(any(self.home.glob(".*/skill-backups/*")))
         for path, content in sentinels.items():
             self.assertEqual(path.read_bytes(), content)
@@ -75,6 +146,7 @@ class InstallTests(unittest.TestCase):
         self.assertEqual(after, before)
 
     def test_installed_command_discovers_additions_and_exposes_edits(self):
+        self.create_homes()
         self.install()
         added = self.repo / "skills/new-skill"
         added.mkdir()
@@ -130,6 +202,7 @@ class InstallTests(unittest.TestCase):
                                         for p in backups))
 
     def test_stale_cleanup_preserves_unrelated_entries(self):
+        self.create_homes()
         self.install()
         (self.repo / "skills/alpha/SKILL.md").unlink()
         shutil.rmtree(self.repo / "skills/beta")
