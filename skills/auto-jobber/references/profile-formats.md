@@ -1,5 +1,7 @@
 # Retained profile and intake formats
 
+These are the optional Python helpers' internal formats, not a prescribed editing interface. The applicant may maintain clean factual data and professional-profile wording separately. Map those sources into the native representation when using the helpers; keep generated evidence IDs, editable-block registrations and import ledgers internal.
+
 Examples describe data shapes, not a fictional candidate. Edit private workspace records, not assets. `qualifications.json` uses `schema_version: 1`, `person`, `qualifications`, `interests`, `voice`, `last_reviewed_at`, `evidence`, `editable_blocks` and `policy`; initialized assets supply empty lists and defaults. `person` has `name`, `email`, `phone`, `location`; intake also uses optional `headline`.
 
 ## Normalized intake

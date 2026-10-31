@@ -6,9 +6,10 @@ from .common import read_json, require, utc_now, write_json, write_text
 from .html_safety import standalone
 from .render import render_documents
 from .languages import markup_language
+from .stylesheet import normalize_stylesheet
 
 
-def preview_baseline(workspace, language=None, html_file=None, css_file=None):
+def preview_baseline(workspace, language=None, html_file=None, css_file=None, asset_root=None):
     workspace = Path(workspace).expanduser().resolve()
     profile = read_json(workspace / "qualifications.json")
     require(profile["person"].get("name", "").strip(), "Provide candidate details before previewing")
@@ -17,8 +18,9 @@ def preview_baseline(workspace, language=None, html_file=None, css_file=None):
     folder.mkdir(mode=0o700, parents=True)
     css = (css_file or workspace / "cv.css").read_text(encoding="utf-8")
     source = (html_file or workspace / "cv.html").read_text(encoding="utf-8")
+    source = normalize_stylesheet(source, html_file or workspace / "cv.html", css_file)
     require(language is None or markup_language(source) == language, "Preview language differs from HTML lang")
-    write_text(folder / "cv.html", standalone(source, css))
+    write_text(folder / "cv.html", standalone(source, css, html_file or workspace / "cv.html", asset_root))
     write_text(folder / "cv-source.html", source)
     write_text(folder / "cv.css", css)
     write_json(folder / "qualifications.json", profile)

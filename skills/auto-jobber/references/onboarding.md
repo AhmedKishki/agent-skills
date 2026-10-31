@@ -1,19 +1,27 @@
-# Build the applicant's baseline together
+# Develop the applicant's records, profile and CV together
 
 ## Gather and normalize
 
-Accept an old CV, qualification lists or both, with extra information from the user. Use `extract` or existing PDF/document tools to obtain source text, then normalize it; extraction is not qualification verification. Ask about missing study, work, experience, certificates, expertise, languages, projects and online presence (including GitHub). Preserve unknowns; never guess language/proficiency levels. Collect interests and writing preferences without inferring personality.
+Accept an old CV, qualification lists or both, with extra information from the user. Use suitable extraction tools, including the bundled `extract` helper when useful. Keep the relevant facts in the applicant's chosen editing interface; extraction is not qualification verification. Ask about missing information only when it affects the next step. Preserve unknowns, dates and language/proficiency levels rather than guessing.
 
-Run `init` for a new private workspace; inspect rather than reset an existing one. Normalize confirmed source material using Profile formats. Keep original locators and distinguish facts still needing confirmation from verified evidence. Use `intake --data normalized.json` on the empty initialized workspace. It keeps `intake-source.json`, converts to `candidate-source.json`, stores all category entries and renders a baseline using the upstream-derived layout. Record metadata even where not every field is displayed in the CV.
+Keep facts separate from professional positioning and writing preferences. Develop the profile with the applicant from their goals, supported experience, interests and actual input about working style. Propose useful prose for review, not invented motivation or personality. Do not expose the helpers' evidence ledger as the user's professional profile.
 
-Alternatively, use `bootstrap --data resume-data.json` for the user's existing awesome-cv-html data. It requires an untouched, unsealed initialized profile and does not fetch demo credentials. Both import paths start evidence unverified. Audit every entry, metadata field, contact detail and displayed claim against the source; import success is not truth verification. Set `verified: true` only for confirmed evidence. Fixed roles, institutions and dates need the same audit as editable text. Add missing retained categories manually after bootstrap.
+Use Entry notes for applicant comments or extra context about a particular factual entry. Retain that context separately from career facts so it remains available for a later letter without requiring its inclusion in the CV. Use Personality for personal wording the applicant enters about themselves, such as an interest, opinion or closing line, so that a later letter can draw on it.
 
-## Review the base CV before sealing
+## Choose the template and produce the working CV
 
-Resolve Freshness, then run `preview` to generate only the base CV's standalone HTML, PDF and PNGs. Do not invent a companion letter at this stage. Present the CV to the user, invite corrections and iterate wording/layout until they approve. Inspect every CV preview page using Tailoring's visual checklist. Require verified support for editable blocks and source-audit all other claims. Set CSS `@page` to match policy `paper` (`A4` or `Letter`).
+Follow CV design to agree or propose the format, information hierarchy, template and appearance. A supplied CV or bundled HTML/CSS can be a starting point; neither has to dictate the result. Let skills, experience, research, education and personal projects receive the emphasis appropriate to the applicant's direction.
 
-The user may revise qualifications, source HTML or CSS at any time. Review those changes together and regenerate the preview before sealing the approved baseline. `seal` hashes the profile, CV/CSS and imported source variants, retaining each revision under `baselines/<timestampUUID>/`. Languages defines variant selection and manifest registration for root or custom HTML sources. Previous baselines and application snapshots remain independent; do not rewrite them when the master profile changes. Keep external evidence locators available.
+Produce the working CV under SKILL's PDF delivery default and Tailoring's rendering checks, then review it together. Verify the displayed claims against the retained facts and iterate wording and layout. Do not generate an unsolicited companion letter during onboarding. A usable working draft is not automatically an approved final document.
 
-## Manual HTML setup or later corrections
+## Keep it current as information grows
 
-For an existing HTML CV, copy it to workspace `cv.html` and styling to `cv.css`; fill the profile using Profile formats. Use one plain `<head>` and passive HTML. Replace scripts, images, remote fonts/icons and resource-loading CSS with text and system-font styling. Keep only the local `cv.css` stylesheet link. Register eligible marker regions using Profile formats; roles, titles, dates, nested HTML and whole sections are not editable regions. Follow the same source, freshness, preview and approval steps before sealing this alternative baseline.
+When the applicant adds or corrects data, update the factual record first, then the affected profile wording and current CV sources where relevant. Refresh the rendered CV when its content or appearance changes. Keep optional material available for the right opportunity rather than inserting it into every CV. Preserve earlier submitted or approved application snapshots.
+
+## If the native helpers are chosen
+
+Follow CLI workflow and Profile formats. Use `init` only for a missing native workspace, then `intake --data` for normalized onboarding or `bootstrap` for the supported upstream format. Inspect rather than reset existing records; imports are not synchronization commands. Preserve source locators and internal IDs and audit both fixed metadata and editable claims before marking evidence verified.
+
+For supported HTML/CSS sources, keep one plain head, passive markup and system fonts. Do not add scripts, remote fonts/icons or resource-loading CSS. Register only plain summary, bullet and skills text as editable regions; factual titles and dates are not opportunistic patch regions. Use the native preview, freshness and actual-approval gates before sealing the chosen language baseline. Its hashes retain a revision, not proof of applicant consent.
+
+Use Photos for an optional local portrait and its approved asset root. A photo-free CV remains supported; portraits are not a required template feature.

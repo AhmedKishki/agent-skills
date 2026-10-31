@@ -1,6 +1,7 @@
 """The invoking agent owns the dialogue; these commands preserve its records."""
 import shutil
 import sys
+from importlib.util import find_spec
 
 from .applications import new_application
 from .arguments import parser
@@ -19,14 +20,14 @@ def main(argv=None):
     if args.command == "init":
         return initialise(args.workspace)
     if args.command == "seal":
-        return seal(args.workspace, args.language, args.html, args.css)
+        return seal(args.workspace, args.language, args.html, args.css, args.asset_root)
     if args.command == "status":
         return freshness_status(read_json(args.workspace / "qualifications.json"))
     if args.command == "confirm-current":
         return confirm_current(args.workspace, args.note)
     if args.command == "preview":
         from .baseline_preview import preview_baseline
-        return preview_baseline(args.workspace, args.language, args.html, args.css)
+        return preview_baseline(args.workspace, args.language, args.html, args.css, args.asset_root)
     if args.command == "intake":
         from .intake import intake
         return intake(args.workspace, args.data)
@@ -59,5 +60,8 @@ def main(argv=None):
     from .render import browser_path
     tools = {name: shutil.which(name) for name in ("pdfinfo", "pdftotext", "pdftoppm")}
     return {"python": sys.version.split()[0], "chrome": browser_path(), "tools": tools,
+            "portrait_validation": {"pillow_available": find_spec("PIL") is not None,
+                                    "required_only_for_portraits": True,
+                                    "help": "Install Pillow in this Python environment for JPEG/PNG portraits"},
             "ready_for_pdf": bool(browser_path() and tools["pdfinfo"] and tools["pdftotext"]),
             "note": "Agent dialogue, browsing and writing are separate from local scripts"}

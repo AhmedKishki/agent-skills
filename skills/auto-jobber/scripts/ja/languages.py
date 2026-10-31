@@ -45,7 +45,11 @@ def choose_variant(workspace, language):
     record = check_baseline(folder)
     require(record.get("language") == language, "Baseline language metadata differs")
     for name, digest in record["files"].items():
-        if name not in {"cv.html", "cv.css"}:
+        if name not in {"cv.html", "cv.css"} and name not in record.get("assets", {}):
             require(sha256(workspace / name) == digest,
                     f"Profile/source changed; review and reseal the {language} CV variant")
+    from .portrait_assets import regular_path
+    for asset in record.get("assets", {}).values():
+        require(sha256(regular_path(asset["origin"])) == asset["sha256"],
+                f"Portrait source changed; review and reseal the {language} CV variant")
     return folder, record

@@ -1,4 +1,8 @@
-# Calendar-month qualification review
+# Keep retained information current
+
+When beginning new work or receiving changes, establish whether retained facts are still current. Show the relevant records when clarification is needed, accept volunteered updates and record only actual applicant confirmation. Do not make the applicant repeat information they have already confirmed in the current context.
+
+## Native helper calendar-month review
 
 Run `status` against the actual retained profile before onboarding approval, profile updates or a repeated application. Display its aware local `current_datetime`, `current_month`, `latest_entry_month`, `last_reviewed_at` and `needs_confirmation`; never substitute a hardcoded date or an assumed timezone.
 

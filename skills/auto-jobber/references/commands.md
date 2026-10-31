@@ -1,6 +1,6 @@
 # CLI walkthrough and artifacts
 
-Set `SKILL` to the installed skill directory. Workspace defaults to `AUTO_JOBBER_HOME`, otherwise `~/.local/share/auto-jobber`; explicit `--workspace` overrides both and must precede the subcommand. Keep private records outside the skill and repositories. Commands return JSON; retain their returned paths/IDs.
+Use these optional helpers when they serve the agreed workflow. Set `SKILL` to the installed skill directory. Native workspace defaults to `AUTO_JOBBER_HOME`, otherwise `~/.local/share/auto-jobber`; explicit `--workspace` overrides both and must precede the subcommand. Keep personal records outside the installed skill. The applicant may maintain their clean facts, profile and documents in a private repository by explicit choice; native cache/state is not a second master. Commands return JSON; retain useful paths internally rather than exposing implementation IDs as the user's profile.
 
 ## Onboard and review the CV
 
@@ -27,6 +27,8 @@ python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" preview
 # Iterate corrections and previews; seal only after actual baseline approval.
 python3 "$SKILL/scripts/auto_jobber.py" --workspace "$WORKSPACE" seal
 ```
+
+`preview` and `seal` accept `--html`, `--css`, `--language` and `--asset-root` for selected sources and optional local portraits; Photos owns the asset policy and example. A relative stylesheet link must match the explicitly selected CSS file, or use the legacy `cv.css` alias.
 
 `ACTUAL_USER_REPLY` means the explicit reply just received, not example consent. Optional voice retention before review/sealing:
 

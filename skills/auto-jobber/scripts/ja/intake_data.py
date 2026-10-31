@@ -28,7 +28,7 @@ def upstream_data(data):
             if item.get("gpa") is not None:
                 record["gpa"] = item["gpa"]
             result.setdefault(target, []).append(record)
-    result["skills"] = [{"heading": item["title"], "list-items": item.get("details") or [item["title"]]}
+    result["skills"] = [{"heading": item["title"], "list-items": item.get("details") or []}
                         for item in qualifications.get("expertise", [])]
     return result
 

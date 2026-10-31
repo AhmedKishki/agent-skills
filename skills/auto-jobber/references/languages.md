@@ -2,11 +2,11 @@
 
 ## Select the offer language
 
-Determine whether the posting is English (`en`) or German (`de`). Ask the user when mixed or ambiguous; do not infer document language from nationality or name. Both CV and letter must use that language. Pass the required `new --language` option; it selects an approved snapshot through workspace `variants.json`. Preserve `plan.job.language`: validation requires it to match the selection. Writing German documents never establishes German proficiency. Keep actual language levels source-backed and unknown when absent.
+Determine the document language from the posting and applicant's preference. Ask when mixed or ambiguous; do not infer it from nationality or name. Keep CV and letter consistent with the agreed language. Writing German documents never establishes German proficiency. With native helpers, pass `new --language en|de`; it selects an approved snapshot through `variants.json`, and `plan.job.language` must match.
 
-## Approve a baseline in each needed language
+## Native baselines in each needed language
 
-If the selected variant is missing, pause per-job drafting and prepare it with the user. Translate source-backed prose faithfully and review fixed labels, titles, chronology and meaning before approval. This is a separate baseline review, not a wholesale per-job rewrite or a bypass of Tailoring's edit budgets. `intake` optional `document_language: "en"|"de"` localizes fixed labels only; the agent must translate prose for user review rather than assume it was translated.
+When using the native baseline workflow, prepare a missing selected variant with the user before capturing its application snapshot. Translate source-backed prose faithfully and review fixed labels, titles, chronology and meaning before approval. This is a separate source review, not a bypass of an existing snapshot's edit budgets. `intake` optional `document_language: "en"|"de"` localizes fixed labels only; the agent must translate prose for user review rather than assume it was translated.
 
 Keep editable master sources wherever the user maintains them, for example root `cv.html` for English and workspace `cv.de.html` for German; no special variants directory exists. The profile in `qualifications.json` stays shared and unchanged between languages. Keep compatible editable marker IDs and evidence references in each HTML source. Never create different qualification histories by language.
 

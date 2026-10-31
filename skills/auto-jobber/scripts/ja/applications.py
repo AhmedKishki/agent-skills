@@ -30,6 +30,7 @@ def new_application(workspace, job_file=None, url=None, language="en"):
     (app / "sources").mkdir(mode=0o700)
     (app / "builds").mkdir(mode=0o700)
     for name in record["files"]:
+        (app / "input" / name).parent.mkdir(mode=0o700, parents=True, exist_ok=True)
         shutil.copyfile(baseline_folder / name, app / "input" / name)
     write_json(app / "input" / "baseline.json", record)
     write_text(app / "posting.txt", text)

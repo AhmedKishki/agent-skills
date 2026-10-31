@@ -4,10 +4,11 @@ from html.parser import HTMLParser
 
 from .common import require
 from .css_safety import validate_css
+from .portrait_assets import prepare_assets
 
 TAGS = set("html head title meta link style body main header footer section article div "
            "h1 h2 h3 h4 h5 h6 p span strong em b i ul ol li hr br a time address "
-           "table thead tbody tfoot tr td th dl dt dd small sup sub".split())
+           "table thead tbody tfoot tr td th dl dt dd small sup sub img".split())
 CSP = ("default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; "
        "img-src 'none'; font-src 'none'; connect-src 'none'; base-uri 'none'; "
        "form-action 'none'; frame-src 'none'; object-src 'none'")
@@ -19,12 +20,15 @@ class Markup(HTMLParser):
         self.validate, self.hidden, self.parts, self.styles = validate, [], [], []
 
     def handle_starttag(self, tag, attrs):
+        if self.validate:
+            require(len(dict(attrs)) == len(attrs), "Duplicate HTML attributes are forbidden")
         attrs = dict(attrs)
         if self.validate:
             require(tag in TAGS, f"Unsupported HTML element: {tag}")
             for key, value in attrs.items():
                 require(not key.lower().startswith("on"), "Event handlers are forbidden")
-                require(key not in {"src", "srcset", "background", "action", "http-equiv"},
+                require(key not in {"srcset", "background", "action", "http-equiv"}
+                        and (key != "src" or tag == "img"),
                         f"Resource/active HTML attribute is forbidden: {key}")
                 if key == "style":
                     validate_css(value or "")
@@ -58,7 +62,8 @@ def visible_text(source):
     return " ".join(" ".join(parser.parts).split())
 
 
-def standalone(source, css):
+def standalone(source, css, html_file=None, asset_root=None):
+    source, portraits = prepare_assets(source, html_file, asset_root)
     validate_css(css)
     parser = Markup(validate=True)
     parser.feed(source)
@@ -66,6 +71,7 @@ def standalone(source, css):
     require(len(re.findall(r"<head\s*>", source, re.I)) == 1,
             "CV must contain exactly one plain <head> element")
     source = re.sub(r"<link\b[^>]*>", "", source, flags=re.I)
-    addition = f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
+    policy = CSP.replace("img-src 'none'", "img-src data:") if portraits else CSP
+    addition = f'<meta http-equiv="Content-Security-Policy" content="{policy}">'
     return re.sub(r"<head\s*>", lambda m: m[0] + addition + "<style>" + css + "</style>",
                   source, count=1, flags=re.I)

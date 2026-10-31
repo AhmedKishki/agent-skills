@@ -16,7 +16,7 @@ def check_application(application):
     css = (app / "input" / "cv.css").read_text(encoding="utf-8")
     validate_profile(profile, baseline)
     require_current(profile)
-    standalone(baseline, css)
+    standalone(baseline, css, app / "input" / "cv.html", app / "input")
     warnings = validate_research(app, profile["policy"])
     plan, research = read_json(app / "plan.json"), read_json(app / "research.json")
     require(plan["job"]["language"] == read_json(app / "application.json")["language"],

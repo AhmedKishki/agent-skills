@@ -16,6 +16,7 @@ def parser():
         command.add_argument("--language", choices=("en", "de"))
         command.add_argument("--html", type=Path)
         command.add_argument("--css", type=Path)
+        command.add_argument("--asset-root", type=Path)
     for name in ("bootstrap", "intake"):
         command = commands.add_parser(name)
         command.add_argument("--data", required=True, type=Path)

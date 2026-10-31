@@ -22,6 +22,7 @@ def build_application(application, html_only=False):
         # Copy the sealed inputs only, never stray files/symlinks.
         names = read_json(app / "input" / "baseline.json")["files"]
         for name in list(names) + ["baseline.json"]:
+            (stage / "input" / name).parent.mkdir(mode=0o700, parents=True, exist_ok=True)
             shutil.copyfile(app / "input" / name, stage / "input" / name)
         write_text(stage / "posting.txt", (app / "posting.txt").read_text(encoding="utf-8"))
         write_json(stage / "plan.json", plan)
@@ -40,7 +41,8 @@ def build_application(application, html_only=False):
             target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
             shutil.copyfile(origin, target)
         write_text(stage / "cv.css", data["css"])
-        write_text(stage / "cv.html", standalone(data["tailored"], data["css"]))
+        write_text(stage / "cv.html", standalone(data["tailored"], data["css"],
+                                               stage / "input" / "cv.html", stage / "input"))
         write_text(stage / "cover-letter.html", cover_letter(plan, profile["person"], data["css"]))
         diff = difflib.unified_diff(data["baseline"].splitlines(True),
                                     data["tailored"].splitlines(True),
