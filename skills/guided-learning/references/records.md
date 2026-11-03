@@ -5,9 +5,11 @@ Keep subject folders where the student says. If they don't say, create `<subject
 ```
 <subject-slug>/
 ├── progress.md
-└── lessons/
-    ├── 01-<lesson-slug>.md
-    └── 02-<lesson-slug>.md
+├── lessons/
+│   ├── 01-<lesson-slug>.md
+│   └── 02-<lesson-slug>.md
+└── exercises/
+    └── 02-<lesson-slug>/   starter files, tests and the student's code
 ```
 
 ## Progress file
@@ -31,11 +33,11 @@ Current: Lesson <n>, <teaching | questions | check | re-explanation>
 Misconceptions: <each wrong model found, or "none found">
 
 ## Syllabus
-| # | Lesson | Covers | Sources | Status |
-|---|---|---|---|---|
-| 1 | <title> | <key ideas> | <source, sections> | done |
-| 2 | <title> | <key ideas> | <source, sections> | in progress |
-| 3 | <title> | <key ideas> | <source, sections> | pending |
+| # | Lesson | Type | Covers | Sources | Status |
+|---|---|---|---|---|---|
+| 1 | <title> | concept | <key ideas> | <source, sections> | done |
+| 2 | <title> | skill | <key ideas> | <source, sections> | in progress |
+| 3 | <title> | argument | <key ideas> | <source, sections> | pending |
 
 ## Log
 - <date>: Diagnosis complete, syllabus drafted.
@@ -60,8 +62,8 @@ Each lesson note holds what the student would want to reread:
 **Teacher:** <the answer as given>
 
 ## Check <k>
-1. <question, with options if multiple-choice>
-   - Answer: <the student's answer>
+1. <question with its options, or the exercise task>
+   - Answer: <the student's answer, or the path to their code and the test output>
    - Verdict: correct | incorrect, <reason> [<ref>]
 
 ## Re-explanation <k>

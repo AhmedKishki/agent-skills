@@ -32,7 +32,7 @@ After the last round, present three things:
 
 1. **Results.** Each diagnostic question with the student's answer, the correct answer, one line on why and the reference for it. A table works well.
 2. **Level.** For each strand: solid, shaky or missing, with the answers that show it. List any misconceptions separately.
-3. **Syllabus.** A numbered list of lessons. Give each one a title, what it covers in a line or two, the gap or part of the goal it serves, and the sources it draws on, with sections.
+3. **Syllabus.** A numbered list of lessons. Give each one a title, its type (concept, skill or argument, as [teaching.md](teaching.md) defines them), what it covers in a line or two, the gap or part of the goal it serves, and the sources it draws on, with sections.
 
 Build the syllabus from the level:
 

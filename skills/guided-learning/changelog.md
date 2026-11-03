@@ -7,6 +7,13 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.1.0 — 2026-11-04
+
+- Each lesson has a type, recorded in the syllabus: concept, skill or argument. The type decides how the lesson is taught and how its check tests it.
+- Skill lessons, such as coding lessons, work through a realistic example and hand the student steps of it to build. Their check includes at least one build exercise: a realistic task with acceptance tests that the student solves themselves.
+- The agent runs the student's code against the tests and reviews it. A failed exercise goes back to the student to fix, with hints only and a full solution only on request.
+- Exercise files live in `<subject>/exercises/<n>-<lesson-slug>/`. Progress files without a type column still resume.
+
 ## 1.0.0 — 2026-11-03
 
 - First version. Replaces `collaborative-learning`, which is removed from the collection.
