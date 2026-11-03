@@ -90,8 +90,8 @@ To add a skill, create `skills/<name>/SKILL.md` and its supporting files, then r
 | [`auto-jobber`](skills/auto-jobber/) | Retain qualifications, review English/German CVs, research employers and prepare CVs and cover letters in the applicant's own wording. |
 | [`coding-partner`](skills/coding-partner/) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
-| [`collaborative-learning`](skills/collaborative-learning/) | Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
+| [`guided-learning`](skills/guided-learning/) | Learn a topic with a teacher agent: level diagnosis, an approved syllabus, cited lessons, and checks with re-explanation until each lesson holds. |
 | [`human-writing`](skills/human-writing/) | Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences. |
 | [`humaniser`](skills/humaniser/) | Find repeated or unclear Markdown prose using a semantic checklist. |
 | [`markdown-refactor`](skills/markdown-refactor/) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |

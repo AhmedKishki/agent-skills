@@ -112,16 +112,16 @@
       ]
     },
     {
-      "name": "collaborative-learning",
-      "displayName": "Collaborative Learning",
-      "source": "./skills/collaborative-learning",
-      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/collaborative-learning",
+      "name": "guided-learning",
+      "displayName": "Guided Learning",
+      "source": "./skills/guided-learning",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/guided-learning",
       "repository": "https://github.com/AhmedKishki/agent-skills",
-      "description": "Conduct collaborative, source-grounded learning with a confirmed plan and Markdown records of explanations and discussion.",
+      "description": "Learn a topic with a teacher agent: level diagnosis, an approved syllabus, cited lessons, and checks with re-explanation until each lesson holds.",
       "tags": [
         "learning",
-        "research",
-        "records"
+        "teaching",
+        "assessment"
       ]
     },
     {

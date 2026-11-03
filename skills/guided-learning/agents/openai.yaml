@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guided Learning"
+  short_description: "Diagnose your level, then learn through cited lessons and checks"
+  default_prompt: "Use $guided-learning to teach me a topic, starting from my current level."

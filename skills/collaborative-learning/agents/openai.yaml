@@ -1,4 +1,0 @@
-interface:
-  display_name: "Collaborative Learning"
-  short_description: "Learn from sources with a confirmed plan and records"
-  default_prompt: "Use $collaborative-learning to plan a source-grounded learning session with me."
