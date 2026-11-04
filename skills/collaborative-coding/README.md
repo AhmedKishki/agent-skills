@@ -1,5 +1,7 @@
 # Collaborative Coding
 
+Install it in Claude Code 2.1.275 or later with `/plugin install collaborative-coding --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 An anti-vibe-coding skill: the user directs the work, and the agent proposes, explains, and applies one agreed code patch at a time.
 
 ## Use

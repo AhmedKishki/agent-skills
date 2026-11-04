@@ -1,5 +1,7 @@
 # White-Box Synthesis
 
+Install it in Claude Code 2.1.275 or later with `/plugin install white-box-synthesis --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Answers a query from the sources you supply, using only their wording and only the connections they state. A source can be a retrieval (RAG) result, a quotation, a passage, a note or your own writing.
 
 The agent first plans the argument A → B → … → Z that answers the query and keeps only the source sentences that Z needs. It then writes a derivation: exact source spans and the operations applied to them (COPY, DELETE, ORDER, INFLECT and NORMALISE, each from a closed list). A bundled script replays the derivation and renders the reply, so the agent never types the reply's prose. Where Z needs a link that no source states, the reply shows `⟦GAP: X → Y: …⟧`. An AI-authored link appears only where you allow it, as `⟦AI-AUTHORED: …⟧`.

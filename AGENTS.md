@@ -31,6 +31,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in `a
 - Keep host-specific metadata separate, such as `agents/openai.yaml`.
 - Keep metadata consistent with the skill's actual behaviour.
 - Update the skill's README when its user-facing behaviour changes.
+- Give each skill's README its one-step Claude Code install line, `/plugin install <name> --marketplace AhmedKishki/agent-skills`, and give each plugin manifest the same `name`, `description`, `author`, `homepage` and `repository` as its marketplace entry.
 
 ## File length
 
@@ -47,7 +48,8 @@ Apply these rules when creating, editing, maintaining, or releasing skills in `a
 - Check that every linked resource exists and contains the expected instructions.
 - Remove placeholders and check the workflow against the user's requirements.
 - Run added or modified executable scripts with representative inputs.
-- Validate Claude metadata with `claude plugin validate . --strict`.
+- Validate Claude metadata with `claude plugin validate . --strict`. Its only accepted warnings are the deliberately omitted plugin versions; any other warning or advice is fixed.
+- Install each changed plugin from the checkout into an isolated `CLAUDE_CONFIG_DIR` (`claude plugin marketplace add <checkout>`, then `claude plugin install <name>@ahmedkishki-skills`) and check that `claude plugin details <name>` lists its skill.
 - For behavioural changes, exercise relevant workflow paths where practical.
 - Distinguish structural validation from observed workflow behaviour.
 - Review the final diff and verify that only intended files changed.

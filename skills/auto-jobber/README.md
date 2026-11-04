@@ -1,5 +1,7 @@
 # Auto-jobber
 
+Install it in Claude Code 2.1.275 or later with `/plugin install auto-jobber --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 A reusable, author-led workflow for maintaining factual data, developing a professional profile, creating CV templates and CVs, and preparing an appropriate CV and cover letter for each supplied job offer. The agent and applicant choose the format, tools, template, information order, emphasis and appearance. Nothing is submitted automatically.
 
 Start with an old CV or lists of qualifications, projects and relevant personal information. Keep facts separate from profile wording and document design. As the applicant adds or corrects data, update the affected profile and working CV naturally; optional material need not appear in every version. Review drafts together rather than treating an import as a finished CV.

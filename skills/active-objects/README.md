@@ -1,6 +1,6 @@
 # active-objects
 
-This skill makes a coding agent hold to the active-object pattern in embedded C. It covers the objects and the kernel underneath them, whether that kernel is a cooperative one written for the project or RTOS threads on FreeRTOS or Zephyr.
+This skill makes a coding agent hold to the active-object pattern in embedded C. It covers the objects and the kernel underneath them, whether that kernel is a cooperative one written for the project or RTOS threads on FreeRTOS or Zephyr. Install it in Claude Code 2.1.275 or later with `/plugin install active-objects --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
 
 The agent reads `SKILL.md` and, for each task, the matching module in `references/`. This README and the guides in `guide/` are for people.
 

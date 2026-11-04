@@ -1,5 +1,7 @@
 # Read-Along Guide
 
+Install it in Claude Code 2.1.275 or later with `/plugin install read-along-guide --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Use this skill to make a companion that follows a book's argument in its own order. Read each guide unit before the matching section of the book. The guide breaks arguments into explicit steps for a non-expert reader.
 
 ## Typical usage

@@ -26,7 +26,7 @@
       "source": "./skills/auto-jobber",
       "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/auto-jobber",
       "repository": "https://github.com/AhmedKishki/agent-skills",
-      "description": "Retain qualifications, review English/German CVs, research employers and prepare CVs and cover letters in the applicant's own wording.",
+      "description": "Retain qualifications, review English/German CVs, research employers and prepare CVs, cover letters and research statements in the applicant's own wording.",
       "tags": [
         "career",
         "cv",

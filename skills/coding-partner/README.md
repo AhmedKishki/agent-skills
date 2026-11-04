@@ -1,5 +1,7 @@
 # Coding Partner
 
+Install it in Claude Code 2.1.275 or later with `/plugin install coding-partner --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Use this skill to understand existing code or develop a change collaboratively, with readability and your design constraints guiding the work. Explanations follow meaningful chunks of behaviour rather than fixed line counts.
 
 ## Typical usage

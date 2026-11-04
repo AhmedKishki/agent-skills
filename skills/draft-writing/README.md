@@ -1,5 +1,7 @@
 # Draft Writing
 
+Install it in Claude Code 2.1.275 or later with `/plugin install draft-writing --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Use this skill to develop a source-grounded article while retaining control of its thesis, claims, structure, wording and final form. Work stays within one section at a time, with provenance preserved for its prose.
 
 ## Typical usage

@@ -1,5 +1,7 @@
 # Humaniser
 
+Install it in Claude Code 2.1.275 or later with `/plugin install humaniser --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Use this skill to evaluate Markdown prose for generic AI writing patterns, content defects and mechanical faults. It reports findings for review; automatic rewriting is not implemented.
 
 ## Typical usage

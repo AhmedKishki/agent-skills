@@ -1,5 +1,12 @@
 {
   "name": "auto-jobber",
-  "description": "Author-led qualification retention, English/German CV review, employer research and minimally tailored HTML/PDF applications preserving the applicant's own words.",
-  "skills": ["./"]
+  "description": "Retain qualifications, review English/German CVs, research employers and prepare CVs, cover letters and research statements in the applicant's own wording.",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/auto-jobber",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
 }

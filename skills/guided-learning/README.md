@@ -1,5 +1,7 @@
 # Guided Learning
 
+Install it in Claude Code 2.1.275 or later with `/plugin install guided-learning --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Learn a topic, book or subject with an agent that acts as your teacher. It measures your level first, plans a syllabus from there to your goal, and teaches it lesson by lesson until each lesson's ideas hold.
 
 Start with a request such as:

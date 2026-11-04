@@ -1,5 +1,7 @@
 # Scheduled Learning
 
+Install it in Claude Code 2.1.275 or later with `/plugin install scheduled-learning --marketplace AhmedKishki/agent-skills`; for other agents, see the [collection README](../../README.md#install).
+
 Use this skill to study a book, paper or set of texts across successive runs. A Markdown progress file records completed coverage and the next part to explain.
 
 ## Typical usage

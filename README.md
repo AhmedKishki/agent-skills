@@ -13,7 +13,7 @@ claude plugin marketplace add AhmedKishki/agent-skills
 claude plugin install coding-partner@ahmedkishki-skills
 ```
 
-The repository provides one root marketplace, `ahmedkishki-skills`, with one independently installable plugin per skill. Replace `coding-partner` with any name in the table below. Each plugin explicitly discovers its root `SKILL.md` through `"skills": ["./"]`; there are no nested marketplaces.
+In Claude Code 2.1.275 or later, `claude plugin install coding-partner --marketplace AhmedKishki/agent-skills` adds the marketplace and installs the skill in one step; inside a session, `/plugin install coding-partner --marketplace AhmedKishki/agent-skills` does the same. The repository provides one root marketplace, `ahmedkishki-skills`, with one independently installable plugin per skill. Replace `coding-partner` with any name in the table below. Each plugin explicitly discovers its root `SKILL.md` through `"skills": ["./"]`; there are no nested marketplaces.
 
 Start a new Claude Code session or run `/reload-plugins` after installation. Invoke the example as `/coding-partner:coding-partner`.
 
@@ -87,7 +87,7 @@ To add a skill, create `skills/<name>/SKILL.md` and its supporting files, then r
 | Skill | Purpose |
 |---|---|
 | [`active-objects`](skills/active-objects/) | Design and review event-driven code built from active objects: private state, queue-only communication and run-to-completion handlers. |
-| [`auto-jobber`](skills/auto-jobber/) | Retain qualifications, review English/German CVs, research employers and prepare CVs and cover letters in the applicant's own wording. |
+| [`auto-jobber`](skills/auto-jobber/) | Retain qualifications, review English/German CVs, research employers and prepare CVs, cover letters and research statements in the applicant's own wording. |
 | [`coding-partner`](skills/coding-partner/) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
