@@ -57,7 +57,7 @@ Reviewers read the statement as evidence of the applicant's independent thinking
 - "Which limitation of current methods matters most to you, and why?"
 - "What would you test or measure first, and how would you begin?"
 
-The agent may find threads in the applicant's wording, phrase the applicant's own problem as an explicit question, point to a limitation their artifact documents and propose an order. It must not supply the problems, hypotheses, lessons or first steps itself. Where an answer is still missing, leave a visible, numbered gap in the draft and label the draft incomplete. Keep hypotheses and hopes recognisable as such; a planned test is never a result.
+The agent may find threads in the applicant's wording, phrase the applicant's own problem as an explicit question, point to a limitation their artifact documents and propose an order. It must not supply the problems, hypotheses, lessons or first steps itself. Where an answer is still missing, leave a visible gap in the draft and label the draft incomplete. If the applicant has no research question yet, follow [Drafting](drafting.md): the statement names the group's open problems they want to work on, in the group's words. Keep hypotheses and hopes recognisable as such; a planned test is never a result.
 
 ## Keep the applicant's voice
 
@@ -65,7 +65,7 @@ Write in the applicant's register, as Voice requires for letters, using clear sc
 
 ## Trace every sentence
 
-Keep a provenance record beside the draft in the application records, giving each sentence a label and an exact source locator:
+Keep a provenance record in the application records, outside the draft file and the conversation, giving each sentence a label and an exact source locator:
 
 | Label | Source |
 | --- | --- |
@@ -87,4 +87,4 @@ Point to the passages that meet each section's requirements, then check the draf
 - many topics without depth;
 - past work without future direction.
 
-Check that each thread has at least one explicit question or hypothesis and a practical first step from the applicant, that each artifact link matches the artifact, and that every claim about the group matches its source. Render the statement and confirm its page count within the group's limit, following Tailoring's rendering and inspection checks. A statement with open gaps or unreviewed B sentences remains a working draft; only the applicant can approve it.
+Check that each thread has at least one explicit question or hypothesis and a practical first step from the applicant, or, where the applicant has none yet, the group's open problems they chose, that each artifact link matches the artifact, and that every claim about the group matches its source. Render the statement and confirm its page count within the group's limit, following Tailoring's rendering and inspection checks. A statement with open gaps or unreviewed B sentences remains a working draft; only the applicant can approve it.
