@@ -23,6 +23,7 @@ If you catch yourself thinking one of these, stop. Each one means the work is ab
 | "If the queue is full, the event is just dropped." | A full queue is a bug, like a stack overflow. Size the queue so it never fills. | `objects-and-messages.md` |
 | "Calling the handler directly is simpler." | A handler called from another handler runs inside it, and a call from anywhere else breaks one-at-a-time delivery. Only the kernel calls handlers. | `kernel.md` |
 | "I'll update the diagram once the code settles." | A diagram that lags the code describes software that does not exist. Change it in the same change. | `diagrams.md` |
+| "I'll put the detail in the diagram so nothing is lost." | A diagram that shows everything shows nothing at a glance. Draw the states and transitions; the code holds the rest. | `diagrams.md` |
 | "The timeout arrived, so the time is up." | The timeout may be late. Check it as decided in D8. | `timers.md` |
 | "The header shows the struct, so I can use its fields." | If C allows an access, that does not make it permitted. | `objects-and-messages.md` |
 | "The kernel could let objects peek at each other." | The kernel follows the same contracts as the objects. | `kernel.md` |
@@ -32,3 +33,4 @@ If you catch yourself thinking one of these, stop. Each one means the work is ab
 
 - [ ] The change keeps every rule of each module it touches, and every item of the "Never" list in `SKILL.md`.
 - [ ] Every decision the code relies on is approved and recorded, and every exception is approved, recorded and marked in the code.
+- [ ] Nothing was added that no requirement needs: no extra state, flag, layer, option or diagram detail.

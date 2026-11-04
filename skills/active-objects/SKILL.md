@@ -32,8 +32,13 @@ Every contract protects one of three properties.
 2. **Queues only.** Objects communicate only by posting events, so every posted event must arrive.
 3. **Run to completion.** A handler deals with one event fully and returns without waiting.
 
+## Keep it simple
+
+Everything you write or draw takes the simplest form that meets the requirement: code, state machines, events and diagrams alike. Add a state, region, guard, flag, layer, option, field, comment or diagram detail only when a requirement or a failure needs it, and name that need. What a reader can see in the code is not repeated in a diagram or a comment. This is a contract, not a decision: it holds in every project.
+
 ## Never
 
+- Add a state, flag, layer, option or diagram detail that no requirement needs.
 - Read, write, call or share another object's internals. That rules out getters, setters, shared modules and globals that alias an object's data.
 - Block or wait in a handler, or save a position inside it.
 - Rely on a full queue to drop or delay an event. A full queue, store or pool is a bug, like a stack overflow: size each one so it never fills.

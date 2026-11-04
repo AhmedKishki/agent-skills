@@ -7,9 +7,9 @@ Each object's state machine is drawn as a UML statechart, and the objects togeth
 - Draw one statechart for every object and one network diagram for the whole program. The network shows every object, the kernel, every interrupt, and every event posted between them.
 - Draw the code as it behaves. Read the sources before drawing, and draw what they do, not what they should do: a diagram of the intended behaviour hides the deviations it exists to show. Planned links appear only on the network diagram, in grey and marked "(planned)".
 - Change a diagram in the same change as the code it describes. A diagram that lags the code describes software that does not exist.
-- Name objects, events, states and variables as the code names them. A prefix or suffix that every signal carries, such as `_SIG`, may be dropped if the file's header comment says so.
+- Name objects, events and states as the code names them. A prefix that every state or event of an object carries, such as `BEAM_STATE_` or `_SIG`, may be dropped if the file's header comment says so.
 - Where the code departs from UML semantics, say so in a note. For example, a handler that acts in an outer part before the state reacts reverses UML's order, in which the inner state reacts first.
-- Give each diagram the detail its reader needs and no more. Keep labels short and move definitions into the legend. A path that the code checks but can never take may be left out.
+- Keep every diagram as simple as it can be and still show its shape: a reader sees the states and transitions of a statechart, or the objects and events of the network, at a glance. What the code already says plainly stays in the code: no variable, action, counter, step number or note about a helper function. Draw a detail only when the shape cannot be understood without it, and then as one short phrase. A path that the code checks but can never take is left out.
 - Render every diagram and look at the picture before handing it over. Fix syntax errors first, then any label that could belong to two arrows, then crossings.
 
 Drawing is also a review. Report as a finding against `state-machines.md` every place where the picture cannot show the code plainly:
@@ -23,73 +23,54 @@ Drawing is also a review. Report as a finding against `state-machines.md` every 
 ## Files
 
 - One `.puml` file per object, named after its source file (`button.puml`), and one `network.puml`.
-- Each file starts with a comment that says what it describes, that it shows the code as it behaves, and any naming shortcut. Its title names the object and its source file: `title button - button.c`.
+- Each file starts with one comment line that says what it describes, that it shows the code as it behaves, and any prefix it drops. Its title names the object and its source file: `title button - button.c`.
 - Labels use plain ASCII (`>=`, `<=`, `*`), which every PlantUML version and font renders.
 - `plantuml -tpng -o <out dir> <file>.puml` renders a file. A syntax error gives an error picture and a nonzero exit status.
 
 ## Statecharts
 
+A statechart shows the states of one machine and the transitions between them, nothing else.
+
 | Element | PlantUML | Use it for |
 |---|---|---|
-| initial transition | `[*] --> Sensing : AO_SIG_START / action` | the step taken on the start event |
-| transition | `Sensing --> Waiting : EVENT(data) [guard] / action` | a change of state |
-| internal transition | `Waiting : EVENT [guard] / action` | an action that stays in the state; it is written in the state's box |
-| entry and exit actions | `Sensing : entry / action` and `Sensing : exit / action` | the state's own set-up and clean-up |
-| self-transition | `Sensing --> Sensing : EVENT / action` | leaving the state and entering it again, so its exit and entry actions run |
-| choice | `state ok <<choice>>`, then `Waiting --> ok : EVENT / r = read()` and `ok --> Reading : [r valid]` | a next state that depends on a value the action computes |
-| outer state | `state Polling { ... }`, then `Polling : EVENT / action` | behaviour the inner states share |
-| regions | `--` between the parts, inside a state named after the object | independent parts of one object, in place of every combination of their states |
+| initial transition | `[*] --> Sensing` | the first state |
+| transition | `Sensing --> Waiting : EVENT [guard]` | a change of state |
+| self-transition | `Sensing --> Sensing : EVENT` | leaving the state and entering it again |
+| outer state | `state Active { ... }`, then `Active --> Suspended : EVENT` | one arrow in place of the same arrow from every inner state |
 
-Labels follow these conventions:
+Nothing else is drawn by default. Actions (posts, assignments, timer starts), entry and exit lines, internal transitions, choice nodes, variables and legends stay in the code and, for posts, in the network diagram. When the shape cannot be understood without one, write it as one short phrase after `/` on the arrow, such as `fades out`.
 
-- A post is `post SIGNAL(data) to handle`, and a post to the object itself is `post SIGNAL to self`. An action used more than once gets a short name in the legend, such as `publish` or `fade in`.
-- A guard reads the values before the action runs and has no side effects. Opposite guards cover every case. A call whose result decides the next state is an action followed by a choice, never a guard.
-- A sub-machine that the object calls within one handler call is a region. Its triggers get lower-case names (`sample`, `press`), so that nobody mistakes them for queued events. The legend says which regions take queued events and in which order the handler calls the others.
-- PlantUML drops leading spaces in a state's lines, so each line must read on its own. `\n` breaks a long transition label.
-- The legend lists every kept variable with its meaning, unit and start value, every action name and every family of signals (`BUTTON_*`). It ends with "Events not shown in a state are ignored there." A state shows `/ ignore` only where a reader would expect it to handle the event.
+Conventions:
 
-Two independent parts, each with its own states:
+- A box holds its state name only.
+- A label is `EVENT [guard]`. The guard is in domain words (`Off allowed`, `bright`), not a function call, and the guards on one event out of one state cover every case. A call whose result decides the next state is two arrows with opposite guards. `\n` breaks a long label.
+- A state has no arrow for an event it ignores.
+- One chart shows one machine. Independent parts of an object, and a sub-machine that the object calls within one handler call, each get their own chart, titled `object - part`. A sub-machine's triggers get lower-case names (`sample`, `press`), so that nobody mistakes them for queued events. Two parts of a few states each may share a chart as regions, separated by `--`.
+- A chart that does not fit one screen is split, or its repeated arrows are folded into an outer state.
+- The style is plain: `hide empty description`, `skinparam shadowing false`, white boxes with grey borders.
 
-```plantuml
-state beam {
-  state "beam" as Beam {
-    [*] --> Off
-    Off --> Low : SINGLE_PRESS / publish
-  }
-  --
-  state "environment" as Environment {
-    [*] --> Dark
-    Dark --> Bright : AMBIENT_BRIGHT / publish
-  }
-}
-```
-
-The statechart of the button in `state-machines.md`, drawn from its event table and code:
+The statechart of the button in `state-machines.md`:
 
 ```plantuml
 @startuml
 ' button (button.c) as the code behaves.
-' A guard reads the values before the action runs.
 title button - button.c
+hide empty description
+skinparam shadowing false
+skinparam state {
+  BackgroundColor White
+  BorderColor #444444
+  ArrowColor #444444
+}
 
-[*] --> Sensing : AO_SIG_START
+state Active {
+  [*] --> Sensing
+  Sensing --> Waiting : TIMEOUT
+  Waiting --> Sensing : TIMEOUT
+}
 
-Sensing : entry / sense_begin(); start the timer (SETTLE_TICKS)
-Sensing : exit / stop the timer
-Waiting : entry / start the timer (WAIT_TICKS)
-Waiting : exit / stop the timer
-
-Sensing --> Waiting : AO_SIG_TIMEOUT [count matches] /\nread the level; if it changed,\npost BUTTON_PRESSED or BUTTON_RELEASED to lamp
-Sensing --> Suspended : POWER_SUSPEND / abandon the reading
-Waiting --> Sensing : AO_SIG_TIMEOUT [count matches]
-Waiting --> Suspended : POWER_SUSPEND
+Active --> Suspended : POWER_SUSPEND
 Suspended --> Sensing : POWER_RESUME
-
-legend left
-pressed: the level last posted to lamp; released at start
-count: the timer's start count; a timeout with another count is late (D8) and ignored in every state
-Events not shown in a state are ignored there.
-endlegend
 @enduml
 ```
 
