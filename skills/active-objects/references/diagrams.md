@@ -7,8 +7,9 @@ Each object's state machine is drawn as a UML statechart, and the objects togeth
 - Draw one statechart for every object and one network diagram for the whole program. The network shows every object, the kernel, every interrupt, and every event posted between them.
 - Draw the code as it behaves. Read the sources before drawing, and draw what they do, not what they should do: a diagram of the intended behaviour hides the deviations it exists to show. Planned links appear only on the network diagram, in grey and marked "(planned)".
 - Change a diagram in the same change as the code it describes. A diagram that lags the code describes software that does not exist.
-- Name objects, events and states as the code names them. A prefix that every state or event of an object carries, such as `BEAM_STATE_` or `_SIG`, may be dropped if the file's header comment says so.
+- Name objects, events and states as the code names them. A prefix that every state or event of an object carries, such as `BEAM_STATE_` or `_SIG`, may be dropped if the file's header comment says so. A name means one thing in an object: where dropping a prefix would give two states, or a state and an event, the same name, keep the prefix.
 - Where the code departs from UML semantics, say so in a note. For example, a handler that acts in an outer part before the state reacts reverses UML's order, in which the inner state reacts first.
+- Every state and every event of an object appears in its charts, by a shortened name. Simple never means incomplete: check the enums and the signals the object receives against the charts, and draw each one that is missing.
 - Keep every diagram as simple as it can be and still show its shape: a reader sees the states and transitions of a statechart, or the objects and events of the network, at a glance. What the code already says plainly stays in the code: no variable, action, counter, step number or note about a helper function. Draw a detail only when the shape cannot be understood without it, and then as one short phrase. A path that the code checks but can never take is left out.
 - Render every diagram and look at the picture before handing it over. Fix syntax errors first, then any label that could belong to two arrows, then crossings.
 
@@ -37,31 +38,28 @@ A statechart shows the states of one machine and the transitions between them, n
 | transition | `Sensing --> Waiting : EVENT [guard]` | a change of state |
 | self-transition | `Sensing --> Sensing : EVENT` | leaving the state and entering it again |
 | outer state | `state Active { ... }`, then `Active --> Suspended : EVENT` | one arrow in place of the same arrow from every inner state |
+| event without a state change | `Active : EVENT, EVENT` | the events a state or an outer state receives and stores or applies; names only |
 
-Nothing else is drawn by default. Actions (posts, assignments, timer starts), entry and exit lines, internal transitions, choice nodes, variables and legends stay in the code and, for posts, in the network diagram. When the shape cannot be understood without one, write it as one short phrase after `/` on the arrow, such as `fades out`.
+Nothing else is drawn by default. Actions (posts, assignments, timer starts), entry and exit lines, choice nodes, variables and legends stay in the code and, for posts, in the network diagram. An event that changes no state is a line of names in the box that receives it, with no action text. When the shape cannot be understood without one, write it as one short phrase after `/` on the arrow, such as `fades out`.
 
 Conventions:
 
 - A box holds its state name only.
 - A label is `EVENT [guard]`. The guard is in domain words (`Off allowed`, `bright`), not a function call, and the guards on one event out of one state cover every case. A call whose result decides the next state is two arrows with opposite guards. `\n` breaks a long label.
+- Every event is a name from the code: a signal, an event enum value, or the function or interrupt that starts the transition. A timer's event is the signal it posts with its time, `TIMEOUT (100 ms)`. A step that no event triggers shows only its guard, `[no step waits]`.
 - A state has no arrow for an event it ignores.
 - One chart shows one machine. Independent parts of an object, and a sub-machine that the object calls within one handler call, each get their own chart, titled `object - part`. A sub-machine's triggers get lower-case names (`sample`, `press`), so that nobody mistakes them for queued events. Two parts of a few states each may share a chart as regions, separated by `--`.
 - A chart that does not fit one screen is split, or its repeated arrows are folded into an outer state.
-- The style is plain: `hide empty description`, `skinparam shadowing false`, white boxes with grey borders.
+- The style is two lines at the top of every diagram: `hide empty description` and `skinparam monochrome true`. Repeat them instead of using `!include`, which many renderers resolve from another folder or not at all.
 
 The statechart of the button in `state-machines.md`:
 
 ```plantuml
 @startuml
 ' button (button.c) as the code behaves.
-title button - button.c
 hide empty description
-skinparam shadowing false
-skinparam state {
-  BackgroundColor White
-  BorderColor #444444
-  ArrowColor #444444
-}
+skinparam monochrome true
+title button - button.c
 
 state Active {
   [*] --> Sensing
