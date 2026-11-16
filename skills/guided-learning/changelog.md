@@ -7,6 +7,11 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.2.0 — 2026-11-16
+
+- Lessons, answers and re-explanations draw a picture wherever it makes an explanation clearer: memory layouts, data structures, state machines, timelines, data flow, before-and-after states. ASCII is the default because it renders everywhere; Mermaid is used where the notes' viewer draws it, and plots are saved as images beside the lesson note.
+- A re-explanation can take a diagram as its new angle.
+
 ## 1.1.0 — 2026-11-04
 
 - Each lesson has a type, recorded in the syllabus: concept, skill or argument. The type decides how the lesson is taught and how its check tests it.
