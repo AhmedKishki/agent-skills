@@ -7,6 +7,13 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.3.0 — 2026-11-18
+
+- The teacher's role is a system prompt, `prompts/teacher.md`, which the agent takes on before anything else.
+- A lesson reviewer, a subagent with its own system prompt in `prompts/lesson-reviewer.md`, reviews every lesson, every part of a skill lesson and every re-explanation once before the student sees it. It reports unmotivated steps, superfluous sentences and AI tells, and claims that the cited sources, code runs or calculations don't bear out, each with its evidence.
+- The teacher fixes the findings that hold up and ignores the rest, without a second review round. The student sees only the revised lesson; the review stays out of the subject folder, and the progress log records the number of findings and fixes.
+- On a host without subagents, the teacher runs the reviewer prompt as a separate pass over the finished draft.
+
 ## 1.2.0 — 2026-11-16
 
 - Lessons, answers and re-explanations draw a picture wherever it makes an explanation clearer: memory layouts, data structures, state machines, timelines, data flow, before-and-after states. ASCII is the default because it renders everywhere; Mermaid is used where the notes' viewer draws it, and plots are saved as images beside the lesson note.

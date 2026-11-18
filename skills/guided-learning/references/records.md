@@ -42,6 +42,7 @@ Misconceptions: <each wrong model found, or "none found">
 ## Log
 - <date>: Diagnosis complete, syllabus drafted.
 - <date>: Syllabus approved.
+- <date>: Lesson 1 reviewed: 6 findings, 5 fixed.
 - <date>: Lesson 1 check 3/3, done.
 - <date>: Lesson 2 check 1/3, missed <idea> (held <wrong model>), re-explained with <angle>.
 - <date>: Revision 2: inserted lesson 2a "<title>" for a missing prerequisite.
