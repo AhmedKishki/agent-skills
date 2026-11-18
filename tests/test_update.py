@@ -179,6 +179,7 @@ esac
             )
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+        (self.home / ".codex").mkdir()
         remote = self.root / "remote.git"
         run_git("init", "--bare", remote)
         run_git("init", "-b", "main", self.repo)
@@ -200,8 +201,8 @@ esac
         run_git("-C", publisher, "push")
         result, _ = self.run_update()
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        for agent in ("claude", "kilo", "cline"):
-            directory = self.home / f".{agent}/skills"
+        for directory in [self.home / f".{agent}/skills" for agent in ("claude", "kilo", "cline")] + [
+                self.home / ".agents/skills"]:
             self.assertFalse(os.path.lexists(directory / "example"))
             self.assertEqual(os.readlink(directory / "new"), str(self.repo / "skills/new"))
 

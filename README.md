@@ -1,6 +1,6 @@
 # Agent Skills
 
-Skills for Claude Code, Kilo Code and Cline. Each skill is a folder in `skills/` with a `SKILL.md`.
+Skills for Claude Code, Kilo Code, Cline and Codex. Each skill is a folder in `skills/` with a `SKILL.md`.
 
 ## Install
 
@@ -24,15 +24,16 @@ git clone https://github.com/AhmedKishki/agent-skills.git ~/agent-skills
 ~/agent-skills/bin/agent-skills install
 ```
 
-The installer checks these default agent directories and links every skill under `skills/` only where the parent directory already exists:
+The installer checks these default agent directories and links every skill under `skills/` only where the agent's directory already exists:
 
-| Agent | Existing parent directory |
-|---|---|
-| Claude Code | `~/.claude/` |
-| Kilo Code | `~/.kilo/` and `${XDG_CONFIG_HOME:-$HOME/.config}/kilo/` |
-| Cline | `~/.cline/` |
+| Agent | Existing agent directory | Skills linked into |
+|---|---|---|
+| Claude Code | `~/.claude/` | `~/.claude/skills/` |
+| Kilo Code | `~/.kilo/` and `${XDG_CONFIG_HOME:-$HOME/.config}/kilo/` | `skills/` inside each |
+| Cline | `~/.cline/` | `~/.cline/skills/` |
+| Codex | `${CODEX_HOME:-$HOME/.codex}/` | `~/.agents/skills/` |
 
-Missing parent directories are reported and never created. A missing `skills/` subfolder may be created inside an existing parent. Each location gets its own synchronized or skipped report, including when its links are already correct. Directory presence is not a claim that an agent or VS Code extension is installed.
+Missing agent directories are reported and never created. A missing `skills/` subfolder may be created inside an existing agent directory; for Codex, `~/.agents/skills/` is created when Codex's directory exists, because that shared folder is where Codex reads user skills. Other tools may also install skills there, and the installer leaves them alone. Codex follows the links, so a skill appears in Codex after a restart. Each location gets its own synchronized or skipped report, including when its links are already correct. Directory presence is not a claim that an agent or VS Code extension is installed.
 
 No agent configuration or marketplace registration is required. Restart or reload your agent to discover the skills. Existing Kilo `skills.paths` entries pointing to `~/.claude/skills` are no longer needed; the installer leaves them unchanged.
 

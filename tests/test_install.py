@@ -65,9 +65,11 @@ class InstallTests(unittest.TestCase):
             binary.write_text("#!/usr/bin/env bash\nexit 99\n")
             binary.chmod(0o755)
         output = self.install()
-        for root in [self.home / f".{agent}" for agent in AGENTS] + [self.home / ".config/kilo"]:
+        for root in [self.home / f".{agent}" for agent in AGENTS] + [self.home / ".config/kilo",
+                                                                     self.home / ".codex"]:
             self.assertFalse(os.path.lexists(root))
             self.assert_report(output, root, "skipped")
+        self.assertFalse(os.path.lexists(self.home / ".agents"))
         self.assertTrue((self.home / ".local/bin/agent-skills").is_symlink())
 
     def test_existing_subset_creates_skills_but_not_other_homes(self):
@@ -100,6 +102,41 @@ class InstallTests(unittest.TestCase):
             self.assertTrue((root / "skills/alpha").is_symlink())
             self.assert_report(output, root, "synchronized")
         self.assertFalse((default / "skills").exists())
+
+    def test_codex_links_into_the_shared_user_skills_folder(self):
+        (self.home / ".codex").mkdir()
+        shared = self.home / ".agents/skills"
+        (shared / "skill-creator").mkdir(parents=True)
+        (shared / "skill-creator/SKILL.md").write_text("installed by another tool\n")
+        output = self.install()
+        for name in ("alpha", "beta"):
+            self.assertEqual(os.readlink(shared / name), str(self.repo / "skills" / name))
+        self.assertFalse(os.path.lexists(shared / "not-a-skill"))
+        self.assertEqual((shared / "skill-creator/SKILL.md").read_text(),
+                         "installed by another tool\n")
+        self.assert_report(output, shared, "synchronized")
+        self.assertIn("Codex", output)
+
+    def test_codex_home_override_receives_backups(self):
+        codex_home = self.root / "codex-home"
+        codex_home.mkdir()
+        shared = self.home / ".agents/skills"
+        shared.mkdir(parents=True)
+        (shared / "alpha").write_text("original file")
+        output = self.install(CODEX_HOME=str(codex_home))
+        self.assertEqual(os.readlink(shared / "alpha"), str(self.repo / "skills/alpha"))
+        backups = list((codex_home / "skill-backups").glob("*/alpha"))
+        self.assertEqual([p.read_text() for p in backups], ["original file"])
+        self.assertFalse((self.home / ".codex").exists())
+        self.assert_report(output, shared, "synchronized")
+
+    def test_codex_without_home_leaves_the_shared_folder_alone(self):
+        shared = self.home / ".agents/skills"
+        shared.mkdir(parents=True)
+        output = self.install()
+        self.assertEqual(list(shared.iterdir()), [])
+        self.assertFalse((self.home / ".codex").exists())
+        self.assert_report(output, self.home / ".codex", "skipped")
 
     def test_symlink_directory_root_works_and_invalid_roots_are_untouched(self):
         target = self.root / "agent-home"
