@@ -9,6 +9,7 @@ The back and next lines of a justification depend on order. A sentence can be tr
 - Cut announcements and stage directions such as "this section explores" or "the key point is". Make the move they announce.
 - When no accurate opening can connect two parts, the argument has a gap. Name the missing relation, then supply it from the content or move the material.
 - Make each claim once, in its strongest place, and gather its support there. Cut a closing sentence that only repeats the conclusion. Keep one that adds a consequence, a qualification or a needed transition.
-- Keep the argument moving forward. A return to an earlier claim must add a new step.
+- Develop ideas in one direction: each idea builds only on ideas the reader already has. A return to an earlier claim must add a new step.
+- Keep related ideas together. Group them by kind first, then by time, then by place, unless the domain sets another order. A CV, for example, groups entries by kind (education, work), then by date, then by place.
 - Keep difficult ideas and keep their sentences simple. Split a sentence that claims, supports, qualifies and concludes at once.
 - Write as if explaining to an attentive reader in conversation. Each sentence answers the question that the sentence before it raised.

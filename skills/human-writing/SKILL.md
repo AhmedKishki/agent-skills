@@ -5,7 +5,7 @@ description: Write prose in which every sentence earns its place through a logic
 
 # Human writing
 
-A sentence is artificial when it makes no logical connection. You find such sentences while you write by justifying every sentence before you deliver it. The output therefore has two parts: the prose, which the reader gets, and the justification, which is your working.
+A sentence is artificial when it makes no logical connection, or when its words leave the reader asking who acts, on what, or from where. You find such sentences while you write by justifying every sentence before you deliver it. The output therefore has two parts: the prose, which the reader gets, and the justification, which is your working.
 
 ## Parts
 
@@ -20,10 +20,16 @@ A connection is the relation a sentence carries to its context. It can give a re
 1. **Every sentence needs work to do.** If you cannot say what a sentence does for its part, cut it.
 2. **A plain assertion is not enough on its own.** "X is Y" and "X is not Y" connect nothing by themselves. Keep one only when its context gives it work, such as a premise the next sentence reasons from.
 3. **Addition is not a connection.** "And", "also", "as well" and a phrase tacked onto the end of a sentence look like links, but they only set claims side by side. A sentence whose only link to its neighbour is "also" needs work from its part, like a plain assertion.
-4. **Join claims only by a relation.** One sentence may carry two claims only when one gives the reason, condition, consequence, concession or contrast of the other. Name that relation in the `joins` line. If the claims only sit side by side, split them and justify each new sentence on its own. One of them often turns out to have no work and is cut.
+4. **Join claims only by a relation.** One sentence may carry two claims only when one gives the reason, condition, consequence, concession or contrast of the other. Name that relation in the `joins` line. If the claims only sit side by side, split them and justify each new sentence on its own. One of them often turns out to have no work, and you cut it.
 5. **Negate only what could be confused.** "Not X but Y" and its variants are allowed only when X has something a reader could mistake for Y. Name that shared feature in the justification. If there is none, drop X and state Y.
 6. **Connectors must match the content.** Use "because", "so", "but" or "therefore" only when the sentences contain the relation the word names. If the relation is true but unstated, state it. If it is false, or you cannot tell, move or cut the sentence. Never invent a fact to make a connection.
 7. **Lists and tables are welcome.** A fact the reader needs that argues nothing, such as a specification value, can go in a list or table. Each item must answer the purpose of its list or table, and the sentences around them follow rules 1 to 6.
+8. **The noun must be able to do the verb.** Read each subject with its verb and ask: can this noun do this? If it cannot, replace the verb with the action that happens. A metaphor fails this test, so write the literal action. A verb of movement, such as "come out", "reach" or "lead to", must say from where and to where. If the reader has to ask, replace the verb.
+9. **Use the simplest exact words, in the active voice.** Choose the plainest noun and verb that keep the meaning. Make the actor the subject of every clause.
+10. **Every reference needs a target the reader can find.** A pronoun, "this", a name, a symbol, an abbreviation, a code identifier or a cross-reference must point to one thing that the text defines, shows or links. A code example shows where every name in it comes from.
+11. **Cut what changes no meaning.** Delete each phrase and each sentence in turn. If the text means the same without it, cut it.
+12. **Say something concrete.** Name the actor, the value or the case instead of a category, and give each abstract rule an example. Take the example from the subject: the sources, the code, the user's data or a calculation you show. Never invent one. If you have none, ask the user for one.
+13. **Develop ideas in order and keep related ones together.** Each idea builds only on ideas the reader already has. Group related ideas by kind first, then by time, then by place, unless the subject sets another order.
 
 The examples below come from a part that explains why dashboard prices are stale.
 
@@ -45,6 +51,14 @@ Rule 5:
 >
 > "The wrong prices look like a pricing-service bug, since they arrive through its API, but they come from the cache in front of it." **Keep.** Both causes deliver wrong values through the same API, so a reader could confuse them.
 
+The examples for rules 8 to 12 come from the documentation of a timer driver.
+
+> "A divider that does not come out whole is refused." **Rules 8 and 9: replace both verbs.** A divider does not come out of anything, and "is refused" hides who refuses. Better: "`init` panics if the timer clock is not a whole multiple of the tick rate."
+>
+> A usage example that consists of `let mut rcu = dp.rcu.constrain().freeze(&mut fmc, config);` alone. **Rule 10: add the missing lines.** The reader cannot tell what `dp`, `fmc` and `config` are. Add the lines that create them.
+>
+> "A rounded prescaler would make every duration in the program run fast or slow, with nothing to show for it." **Rules 11 and 12: cut the last phrase and give the case.** The last phrase adds no meaning, and "fast or slow" names no value. Better: "With a 1.125 MHz clock and a 1 MHz tick, rounding the divider to 1 makes every delay end 11 % early."
+
 ## Justification format
 
 ```
@@ -55,14 +69,15 @@ S1 "<first few words>"
   next: <what the next sentence takes from it, or how it closes the part>
   joins: <sentences with two or more claims: the relation between them>
   confusable: <negations only: what X shares with Y>
+  words: <rules 8 to 12: each subject that cannot do its verb, passive, open reference, removable phrase or abstraction, or "none">
   verdict: keep | repair: <how> | split | cut
 ```
 
 ## Generating
 
-1. Plan the parts and write each purpose in one line.
+1. Plan the parts in the order rule 13 sets, and write each purpose in one line.
 2. Draft the prose.
-3. Justify every sentence. Do this in your reasoning, or in a scratch file when the output is long. Test every "and" between clauses, every trailing phrase and every "also" against rules 3 and 4.
+3. Justify every sentence. Do this in your reasoning, or in a scratch file when the output is long. Test every "and" between clauses, every trailing phrase and every "also" against rules 3 and 4. Test every subject with its verb, every reference and every phrase against rules 8 to 12.
 4. Revise by the verdicts: cut, repair, split, move or merge. Justify each changed sentence again.
 5. Deliver the prose without the justification. Show the justification when the user asks for it. If they ask in a later turn, rebuild it from the delivered prose.
 

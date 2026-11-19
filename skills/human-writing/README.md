@@ -10,12 +10,14 @@ The skill serves the generation phase of every output. It makes the agent justif
 
 | File | Holds |
 |---|---|
-| `SKILL.md` | the definitions, the seven rules with examples, the justification format and the generation steps |
+| `SKILL.md` | the definitions, the thirteen rules with examples, the justification format and the generation steps |
 | `references/justification.md` | a weak part, its justification and its revision, worked through |
 | `references/detect-and-rewrite.md` | the check and rewrite modes for supplied text |
 | `references/semantic-tests.md` | from the humaniser: noun-verb fit, complete claims, referents, comparisons, logical links, lists |
 | `references/argument-order.md` | from the humaniser: where claims, evidence and conclusions go, and how a part opens |
 | `references/formulaic-phrases.md` | from the humaniser: the stock-phrase checklist |
+| `test-record.md` | the test rounds, their prompts and the BLE test text |
+| `changelog.md` | the changes in each version |
 
 `SKILL.md` holds everything that generation needs, so an ordinary reply runs without loading a module.
 
@@ -51,6 +53,10 @@ A connector that claims a relation the content lacks hides a gap in the argument
 
 The skill discourages superficial information in the prose and leaves lists and tables free. A fact the reader needs that argues nothing can therefore sit in a list or table, where each item answers the purpose of its list. This reading came from me and you accepted it.
 
+### Rules 8 to 13: words and order
+
+You set these rules after reviewing the documentation of a timer driver. There, "a divider that does not come out whole" left you asking "come out from where?", and a usage example used `dp` without the line that creates it. Rule 8 replaces the verb, not the noun, because the noun names what the sentence is about. Rule 9 makes the active voice a rule without exceptions, as you asked. Rule 12 forbids invented examples, so an agent without a real example asks the user for one. Rule 13 groups by kind before time and place, following your CV example. The tests for rules 8 to 12 sit in `references/semantic-tests.md` and the ordering details in `references/argument-order.md`.
+
 ### What came from the humaniser
 
 The semantic tests, the argument-order rules and the formulaic-phrase checklist became modules. Two parts stayed behind:
@@ -70,33 +76,4 @@ The description tells the agent to use the skill for any prose, even when the us
 
 ## Test record
 
-### Round 1 (before rules 3 and 4)
-
-Each prompt ran with and without the skill.
-
-- **A.** "Write a short section for our firmware team wiki explaining why we debounce the bike light's mode button in software on the GD32 rather than reading the GPIO directly. Three or four paragraphs, for a new junior engineer."
-- **B.** "Write about 300 words for a study-group handout explaining why Sayer distinguishes intensive from extensive research designs in Method in Social Science, and what each can and cannot tell you."
-- **C.** "Rewrite this using human-writing:" followed by the BLE text at the end of these notes.
-
-Results:
-
-- C separated the two configurations. Without the skill, the agent kept the vague "not a cut-down version" negation, added advice the source does not contain and gave no justification. With the skill, it cut the six padding sentences and kept the firmware negation with its shared symptom stated.
-- A and B passed the automatic checks (stock phrases, announcement phrases, length) in both configurations, so their differences are qualitative.
-- The skill cost about six times the wall time (235 s against 38 s on average) and about one and a half times the tokens.
-- Your review found weakly related sentences combined, which led to rules 3 and 4.
-
-### Round 2
-
-Rules 3 and 4 were applied without a test run.
-
-### Observed, not yet acted on
-
-- Running on every output multiplies the cost measured in round 1.
-- The A run kept strictly to "why" and dropped practical material the baseline gave: sampling on a timer tick, the RC alternative and the rule for the wake-up interrupt. A narrow reading of a part's purpose can cut useful content.
-- The B run ended on a one-sentence paragraph that states the conclusion.
-
-## BLE test text
-
-```
-In today's fast-paced world of connected devices, Bluetooth Low Energy has become a pivotal technology. BLE is a wireless protocol. It is not just a smaller version of classic Bluetooth, it is a fundamentally different approach to communication. A BLE peripheral advertises its presence and waits for a central to connect, and once connected the two exchange data in short connection events separated by a connection interval. The connection interval determines both latency and power consumption: a longer interval saves battery but delays every write. This is important. Many developers assume that a slow response comes from the firmware, but it often comes from the connection interval, since both show up as a delay between a write and its effect. Understanding the connection interval is key to building great BLE products. In conclusion, BLE offers developers a powerful, flexible and efficient way to connect devices.
-```
+The test rounds, their prompts and results are in `test-record.md`.
