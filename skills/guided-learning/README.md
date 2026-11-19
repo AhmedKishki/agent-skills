@@ -12,7 +12,7 @@ The agent asks for anything the request leaves open and then poses diagnostic qu
 
 Lessons, answers and re-explanations use a diagram wherever a picture explains an idea better than prose: memory layouts, state machines, timelines, data flow.
 
-Two agents work on each lesson, each with its own system prompt in `prompts/`. The teacher (`teacher.md`) drafts the lesson. The lesson reviewer (`lesson-reviewer.md`), a separate agent that didn't write the draft, reads it once and reports steps that arrive without a reason, sentences that carry nothing, such as filler and the usual marks of machine-written text, and claims that its sources, code runs or calculations don't bear out. The teacher fixes each finding that holds up and ignores the rest. Re-explanations are reviewed the same way. You see only the revised lesson.
+Two agents work on each lesson, each with its own system prompt in `prompts/`. The teacher (`teacher.md`) drafts the lesson. The lesson reviewer (`lesson-reviewer.md`), a separate agent that didn't write the draft, reads it once and reports steps that arrive without a reason, sentences that carry nothing, such as filler and the usual marks of machine-written text, and claims that its sources, code runs or calculations don't bear out. The teacher fixes each finding that holds up and ignores the rest. Supplements and re-explanations are reviewed the same way. You see only the revised lesson.
 
 After each lesson you can ask questions. When you have none, the agent checks the lesson the way its type demands. A concept lesson ends with questions. A coding or other skill lesson ends with a build exercise: a realistic task with tests, which you solve yourself while the agent runs and reviews your code. Skill lessons also hand you steps of their worked example to write. If you miss something, the agent re-explains that idea from a different angle and checks again before it moves on; a failed exercise goes back to you to fix.
 
@@ -21,7 +21,8 @@ Every claim cites your resources or a web source, with a page or section, so you
 Each subject gets a folder:
 
 - `progress.md`: goal, level, syllabus with status, and a log of check results.
-- `lessons/<n>-<slug>.md`: each lesson as taught, with your questions, the checks, re-explanations and references.
+- `lessons/<n>-<slug>.md`: each lesson as taught, with your questions, the checks, re-explanations and references. A delivered lesson never changes.
+- `lessons/<n>-<m>-<slug>.md`: supplements to lesson `<n>`. A conceptual question that needs a long answer, a deeper explanation or a correction to a lesson gets a supplement; a quick question is answered in the chat.
 - `exercises/<n>-<slug>/`: starter files, tests and your code for a skill lesson's exercises.
 
 Say "continue my <subject> course" to resume in a later conversation.

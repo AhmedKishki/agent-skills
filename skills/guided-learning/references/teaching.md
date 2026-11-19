@@ -25,7 +25,7 @@ Start from what the level assessment says the student holds, and build each idea
 
 Have the draft reviewed and revise it as [review.md](review.md) describes, then write the lesson note as [records.md](records.md) describes and deliver the lesson in one turn. A skill lesson is the exception: it pauses at the student's build step and continues once their step works. At the end, ask whether the student has questions and end your turn.
 
-Answer each question the student asks, with references, then ask whether there are more. A question that belongs to a later lesson gets a short answer and the lesson number that covers it. If a question shows that a prerequisite is missing, propose a syllabus change as [planning.md](planning.md) describes. When the student has no more questions, go to the check.
+Answer each question the student asks, with references, then ask whether there are more. Answer a quick question in the chat. When a conceptual question needs a deeper explanation than a few paragraphs, write a supplement to the lesson whose material it deepens, as [records.md](records.md) describes, instead of editing that lesson. A question that belongs to a later lesson gets a short answer and the lesson number that covers it. If a question shows that a prerequisite is missing, propose a syllabus change as [planning.md](planning.md) describes. When the student has no more questions, go to the check.
 
 ## Check
 

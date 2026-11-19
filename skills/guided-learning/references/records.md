@@ -7,7 +7,8 @@ Keep subject folders where the student says. If they don't say, create `<subject
 ├── progress.md
 ├── lessons/
 │   ├── 01-<lesson-slug>.md
-│   └── 02-<lesson-slug>.md
+│   ├── 02-<lesson-slug>.md
+│   └── 02-1-<supplement-slug>.md   supplement 1 to lesson 2
 └── exercises/
     └── 02-<lesson-slug>/   starter files, tests and the student's code
 ```
@@ -46,6 +47,7 @@ Misconceptions: <each wrong model found, or "none found">
 - <date>: Lesson 1 check 3/3, done.
 - <date>: Lesson 2 check 1/3, missed <idea> (held <wrong model>), re-explained with <angle>.
 - <date>: Revision 2: inserted lesson 2a "<title>" for a missing prerequisite.
+- <date>: Supplement 2-1 "<title>" for the student's question on <topic>; reviewed: 5 findings, 4 fixed.
 ```
 
 ## Lesson notes
@@ -70,14 +72,19 @@ Each lesson note holds what the student would want to reread:
 ## Re-explanation <k>
 <the re-explanation as delivered>
 
-## Corrections
-- <date>: <what was wrong, what is right> [<ref>]
-
 ## References
 1. <full entry>
 ```
 
-Save lessons, answers and re-explanations as delivered, because the student rereads the notes to study and a summary would lose the explanation. If you find that something you taught was wrong, tell the student, correct it with a reference and add it under Corrections instead of rewriting the original, so the note shows what changed.
+Save lessons, answers and re-explanations as delivered, because the student rereads the notes to study and a summary would lose the explanation. Never edit a delivered lesson's text. While a lesson is current, append its questions, checks and re-explanations to its note; once the next lesson starts, the note stays as it is. If you find that something you taught was wrong, tell the student and write the correction, with its reference, as a supplement to that lesson.
+
+## Supplements
+
+A supplement belongs to a delivered lesson. It answers a conceptual question that needs more depth than a short answer in the chat, explains the lesson's material more deeply, or corrects the lesson. A quick question gets its answer in the chat and needs no supplement.
+
+- Name the file `lessons/<n>-<m>-<slug>.md`: `<n>` is the number of the lesson whose material it deepens or corrects, `<m>` counts that lesson's supplements from 1, and the slug names the supplement's own topic, as in `04-1-traits-and-closures.md`.
+- Open it with `# Supplement <n>-<m>: <title>`, the lesson it belongs to and, when a question prompted it, the student's question verbatim.
+- Write and review it like a lesson, as [teaching.md](teaching.md) and [review.md](review.md) describe, and log it in `progress.md`.
 
 ## Writing
 

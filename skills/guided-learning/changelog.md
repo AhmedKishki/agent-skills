@@ -7,6 +7,12 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.4.0 — 2026-11-19
+
+- A delivered lesson's text never changes. While a lesson is current, its note still gains the student's questions, the checks and re-explanations; after that it stays as it is.
+- A conceptual question that needs more depth than a short answer gets a supplement: `lessons/<n>-<m>-<slug>.md`, for supplement `<m>` to lesson `<n>`, reviewed like a lesson and logged. A quick question is answered in the chat.
+- A correction to a delivered lesson goes into a supplement to that lesson. The lesson note's Corrections section is gone.
+
 ## 1.3.0 — 2026-11-18
 
 - The teacher's role is a system prompt, `prompts/teacher.md`, which the agent takes on before anything else.

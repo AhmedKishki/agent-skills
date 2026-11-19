@@ -1,6 +1,6 @@
 # Review
 
-Every lesson and re-explanation is reviewed once by the lesson reviewer before the student sees it. A skill lesson is reviewed part by part: the part up to the student's build step, then each continuation before you deliver it. Answers to the student's questions and check items are not reviewed.
+Every lesson, supplement and re-explanation is reviewed once by the lesson reviewer before the student sees it. A skill lesson is reviewed part by part: the part up to the student's build step, then each continuation before you deliver it. Answers to the student's questions and check items are not reviewed.
 
 ## Sending the draft
 
