@@ -1,13 +1,14 @@
 # Checklist
 
-The instrument for `scripts/evaluate.py`. Semantic checks first: they are decisive. Surface checks come second and can only tip the scale.
+The instrument for `scripts/evaluate.py`. Semantic checks first: they are decisive. Surface checks come second and can only tip the scale. Part A runs over this file (A1 to A7) and [checklist-wording.md](checklist-wording.md) (A8 to A11). Parts B and C, what to keep and the sources are in [checklist-surface.md](checklist-surface.md).
 
 Why this order. A generated passage and a written one can be identical in form — the same sentence lengths, the same punctuation, the same absence of repetition — and one of them can say nothing. Formatting cannot tell those apart. Meaning can. So the report supplies context windows, Part A asks whether the sentence means anything, and Part B asks whether its shape gives the reader away.
 
-Two tests run under everything in Part A:
+Three tests run under everything in Part A:
 
 - **Can you say it back in plain words without it turning poetic?** If the literal version is empty, the sentence carries no meaning.
 - **What does this add, and to what?** If the answer is nothing, or nothing in particular, the element is dead weight.
+- **Can this noun do this verb?** If it cannot, the fix replaces the verb with the action that happens.
 
 ## A. Slop features
 
@@ -20,6 +21,7 @@ The six families, expanded. Each check gives what to look for, a test, and an ex
 - **A1c Demonstrative standing in for a noun.** *That answer, This one states, It has reached the arsenal.* The pronoun points at something the reader cannot see.
 - **A1d Plural with no members.** *the social relations, the ordinary relations* without saying whose or which.
 - **A1e The collective that is not a collective.** *every large technology firm, nearly every company,* where the exception would matter.
+- **A1f Floating reference.** A name, symbol, abbreviation, code identifier or cross-reference whose target the text never defines, shows or links. *`dp.rcu.constrain()`* in a usage example that never shows the line creating `dp`.
 
 > That answer now sits at the centre of a boom. Boom of what, and what does the answer have to do with its centre?
 
@@ -27,7 +29,7 @@ Compare, from the same section written by the author:
 
 > The most valuable company in the world, Nvidia, with a $5.4tn market cap, has cashed in on Big Tech's AI aspirations (21 May 2026).
 
-**A2 Metaphorical.** A figure doing work the literal words cannot.
+**A2 Metaphorical.** Any figure of speech, even one whose meaning is clear. The fix names the literal action, and where the noun cannot do the verb, it replaces the verb.
 
 - **A2a Figure standing in for a mechanism.** *get behind the fetishism, unlock the mysteries, open up the question.* What operation is this?
 - **A2b Figure with no literal remainder.** Translate it back. If the plain version is empty, the figure carried nothing.
@@ -37,12 +39,13 @@ Compare, from the same section written by the author:
 
 > Any sober assessment of what a technology might do for us has to get behind the fetishism of things. Get behind it by doing what?
 
-**A3 Subject and verb mismatch.** The verb is carried by something that cannot do it.
+**A3 Subject and verb mismatch.** The verb belongs to something that cannot do it. Test: can this noun do this verb? If not, replace the verb.
 
 - **A3a Abstraction as actor.** *the network names, the analysis makes visible, the relations produce* where a person or a mechanism would.
 - **A3b The wrong valency.** *a set of relations is invoked: extraction, manufacturing, freight.* Extraction is not invoked; something invokes it.
 - **A3c Collective noun with a member's action.** *capitalism decides, the market consumes, the system designates,* where the argument is about who inside it does it.
-- **A3d Passive hiding the actor the sentence is about.** *waste is designated, data is labelled,* when the designating is the point.
+- **A3d Passive voice.** *waste is designated, data is labelled, a divider ... is refused.* Every passive is a finding. The fix names the actor and makes it the subject.
+- **A3e Movement with no path.** A verb of movement or change, such as *come out*, *reach* or *lead to*, that leaves the reader asking from where or to where. *A divider that does not come out whole*: come out of what?
 
 > the network it names runs on data centres How does a network name?
 
@@ -87,52 +90,3 @@ Test: delete the sentence. Does the next one still work? If it does, the sentenc
 - **A7b Elaborating a question nobody asked.** *it is not simply the adversary.* The negative half answers an objection the text has not raised.
 - **A7c The contrast that inflates.** *not merely X but Y* where the X is not a view anyone holds. Keep it when the negative half corrects a belief the reader does hold, which is most of the time in this article, and cut it when it is only there to make the positive half sound bigger.
 - **A7d The narrative borrowed.** *the underdog, the race, the war,* standing in for a relation the article could state.
-
-## B. Surface
-
-These cannot decide anything on their own. A generated passage passes all of them. They matter when a semantic check has already found the sentence thin and a surface habit confirms the diagnosis.
-
-- **B1 One frame across blocks.** The same opening, field labels or closing clause in a run of blocks. Test: the first three words of each block. `bold label openings` in the report gives the count.
-- **B2 Repeated clause.** A span repeated verbatim where the second copy adds nothing. The 3-gram list is the only reliable way to see it.
-- **B3 The same claim three times.** A rule or definition stated in an overview, its own block, and again at the close.
-- **B4 Bold as decoration.** Bold with no reason, or a list giving every item a bold label and a colon.
-- **B5 Forced triads.** Three where the meaning has two or four.
-- **B6 Dashes as the universal join.** One per sentence stops reading as a choice. Match the author's rate rather than removing them.
-- **B7 Semicolon-joined imperatives.** A register rather than a sentence: 10 or more per thousand words marks agent-facing prose.
-- **B8 Repeated sentence openings.** Consecutive sentences starting the same way. The 3-gram list shows it.
-- **B9 Repeated block openings.** *The, The, The.* Legitimate as a rhythm and a tell as a habit.
-- **B10 Knowledge-limit hedging.** *as of publication, recent reports suggest, it is believed that.* State what the source does not show, or cut the sentence.
-- **B11 The heading restated by its first block.** Cut the block.
-- **B12 Writing about the document.** A legend, an order, a note about what was assembled. Keep a caveat that changes what the reader should do.
-- **B13 Hyphenation.** The compound keeping its hyphen after the noun. A *missing* hyphen is a copy fault, not this item.
-
-## C. Mechanical and provenance faults
-
-Not voice. A reader trips on them whatever wrote the sentence, and they concentrate in files that have been edited, which is why a working draft carries more of them than a generated one. Report them under this heading and do not mix them into a voice score.
-
-- **C1 A figure stated two ways.** *hundreds of suppliers* and *tens of thousands of suppliers,* four sentences apart, with nothing saying they count different tiers.
-- **C2 A footnote carrying two unrelated figures.**
-- **C3 Footnote anchors out of sequence.** The number is supposed to be the order.
-- **C4 A locator pointing at the wrong source.**
-- **C5 Two names for one thing.** *the Democratic Republic of the Congo* and *the Democratic Republic of Congo* in one file.
-- **C6 A key term reversing its word order.** *waste data* and *data waste.*
-- **C7 A subject that cannot do its verb in a factual sentence.** A similarity cannot equate things.
-- **C8 A number with no period attached,** so the ratio the sentence exists to establish cannot be checked.
-- **C9 An unanchored referent at a pivot,** where the reader cannot tell which of two things just mentioned is meant.
-- **C10 A broken contraction or agreement,** the result of a bad edit: *is n't* for *isn't*, *All of these chains are the necessary condition* for four chains.
-
-## What to keep
-
-A checklist that removes every tell removes the writer. These are load-bearing and no item above touches them:
-
-- a specific, unusual detail: a real address, an odd figure or quote, a named person with a role
-- a number with its period, its source and its date
-- mixed feelings left unresolved
-- a first-person choice the writer can explain
-- a genuine aside, parenthetical or self-correction
-- an era-bound reference: slang, memes, dated phrases, in-jokes that map to a year
-- a question the writer has not answered yet
-
-## Source
-
-A1 to A7 were derived from the author's own classification of passages in this repository, blind to which were generated. A1, A2, A3, A6 and A7b come from the six families the author named: vague referent, metaphorical, subject/verb mismatch, opened and closed, grandiose marketing, tell before show. B and C adapt checks from [blader/humanizer](https://github.com/blader/humanizer) (MIT), which derives from Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), kept because formatting can tip a scale it cannot decide. A blind panel of eight evaluators, given the earlier 31-item version, rated generated passages cleaner than the author's own drafts: 4.3 tells per thousand words against 6.1. It was measuring editing residue, which is what a machine-written passage has none of.

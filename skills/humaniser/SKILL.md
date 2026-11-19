@@ -18,12 +18,12 @@ Three things, kept separate on purpose:
 | Layer | What it is | Who does it |
 |---|---|---|
 | **The loop** | `scripts/evaluate.py` segments the document into context windows and counts tokens | the script |
-| **The standard** | [references/checklist.md](references/checklist.md) holds the semantic checks, the surface checks and the mechanical faults | the checklist |
+| **The standard** | [references/checklist.md](references/checklist.md) and [references/checklist-wording.md](references/checklist-wording.md) hold the semantic checks; [references/checklist-surface.md](references/checklist-surface.md) holds the surface checks and the mechanical faults | the checklist |
 | **The judgement** | whether a given sentence says anything | you |
 
 The script never decides what is wrong with a sentence. It supplies the windows; you work the checklist against them. Rewriting the text on the strength of those findings is the next step and is not built yet.
 
-Read the checklist before judging anything. Run the script and report its result per [scoring](references/scoring.md).
+Read all three checklist files before judging anything. Run the script and report its result per [scoring](references/scoring.md).
 
 ## Scope
 
@@ -41,7 +41,7 @@ python3 scripts/evaluate.py FILE [FILE ...] --out /tmp/evaluate.md
 
 The report gives every block, sentence and phrase with the units around it. A judgement is made in the window a sentence sits in, not from a string in isolation.
 
-Work Part A on the `## Sentences` section. These are the checks that decide: the sentence either says something or it does not, and the surface cannot settle it. Pass every related file in one invocation, because the 3-gram list is computed across all of them and it is the only way to see a rule restated in three places.
+Work Part A on the `## Sentences` section, except A11, which needs the `## Blocks` section. These are the checks that decide: the sentence either says something or it does not, and the surface cannot settle it. Pass every related file in one invocation, because the 3-gram list is computed across all of them and it is the only way to see a rule restated in three places.
 
 Work Part B on the blocks and the 3-grams. These cannot decide anything alone. A generated passage passes all of them. They matter when a semantic check has already found the sentence thin.
 

@@ -27,7 +27,7 @@ Pass several files in one run: the 3-gram list is computed across all of them, a
 
 ## The numbers
 
-**Part A count.** For each of the seven semantic families, decide whether the document exhibits it, and in how many sentences. Report the families that fired, not a single percentage: A1 and A6 alone can account for most of what is wrong with a passage, and a number that merges them tells the reader nothing they can act on. Give each finding a quotation, a line number, and the test it failed.
+**Part A count.** For each semantic family, A1 to A11, decide whether the document exhibits it, and in how many sentences. Report the families that fired, not a single percentage: A1 and A6 alone can account for most of what is wrong with a passage, and a number that merges them tells the reader nothing they can act on. Give each finding a quotation, a line number, and the test it failed.
 
 **Part B count.** The same, over the surface items. Report it separately and label it as a tie-breaker.
 

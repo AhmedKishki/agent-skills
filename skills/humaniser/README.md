@@ -12,6 +12,7 @@ Use this skill to evaluate Markdown prose for generic AI writing patterns, conte
 
 - Context windows and text counts supplied by the evaluation script.
 - Checklist-based judgements, with semantic findings taking priority over surface patterns.
+- Wording and order checks: whether each noun can do its verb, passive voice, floating references, removable phrases, plain words, real examples and the order of ideas.
 - Ranked findings identifying the location, quotation and failed test.
 - Content and provenance faults reported separately from voice findings.
 
