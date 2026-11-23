@@ -43,11 +43,10 @@ Misconceptions: <each wrong model found, or "none found">
 ## Log
 - <date>: Diagnosis complete, syllabus drafted.
 - <date>: Syllabus approved.
-- <date>: Lesson 1 reviewed: 6 findings, 5 fixed.
 - <date>: Lesson 1 check 3/3, done.
 - <date>: Lesson 2 check 1/3, missed <idea> (held <wrong model>), re-explained with <angle>.
 - <date>: Revision 2: inserted lesson 2a "<title>" for a missing prerequisite.
-- <date>: Supplement 2-1 "<title>" for the student's question on <topic>; reviewed: 5 findings, 4 fixed.
+- <date>: Supplement 2-1 "<title>" for the student's question on <topic>.
 ```
 
 ## Lesson notes
@@ -84,7 +83,7 @@ A supplement belongs to a delivered lesson. It answers a conceptual question tha
 
 - Name the file `lessons/<n>-<m>-<slug>.md`: `<n>` is the number of the lesson whose material it deepens or corrects, `<m>` counts that lesson's supplements from 1, and the slug names the supplement's own topic, as in `04-1-traits-and-closures.md`.
 - Open it with `# Supplement <n>-<m>: <title>`, the lesson it belongs to and, when a question prompted it, the student's question verbatim.
-- Write and review it like a lesson, as [teaching.md](teaching.md) and [review.md](review.md) describe, and log it in `progress.md`.
+- Write it like a lesson, as [teaching.md](teaching.md) describes, and log it in `progress.md`.
 
 ## Writing
 

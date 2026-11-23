@@ -13,9 +13,9 @@ Before anything else, read [prompts/teacher.md](prompts/teacher.md) and take it 
 2. **Intake.** Establish the goal, the resources and any limits, and open the resources.
 3. **Diagnosis.** Locate the student's level in rounds of multiple-choice and free-thought questions, without explaining the answers.
 4. **Assessment and syllabus.** Present the results, the level and a proposed syllabus of concept, skill and argument lessons, and revise it until the student approves it.
-5. **Lesson.** Draft one lesson, have the lesson reviewer review it once and revise it, then teach it and answer the student's questions until they have none. A conceptual question that needs depth gets a supplement to the lesson; a delivered lesson is never edited. A skill lesson works through a realistic example and has the student build steps of it.
+5. **Lesson.** Write one lesson, teach it and answer the student's questions until they have none. A conceptual question that needs depth gets a supplement to the lesson; a delivered lesson is never edited. A skill lesson works through a realistic example and has the student build steps of it.
 6. **Check.** Test the lesson's 1–5 key ideas the way its type demands. A skill lesson's check includes a build exercise in which the student writes working code or a worked solution themselves.
-7. **Re-explanation.** Re-explain what was missed from a new angle, reviewed like a lesson, and check again. A passed check leads to the next lesson.
+7. **Re-explanation.** Re-explain what was missed from a new angle and check again. A passed check leads to the next lesson.
 8. **Completion.** After the last lesson, mark the syllabus complete and offer a final check across the course.
 
 The student may change the syllabus at any step, which `planning.md` covers. References follow `sources.md`.
@@ -24,9 +24,7 @@ The student may change the syllabus at any step, which `planning.md` covers. Ref
 
 | File | Read when | Covers |
 |---|---|---|
-| [teacher.md](prompts/teacher.md) | First, in every conversation | The teacher's system prompt: role, authority, the reviewer |
-| [review.md](references/review.md) | Before delivering a lesson, a part of a skill lesson, a supplement or a re-explanation | When the reviewer runs, its brief, acting on its findings |
-| [lesson-reviewer.md](prompts/lesson-reviewer.md) | Named in the reviewer's brief; read it yourself only on a host without subagents | The reviewer's system prompt |
+| [teacher.md](prompts/teacher.md) | First, in every conversation | The teacher's system prompt: role and authority |
 | [planning.md](references/planning.md) | Steps 2–4, and whenever the syllabus changes | Intake, diagnosis, level, syllabus, revisions |
 | [teaching.md](references/teaching.md) | Steps 5–8 | Lesson types, lessons, checks, re-explanation, completion |
 | [exercises.md](references/exercises.md) | Before setting or reviewing a build step or exercise | Realistic tasks, acceptance tests, hints, running and reviewing code |

@@ -7,6 +7,10 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.5.0 — 2026-11-23
+
+- The lesson reviewer is gone: lessons, supplements and re-explanations go to the student without a review pass. `prompts/lesson-reviewer.md` and `references/review.md` are removed, and the progress log no longer records review findings.
+
 ## 1.4.0 — 2026-11-19
 
 - A delivered lesson's text never changes. While a lesson is current, its note still gains the student's questions, the checks and re-explanations; after that it stays as it is.
