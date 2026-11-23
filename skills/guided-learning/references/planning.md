@@ -32,14 +32,14 @@ After the last round, present three things:
 
 1. **Results.** Each diagnostic question with the student's answer, the correct answer, one line on why and the reference for it. A table works well.
 2. **Level.** For each strand: solid, shaky or missing, with the answers that show it. List any misconceptions separately.
-3. **Syllabus.** A numbered list of lessons. Give each one a title, its type (concept, skill or argument, as [teaching.md](teaching.md) defines them), what it covers in a line or two, the gap or part of the goal it serves, and the sources it draws on, with sections.
+3. **Syllabus.** A numbered list of lessons. Give each one a title, the concepts it teaches, the exercise that puts them to use, the gap or part of the goal it serves, and the sources it draws on, with sections.
 
 Build the syllabus from the level:
 
 - Leave out strands the student holds solidly, and name them in one line so they can ask for them back.
 - Order lessons by dependency, so each lesson comes after everything it builds on. Missing foundations therefore come first.
 - Repair a misconception in the lesson where it would first cause trouble.
-- Give each lesson 1–5 key ideas, which is what one check can cover.
+- Give each lesson 1–5 key ideas, which is what one exercise and one check can cover.
 - Leave out topics that don't lead to the goal, however interesting they are.
 - Where the student's resources don't cover a lesson, name the web source you would use for it. Approving the syllabus then approves that source.
 
@@ -53,4 +53,4 @@ You may propose a change when teaching reveals something the diagnosis missed, s
 
 Keep existing lesson numbers, because the lesson notes and the log refer to them. Number an inserted lesson with a letter after the lesson it follows (`2a`), and mark a dropped lesson `dropped` instead of deleting its row.
 
-If the student wants to skip a lesson or its check, skip it and mark it `skipped`, because no answer has shown that they understood it. Tell them which later lessons build on it.
+If the student wants to skip a lesson, its exercise or its check, skip it and mark the lesson `skipped`, because their work hasn't shown that they understood it. Tell them which later lessons build on it.

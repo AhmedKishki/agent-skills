@@ -2,7 +2,7 @@
 
 Keep subject folders where the student says. If they don't say, create `<subject-slug>/` in the current working directory and tell them the path.
 
-```
+```text
 <subject-slug>/
 ├── progress.md
 ├── lessons/
@@ -10,7 +10,9 @@ Keep subject folders where the student says. If they don't say, create `<subject
 │   ├── 02-<lesson-slug>.md
 │   └── 02-1-<supplement-slug>.md   supplement 1 to lesson 2
 └── exercises/
-    └── 02-<lesson-slug>/   starter files, tests and the student's code
+    └── 02-<lesson-slug>/
+        ├── README.md               the exercise for lesson 2
+        └── ...                     starter files, tests and the student's work
 ```
 
 ## Progress file
@@ -24,7 +26,7 @@ Goal: <the concrete goal, in the student's words where possible>
 Resources:
 - <author, title, edition; path or URL>: <what it is used for>
 Syllabus: draft | approved | complete (revision <n>, <date>)
-Current: Lesson <n>, <teaching | questions | check | re-explanation>
+Current: Lesson <n>, <lesson | exercise | check | re-explanation>
 
 ## Level (<date>)
 | Strand | Level | Evidence |
@@ -34,61 +36,52 @@ Current: Lesson <n>, <teaching | questions | check | re-explanation>
 Misconceptions: <each wrong model found, or "none found">
 
 ## Syllabus
-| # | Lesson | Type | Covers | Sources | Status |
+| # | Lesson | Concepts | Exercise | Sources | Status |
 |---|---|---|---|---|---|
-| 1 | <title> | concept | <key ideas> | <source, sections> | done |
-| 2 | <title> | skill | <key ideas> | <source, sections> | in progress |
-| 3 | <title> | argument | <key ideas> | <source, sections> | pending |
+| 1 | <title> | <key ideas> | <what the student does> | <source, sections> | done |
+| 2 | <title> | <key ideas> | <what the student does> | <source, sections> | in progress |
+| 3 | <title> | <key ideas> | <what the student does> | <source, sections> | pending |
 
 ## Log
 - <date>: Diagnosis complete, syllabus drafted.
 - <date>: Syllabus approved.
-- <date>: Lesson 1 check 3/3, done.
-- <date>: Lesson 2 check 1/3, missed <idea> (held <wrong model>), re-explained with <angle>.
+- <date>: Lesson 1 exercise passed, check 3/3, done.
+- <date>: Lesson 2 exercise passed, check 1/3, missed <idea> (held <wrong model>), re-explained in supplement 2-1.
 - <date>: Revision 2: inserted lesson 2a "<title>" for a missing prerequisite.
-- <date>: Supplement 2-1 "<title>" for the student's question on <topic>.
+- <date>: Supplement 2-2 "<title>" for the student's question on <topic>.
 ```
 
 ## Lesson notes
 
-Each lesson note holds what the student would want to reread:
+A lesson note holds the lesson as delivered and its references:
 
 ```markdown
 # Lesson <n>: <title>
 
-## Lesson
 <the lesson as delivered, with numbered references>
-
-## Questions
-**Student:** <their question, verbatim>
-**Teacher:** <the answer as given>
-
-## Check <k>
-1. <question with its options, or the exercise task>
-   - Answer: <the student's answer, or the path to their code and the test output>
-   - Verdict: correct | incorrect, <reason> [<ref>]
-
-## Re-explanation <k>
-<the re-explanation as delivered>
 
 ## References
 1. <full entry>
 ```
 
-Save lessons, answers and re-explanations as delivered, because the student rereads the notes to study and a summary would lose the explanation. Never edit a delivered lesson's text. While a lesson is current, append its questions, checks and re-explanations to its note; once the next lesson starts, the note stays as it is. If you find that something you taught was wrong, tell the student and write the correction, with its reference, as a supplement to that lesson.
+Write the note once, when you deliver the lesson, and never change it afterwards. Whatever you write for the lesson afterwards goes elsewhere: a deeper answer, a re-explanation or a correction becomes a supplement, and exercise and check results go in the log.
+
+## Exercises
+
+`exercises/<n>-<lesson-slug>/README.md` holds the exercise as set: the task, its steps with the practical explanation each one needs, how the student checks their work, and the references. Starter files, tests and the student's work sit beside it.
 
 ## Supplements
 
-A supplement belongs to a delivered lesson. It answers a conceptual question that needs more depth than a short answer in the chat, explains the lesson's material more deeply, or corrects the lesson. A quick question gets its answer in the chat and needs no supplement.
+A supplement is a file of its own that belongs to a delivered lesson. It holds an answer that needs more depth than a short answer in the chat, a re-explanation of ideas the student missed, or a correction to the lesson. If you find that something you taught was wrong, tell the student and write the correction, with its reference, as a supplement. A quick question gets its answer in the chat and needs no supplement.
 
-- Name the file `lessons/<n>-<m>-<slug>.md`: `<n>` is the number of the lesson whose material it deepens or corrects, `<m>` counts that lesson's supplements from 1, and the slug names the supplement's own topic, as in `04-1-traits-and-closures.md`.
-- Open it with `# Supplement <n>-<m>: <title>`, the lesson it belongs to and, when a question prompted it, the student's question verbatim.
+- Name the file `lessons/<n>-<m>-<slug>.md`: `<n>` is the lesson's number, `<m>` counts that lesson's supplements from 1, and the slug names the supplement's own topic, as in `04-1-traits-and-closures.md`.
+- Open it with `# Supplement <n>-<m>: <title>`, the lesson it belongs to and what prompted it: the student's question verbatim, or the idea they missed.
 - Write it like a lesson, as [teaching.md](teaching.md) describes, and log it in `progress.md`.
 
 ## Writing
 
-Write each record in the same turn as the event it records, before the reply that reports it, so an interrupted conversation loses nothing. If a write fails, tell the student.
+Save lessons, exercises and supplements in full, because the student rereads them to study and a summary would lose the explanation. Write each record in the same turn as the event it records, before the reply that reports it, so an interrupted conversation loses nothing. If a write fails, tell the student.
 
 ## Resuming
 
-Read `progress.md` and the current lesson's note. Tell the student in a line or two where the course stands, then continue from the recorded stage. If a check was posed but not answered, pose it again. If you can't find the subject's folder, ask where it is instead of starting over.
+Read `progress.md`, the current lesson's note and its exercise. Tell the student in a line or two where the course stands, then continue from the recorded stage. If a check was posed but not answered, pose a new one. If you can't find the subject's folder, ask where it is instead of starting over.

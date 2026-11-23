@@ -1,6 +1,6 @@
 # Asking questions
 
-These rules apply to questions in the diagnosis and in checks; build exercises follow [exercises.md](exercises.md). Base every question on sourced material, so that its correct answer has a reference.
+These rules apply to questions in the diagnosis and in checks; exercises follow [exercises.md](exercises.md). Base every question on sourced material, so that its correct answer has a reference.
 
 ## Multiple-choice questions
 

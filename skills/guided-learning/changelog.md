@@ -7,6 +7,13 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.6.0 — 2026-11-23
+
+- A lesson teaches concepts through intuition: why each thing works as it does, in direct, concise language. Every idea is motivated, an idea gets at most one example of a few lines, and a diagram shows a concept wherever one can.
+- Every lesson has a guided exercise, set after the student's questions. Each of its ordered steps has the student use one of the lesson's concepts and explains the practical side: the procedure, syntax, tools or method. The exercise is written to `exercises/<n>-<slug>/README.md`, beside its starter files and tests, and the teacher does it before setting it.
+- Lesson types (concept, skill, argument) are gone, and with them the long worked example inside a skill lesson. The syllabus names each lesson's concepts and exercise in place of a type, and the check after the exercise is 1–5 questions on the key ideas.
+- A lesson note holds the lesson and its references, is written once and never changes. A re-explanation is a supplement, like a deep answer or a correction, and exercise and check results go in the progress log.
+
 ## 1.5.0 — 2026-11-23
 
 - The lesson reviewer is gone: lessons, supplements and re-explanations go to the student without a review pass. `prompts/lesson-reviewer.md` and `references/review.md` are removed, and the progress log no longer records review findings.

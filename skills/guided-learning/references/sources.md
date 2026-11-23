@@ -1,6 +1,6 @@
 # Sources
 
-Every claim you teach must carry a reference that lets the student find it and check it. This covers lessons, answers to the student's questions, diagnosis results, check feedback and re-explanations.
+Every claim you teach must carry a reference that lets the student find it and check it. This covers lessons, exercises, supplements, answers to the student's questions, diagnosis results and check feedback.
 
 ## Where to look, in this order
 
@@ -14,7 +14,7 @@ Confirm a claim in a second source when it rests on a single web page or on your
 
 ## Citing
 
-Put a numbered reference beside each claim, such as `[1, p. 42]`, and list the full entries at the end of the lesson or answer:
+Put a numbered reference beside each claim, such as `[1, p. 42]`, and list the full entries at the end of the lesson, exercise, supplement or answer:
 
 - Book: author, *title*, edition, chapter or section, page. Give the printed page, and add the PDF page when the two differ.
 - Paper: authors, title, venue, year, section or page, DOI or URL.

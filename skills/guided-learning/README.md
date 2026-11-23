@@ -10,18 +10,18 @@ Start with a request such as:
 
 The agent asks for anything the request leaves open and then poses diagnostic questions: multiple-choice in a clickable dialog, free-thought in the chat. It shows your results and your level per concept, and proposes a syllabus that skips what you already know. Teaching starts once you approve the syllabus, and you can change it at any point.
 
-Lessons, answers and re-explanations use a diagram wherever a picture explains an idea better than prose: memory layouts, state machines, timelines, data flow.
+A lesson teaches concepts: it builds your intuition for why each thing works as it does, in direct, concise language. Every idea opens with the problem it solves, an example stays a few lines long, and a diagram shows a concept wherever one can: memory layouts, state machines, timelines, data flow.
 
-After each lesson you can ask questions. When you have none, the agent checks the lesson the way its type demands. A concept lesson ends with questions. A coding or other skill lesson ends with a build exercise: a realistic task with tests, which you solve yourself while the agent runs and reviews your code. Skill lessons also hand you steps of their worked example to write. If you miss something, the agent re-explains that idea from a different angle and checks again before it moves on; a failed exercise goes back to you to fix.
+After each lesson you can ask questions. When you have none, the agent sets the lesson's exercise: a realistic task in ordered steps. Each step has you use one of the lesson's concepts and explains the practical side of it, such as the syntax, the tools or the method. You do the work, with hints when you are stuck, and the agent runs and reviews it. A short check of questions on new cases follows. If you miss something, the agent re-explains that idea from a different angle and checks again before it moves on.
 
 Every claim cites your resources or a web source, with a page or section, so you can check it. Ebooks are read through an ebook MCP server such as ebook-hero when one is connected.
 
 Each subject gets a folder:
 
-- `progress.md`: goal, level, syllabus with status, and a log of check results.
-- `lessons/<n>-<slug>.md`: each lesson as taught, with your questions, the checks, re-explanations and references. A delivered lesson never changes.
-- `lessons/<n>-<m>-<slug>.md`: supplements to lesson `<n>`. A conceptual question that needs a long answer, a deeper explanation or a correction to a lesson gets a supplement; a quick question is answered in the chat.
-- `exercises/<n>-<slug>/`: starter files, tests and your code for a skill lesson's exercises.
+- `progress.md`: goal, level, syllabus with status, and a log of exercise and check results.
+- `lessons/<n>-<slug>.md`: each lesson as taught, with its references. It is written once and never changes.
+- `lessons/<n>-<m>-<slug>.md`: supplements to lesson `<n>`. An answer that needs depth, a re-explanation or a correction to a lesson gets a supplement; a quick question is answered in the chat.
+- `exercises/<n>-<slug>/`: the lesson's exercise in `README.md`, with its starter files, tests and your work.
 
 Say "continue my <subject> course" to resume in a later conversation.
 
