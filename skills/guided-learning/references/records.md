@@ -38,9 +38,9 @@ Misconceptions: <each wrong model found, or "none found">
 ## Syllabus
 | # | Lesson | Concepts | Exercise | Sources | Status |
 |---|---|---|---|---|---|
-| 1 | <title> | <key ideas> | <what the student does> | <source, sections> | done |
-| 2 | <title> | <key ideas> | <what the student does> | <source, sections> | in progress |
-| 3 | <title> | <key ideas> | <what the student does> | <source, sections> | pending |
+| 1 | <title> | <key ideas> | <what the student does> | <primary source, sections; secondary sources> | done |
+| 2 | <title> | <key ideas> | <what the student does> | <primary source, sections; secondary sources> | in progress |
+| 3 | <title> | <key ideas> | <what the student does> | <primary source, sections; secondary sources> | pending |
 
 ## Log
 - <date>: Diagnosis complete, syllabus drafted.

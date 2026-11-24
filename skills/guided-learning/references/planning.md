@@ -32,14 +32,14 @@ After the last round, present three things:
 
 1. **Results.** Each diagnostic question with the student's answer, the correct answer, one line on why and the reference for it. A table works well.
 2. **Level.** For each strand: solid, shaky or missing, with the answers that show it. List any misconceptions separately.
-3. **Syllabus.** A numbered list of lessons. Give each one a title, the concepts it teaches, the exercise that puts them to use, the gap or part of the goal it serves, and the sources it draws on, with sections.
+3. **Syllabus.** A numbered list of lessons. Give each one a title, the concepts it teaches, the exercise that puts them to use, the gap or part of the goal it serves, and its primary source with sections, plus at most two secondary sources, as [sources.md](sources.md) describes.
 
 Build the syllabus from the level:
 
 - Leave out strands the student holds solidly, and name them in one line so they can ask for them back.
 - Order lessons by dependency, so each lesson comes after everything it builds on. Missing foundations therefore come first.
 - Repair a misconception in the lesson where it would first cause trouble.
-- Give each lesson 1–5 key ideas, which is what one exercise and one check can cover.
+- Give each lesson 1–5 key ideas, few enough to teach each one in depth: one exercise and one check can cover that many. Depth is the goal of a lesson and breadth comes from the number of lessons, so split a topic with more ideas into several lessons rather than skim them.
 - Leave out topics that don't lead to the goal, however interesting they are.
 - Where the student's resources don't cover a lesson, name the web source you would use for it. Approving the syllabus then approves that source.
 

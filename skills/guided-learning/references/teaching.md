@@ -6,14 +6,17 @@ A lesson teaches concepts: it builds the student's intuition for why each thing 
 
 Start from what the level assessment says the student holds, and build each idea on the one before it.
 
-- **Teach each concept through intuition.** Explain the mechanism underneath it and why it is built that way, in terms of something the student already knows, such as a C++ vector set against a Python list for a student who knows Python. Leave procedure, syntax and tooling to the exercise.
+- **Teach each concept through intuition.** Explain the mechanism underneath it and why it is built that way, in terms of something the student already knows, such as a C++ vector set against a Python list for a student who knows Python. Leave procedure and tooling to the exercise.
+- **Go deep, not broad.** Teach each concept until the student could predict what happens in a case the lesson didn't show: the mechanism, what it costs and where it breaks. Don't mention an idea in passing: a mention without an explanation leaves a gap the student trips on. An idea that doesn't fit at that depth belongs in another lesson, since breadth comes from more lessons.
+- **Be concrete.** Say exactly what happens: which code runs, in what order, what is in memory before and after, which value results. Replace every vague phrase, such as "handles", "takes care of", "under the hood" or "builds it twice", with the steps it stands for, and show a claim about behaviour (an order, a count, a cost) with a run or a trace the student can check. A sentence the student couldn't redraw as a concrete picture needs rewriting.
+- **Explain every construct you show.** The student must be able to read each line of an example. Syntax they haven't been taught, such as what `T x{arg};` declares or why a class definition ends in `;`, is explained where it first appears.
 - **Motivate everything in the lesson.** Open each idea with the problem it solves or the question it answers, because the student accepts an idea more easily when it answers a question they already have. If you can't say why the student needs a point here, leave it out.
 - **Write directly and concisely.** State each point once, in plain words. Don't narrate the structure ("first I will explain X, then Y") or summarise what you just said.
 - **Keep examples short.** Give an idea at most one example, a few lines long, cut down to the lines that show the idea. Longer worked material belongs in the exercise.
 - **Draw a diagram wherever one can show a concept**: a memory layout, a data structure, a state machine, events over time, data flowing between components, the state before and after a step, alternatives side by side. A diagram shows a whole structure at once, where prose makes the student rebuild it sentence by sentence. Give each diagram one idea and label every part. Draw it in ASCII, which displays everywhere, including the chat; use Mermaid only where the student reads the notes in a viewer that draws it, and save what ASCII can't show, such as a plot, as an image beside the lesson note and link it. Use a table for a comparison.
 - **Define each term** where it is first used. When the lesson needs a term or result from an earlier lesson, restate it in a sentence instead of pointing back, because the student rereads each lesson note on its own.
 - **Teach a text's argument by its structure**: the question it answers, the claim, its grounds, the steps from grounds to claim and the limits of the conclusion. Keep the source's qualifications, since dropping one changes what the source claims.
-- **Cite a source for every claim**, as [sources.md](sources.md) describes.
+- **Follow the lesson's primary source** and cite a source for every claim, as [sources.md](sources.md) describes.
 
 Supplements and answers in the chat follow the same rules.
 

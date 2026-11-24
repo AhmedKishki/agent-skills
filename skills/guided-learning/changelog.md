@@ -7,6 +7,12 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.7.0 — 2026-11-24
+
+- Each lesson and supplement rests on one primary source, a textbook or tutorial that explains the topic, with at most two secondary sources for what it lacks. The syllabus names each lesson's primary source.
+- Depth is a lesson's goal and breadth comes from more lessons: each concept is taught until the student could predict a case the lesson didn't show, and a topic with more ideas is split rather than skimmed.
+- Explanations are concrete: what runs, in what order, what is in memory, with a run or trace for each claim about behaviour, and no vague phrases. Every construct in an example is explained where it first appears.
+
 ## 1.6.0 — 2026-11-23
 
 - A lesson teaches concepts through intuition: why each thing works as it does, in direct, concise language. Every idea is motivated, an idea gets at most one example of a few lines, and a diagram shows a concept wherever one can.

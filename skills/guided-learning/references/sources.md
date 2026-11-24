@@ -2,6 +2,10 @@
 
 Every claim you teach must carry a reference that lets the student find it and check it. This covers lessons, exercises, supplements, answers to the student's questions, diagnosis results and check feedback.
 
+## One primary source per lesson
+
+Build each lesson and each supplement on one primary source, with at most two secondary sources. The primary source carries the explanation: its order, terms and examples shape the lesson, and its sections are what the student rereads. A secondary source supplies one thing the primary lacks, such as a comparison with a language the student knows, a measurement or a version-specific detail. A lesson stitched together from many sources switches between their terms, quotes a fragment of each and explains none fully. Choose as the primary a textbook or tutorial that explains the topic rather than a reference that only defines it, from the student's resources when one covers the lesson, otherwise from the web as below.
+
 ## Where to look, in this order
 
 1. **The student's resources.** Open an ebook (PDF or EPUB) through an ebook MCP server when one is connected, such as ebook-hero: `book_info` for the edition and page count, `outline` for the table of contents, `search` for a question, `find` for every occurrence of a term and `read` to expand a hit into its context. These tools return exact locators, which make the references reproducible. Read the file directly only when no such server is connected. Open other files and the student's links with the ordinary file and web tools.
