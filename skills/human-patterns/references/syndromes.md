@@ -24,6 +24,4 @@ Correction:
 
 > A constructor is the only way to make an object. C++ constructs an object in a fixed order.
 
-A reference (*it, this, they, which* and the like) is vague if more than one noun in its sentence or the one before makes sense in its place, or if what it stands for is not a noun in the text.
-
-Replace a vague reference with the noun it means. If the text has no such noun, name the thing.
+A reference (*it, this, they, which* and the like) is vague if more than one noun in the sentence can take its place, or if its referent is not in the sentence. A vague reference must be replaced with the noun it refers to.
