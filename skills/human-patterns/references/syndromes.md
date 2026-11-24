@@ -1,6 +1,6 @@
 # Syndromes
 
-## Placeholder *something*
+## Apposition that adds no information
 
 Example:
 
@@ -8,6 +8,6 @@ Example:
 
 Correction:
 
-> The C++ Core Guidelines use `class` to tell the reader that the type has an invariant.
+> The C++ Core Guidelines use the keyword `class` to tell the reader that the type has an invariant.
 
-If *something* refers to a concrete object, drop *something* and mention the object directly.
+If a part of the apposition adds no information, as *something* never does, drop it and mention the object directly. Keep a part that adds information, as *the keyword* does for `class`.
