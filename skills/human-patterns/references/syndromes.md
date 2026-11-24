@@ -37,3 +37,15 @@ Correction:
 > In Python, `x = value` always binds the name `x` to an object.
 
 If a sentence announces how many things it will give, as *does one thing:* does, and the number is irrelevant, drop the announcement and give the things directly.
+
+## Vague emphasis
+
+Example:
+
+> C++ has two operations that both use `=`, and each runs different code.
+
+Correction:
+
+> C++ has two operations that both use `=`.
+
+If a clause joined by *and* says nothing that the rest of the sentence does not already imply, drop it.
