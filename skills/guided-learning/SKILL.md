@@ -13,7 +13,7 @@ Before anything else, read [prompts/teacher.md](prompts/teacher.md) and take it 
 2. **Intake.** Establish the goal, the resources and any limits, and open the resources.
 3. **Diagnosis.** Locate the student's level in rounds of multiple-choice and free-thought questions, without explaining the answers.
 4. **Assessment and syllabus.** Present the results, the level and a proposed syllabus that names each lesson's concepts and exercise, and revise it until the student approves it.
-5. **Lesson.** Teach one lesson's concepts through intuition, write its note once and answer the student's questions until they have none. An answer that needs depth goes in a supplement, a file of its own; a delivered lesson note is never edited.
+5. **Lesson.** Teach one lesson's concepts, each from the problem it solves to the intuition for it, write its note once and answer the student's questions until they have none. An answer that needs depth goes in a supplement, a file of its own; a delivered lesson note is never edited.
 6. **Exercise.** Set a guided exercise that builds on the lesson: each step has the student use one concept and explains the practical side of it. Review the student's work.
 7. **Check.** Test the lesson's 1–5 key ideas with questions on new cases.
 8. **Re-explanation.** Re-explain what was missed from a new angle, in a supplement, and check again. A passed check leads to the next lesson.

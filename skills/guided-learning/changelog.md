@@ -7,6 +7,12 @@ description: Records the enduring user-visible history of the guided-learning sk
 
 This is the single enduring changelog for `guided-learning`. Current behaviour is governed by `SKILL.md`; historical entries describe the behaviour of their version.
 
+## 1.8.0 — 2026-11-24
+
+- Each concept is explained in a fixed order: the problem it solves, stated before any detail of how it works, then how it solves it, its own problems, the other solutions, how to apply it and the intuition. An answer to a narrow question gives the point first, then only the parts the question needs.
+- Explanations use the simplest language, form and example that carry the point.
+- A lesson explains each concept with its primary source's own explanation, clarification and intuition, and adds the teacher's own only where the source gives none or builds on something the student doesn't know yet.
+
 ## 1.7.0 — 2026-11-24
 
 - Each lesson and supplement rests on one primary source, a textbook or tutorial that explains the topic, with at most two secondary sources for what it lacks. The syllabus names each lesson's primary source.
