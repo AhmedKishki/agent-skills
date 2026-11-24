@@ -24,8 +24,6 @@ Correction:
 
 > A constructor is the only way to make an object. C++ constructs an object in a fixed order.
 
-1. Find every reference: *it, its, they, them, their, he, she, this, that, these, those*, and *which* after a comma. A *this* or *that* that opens a sentence with no noun after it is a strong signal.
-2. List the candidates: every noun phrase in the same sentence and the one before it that agrees with the reference in number, and the referent the writer means.
-3. Replace the reference with each candidate. The reference is vague if more than one candidate makes sense, or if the referent the writer means is not a noun in the text.
+A reference (*it, this, they, which* and the like) is vague if more than one noun in its sentence or the one before makes sense in its place, or if what it stands for is not a noun in the text.
 
 Replace a vague reference with the noun it means. If the text has no such noun, name the thing.
