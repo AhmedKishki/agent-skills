@@ -88,6 +88,7 @@ To add a skill, create `skills/<name>/SKILL.md` and its supporting files, then r
 | Skill | Purpose |
 |---|---|
 | [`active-objects`](skills/active-objects/) | Design and review event-driven code built from active objects: private state, queue-only communication and run-to-completion handlers. |
+| [`ai-human-agreement`](skills/ai-human-agreement/) | The agreement establishes the AI-Human relationship as one of master (human) and servant (AI). |
 | [`auto-jobber`](skills/auto-jobber/) | Retain qualifications, review English/German CVs, research employers and prepare CVs, cover letters and research statements in the applicant's own wording. |
 | [`coding-partner`](skills/coding-partner/) | Explain code chunk by chunk and collaboratively engineer minimal, readable code under user-defined constraints. |
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |

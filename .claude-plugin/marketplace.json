@@ -175,6 +175,19 @@
         "research",
         "provenance"
       ]
+    },
+    {
+      "name": "ai-human-agreement",
+      "displayName": "AI-Human agreement",
+      "source": "./skills/ai-human-agreement",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/ai-human-agreement",
+      "repository": "https://github.com/AhmedKishki/agent-skills",
+      "description": "The agreement establishes the AI-Human relationship as one of master (human) and servant (AI).",
+      "tags": [
+        "agreement",
+        "collaboration",
+        "learning"
+      ]
     }
   ]
 }

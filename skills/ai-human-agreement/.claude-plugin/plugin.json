@@ -1,0 +1,12 @@
+{
+  "name": "ai-human-agreement",
+  "description": "The agreement establishes the AI-Human relationship as one of master (human) and servant (AI).",
+  "author": {
+    "name": "Ahmed Kishki"
+  },
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/ai-human-agreement",
+  "repository": "https://github.com/AhmedKishki/agent-skills",
+  "skills": [
+    "./"
+  ]
+}
