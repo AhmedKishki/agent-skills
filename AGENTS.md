@@ -35,11 +35,11 @@ Apply these rules when creating, editing, maintaining, or releasing skills in `a
 
 ## File length
 
-- Keep new skill files and this `AGENTS.md` at 100 lines or fewer per file.
-- When editing a skill file, keep the resulting file within that limit.
+- Keep each skill's `SKILL.md` and this `AGENTS.md` at 100 lines or fewer per file.
+- When editing a `SKILL.md`, keep the resulting file within that limit.
 - Split longer instructions into coherent reference files; do not compress prose into unreadably long lines to evade the limit.
 - If splitting an existing file would exceed the authorised scope, explain the required restructuring and ask before expanding the task.
-- Apply the limit to skill package files, not to records produced by a skill.
+- Apply the limit only to `SKILL.md` and this `AGENTS.md`, not to reference files or records produced by a skill.
 - Do not refactor unrelated existing files merely to enforce the limit.
 
 ## Verify changes
