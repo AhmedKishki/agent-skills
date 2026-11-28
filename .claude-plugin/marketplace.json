@@ -125,12 +125,12 @@
       ]
     },
     {
-      "name": "human-writing",
-      "displayName": "Human Writing",
-      "source": "./skills/human-writing",
-      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-writing",
+      "name": "human-patterns",
+      "displayName": "Human Patterns",
+      "source": "./skills/human-patterns",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-patterns",
       "repository": "https://github.com/AhmedKishki/agent-skills",
-      "description": "Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences.",
+      "description": "Review a text against AI writing syndromes, identify and fix them, and report to the user.",
       "tags": [
         "writing",
         "editing",
@@ -138,12 +138,12 @@
       ]
     },
     {
-      "name": "humaniser",
-      "displayName": "Humaniser",
-      "source": "./skills/humaniser",
-      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/humaniser",
+      "name": "human-writing",
+      "displayName": "Human Writing",
+      "source": "./skills/human-writing",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-writing",
       "repository": "https://github.com/AhmedKishki/agent-skills",
-      "description": "Find AI writing patterns in Markdown against a semantic checklist and report a ranked list of findings for approval.",
+      "description": "Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences.",
       "tags": [
         "writing",
         "editing",
