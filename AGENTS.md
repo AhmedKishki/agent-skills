@@ -5,6 +5,7 @@ Apply these rules when creating, editing, maintaining, or releasing skills in `a
 ## File responsibilities
 
 - Keep each skill self-contained in its own directory, `skills/<skill-name>/`, with everything it needs inside it.
+- A skill never refers to another skill.
 - Use `SKILL.md` for the operational workflow and routing to supporting files.
 - Use `references/*.md` for detailed instructions needed during that workflow.
 - Use the skill's `README.md` for a brief user-facing introduction and usage.
