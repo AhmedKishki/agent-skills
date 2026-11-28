@@ -1,9 +1,9 @@
 ---
-name: human-patterns
-description: Review a text against the AI writing syndromes in references/syndromes.md, identify and fix them, and report to the user. Use when the user asks to review, check or fix a text for AI writing, AI patterns or syndromes, or names human-patterns.
+name: humaniser
+description: Review a text against the AI writing syndromes in references/syndromes.md, identify and fix them, and report to the user. Use when the user asks to review, check or fix a text for AI writing, AI patterns or syndromes, or names humaniser.
 ---
 
-# Human patterns
+# Humaniser
 
 Review the input against the syndromes in [references/syndromes.md](references/syndromes.md). Read that file before every review.
 

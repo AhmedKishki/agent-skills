@@ -94,8 +94,7 @@ To add a skill, create `skills/<name>/SKILL.md` and its supporting files, then r
 | [`collaborative-coding`](skills/collaborative-coding/) | Work through a shared task list with user-approved code patches and Beginner, Standard, or Expert explanations. |
 | [`draft-writing`](skills/draft-writing/) | Author-led, source-grounded drafting in isolated sections, using white-box synthesis, approved AI gap text and collaborative smoothing. |
 | [`guided-learning`](skills/guided-learning/) | Learn a topic with a teacher agent: level diagnosis, an approved syllabus, cited lessons, and checks with re-explanation until each lesson holds. |
-| [`human-patterns`](skills/human-patterns/) | Review a text against AI writing syndromes, identify and fix them, and report to the user. |
-| [`human-writing`](skills/human-writing/) | Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences. |
+| [`humaniser`](skills/humaniser/) | Review a text against AI writing syndromes, identify and fix them, and report to the user. |
 | [`markdown-refactor`](skills/markdown-refactor/) | Make agent-facing Markdown do its job sufficiently, with one owner per type of information and one meta view. |
 | [`read-along-guide`](skills/read-along-guide/) | Build book companions with verified quotations, diagrams, linked definitions and PDF output. |
 | [`scheduled-learning`](skills/scheduled-learning/) | Study a source section by section across manual or automated runs, with source-faithful explanations and a persistent progress file. |

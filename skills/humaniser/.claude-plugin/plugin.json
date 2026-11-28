@@ -1,10 +1,10 @@
 {
-  "name": "human-patterns",
+  "name": "humaniser",
   "description": "Review a text against AI writing syndromes, identify and fix them, and report to the user.",
   "author": {
     "name": "Ahmed Kishki"
   },
-  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-patterns",
+  "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/humaniser",
   "repository": "https://github.com/AhmedKishki/agent-skills",
   "skills": [
     "./"

@@ -125,25 +125,12 @@
       ]
     },
     {
-      "name": "human-patterns",
-      "displayName": "Human Patterns",
-      "source": "./skills/human-patterns",
-      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-patterns",
+      "name": "humaniser",
+      "displayName": "Humaniser",
+      "source": "./skills/humaniser",
+      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/humaniser",
       "repository": "https://github.com/AhmedKishki/agent-skills",
       "description": "Review a text against AI writing syndromes, identify and fix them, and report to the user.",
-      "tags": [
-        "writing",
-        "editing",
-        "review"
-      ]
-    },
-    {
-      "name": "human-writing",
-      "displayName": "Human Writing",
-      "source": "./skills/human-writing",
-      "homepage": "https://github.com/AhmedKishki/agent-skills/tree/main/skills/human-writing",
-      "repository": "https://github.com/AhmedKishki/agent-skills",
-      "description": "Write and check prose by justifying every sentence's logical connection to its part and surrounding sentences.",
       "tags": [
         "writing",
         "editing",

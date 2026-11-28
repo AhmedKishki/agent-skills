@@ -11,7 +11,7 @@ The applicant and agent decide the template, tools, format, content selection, e
 
 A request to create a CV, cover letter or research statement includes PDF delivery unless the applicant explicitly declines PDF, for example by requesting “source-only” or “DOCX only”. A letter or statement is drafted in plain Markdown first and rendered once every open point is closed, as Drafting describes; a CV is rendered with each revision. Asking for an additional editable format such as DOCX does not remove PDF delivery. Preserve the editable sources too. Follow Tailoring's rendering and every-page inspection checks before reporting delivery complete; a draft PDF does not establish applicant approval or submission.
 
-Use `human-writing` for authored prose. Preserve raw evidence, names, dates, technical terms and applicant quotations; writing guidance never authorizes changing facts or inventing character.
+Preserve raw evidence, names, dates, technical terms and applicant quotations; writing guidance never authorizes changing facts or inventing character.
 
 ## Read at the relevant stage
 
